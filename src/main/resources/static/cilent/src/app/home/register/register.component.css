@@ -13,7 +13,6 @@ form {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
 input {
     height: 22px;
     outline: none;
@@ -29,25 +28,9 @@ input {
     height: 30px;
     width: 100px;
     background: #00c9b3;
-=======
-.submit-register {
-    height: 25px;
-    width: 75px;
-    background: #0091ab;
->>>>>>> d8881a06defdb8635c49e6fe92da3b5568e20764
     align-items: center;
     color: white;
     justify-content: center;
 }
 
-<<<<<<< HEAD
 .accept { align-items: center; }
-=======
-input {
-    outline: none;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid white;
-    width: 70%;
-}
->>>>>>> d8881a06defdb8635c49e6fe92da3b5568e20764
