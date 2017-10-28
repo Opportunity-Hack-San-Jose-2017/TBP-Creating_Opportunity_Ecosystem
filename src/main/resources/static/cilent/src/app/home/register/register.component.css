@@ -7,19 +7,19 @@
     font-weight: bold;
 }
 
-input {
-        outline: none;
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid white;
-        width: 70%;
-    }
-
 .submit-register {
     height: 25px;
     width: 75px;
-    background: blue;
+    background: #0091ab;
     align-items: center;
     color: white;
     justify-content: center;
+}
+
+input {
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    width: 70%;
 }

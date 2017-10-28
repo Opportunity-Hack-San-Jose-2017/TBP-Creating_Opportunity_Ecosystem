@@ -1,0 +1,16 @@
+* {
+	color: white;
+}
+.submit {
+	background-color: #0091ab;
+	border: 0;
+	padding: 1em 2em;
+}
+
+input {
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    width: 70%;
+}

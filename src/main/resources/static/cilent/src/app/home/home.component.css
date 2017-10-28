@@ -12,3 +12,11 @@
     background: rgba(0, 0, 0, 0.6);
     color: white;
 }
+
+input {
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    width: 70%;
+}
