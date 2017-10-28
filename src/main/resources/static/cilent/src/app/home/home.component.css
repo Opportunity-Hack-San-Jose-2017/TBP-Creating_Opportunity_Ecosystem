@@ -6,6 +6,9 @@
 }
 
 .login-reg-wrapper {
-    height: 50vh;
+    height: 70vh;
     width: 70%;
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
 }
