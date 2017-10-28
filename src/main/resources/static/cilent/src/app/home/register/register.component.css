@@ -1,5 +1,11 @@
+form {
+    width: 70%;
+    align-items: center;
+    margin: 20px auto 0;
+}
 .form-group {
-    margin-bottom: 15px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .form-group-header {
@@ -8,18 +14,23 @@
 }
 
 input {
-        outline: none;
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid white;
-        width: 70%;
+    height: 22px;
+    outline: none;
+    background: transparent;
+    color: white;
+    margin-top: 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid white;
     }
 
 .submit-register {
-    height: 25px;
-    width: 75px;
-    background: blue;
+    height: 30px;
+    width: 100px;
+    background: #00c9b3;
     align-items: center;
     color: white;
     justify-content: center;
 }
+
+.accept { align-items: center; }

@@ -1,8 +1,8 @@
 <div class="home-container flex">
     <div class="login-reg-wrapper flex column">
         <div class="links flex">
-            <div (click)="handleClick('login')" id="login">Login</div>
-            <div (click)="handleClick('register')" id="register">Register</div>
+            <div (click)="handleClick('login')" class="link" [ngClass]="login ? 'active' : null" id="login">Login</div>
+            <div (click)="handleClick('register')" class="link" [ngClass]="!login ? 'active' : null" id="register">Register</div>
         </div>
         <app-login *ngIf="login"></app-login>
         <app-register *ngIf="!login"></app-register>
