@@ -1,6 +1,7 @@
 package com.OpportunityHack2018.tbp.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,6 +26,15 @@ public class Opening {
 
     @Column
     private String responsibilities;
+
+    @Column
+    private int experience;
+
+    @Column
+    private String shift;
+
+    @Column
+    private boolean publicTransport;
 
     @Column
     private String location;
@@ -141,5 +151,38 @@ public class Opening {
     public void setApplications(List<Application> applications) {
         this.applications = applications;
     }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public String getShift() {
+        return shift;
+    }
+
+    public void setShift(String shift) {
+        this.shift = shift;
+    }
+
+    public boolean isPublicTransport() {
+        return publicTransport;
+    }
+
+    public void setPublicTransport(boolean publicTransport) {
+        this.publicTransport = publicTransport;
+    }
+
+    public List<String> getSkillsSet() {
+        return skillsSet;
+    }
+
+    public void setSkillsSet(List<String> skillsSet) {
+        this.skillsSet = skillsSet;
+    }
+
 
 }
