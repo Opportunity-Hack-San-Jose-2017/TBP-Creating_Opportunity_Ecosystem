@@ -15,7 +15,7 @@ export class JobListingComponent implements OnInit {
 		responsibilities: "",
 		experience: "",
 		shift: "",
-		publicTransport: "false",
+		publicTransport: "",
 		location: "",
 		minSalary: "",
 		maxSalary: ""

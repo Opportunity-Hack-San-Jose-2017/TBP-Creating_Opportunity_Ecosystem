@@ -1,0 +1,98 @@
+<div class="edit-profile-container flex">
+
+  <div class="logo-wrap">
+    <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
+  </div>
+  <div class="main-wrapper flex column">
+    <div class="header">Edit Profile</div>
+    <div class="form-wrapper flex column">
+      <form #f="ngForm" class="flex column">
+        <div class="form-top flex">
+          <div class="form-top-left flex column">
+            <div classs="photo-wrapper">
+              <img class="no-point" [src]="img" alt="Profile Photo">
+            </div>
+            <div class="change-photo btn flex">Change Photo</div>
+            <div class="resume btn flex">Upload Resume</div>
+          </div>
+          <div class="form-top-right">
+            <div class="name-phone-wrapper flex column">
+              <div class="name-wrapper flex">
+                <div class="form-group gap">
+                  <input [(ngModel)]="user.firstName" #firstName="ngModel" type="text" name="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group gap">
+                  <input [(ngModel)]="user.lastName" #lastName="ngModel" type="text" name="lastName" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="name-wrapper flex">
+                <div class="form-group gap">
+                  <input [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel" type="tel" name="phoneNumber" placeholder="Phone Number">
+                </div>
+                <div class="form-group gap">
+                  <input [(ngModel)]="user.email" #email="ngModel" type="email" name="email" placeholder="Email">
+                </div>
+              </div>
+            </div>          
+            <div class="availability-wrapper">
+              <div class="form-group flex column">
+                <div class="form-group-header">Availability</div>
+                <div class="flex check-container">
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.availability.morning" #availability="ngModel" id="morning" type="checkbox" name="morning">
+                    <label for="morning">Morning</label>
+                  </div>
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.availability.noon" #availability="ngModel" id="noon" type="checkbox" name="noon">
+                    <label for="noon">Noon</label>
+                  </div>
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.availability.night" #availability="ngModel" id="night" type="checkbox" name="night">
+                    <label for="Night">Night</label>
+                  </div>
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.availability.graveyard" #availability="ngModel" id="graveyard" type="checkbox" name="graveyard">
+                    <label for="Graveyard">Graveyard</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="job-type-wrapper">
+              <div class="form-group flex column">
+                <div class="form-group-header">Job Type</div>
+                <div class="flex check-container">
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.jobType.fullTime" #jobType="ngModel" id="fullTime" type="checkbox" name="fullTime">
+                    <label for="morning">Full Time</label>
+                  </div>
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.jobType.partTime" #jobType="ngModel" id="partTime" type="checkbox" name="partTime">
+                    <label for="noon">Part Time</label>
+                  </div>
+                  <div class="check-wrapper flex">
+                    <input [(ngModel)]="user.jobType.temp" #jobType="ngModel" id="temporary" type="checkbox" name="temp">
+                    <label for="Night">Temporary</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-bottom flex column">
+          <div class="form-group flex column">
+            <div>Skills</div>
+            <textarea class="skills" placeholder="e.g. baking, laminating, critical thining, and active listening"></textarea>
+          </div>
+          <div class="form-group flex column">
+            <div>Experiences</div>
+            <textarea class="experiences" placeholder="Titles and Descriptions"></textarea>
+          </div>
+        </div>
+      </form>
+      <div class="bottom flex">
+        <div (click)="handleClick(f.value)" class="back-btn btn flex">Back</div>
+        <div (click)="handleClick(f.value)" class="save-btn btn flex">Save</div>
+      </div>
+    </div>
+  </div>
+</div>

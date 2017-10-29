@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompanyHomeComponent } from './company-home/company-home.component';
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
     { path: 'setup', component: ProfileSetupComponent },
     { path: 'company', component: CompanyHomeComponent },
     { path: 'jobs', component: UserLandingComponent },
+    { path: 'profile/edit', component: EditProfileComponent },
     { path: 'company/opening/create', component: JobListingComponent},
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
 	// { path: '**', component: PageNotFoundComponent }
