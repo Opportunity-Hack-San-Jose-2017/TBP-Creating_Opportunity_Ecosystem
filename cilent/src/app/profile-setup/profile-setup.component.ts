@@ -14,11 +14,9 @@ export class ProfileSetupComponent {
 
 	constructor(private _user: UserService) {
 		_user.getSetupStep()
-			.do(v => console.log(v))
-			.subscribe((v: Number) => this.step = v);
-		_user.getUser()
-			.do(v => console.log(v))
-			.subscribe((v: any) => this.name = v);
+		.subscribe((v: Number) => this.step = v);
+		const userObj = JSON.parse(localStorage.getItem('user'));
+		this.name = userObj != null ? userObj.name : '';
 	}
 
 	ngOnInit() {

@@ -13,27 +13,27 @@ export class UserService {
 
   profile: any;
   setupStep = new Subject();
-  user = new Subject();
 
   login(login_cred: Object){
   	this.http.post('http://localhost:8080/applicant/signin', login_cred)
   	.subscribe(
   		(data: any) => {
-        this.user.next(data);
+        localStorage.setItem('user', JSON.stringify(data));
+        this.router.navigate(['jobs']);
       },
   		(err: HttpErrorResponse) => {
-        if (err["statusCode"] == "400"){
+        if (err["statusCode"] == "400") {
           alert(err["message"])
         }
       }
   	)
   }
 
-  register(registration_cred: Object){
+  register(registration_cred: Object) {
   	this.http.post('http://localhost:8080/applicant/register', registration_cred)
   	.subscribe(
   		(data: any) => {
-        this.user.next(data);
+        localStorage.setItem('user', JSON.stringify(data));
         this.router.navigate(['setup']);
       },
   		(err: HttpErrorResponse) => {
@@ -45,12 +45,8 @@ export class UserService {
   	)
   }
 
-  getUser(): Observable<any> {
-    return this.user;
-  }
-
   logout() {
-    return this.http.post('/applicant/register', {})
+    return this.http.post('/applicant/register', {});
   }
 
   getSession(){

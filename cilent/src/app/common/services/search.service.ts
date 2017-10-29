@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SearchService {
 
-	jobs = []
+	jobs: Array<any>;
 
   	constructor(private _http: HttpClient) { }
 

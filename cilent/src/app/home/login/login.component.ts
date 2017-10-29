@@ -9,19 +9,12 @@ import { UserService } from '../../common/services/user.service';
 })
 export class LoginComponent {
 
-	user = {
-		email: "",
-		password: ""
+	user = {email: "", password: ""}
+	error;
+
+	constructor(private _user: UserService) { }
+
+	login(user: any) {
+		this._user.login(user)
 	}
-
-  error;
-
-  	constructor(private _user: UserService) { }
-
-  	ngOnInit() {
-  	}
-
-  	login(){
-  		this._user.login(this.user)
-  	}
 }
