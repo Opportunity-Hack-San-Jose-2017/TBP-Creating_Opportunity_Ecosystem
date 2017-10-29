@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileSetupComponent implements OnInit {
 
+	page = 1
   constructor() { }
 
   ngOnInit() {
   }
 
+  onClickNext(){
+  	this.page++
+  }
 }

@@ -1,0 +1,48 @@
+<div *ngIf="page == 1">
+	<h1>Welcome</h1>
+	<h2>Get Started by filling out your profile</h2>
+	<div>
+		<div id="photoId"></div>
+		<h2>Name</h2>
+		<p></p>
+		<h2>Phone Number</h2>
+		<input type="tel" name="phoneNumber">
+	</div>
+	<div>
+		<textarea></textarea>
+		<button>Next</button>
+		<img src="#" id="bubbleImg">
+		<a href="#">Not Now</a>
+	</div>
+</div>
+
+<div *ngIf="page == 2">
+	<div>
+		<h2>Location</h2>
+		<input type="text" name="location">
+	</div>
+	<div>
+		<h2>Language</h2>
+		<input type="text" name="language">
+	</div>
+	<div>
+		<h2>Availabilty</h2>
+		<input type="radio" name="morning">
+		<input type="raido" name="noon">
+		<input type="radio" name="night">
+		<input type="raido" name="graveyard">
+	</div>
+	<div>
+		<h2>Job Type</h2>
+		<input type="radio" name="fullTime">
+		<input type="radio" name="partTime">
+		<input type="radio" name="temporary">
+	</div>
+	<button>Next</button>
+	<img src="#" id="bubbleImg">
+	<a href="#">Not now</a>
+</div>
+
+<div *ngIf="page == 3">
+	<h2></h2>
+</div>
