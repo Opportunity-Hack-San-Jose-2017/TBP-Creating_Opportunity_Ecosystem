@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { ProfileSetupComponent } from './profile-setup/profile-setup.component';
+import { UserLandingComponent } from './user-landing/user-landing.component';
 import { UserService } from './common/services/user.service';
 import { StepOneComponent } from './profile-setup/step-one/step-one.component';
 import { StepTwoComponent } from './profile-setup/step-two/step-two.component';
@@ -23,6 +24,7 @@ import { StepThreeComponent } from './profile-setup/step-three/step-three.compon
     LoginComponent,
     RegisterComponent,
     ProfileSetupComponent,
+    UserLandingComponent,
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent
