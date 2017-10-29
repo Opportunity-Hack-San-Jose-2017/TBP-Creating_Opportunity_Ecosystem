@@ -60,7 +60,6 @@ export class UserService {
     )
   }
 
-
 	sendProfileInfo(data: Object) {
 		let num = Number(localStorage.getItem('setupStep')) + 1;
 		localStorage.setItem('setupStep', num.toString());
