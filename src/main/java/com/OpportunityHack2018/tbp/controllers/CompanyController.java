@@ -67,7 +67,7 @@ public class CompanyController {
                 responseMap.addAttribute("statusCode", "400");
                 responseMap.addAttribute("message", "Please log in to post a job");
                 return responseMap;
-            }
+            }   
 
             Opening opening=new Opening();
             opening.setDate(new Date());
@@ -221,6 +221,7 @@ public class CompanyController {
                 return responseMap;
             }
             session.setAttribute("email",companyObj.getEmail());
+            System.out.println("Session email :"+session.getAttribute("email"));
             responseMap.addAttribute("statusCode", "200");
             responseMap.addAttribute("company",company);
         }
@@ -233,7 +234,6 @@ public class CompanyController {
         return responseMap;
     }
 
-    @CrossOrigin
     @PostMapping(value = "/logout")
     @ResponseBody
     public ModelMap logout(HttpSession session){

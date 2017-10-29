@@ -6,8 +6,8 @@
 		></p>
 	<p>responsibilities: <input type="text" name="responsibilities" [(ngModel)]="job.responsibilities" 
 		#responsibilites="ngModel"></p>
-	<p>experience: <input type="text" name="experience" [(ngModel)]="job.experience" 
-		#experience="ngModel"></p>
+	<!-- <p>experience: <input type="text" name="experience" [(ngModel)]="job.experience" 
+		#experience="ngModel"></p> -->
 	<p>shift: 
 		<select name="shift" [(ngModel)]="job.shift" 
 		#shift="ngModel">
@@ -17,18 +17,20 @@
 		  	<option value="Temporary">Temporary</option>
 		</select>
 	</p>
-	<p>Public Transport Available:
+	<!-- <p>Public Transport Available:
 		<select name="publicTransport"[(ngModel)]="job.publicTransport" 
 		#publicTransport="ngModel">
 			<option value="true">Yes</option>
 			<option value="false">No</option>
 		</select>
-	</p>
+	</p> -->
 	<p>Location: <input type="text" name="location" [(ngModel)]="job.location" 
 		#location="ngModel"></p>
 	<p>Minimum Salary: <input type="text" name="minSalary" [(ngModel)]="job.minSalary" 
 		#minSalary="ngModel"></p>
 	<p>Maximum Salary: <input type="text" name="maxSalary" [(ngModel)]="job.maxSalary" 
 		#maxSalary="ngModel"></p>
-	<button (click)="submitOpening()">Submit</button>
+	<button (click)="submitOpening(f.value)">Submit</button>
 </form>
+
+<button (click)="testProfile()">test button</button>
