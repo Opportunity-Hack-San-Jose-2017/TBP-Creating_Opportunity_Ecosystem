@@ -13,13 +13,13 @@ import java.util.Set;
  */
 @Transactional
 public interface OpeningRepository extends JpaRepository<Opening,Integer> {
-    @Query(value = "select * from opening where company_email = ?1", nativeQuery = true)
+    @Query(value = "select * from opening where company_email = %?1%", nativeQuery = true)
     Set<Opening> findByEmail(String email);
 
-    @Query(value = "delete from opening where email = ?1", nativeQuery = true)
+    @Query(value = "delete from opening where email = ?1%", nativeQuery = true)
     void flushOpeningsForCompany(String email);
 
-    @Query(value = "select * from opening where opening_id=?1 and company_email=?2", nativeQuery = true)
+    @Query(value = "select * from opening where opening_id=?1% and company_email=?2%", nativeQuery = true)
     Opening findByIdAndCompany(int opening_id, String email);
 
 //    @Query(value ="Select o.* " +
@@ -34,4 +34,15 @@ public interface OpeningRepository extends JpaRepository<Opening,Integer> {
             "where Concat(o.description,'',o.location,'',o.responsibilities,'',o.title,'',c.name) like %?1%")
     List<Opening> getSearchResults(String word);
 
+    @Query(value = "select * from Opening where Opening.title like ?1", nativeQuery = true)
+    Set<Opening> findByTitle(String title);
+//
+////    @Query(value = "select * from Opening where Opening.location like ?1",nativeQuery = true)
+//    Set<Opening> findByLocation(String location);
+//
+//    @Query(value = "select * from opening o where o.company_email=(select company.email from company where company.name like ?1)",nativeQuery = true)
+//    Set<Opening> findByCompanyNameEmailJoin(String name);
+//
+////    @Query(value = "select * from opening o where o.shift like ?1",nativeQuery = true)
+//    Set<Opening> findByShift(String shift);
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/applicant")
@@ -216,6 +217,106 @@ public class ApplicantController {
         }
     }
 
+    @GetMapping(value = "/search")
+    @ResponseBody
+    public ModelMap search(@RequestParam(value= "query") String query, HttpSession session, Pageable pageable) {
+        ModelMap responseMap = new ModelMap();
+        try {
+            if (session.getAttribute("email") == null) {
+                responseMap.addAttribute("statusCode","404");
+                responseMap.addAttribute("message","Please login to search");
+                return responseMap;
+            }
+            Page<Opening> openings=openingService.searchOpenings(query,pageable);
+
+            if(openings!=null){
+
+                List<Opening> openingsList=new ArrayList<>();
+                List<String> imageURLs=new ArrayList<>();
+                for(Opening o : openings){
+//                    imageMap.put(o,o.getCompany().getImageUrl());
+                    openingsList.add(o);
+//                    imageURLs.add(o.getCompany().getImageUrl());
+                }
+
+                responseMap.addAttribute("openings",openingsList);
+                responseMap.addAttribute("imageURLs",imageURLs);
+                responseMap.addAttribute("message","Search Results-");
+                responseMap.addAttribute("statusCode","200");
+                return responseMap;
+            }
+            else{
+                responseMap.addAttribute("message","Your search returned no results");
+                responseMap.addAttribute("status","404");
+                return responseMap;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+            responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+            responseMap.addAttribute("status","404");
+            return responseMap;
+        }
+    }
+
+//    @GetMapping(value = "/searchWithFilter")
+//    @ResponseBody
+//    public ModelMap searchWithFilter(@RequestParam(value = "query") String query,
+//                                     @RequestParam(value = "keywords") Set<String> keywords,
+//                                     @RequestParam(value="companies")Set<String> companyNames,
+//                                     @RequestParam(value = "locations")Set<String> locationNames ,
+//                                     @RequestParam(value = "minSalary") String minSal,
+//                                     @RequestParam(value = "maxSalary") String maxSal,
+//                                     HttpSession session,
+//                                     Pageable pageable){
+//        ModelMap responseMap = new ModelMap();
+//        try {
+//
+//            if (session.getAttribute("email") == null) {
+//                responseMap.addAttribute("statusCode","404");
+//                responseMap.addAttribute("message","Please login to search");
+//                return responseMap;
+//            }
+//
+//            Integer minSalary=null,maxSalary=null;
+//            System.out.println("minsal length :"+minSal.length()+" maxsal length :"+maxSal.length());
+//            if(!minSal.equals("undefined") && minSal.length()!=0)
+//                minSalary= Integer.parseInt(minSal);
+//            if(!maxSal.equals("undefined") && maxSal.length()!=0)
+//                maxSalary=Integer.parseInt(maxSal);
+//
+//            Page<Opening> openings=openingService.searchOpeningsWithFilters(query,keywords,companyNames,locationNames,minSalary,maxSalary,pageable);
+//
+//            if(openings!=null){
+//                List<Opening> openingsList=new ArrayList<>();
+//                List<String> imageURLs=new ArrayList<>();
+//                for(Opening o : openings){
+////                    imageMap.put(o,o.getCompany().getImageUrl());
+//                    openingsList.add(o);
+////                    imageURLs.add(o.getCompany().getImageUrl());
+//                }
+//
+//                responseMap.addAttribute("openings",openingsList);
+//                responseMap.addAttribute("imageURLs",imageURLs);
+//                responseMap.addAttribute("message","Search Results-");
+//                responseMap.addAttribute("statusCode","200");
+//                return responseMap;
+//            }
+//            else{
+//                responseMap.addAttribute("message","Your search returned no results");
+//                responseMap.addAttribute("statusCode","405");
+//                return responseMap;
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+//            responseMap.addAttribute("statusCode","404");
+//            return responseMap;
+//        }
+//
+//    }
+
     @CrossOrigin
     @PostMapping(value = "/signin")
     @ResponseBody
@@ -228,11 +329,11 @@ public class ApplicantController {
             Applicant applicant=applicantService.fetch(obj.getEmail());
 
             if(applicant!=null && applicant.getPassword().equals(obj.getPassword())){
-                if(!applicant.isVerified()){
-                    responseMap.addAttribute("statusCode", "400");
-                    responseMap.addAttribute("message", "Please verify your account before signing in.");
-                    return responseMap;
-                }
+//                if(!applicant.isVerified()){
+//                    responseMap.addAttribute("statusCode", "400");
+//                    responseMap.addAttribute("message", "Please verify your account before signing in.");
+//                    return responseMap;
+//                }
                 if(session.getAttribute("email")!=null){
                     responseMap.addAttribute("statusCode", "400");
                     responseMap.addAttribute("message", "You are already signed in");

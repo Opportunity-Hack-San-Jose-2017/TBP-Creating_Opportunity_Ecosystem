@@ -62,21 +62,38 @@ public class OpeningService {
     public Page<Opening> searchOpenings(String query, Pageable pageable) {
         String words[]=query.split("\\s+");
         LinkedHashSet<Opening> openingSet=new LinkedHashSet<>();
-        List<Opening> current;
+        Set<Opening> current;
 
         for(String word : words) {
             System.out.println("Current word :"+word);
-            current = openingRepository.getSearchResults(word);
-            System.out.println("Result for search :"+current);
-            for(Opening opening:current){
-                openingSet.add(opening);
-            }
+            current = openingRepository.findByTitle(word);
+//            System.out.println("Result for search :"+current);
+
+//            Opening opening1=openingRepository.findByOpening_id(word);
+//            System.out.println("opening "+opening1);
+
+//            for(Opening opening:current){
+//                openingSet.add(opening);
+//            }
+//            current=openingRepository.findByLocation(word);
+//            for(Opening opening:current){
+//                openingSet.add(opening);
+//            }
+//            current=openingRepository.findByShift(word);
+//            for(Opening opening:current){
+//                openingSet.add(opening);
+//            }
+//            current=openingRepository.findByCompanyNameEmailJoin(word);
+//            for(Opening opening:current){
+//                openingSet.add(opening);
+//            }
         }
 
         List<Opening> openings=new ArrayList<>();
         for(Opening opening:openingSet){
             openings.add(opening);
         }
+        System.out.println("Result size :"+openings.size());
         int start = pageable.getOffset();
         int end = (start + pageable.getPageSize()) > openings.size() ? openings.size() : (start + pageable.getPageSize());
         Page<Opening> pages = new PageImpl<Opening>(openings.subList(start,end), pageable, openings.size());
