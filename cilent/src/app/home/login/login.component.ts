@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,12 +8,12 @@ import { UserService } from '../../common/services/user.service';
 })
 export class LoginComponent {
 
-	user = {email: "", password: ""}
+	user = {email: "", password: ""};
 	error;
 
 	constructor(private _user: UserService) { }
 
 	login(user: any) {
-		this._user.login(user)
+		this._user.login(user);
 	}
 }
