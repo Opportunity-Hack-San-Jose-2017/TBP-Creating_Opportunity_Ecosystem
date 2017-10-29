@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './../../user.service';
+import { UserService } from '../../common/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -28,6 +28,6 @@ export class RegisterComponent {
 	}
 
 	registration() {
-		this._user.register(this.user)
+		this._user.register(this.user);
 	} 
 }

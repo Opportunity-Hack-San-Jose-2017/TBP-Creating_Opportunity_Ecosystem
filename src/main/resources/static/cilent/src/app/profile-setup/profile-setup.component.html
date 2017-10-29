@@ -1,11 +1,10 @@
-<div>
-	<h1>Welcome</h2>
-	<h2>Get Started by filling out your profile</h3>
-	<div>
-		<div id="photoId"></div>
-		<h2>Name</h2>
-		<p></p>
-		<h2>Phone Number</h2>
-		<input type="tel" name="telephone">
+<div class="profile-setup-container flex">
+	<div class="logo-wrap">
+		<img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
+	</div>
+	<div class="profile-setup-wrapper flex column">
+		<app-step-one *ngIf="step === 1"></app-step-one>
+		<app-step-two *ngIf="step === 2"></app-step-two>
+		<app-step-three *ngIf="step === 3"></app-step-three>
 	</div>
 </div>
