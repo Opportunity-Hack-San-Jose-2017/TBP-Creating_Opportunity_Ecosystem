@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from './../common/services/jobs.service'
+import { Routes } from '@angular/router';
 
 @Component({
   selector: 'app-job-listing',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobListingComponent implements OnInit {
 
-  constructor() { }
+	job = {
+		title: "",
+		description: "",
+		responsibilities: "",
+		experience: "",
+		shift: "",
+		publicTransport: "false",
+		location: "",
+		minSalary: "",
+		maxSalary: ""
+	}
+
+  constructor(private jobs: JobsService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  submitOpening(){
+  	this.jobs.postOpening(this.job)
+  	.subscribe(data => {
+  		this.router.navigate(['/'])
+  	})
+  }
 }

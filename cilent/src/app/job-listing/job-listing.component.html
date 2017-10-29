@@ -1,10 +1,16 @@
-<form>
-	<p>Title: <input type="text" name="title"></p>
-	<p>description: <input type="text" name="description"></p>
-	<p>responsibilities: <input type="text" name="responsibilities"></p>
-	<p>experience: <input type="text" name="experience"></p>
+<form #f="ngForm">
+	<p>Title: <input type="text" name="title" required [(ngModel)]="job.title" 
+		#title="ngModel"></p>
+	<p>description: <input type="text" name="description" [(ngModel)]="job.description" 
+		#description="ngModel"
+		></p>
+	<p>responsibilities: <input type="text" name="responsibilities" [(ngModel)]="job.responsibilities" 
+		#responsibilites="ngModel"></p>
+	<p>experience: <input type="text" name="experience" [(ngModel)]="job.experience" 
+		#experience="ngModel"></p>
 	<p>shift: 
-		<select>
+		<select [(ngModel)]="job.shift" 
+		#shift="ngModel">
 		  	<option value="Morning">Morning</option>
 		  	<option value="Noon">Noon</option>
 		  	<option value="Night">Night</option>
@@ -12,11 +18,17 @@
 		</select>
 	</p>
 	<p>Public Transport Available:
-		<select>
+		<select [(ngModel)]="job.publicTransport" 
+		#publicTransport="ngModel">
 			<option value="true">Yes</option>
 			<option value="false">No</option>
 		</select>
 	</p>
-	<p>Location: <input type="text" name="location"></p>
-	<p>Minimum Salary: <input type="text" name="minSal"></p>
+	<p>Location: <input type="text" name="location" [(ngModel)]="job.location" 
+		#location="ngModel"></p>
+	<p>Minimum Salary: <input type="text" name="minSalary" [(ngModel)]="job.minSalary" 
+		#minSalary="ngModel"></p>
+	<p>Maximum Salary: <input type="text" name="maxSalary" [(ngModel)]="job.maxSalary" 
+		#maxSalary="ngModel"></p>
+	<button (click)="submitOpening()">Submit</button>
 </form>

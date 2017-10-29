@@ -1,3 +1,4 @@
+import { JobsService } from './common/services/jobs.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -45,7 +46,7 @@ import { JobListingComponent } from './job-listing/job-listing.component';
     UserService,
     SearchService,
     CompanyService,
-    
+    JobsService
   ],
   bootstrap: [AppComponent]
 })
