@@ -1,0 +1,23 @@
+<div class="welcome">Welcome</div>
+<div class="start"><i>Get started by filling out your profile</i></div>
+<form #f="ngForm">
+  <div class="photo-name-phone flex">
+    <div class="photo-wrapper">
+      <img class="no-point" [src]="img" alt="Profile Photo">
+    </div>
+    <div class="name-phone-wrapper flex column">
+      <div class="form-group flex column">
+        <div class="form-group-header name">{{name}}</div>
+      </div>
+      <div class="form-group flex column">
+        <div class="form-group-header">Phone Number</div>
+        <input [(ngModel)]="user['telephone']" #phoneNumber="ngModel" type="tel" name="telephone" required>
+      </div>	
+    </div>
+  </div>
+  <textarea class="about"></textarea>
+  <div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
+</form>
+<div class="step-img-wrapper flex">
+  <img src="../../assets/images/step_1.png" alt="1">
+</div>

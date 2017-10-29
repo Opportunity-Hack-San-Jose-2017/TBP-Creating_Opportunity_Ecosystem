@@ -1,0 +1,42 @@
+.no-point { pointer-events: none; }
+
+.profile-setup-container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px 35px;
+    background: url('../../assets/images/newuser-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-wrap {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    height: 50px;
+}
+
+.profile-setup-wrapper {
+    width: 45%;
+    min-width: 34px;
+    border-radius: 1px;
+    padding: 20px 30px;
+    background: rgba(0,0,0,.83);
+    margin-top: 100px;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .profile-setup-container { padding: 0; }
+    .profile-setup-wrapper { width: 90%; }
+}
