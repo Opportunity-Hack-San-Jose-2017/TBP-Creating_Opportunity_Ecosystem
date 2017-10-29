@@ -2,26 +2,9 @@
     top: -6px;
     position: absolute;
 }
+
 .err {
     color: rgb(211, 29, 29);
-}
-
-.listing-container {
-    align-items: center;
-    justify-content: center;
-    min-height: 100%;
-}
-
-.form-wrapper {
-    width: 45%;
-    border-radius: 1px;
-    padding: 20px 30px;
-    background: black;
-    position: relative;
-    opacity: .83;
-    color: white;
-    align-items: center;
-    overflow-y: auto;    
 }
 
 form {
@@ -29,6 +12,7 @@ form {
     align-items: center;
     margin: 15px auto 0;
 }
+
 .form-group {
     width: 100%;
     margin-bottom: 15px;
@@ -45,16 +29,14 @@ input {
     outline: none;
     background: transparent;
     color: white;
+    padding-bottom: 2px;
     margin-top: 15px;
     font-size: 16px;
-    padding-bottom: 2px;
     border: none;
     border-bottom: 1px solid white;
 }
 
-label { margin-top: 15px; }
-
-.submit-create {
+.submit-login {
     height: 30px;
     cursor: pointer;
     width: 100px;
@@ -64,4 +46,4 @@ label { margin-top: 15px; }
     justify-content: center;
 }
 
-.accept { align-items: center; margin-top: 5px; }
+.accept { align-items: center; }

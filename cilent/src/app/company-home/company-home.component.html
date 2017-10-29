@@ -1,0 +1,13 @@
+<div class="home-container flex">
+    <div class="logo-wrap">
+        <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
+    </div>
+    <div [ngStyle]="{'height' : login ? '40vh' : '55%'}" class="login-reg-wrapper flex column">
+        <div class="links flex">
+            <div (click)="handleClick('login')" class="link" [ngClass]="login ? 'active' : null" id="login">Login</div>
+            <div (click)="handleClick('register')" class="link" [ngClass]="!login ? 'active' : null" id="register">Register</div>
+        </div>
+        <app-company-login *ngIf="login"></app-company-login>
+        <app-company-register *ngIf="!login"></app-company-register>
+    </div>
+</div>

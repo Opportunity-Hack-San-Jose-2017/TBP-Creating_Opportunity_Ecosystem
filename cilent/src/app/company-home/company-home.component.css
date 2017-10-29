@@ -1,0 +1,58 @@
+.home-container {
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/images/login-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-wrap {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    height: 50px;
+}
+
+.login-reg-wrapper {
+    width: 45%;
+    min-height: 250px;
+    border-radius: 1px;
+    padding: 20px 30px;
+    background: black;
+    position: relative;
+    margin-top: 150px;
+    opacity: .83;
+    color: white;
+    align-items: center;
+    overflow-y: auto;    
+}
+
+#login {
+    margin-right: 30px;
+}
+
+.links { width: 70%; cursor: pointer; }
+
+.link {
+    font-size: 17px;
+    font-weight: bold;
+    height: 31px;
+}
+
+.active {
+    border-bottom: 3px solid #00c9b3;
+}
+
+app-company-register, app-company-login { width: 100%; }
+
+@media screen and (max-width: 500px) {
+    .login-reg-wrapper {
+        width: 80%;
+        height: 75vh;
+    }
+}

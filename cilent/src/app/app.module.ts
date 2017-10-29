@@ -19,6 +19,10 @@ import { SearchService } from './common/services/search.service';
 import { CompanyService } from './common/services/company.service';
 import { JobCellComponent } from './user-landing/job-cell/job-cell.component';
 import { JobListingComponent } from './job-listing/job-listing.component';
+import { CompanyHomeComponent } from './company-home/company-home.component';
+import { CompanyLoginComponent } from './company-home/company-login/company-login.component';
+import { CompanyRegisterComponent } from './company-home/company-register/company-register.component';
+import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { JobListingComponent } from './job-listing/job-listing.component';
     StepTwoComponent,
     StepThreeComponent,
     JobCellComponent,
-    JobListingComponent
+    JobListingComponent,
+    CompanyHomeComponent,
+    CompanyLoginComponent,
+    CompanyRegisterComponent,
+    EmployersLandingpageComponent
   ],
   imports: [
     BrowserModule,

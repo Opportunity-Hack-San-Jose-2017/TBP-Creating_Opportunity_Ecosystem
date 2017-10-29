@@ -6,24 +6,6 @@
     color: rgb(211, 29, 29);
 }
 
-.listing-container {
-    align-items: center;
-    justify-content: center;
-    min-height: 100%;
-}
-
-.form-wrapper {
-    width: 45%;
-    border-radius: 1px;
-    padding: 20px 30px;
-    background: black;
-    position: relative;
-    opacity: .83;
-    color: white;
-    align-items: center;
-    overflow-y: auto;    
-}
-
 form {
     width: 80%;
     align-items: center;
@@ -52,9 +34,7 @@ input {
     border-bottom: 1px solid white;
 }
 
-label { margin-top: 15px; }
-
-.submit-create {
+.submit-register {
     height: 30px;
     cursor: pointer;
     width: 100px;
@@ -65,3 +45,9 @@ label { margin-top: 15px; }
 }
 
 .accept { align-items: center; margin-top: 5px; }
+
+@media screen and (max-height: 500px) {
+    form {
+        margin-top: 25px;
+    }
+}
