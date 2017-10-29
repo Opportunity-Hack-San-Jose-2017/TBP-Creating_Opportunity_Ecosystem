@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLandingComponent implements OnInit {
 
+	toggleDropDown = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  dropdowntoggle() {
+  	this.toggleDropDown = !this.toggleDropDown
   }
 
 }
