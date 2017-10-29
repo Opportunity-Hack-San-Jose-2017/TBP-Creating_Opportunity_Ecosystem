@@ -30,6 +30,7 @@ public class ApplicantController {
     @Autowired
     private OpeningService openingService;
 
+    @CrossOrigin
     @GetMapping(value = "/profile")
     @ResponseBody
     public ModelMap getProfile(ModelMap model,HttpSession session){
@@ -55,6 +56,7 @@ public class ApplicantController {
         }
     }
 
+    @CrossOrigin
     @PostMapping(value = "/register", produces="application/json")
     @ResponseBody
     public ModelMap register(@RequestBody String applicantJSON,
@@ -104,6 +106,7 @@ public class ApplicantController {
         return responseMap;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/apply",produces="application/json")
     @ResponseBody
     public ModelMap apply(@RequestBody String applicantJSON, HttpSession session){
@@ -149,6 +152,7 @@ public class ApplicantController {
         }
     }
 
+    @CrossOrigin
     @GetMapping(value = "/allJobs")
     public  ModelMap  getOpenings(HttpSession session, Pageable pageable){
         ModelMap responseMap = new ModelMap();
@@ -185,7 +189,7 @@ public class ApplicantController {
         }
     }
 
-
+    @CrossOrigin
     @GetMapping(value = "/activeSession")
     @ResponseBody
     public ModelMap activeSession(HttpSession session){
@@ -212,6 +216,7 @@ public class ApplicantController {
         }
     }
 
+    @CrossOrigin
     @PostMapping(value = "/signin")
     @ResponseBody
     public ModelMap signin(@RequestBody String json, HttpSession session){
@@ -252,6 +257,7 @@ public class ApplicantController {
         return responseMap;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/logout")
     @ResponseBody
     public ModelMap logout(HttpSession session){

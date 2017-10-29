@@ -27,7 +27,7 @@ public class CompanyController {
     @Autowired
     private OpeningService openingService;
 
-
+    @CrossOrigin
     @GetMapping("/profile")
     @ResponseBody
     public ModelMap getProfile(HttpSession session) {
@@ -52,6 +52,7 @@ public class CompanyController {
         return responseMap;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/postOpening", produces ="application/json" )
     @ResponseBody
     public ModelMap postOpening(@RequestBody String jobPosting,
@@ -95,7 +96,7 @@ public class CompanyController {
 
     }
 
-
+    @CrossOrigin
     @PostMapping(value = "/update", produces = "application/json")
     @ResponseBody
     public ModelMap update(@RequestBody String componyInfo,
@@ -146,7 +147,7 @@ public class CompanyController {
         return responseMap;
     }
 
-
+    @CrossOrigin
     @PostMapping(value = "/register", produces = "application/json")
     @ResponseBody
     public ModelMap register(@RequestBody String companyJSON,
@@ -191,7 +192,7 @@ public class CompanyController {
 
 
 
-
+    @CrossOrigin
     @PostMapping(value = "/signin", produces ="application/json" )
     @ResponseBody
     public ModelMap signin(@RequestBody String jsonObj,
@@ -232,6 +233,7 @@ public class CompanyController {
         return responseMap;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/logout")
     @ResponseBody
     public ModelMap logout(HttpSession session){
