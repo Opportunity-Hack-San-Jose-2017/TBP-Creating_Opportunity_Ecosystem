@@ -1,3 +1,4 @@
+import { UserService } from '../../common/services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './step-three.component.html',
   styleUrls: ['./step-three.component.css']
 })
-export class StepThreeComponent implements OnInit {
+export class StepThreeComponent {
 
-  constructor() { }
+  constructor(private _user: UserService) { }
 
-  ngOnInit() {
-  }
+	handleClick(val: Object) {
+		this._user.sendProfileInfo(val);
+	}
 
 }

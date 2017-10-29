@@ -3,8 +3,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { SearchService } from './search.service'; 
-import { CompanyService } from './company.service';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +14,8 @@ import { UserService } from './common/services/user.service';
 import { StepOneComponent } from './profile-setup/step-one/step-one.component';
 import { StepTwoComponent } from './profile-setup/step-two/step-two.component';
 import { StepThreeComponent } from './profile-setup/step-three/step-three.component';
+import { SearchService } from './common/services/search.service';
+import { CompanyService } from './common/services/company.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,11 @@ import { StepThreeComponent } from './profile-setup/step-three/step-three.compon
     RouterModule,
     HttpModule
   ],
-  providers: [UserService, SearchService, CompanyService],
+  providers: [
+    UserService,
+    SearchService,
+    CompanyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

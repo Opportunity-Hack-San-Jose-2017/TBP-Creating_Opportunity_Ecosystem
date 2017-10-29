@@ -14,6 +14,7 @@ export class ProfileSetupComponent {
 
 	constructor(private _user: UserService) {
 		this._user.getSetupStep()
+			.do(v => console.log(v))
 			.subscribe((v: Number) => this.step = v);
 	}
 
