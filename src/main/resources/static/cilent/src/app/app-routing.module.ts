@@ -7,8 +7,8 @@ import { UserLandingComponent } from './user-landing/user-landing.component';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'setup', component: ProfileSetupComponent },
+    { path: 'jobs', component: UserLandingComponent },
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
-	{ path: 'jobs', component: UserLandingComponent },
 	// { path: '**', component: PageNotFoundComponent }
 ];
 

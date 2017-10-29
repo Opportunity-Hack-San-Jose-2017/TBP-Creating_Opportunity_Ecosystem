@@ -24,7 +24,7 @@ import { StepThreeComponent } from './profile-setup/step-three/step-three.compon
     LoginComponent,
     RegisterComponent,
     ProfileSetupComponent,
-    UserLandingComponent
+    UserLandingComponent,
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent

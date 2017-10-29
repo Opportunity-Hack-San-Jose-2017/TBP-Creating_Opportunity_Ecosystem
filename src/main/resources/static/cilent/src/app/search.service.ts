@@ -13,7 +13,7 @@ export class SearchService {
   		return this._http.get('/applicant/getJobs')
   	}
 
-  	getJobBySkill(skill: String){
-  		return this._http.post('/')
-  	}
+  	// getJobBySkill(skill: String){
+  	// 	return this._http.post('/', )
+  	// }
 }
