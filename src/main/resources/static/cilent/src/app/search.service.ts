@@ -14,6 +14,6 @@ export class SearchService {
   	}
 
   	getJobBySkill(skill: String){
-  		return this._http.post('/')
+  		// return this._http.post('/')
   	}
 }

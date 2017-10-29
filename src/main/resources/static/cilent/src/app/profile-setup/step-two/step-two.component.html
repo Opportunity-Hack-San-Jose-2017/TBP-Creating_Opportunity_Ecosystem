@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form #f="ngForm" class="flex column">
   <div class="location-lang-wrapper flex">
     <div class="form-group flex column">
       <div class="form-group-header">Location</div>
@@ -12,37 +12,47 @@
   <div class="availability-wrapper">
     <div class="form-group flex column">
       <div class="form-group-header">Availability</div>
-      <div class="check-wrapper flex">
-          <label for="morning">Morning</label>
-          <input [(ngModel)]="user.availability" #availability="ngModel" id="morning" type="checkbox" name="morning">
-      </div>
-      <div class="check-wrapper flex">
-          <label for="noon">Noon</label>
-          <input [(ngModel)]="user.availability" #availability="ngModel" id="noon" type="checkbox" name="noon">
-      </div>
-      <div class="check-wrapper flex">
-          <label for="Night"></label>
-          <input [(ngModel)]="user.availability" #availability="ngModel" id="night" type="checkbox" name="night">
-      </div>
-      <div class="check-wrapper flex">
-          <label for="Graveyard"></label>
-          <input [(ngModel)]="user.availability" #availability="ngModel" id="graveyard" type="checkbox" name="graveyard">
+      <div class="flex check-container">
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.availability" #availability="ngModel" id="morning" type="checkbox" name="morning">
+            <label for="morning">Morning</label>
+          </div>
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.availability" #availability="ngModel" id="noon" type="checkbox" name="noon">
+            <label for="noon">Noon</label>
+          </div>
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.availability" #availability="ngModel" id="night" type="checkbox" name="night">
+            <label for="Night">Night</label>
+          </div>
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.availability" #availability="ngModel" id="graveyard" type="checkbox" name="graveyard">
+            <label for="Graveyard">Graveyard</label>
+          </div>
       </div>
     </div>
   </div>
   <div class="job-type-wrapper">
     <div class="form-group flex column">
       <div class="form-group-header">Job Type</div>
-      <label for="morning">Full Time</label>
-      <input [(ngModel)]="user.jobType" #jobType="ngModel" id="fullTime" type="checkbox" name="fullTime">
-      <label for="noon">Part Time</label>
-      <input [(ngModel)]="user.jobType" #jobType="ngModel" id="partTime" type="checkbox" name="partTime">
-      <label for="Night">Temporary</label>
-      <input [(ngModel)]="user.jobType" #jobType="ngModel" id="temporary" type="checkbox" name="temp">
+      <div class="flex check-container">
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.jobType" #jobType="ngModel" id="fullTime" type="checkbox" name="fullTime">
+          <label for="morning">Full Time</label>
+          </div>
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.jobType" #jobType="ngModel" id="partTime" type="checkbox" name="partTime">
+          <label for="noon">Part Time</label>
+          </div>
+          <div class="check-wrapper flex">
+            <input [(ngModel)]="user.jobType" #jobType="ngModel" id="temporary" type="checkbox" name="temp">
+          <label for="Night">Temporary</label>
+          </div>
+        </div>
     </div>
   </div>
-  <div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
 </form>
-<div class="step-img-wrapper">
+<div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
+<div class="step-img-wrapper flex">
     <img src="../../assets/images/step_2.png" alt="2">
 </div>

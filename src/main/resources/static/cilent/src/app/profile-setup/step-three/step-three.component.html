@@ -1,39 +1,13 @@
-<form #f="ngForm">
-    <div class="location-lang-wrapper flex">
-      <div class="form-group flex column">
-        <div class="form-group-header">Location</div>
-        <input [(ngModel)]="user.location" #location="ngModel" type="text" name="location" placeholder="e.g. Berkeley, CA">
-      </div>
-      <div class="form-group flex column">
-        <div class="form-group-header">Languages</div>
-        <input [(ngModel)]="user.language" #location="ngModel" type="text" name="languages" placeholder="e.g. English, Spanish">
-      </div>
+<form #f="ngForm" class="flex column">
+    <div class="form-group flex column">
+      <div>Skills</div>
+      <textarea class="skills"></textarea>
     </div>
-    <div class="availability-wrapper">
-      <div class="form-group flex column">
-        <div class="form-group-header">Availability</div>
-        <label for="morning">Morning</label>
-        <input [(ngModel)]="user.availability" #availability="ngModel" id="morning" type="checkbox" name="morning">
-        <label for="noon">Noon</label>
-        <input [(ngModel)]="user.availability" #availability="ngModel" id="noon" type="checkbox" name="noon">
-        <label for="Night"></label>
-        <input [(ngModel)]="user.availability" #availability="ngModel" id="night" type="checkbox" name="night">
-        <label for="Graveyard"></label>
-        <input [(ngModel)]="user.availability" #availability="ngModel" id="graveyard" type="checkbox" name="graveyard">
-      </div>
+    <div class="form-group flex column">
+      <div>Experiences</div>
+      <textarea class="experiences"></textarea>
     </div>
-    <div class="job-type-wrapper">
-      <div class="form-group flex column">
-        <div class="form-group-header">Job Type</div>
-        <label for="morning">Full Time</label>
-        <input [(ngModel)]="user.jobType" #jobType="ngModel" id="fullTime" type="checkbox" name="fullTime">
-        <label for="noon">Part Time</label>
-        <input [(ngModel)]="user.jobType" #jobType="ngModel" id="partTime" type="checkbox" name="partTime">
-        <label for="Night">Temporary</label>
-        <input [(ngModel)]="user.jobType" #jobType="ngModel" id="temporary" type="checkbox" name="temp">
-      </div>
-    </div>
-    <div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
+    <div (click)="handleClick(f.value)" class="next-btn flex">Finish</div>
   </form>
   <div class="step-img-wrapper">
       <img src="../../assets/images/step_3.png" alt="3">

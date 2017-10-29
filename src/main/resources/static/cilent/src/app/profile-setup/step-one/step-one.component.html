@@ -1,6 +1,8 @@
-<div class="welcome">Welcome</div>
-<div class="start"><i>Get started by filling out your profile</i></div>
-<form #f="ngForm">
+<div class="welcome-wrapper flex column">
+  <div class="welcome">Welcome</div>
+  <div class="start"><i>Get started by filling out your profile</i></div>
+</div>
+<form #f="ngForm" class="flex column">
   <div class="photo-name-phone flex">
     <div class="photo-wrapper">
       <img class="no-point" [src]="img" alt="Profile Photo">
@@ -16,8 +18,8 @@
     </div>
   </div>
   <textarea class="about"></textarea>
-  <div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
 </form>
+<div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
 <div class="step-img-wrapper flex">
   <img src="../../assets/images/step_1.png" alt="1">
 </div>
