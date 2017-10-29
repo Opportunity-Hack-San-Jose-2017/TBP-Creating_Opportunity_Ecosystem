@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -5,17 +6,20 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   profile: any;
   setupStep = new Subject();
-  name = new Subject();
+  user = new Subject();
 
   login(login_cred: Object){
   	this.http.post('http://localhost:8080/applicant/signin', login_cred)
   	.subscribe(
   		(data: any) => {
-        this.name.next(data);
+        this.user.next(data);
       },
   		(err: HttpErrorResponse) => {
         if (err["statusCode"] == "400"){
@@ -29,7 +33,8 @@ export class UserService {
   	this.http.post('http://localhost:8080/applicant/register', registration_cred)
   	.subscribe(
   		(data: any) => {
-        this.name.next(data);
+        this.user.next(data);
+        this.router.navigate(['setup']);
       },
   		(err: HttpErrorResponse) => {
         if (err["statusCode"] == "400"){
@@ -39,8 +44,8 @@ export class UserService {
   	)
   }
 
-  getName(): Observable<any> {
-    return this.name;
+  getuser(): Observable<any> {
+    return this.user;
   }
 
   logout() {
@@ -53,13 +58,12 @@ export class UserService {
       .subscribe(data => alert(JSON.stringify(data)))
   }
 
-  getProfile(name: String) {
-    this.http.get("/profile/" + name)
+  getProfile(user: String) {
+    this.http.get("/profile/" + user)
     .subscribe(
       data => this.profile = data
     )
   }
-
 
 	sendProfileInfo(data: Object) {
 		let num = Number(localStorage.getItem('setupStep')) + 1;
@@ -74,7 +78,7 @@ export class UserService {
     }
 	}
 
-	getSetupStep() {
+	getSetupStep(): Observable<any> {
 		return this.setupStep;
 	}
 }
