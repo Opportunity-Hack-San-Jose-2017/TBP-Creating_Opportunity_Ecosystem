@@ -1,0 +1,90 @@
+.welcome-wrapper {
+    align-items: center;
+}
+
+.welcome {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+form {
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.start {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.photo-wrapper { cursor: pointer; }
+
+.photo-name-phone {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+input {
+    height: 18px;
+    outline: none;
+    background: transparent;
+    color: white;
+    margin-top: 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+.photo-name-wrapper {
+    margin-bottom: 10px;
+}
+
+.name-phone-wrapper {
+    flex: 1;
+    margin-left: 20px;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.form-group-header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.about {
+    width: 100%;
+    height: 60px;
+    resize: none;
+    background: white;
+    opacity: 1;
+}
+
+.bottom {
+    align-items: center;
+    height: 100px;
+    justify-content: space-between;
+}
+
+.step-img-wrapper {
+    justify-content: center;
+}
+
+.next-btn {
+    height: 30px;
+    cursor: pointer;
+    width: 100px;
+    background: #00c9b3;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.not-now {
+    font-size: 13px;
+    color: rgba(255,255,255,.9);
+}

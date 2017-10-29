@@ -1,0 +1,17 @@
+<form #f="ngForm" class="flex column">
+    <div class="form-group flex column">
+      <div>Skills</div>
+      <textarea class="skills"></textarea>
+    </div>
+    <div class="form-group flex column">
+      <div>Experiences</div>
+      <textarea class="experiences"></textarea>
+    </div>
+  </form>
+  <div class="bottom flex column">
+      <div (click)="handleClick(f.value)" class="next-btn flex">Finish</div>
+      <div class="step-img-wrapper flex">
+        <img src="../../assets/images/step_3.png" alt="3">
+      </div>
+      <div class="not-now">Not now</div>
+    </div>
