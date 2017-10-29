@@ -8,6 +8,7 @@ import com.OpportunityHack2018.tbp.services.ApplicationService;
 import com.OpportunityHack2018.tbp.services.OpeningService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,8 +60,8 @@ public class ApplicantController {
     public ModelMap register(@RequestBody String applicantJSON,
                              HttpSession session){
         ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT,true);
         ModelMap responseMap = new ModelMap();
+
         try{
             Applicant applicantObject = mapper.readValue(applicantJSON, Applicant.class);
 //    		System.out.println(applicantObject.getEmail());
@@ -106,6 +107,7 @@ public class ApplicantController {
     @ResponseBody
     public ModelMap apply(@RequestBody String applicantJSON, HttpSession session){
 
+
         ModelMap responseMap = new ModelMap();
         if(session.getAttribute("email")==null) {
             System.out.println("Please login to apply");
@@ -113,8 +115,9 @@ public class ApplicantController {
             responseMap.addAttribute("message","Please sign out before registering.");
         }
         try {
-            System.out.println("Job ID:"+Integer.parseInt(applicantJSON.toString()));
-            int statusCode=applicantService.apply(Integer.parseInt(applicantJSON.toString()), session.getAttribute("email").toString());
+            JSONObject obj=new JSONObject(applicantJSON);
+            System.out.println("Job ID:"+obj.getInt("opening_id"));
+            int statusCode=applicantService.apply(obj.getInt("opening_id"), session.getAttribute("email").toString());
             if(statusCode==200){
                 responseMap.addAttribute("statusCode", "200");
                 responseMap.addAttribute("message","Job application submitted successfully!");

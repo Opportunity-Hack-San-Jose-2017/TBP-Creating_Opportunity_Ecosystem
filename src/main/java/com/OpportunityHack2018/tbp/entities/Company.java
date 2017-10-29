@@ -1,5 +1,7 @@
 package com.OpportunityHack2018.tbp.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class Company {
     private String token;
 
     @OneToMany(mappedBy = "company")
+    @JsonBackReference
     private List<Opening> openings;
 
     public String getEmail() {
