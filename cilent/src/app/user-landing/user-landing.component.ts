@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from './../common/services/search.service';
 
 @Component({
   selector: 'app-user-landing',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLandingComponent implements OnInit {
 
+  jobs: any;
 	toggleDropDown = false;
-  constructor() { }
+  constructor(private search: SearchService) { }
 
   ngOnInit() {
+    this.search.getAllJobs()
+    .subscribe(data => this.jobs = data)
   }
 
   dropdowntoggle() {

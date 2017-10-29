@@ -76,6 +76,6 @@
 	</div>
 	<div id="job_feed">
 		<!-- jobs -->
-		<app-job-cell></app-job-cell>
+		<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
 	</div>
 </div>

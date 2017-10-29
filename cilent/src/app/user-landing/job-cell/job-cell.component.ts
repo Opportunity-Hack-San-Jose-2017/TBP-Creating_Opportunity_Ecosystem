@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-job-cell',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class JobCellComponent implements OnInit {
 	show = true;
 
+	@Input() job: any;
   constructor() { }
 
   ngOnInit() {
