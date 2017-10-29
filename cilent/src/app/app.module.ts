@@ -43,7 +43,8 @@ import { JobListingComponent } from './job-listing/job-listing.component';
   providers: [
     UserService,
     SearchService,
-    CompanyService
+    CompanyService,
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -15,6 +15,7 @@ export class UserLandingComponent implements OnInit {
   ngOnInit() {
     this.search.getAllJobs()
     .subscribe(data => this.jobs = data)
+    this.jobs = ["something"]
   }
 
   dropdowntoggle() {
