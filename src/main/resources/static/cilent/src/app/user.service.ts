@@ -7,8 +7,9 @@ export class UserService {
   constructor(private http: Http) { }
 
   user;
+  profile;
 
-  login(login_cred){
+  login(login_cred: Object){
   	this.http.post('/applicant/signin', login_cred)
   	.subscribe(
   		data => this.user = data,
@@ -16,11 +17,18 @@ export class UserService {
   		)
   }
 
-  register(registration_cred){
+  register(registration_cred: Object){
   	this.http.post('/applicant/register', registration_cred)
   	.subscribe(
   		data => this.user = data,
   		error => console.log(error)
   		)
+  }
+
+  getProfile(name: String) {
+    this.http.get("/profile/" + name)
+    .subscribe(
+      data => this.profile = data
+    )
   }
 }
