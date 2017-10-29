@@ -1,0 +1,86 @@
+<form #f="ngForm" class="flex column">
+	<div [ngClass]="firstname.invalid && (firstname.dirty || firstname.touched) ? 'err-text' : null" class="form-group flex column">
+		<div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="firstname.errors.required">
+				First name is required.
+			</div>
+		</div>
+		<!-- <div class="form-group-header">First Name</div>		 -->
+		<input
+		name="firstname" required placeholder="First Name" [(ngModel)]="user.firstname" 
+		#firstname="ngModel"
+		class="register-input" type="text">
+	</div>
+	<div [ngClass]="lastname.invalid && (lastname.dirty || lastname.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="lastname.errors.required">
+				Last name is required.
+			</div>
+		</div>
+		<input
+		name="lastname" required placeholder="Last Name" [(ngModel)]="user.lastname" 
+		#lastname="ngModel"
+		class="register-input" type="text">
+	</div>
+	<div [ngClass]="email.invalid && (email.dirty || email.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="email.invalid && (email.dirty || email.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="email.errors.required">
+				Email is required.
+			</div>
+			<div class="err" *ngIf="email.errors.email && !email.errors.required">
+				Please enter a valid email.
+			</div>
+		</div>
+		<input
+		name="email" email required placeholder="Email" [(ngModel)]="user.email" 
+		#email="ngModel"
+		class="register-input" type="email">
+	</div>
+	<div [ngClass]="token.invalid && (token.dirty || token.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="token.invalid && (token.dirty || token.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="token.errors.required">
+				Case File ID is required.
+			</div>
+		</div>
+		<input
+		name="token" required placeholder="Case File ID" [(ngModel)]="user.token" 
+		#token="ngModel"
+		class="register-input" type="text">
+	</div>
+	<div [ngClass]="password.invalid && (password.dirty || password.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="password.invalid && (password.dirty || password.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="password.errors.required">
+				Password is required.
+			</div>
+		</div>
+		<input
+		name="password" placeholder="Password" required [(ngModel)]="user.password" 
+		#password="ngModel"
+		class="register-input" type="text">
+	</div>
+	<div [ngClass]="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="confirmPassword.errors.required">
+				Password confirmation is required.
+			</div>
+		</div>
+		<input
+		placeholder="Password Confirmation"
+		name="confirmPassword" required [(ngModel)]="user.confirmPassword" 
+		#confirmPassword="ngModel"
+		class="register-input" type="text">
+	</div>
+	<div class="form-group accept flex column">
+		<input [(ngModel)]="user.accept" #accept="ngModel" type="checkbox" name="accept" required>
+		<p>Accept <a href="">terms</a> and agreement</p>
+	</div>
+	<div>
+		<div (click)="registration(f.value)" class="submit-register flex">Register</div>
+	</div>
+</form>
