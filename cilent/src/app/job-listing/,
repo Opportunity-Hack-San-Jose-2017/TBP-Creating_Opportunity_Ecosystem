@@ -1,0 +1,11 @@
+{
+	title: String,
+	description: String,
+	responsibilities: String,
+	experience: Number,
+	shift: String,
+	publicTransport: Boolean,
+	location: String,
+	minSalary: Number,
+	maxSalary: Number
+}

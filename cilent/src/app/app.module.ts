@@ -1,4 +1,4 @@
-import { JobCellComponent } from './user-landing/job-cell/job-cell.component';
+import { JobsService } from './common/services/jobs.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,8 @@ import { StepTwoComponent } from './profile-setup/step-two/step-two.component';
 import { StepThreeComponent } from './profile-setup/step-three/step-three.component';
 import { SearchService } from './common/services/search.service';
 import { CompanyService } from './common/services/company.service';
+import { JobCellComponent } from './user-landing/job-cell/job-cell.component';
+import { JobListingComponent } from './job-listing/job-listing.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { CompanyService } from './common/services/company.service';
     JobCellComponent,
     StepOneComponent,
     StepTwoComponent,
-    StepThreeComponent
+    StepThreeComponent,
+    JobCellComponent,
+    JobListingComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import { CompanyService } from './common/services/company.service';
     UserService,
     SearchService,
     CompanyService,
-    SearchService
+    JobsService
   ],
   bootstrap: [AppComponent]
 })

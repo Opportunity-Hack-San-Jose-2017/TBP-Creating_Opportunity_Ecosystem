@@ -50,9 +50,8 @@ export class UserService {
   }
 
   getSession(){
-    console.log("this function is being called")
     this.http.get('http://localhost:8080/applicant/activeSession')
-      .subscribe(data => alert(JSON.stringify(data)))
+    .subscribe(data => console.log(data))
   }
 
   getProfile(user: String) {
