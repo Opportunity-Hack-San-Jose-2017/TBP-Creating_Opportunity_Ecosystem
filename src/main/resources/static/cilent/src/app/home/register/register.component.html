@@ -1,29 +1,33 @@
-<form class="flex column">
+<form #f="ngForm" class="flex column">
 	<div class="form-group flex column">
-		<div class="form-group-header">Full Name</div>
-		<input type="text" name="full_name" required >
+		<div class="form-group-header">First Name</div>
+		<input [(ngModel)]="user['firstname']" #firstname="ngModel" type="text" name="first_name" required >
+	</div>
+	<div class="form-group flex column">
+		<div class="form-group-header">Last Name</div>
+		<input [(ngModel)]="user['lastname']" #lastname="ngModel" type="text" name="last_name" required >
 	</div>
 	<div class="form-group flex column">
 		<div class="form-group-header">Email</div>
-		<input type="email" name="email" required>
+		<input [(ngModel)]="user['email']" #email="ngModel" type="email" name="email" required>
 	</div>
 	<div class="form-group flex column">
 		<div class="form-group-header">Case File ID</div>
-		<input type="text" name="case_file_id" required>
+		<input [(ngModel)]="user['caseFileID']" #caseFileID="ngModel" type="text" name="case_file_id" required>
 	</div>
 	<div class="form-group flex column">
 		<div class="form-group-header">Password</div>
-		<input type="password" name="pass" required>
+		<input [(ngModel)]="user['pass']" #password="ngModel" type="password" name="pass" required>
 	</div>
 	<div class="form-group flex column">
 		<div class="form-group-header">Confirm Password</div>
-		<input type="password" name="con_pass" required>
+		<input [(ngModel)]="user['conPass']" #conPass="ngModel" type="password" name="con_pass" required>
 	</div>
 	<div class="form-group accept flex column">
-		<input type="checkbox" name="accept" required>
+		<input [(ngModel)]="user['accept']" #accept="ngModel" type="checkbox" name="accept" required>
 		<p>Accept <a href="">terms</a> and agreement</p>
 	</div>
 	<div>
-		<div class="submit-register flex">Register</div>
+		<div (click)="register(f.value)" class="submit-register flex">Register</div>
 	</div>
 </form>

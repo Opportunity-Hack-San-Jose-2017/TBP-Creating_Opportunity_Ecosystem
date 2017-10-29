@@ -1,16 +1,37 @@
-* {
-	color: white;
+form {
+    width: 70%;
+    align-items: center;
+    margin: 15px auto 0;
 }
-.submit {
-	background-color: #0091ab;
-	border: 0;
-	padding: 1em 2em;
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group-header {
+    font-size: 15px;
+    font-weight: bold;
 }
 
 input {
+    height: 18px;
     outline: none;
     background: transparent;
+    color: white;
+    margin-top: 5px;
+    font-size: 16px;
     border: none;
     border-bottom: 1px solid white;
-    width: 70%;
 }
+
+.submit-login {
+    height: 30px;
+    cursor: pointer;
+    width: 100px;
+    background: #00c9b3;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+.accept { align-items: center; }

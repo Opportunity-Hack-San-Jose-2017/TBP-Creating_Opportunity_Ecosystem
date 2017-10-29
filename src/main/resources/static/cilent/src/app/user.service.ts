@@ -6,14 +6,21 @@ export class UserService {
 
   constructor(private http: Http) { }
 
+  user;
+
   login(login_cred){
-  	return this.http.post('/applicant/signin', login_cred)
-  	.subscribe(data => console.log(data))
+  	this.http.post('/applicant/signin', login_cred)
+  	.subscribe(
+  		data => this.user = data,
+  		error => console.log(error)
+  		)
   }
 
   register(registration_cred){
-  	return this.http.post('/applicant/register', registration_cred)
-  	.subscribe(data => console.log(data))
+  	this.http.post('/applicant/register', registration_cred)
+  	.subscribe(
+  		data => this.user = data,
+  		error => console.log(error)
+  		)
   }
-
 }
