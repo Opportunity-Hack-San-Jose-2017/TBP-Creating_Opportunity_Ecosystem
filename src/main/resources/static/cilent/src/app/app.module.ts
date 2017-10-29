@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SearchService } from './search.service'; 
 import { UserService } from './user.service';
-import { ApplyService } from './apply.service';
+import { CompanyService } from './company.service';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -26,7 +26,7 @@ import { ProfileSetupComponent } from './profile-setup/profile-setup.component';
     RouterModule,
     HttpModule
   ],
-  providers: [UserService, SearchService, ApplyService],
+  providers: [UserService, SearchService, CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
