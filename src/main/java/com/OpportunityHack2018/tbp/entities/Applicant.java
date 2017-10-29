@@ -24,6 +24,18 @@ public class Applicant {
     private String lastName;
 
     @Column
+    private String phoneNumber;
+
+    @Column
+    @ElementCollection
+    private List<String> availability;
+
+    @Column
+    @ElementCollection
+    private List<String> shift;
+
+
+    @Column
     private String introduction;
 
     @Column
@@ -161,4 +173,27 @@ public class Applicant {
         this.skillsSet = skillsSet;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<String> getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(List<String> availability) {
+        this.availability = availability;
+    }
+
+    public List<String> getShift() {
+        return shift;
+    }
+
+    public void setShift(List<String> shift) {
+        this.shift = shift;
+    }
 }
