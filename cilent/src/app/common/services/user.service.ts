@@ -37,6 +37,7 @@ export class UserService {
         this.router.navigate(['setup']);
       },
   		(err: HttpErrorResponse) => {
+        console.log(err);
         if (err["statusCode"] == "400"){
           alert(err["message"])
         }
@@ -44,7 +45,7 @@ export class UserService {
   	)
   }
 
-  getuser(): Observable<any> {
+  getName(): Observable<any> {
     return this.user;
   }
 
