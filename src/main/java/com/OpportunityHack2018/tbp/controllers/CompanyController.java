@@ -210,11 +210,11 @@ public class CompanyController {
                 responseMap.addAttribute("message", "Incorrect Email or Password.");
                 return responseMap;
             }
-            if(!company.isVerified()){
-                responseMap.addAttribute("statusCode", "400");
-                responseMap.addAttribute("message", "Please verify account before sign in.");
-                return responseMap;
-            }
+//            if(!company.isVerified()){
+//                responseMap.addAttribute("statusCode", "400");
+//                responseMap.addAttribute("message", "Please verify account before sign in.");
+//                return responseMap;
+//            }
             if(session.getAttribute("email")!=null){
                 responseMap.addAttribute("statusCode", "400");
                 responseMap.addAttribute("message", "You are already logged in");

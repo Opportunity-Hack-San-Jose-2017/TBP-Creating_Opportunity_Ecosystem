@@ -37,7 +37,6 @@ public class Company {
     private String token;
 
     @OneToMany(mappedBy = "company")
-    @JsonBackReference
     private List<Opening> openings;
 
     public String getEmail() {

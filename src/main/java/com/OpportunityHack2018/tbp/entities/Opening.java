@@ -59,6 +59,7 @@ public class Opening {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Company company;
 
     @OneToMany(mappedBy = "opening")
