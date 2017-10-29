@@ -41,7 +41,8 @@ import { CompanyService } from './common/services/company.service';
   providers: [
     UserService,
     SearchService,
-    CompanyService
+    CompanyService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@
 
 <div id="profile_bar">
 	<div>
-		<h2>James Doe</h2>
+		<h2>{{user['firstName']}} {{user['lastName']}}</h2>
 		<img src="../../assets/images/profile-icon.png">
 		<button>Edit Profile</button>
 	</div>
@@ -76,6 +76,6 @@
 	</div>
 	<div id="job_feed">
 		<!-- jobs -->
-		<app-job-cell></app-job-cell>
+		<app-job-cell *ngFor="let job of jobs" [job]=job></app-job-cell>
 	</div>
 </div>
