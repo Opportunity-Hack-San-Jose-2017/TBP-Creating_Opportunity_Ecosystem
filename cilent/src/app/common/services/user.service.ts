@@ -1,57 +1,65 @@
-import { Subject } from 'rxjs/Rx';
+import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
-  user: any;
   profile: any;
   setupStep = new Subject();
 
   login(login_cred: Object){
   	this.http.post('http://localhost:8080/applicant/signin', login_cred)
   	.subscribe(
-  		data => {
-        this.user = data
-        if (data["statusCode"] == "400"){
-          alert(data["message"])
-        } else if (data["statusCode"] == "200") {
-          
-        }
+  		(data: any) => {
+        localStorage.setItem('user', JSON.stringify(data));
+        this.router.navigate(['jobs']);
       },
-  		error => console.log(error)
-  		)
+  		(err: HttpErrorResponse) => {
+        if (err["statusCode"] == "400") {
+          alert(err["message"])
+        }
+      }
+  	)
   }
 
-  register(registration_cred: Object){
+  register(registration_cred: Object) {
   	this.http.post('http://localhost:8080/applicant/register', registration_cred)
   	.subscribe(
-  		data => this.user = data,
-  		error => console.log(error)
-  		)
+  		(data: any) => {
+        localStorage.setItem('user', JSON.stringify(data));
+        this.router.navigate(['setup']);
+      },
+  		(err: HttpErrorResponse) => {
+        console.log(err);
+        if (err["statusCode"] == "400"){
+          alert(err["message"])
+        }
+      }
+  	)
   }
 
   logout() {
-    var data = {}
-    return this.http.post('/applicant/register', data)
+    return this.http.post('/applicant/register', {});
   }
 
   getSession(){
-    console.log("this function is being called")
     this.http.get('http://localhost:8080/applicant/activeSession')
-    .subscribe(data => alert(JSON.stringify(data)))
+    .subscribe(data => console.log(data))
   }
 
-  getProfile(name: String) {
-    this.http.get("/profile/" + name)
+  getProfile(user: String) {
+    this.http.get("/profile/" + user)
     .subscribe(
       data => this.profile = data
     )
   }
-
 
 	sendProfileInfo(data: Object) {
 		let num = Number(localStorage.getItem('setupStep')) + 1;
@@ -66,7 +74,7 @@ export class UserService {
     }
 	}
 
-	getSetupStep() {
+	getSetupStep(): Observable<any> {
 		return this.setupStep;
 	}
 }

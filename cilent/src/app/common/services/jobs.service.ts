@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class JobsService {
 
 	jobs = []
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   //compannies new job
   postOpening(data: Object){
-  	return this.http.post("/company/postOpening", data)
+  	return this.http.post("http://localhost:8080/company/postOpening", data)
   }
 
   //compannies update

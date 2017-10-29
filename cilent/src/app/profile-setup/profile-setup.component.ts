@@ -10,12 +10,13 @@ export class ProfileSetupComponent {
 
 	step: Number;
 	user = {telephone: ''};
-	name = 'John Doe';
+	name: any;
 
 	constructor(private _user: UserService) {
-		this._user.getSetupStep()
-			.do(v => console.log(v))
-			.subscribe((v: Number) => this.step = v);
+		_user.getSetupStep()
+		.subscribe((v: Number) => this.step = v);
+		const userObj = JSON.parse(localStorage.getItem('user'));
+		this.name = userObj != null ? userObj.name : '';
 	}
 
 	ngOnInit() {
