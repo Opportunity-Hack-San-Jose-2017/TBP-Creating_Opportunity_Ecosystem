@@ -24,6 +24,7 @@ import { CompanyLoginComponent } from './company-home/company-login/company-logi
 import { CompanyRegisterComponent } from './company-home/company-register/company-register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,12 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     CompanyHomeComponent,
     CompanyLoginComponent,
     CompanyRegisterComponent,
+<<<<<<< HEAD
     ProfileComponent,
     EditProfileComponent
+=======
+    EmployersLandingpageComponent
+>>>>>>> 9699bbfdc0ba0e46c9a6d885a3c7c54b0591fa40
   ],
   imports: [
     BrowserModule,

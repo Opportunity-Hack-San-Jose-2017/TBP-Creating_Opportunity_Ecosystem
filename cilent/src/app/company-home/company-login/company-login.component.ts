@@ -13,13 +13,13 @@ export class CompanyLoginComponent implements OnInit {
 		email: "",
 		password: ""
 	}
+  
   constructor(private _company: CompanyService) { }
 
   ngOnInit() {
   }
 
   login(company){
-  	console.log(company)
   	this._company.login(company)
   }
 

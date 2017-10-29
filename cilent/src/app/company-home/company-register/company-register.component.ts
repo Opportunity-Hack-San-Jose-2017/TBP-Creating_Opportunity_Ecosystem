@@ -28,4 +28,9 @@ export class CompanyRegisterComponent implements OnInit {
   register(company){
   	this._company.register(company)
   }
+
+  logout(){
+  	this._company.logout()
+  	.subscribe(data => console.log(data))
+  }
 }
