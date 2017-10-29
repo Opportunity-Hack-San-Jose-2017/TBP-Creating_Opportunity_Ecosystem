@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { UserService } from './user.service';
@@ -19,6 +20,7 @@ import { RegisterComponent } from './home/register/register.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule
   ],
   providers: [UserService],

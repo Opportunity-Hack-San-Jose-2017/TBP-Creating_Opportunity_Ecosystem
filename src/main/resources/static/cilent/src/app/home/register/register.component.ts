@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent {
 
-	user: Object;
-	ngOnInit() {
-	
-	}
+	user = { firstname: '', lastname: '', email: '', password: '', conPass:'', accept: ''}
+
+  register(val) {console.log(val)}
 }

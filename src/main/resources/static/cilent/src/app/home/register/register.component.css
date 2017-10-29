@@ -1,20 +1,20 @@
 form {
     width: 70%;
     align-items: center;
-    margin: 20px auto 0;
+    margin: 15px auto 0;
 }
 .form-group {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-group-header {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
 }
 
 input {
-    height: 22px;
+    height: 18px;
     outline: none;
     background: transparent;
     color: white;
@@ -22,10 +22,11 @@ input {
     font-size: 16px;
     border: none;
     border-bottom: 1px solid white;
-    }
+}
 
 .submit-register {
     height: 30px;
+    cursor: pointer;
     width: 100px;
     background: #00c9b3;
     align-items: center;
@@ -33,4 +34,4 @@ input {
     justify-content: center;
 }
 
-.accept { align-items: center; }
+.accept { align-items: center; margin-top: 5px; }
