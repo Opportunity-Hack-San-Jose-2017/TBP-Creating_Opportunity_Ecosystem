@@ -45,7 +45,7 @@ export class UserService {
   	)
   }
 
-  getName(): Observable<any> {
+  getUser(): Observable<any> {
     return this.user;
   }
 
@@ -55,11 +55,7 @@ export class UserService {
 
   getSession(){
     this.http.get('http://localhost:8080/applicant/activeSession')
-<<<<<<< HEAD
     .subscribe(data => console.log(data))
-=======
-      .subscribe(data => alert(JSON.stringify(data)))
->>>>>>> 869e7c87cb61e774f3adcf53641f7b8d95851d41
   }
 
   getProfile(user: String) {

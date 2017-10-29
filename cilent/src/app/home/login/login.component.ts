@@ -23,6 +23,5 @@ export class LoginComponent {
 
   	login(){
   		this._user.login(this.user)
-      console.log(this._user.user)
   	}
 }

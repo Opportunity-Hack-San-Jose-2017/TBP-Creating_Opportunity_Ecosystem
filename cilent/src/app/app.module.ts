@@ -1,4 +1,3 @@
-import { JobCellComponent } from './user-landing/job-cell/job-cell.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';

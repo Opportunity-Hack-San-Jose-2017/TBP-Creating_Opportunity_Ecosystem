@@ -13,10 +13,11 @@ export class ProfileSetupComponent {
 	name: any;
 
 	constructor(private _user: UserService) {
-		this._user.getSetupStep()
+		_user.getSetupStep()
 			.do(v => console.log(v))
 			.subscribe((v: Number) => this.step = v);
-		this._user.getName()
+		_user.getUser()
+			.do(v => console.log(v))
 			.subscribe((v: any) => this.name = v);
 	}
 
