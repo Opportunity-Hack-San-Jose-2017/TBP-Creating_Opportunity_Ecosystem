@@ -16,6 +16,8 @@ import { StepTwoComponent } from './profile-setup/step-two/step-two.component';
 import { StepThreeComponent } from './profile-setup/step-three/step-three.component';
 import { SearchService } from './common/services/search.service';
 import { CompanyService } from './common/services/company.service';
+import { JobCellComponent } from './user-landing/job-cell/job-cell.component';
+import { JobListingComponent } from './job-listing/job-listing.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CompanyService } from './common/services/company.service';
     UserLandingComponent,
     StepOneComponent,
     StepTwoComponent,
-    StepThreeComponent
+    StepThreeComponent,
+    JobCellComponent,
+    JobListingComponent
   ],
   imports: [
     BrowserModule,
