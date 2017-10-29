@@ -16,6 +16,13 @@
     overflow: hidden;
 }
 
+app-step-one, app-step-two, app-step-three {
+    width: 85%;
+    min-height: 400px;
+    justify-content: space-between;
+    position: relative;
+}
+
 .logo-wrap {
     position: absolute;
     top: 10px;
@@ -24,7 +31,7 @@
 }
 
 .profile-setup-wrapper {
-    width: 45%;
+    width: 65%;
     min-width: 34px;
     border-radius: 1px;
     padding: 20px 30px;

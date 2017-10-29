@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class StepTwoComponent {
 
-	user = {location: '', languages: '', availability: [], jobType: []}
+	user = {location: '', languages: '', availability: {morning:false, noon:false, night:false, graveyard:false}, jobType: {fullTime:false, partTime:false, temp:false}}
 
 	constructor(private _user: UserService) { }
 

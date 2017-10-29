@@ -3,8 +3,8 @@
 		<img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
 	</div>
 	<div class="profile-setup-wrapper flex column">
-		<app-step-one *ngIf="step === 1"></app-step-one>
-		<app-step-two *ngIf="step === 2"></app-step-two>
-		<app-step-three *ngIf="step === 3"></app-step-three>
+		<app-step-one class="flex column" *ngIf="step === 1"></app-step-one>
+		<app-step-two class="flex column" *ngIf="step === 2"></app-step-two>
+		<app-step-three class="flex column" *ngIf="step === 3"></app-step-three>
 	</div>
 </div>
