@@ -178,6 +178,7 @@ public class CompanyController {
             }else{
 //	           session.setAttribute("email",applicantObject.getEmail());
                 responseMap.addAttribute("statusCode", "200");
+                responseMap.addAttribute("company",company);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -220,6 +221,7 @@ public class CompanyController {
             }
             session.setAttribute("email",companyObj.getEmail());
             responseMap.addAttribute("statusCode", "200");
+            responseMap.addAttribute("company",company);
         }
         catch (Exception e){
             e.printStackTrace();
