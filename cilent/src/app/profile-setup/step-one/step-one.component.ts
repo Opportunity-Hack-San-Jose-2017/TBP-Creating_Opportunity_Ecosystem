@@ -1,5 +1,5 @@
 import { UserService } from '../../common/services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-step-one',
@@ -10,6 +10,7 @@ export class StepOneComponent implements OnInit {
 	
 	img: String;	
 	user = {telephone: ''};
+	@Input() name: any;
 
 	constructor(private _user: UserService) { }
 
