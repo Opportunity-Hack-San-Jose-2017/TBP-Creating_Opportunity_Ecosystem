@@ -1,0 +1,29 @@
+<form #f="ngForm" class="flex column">
+	<div [ngClass]="email.invalid && (email.dirty || email.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="email.invalid && (email.dirty || email.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="email.errors.required">
+				Email is required.
+			</div>
+		</div>
+		<input
+		name="email" required placeholder="Email" [(ngModel)]="user.email" 
+		#email="ngModel"
+		class="login-input" type="text">
+	</div>
+	<div [ngClass]="password.invalid && (password.dirty || password.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="password.invalid && (password.dirty || password.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="password.errors.required">
+				Password is required.
+			</div>
+		</div>
+		<input
+		name="password" placeholder="Password" required [(ngModel)]="user.password" 
+		#password="ngModel"
+		class="login-input" type="text">
+	</div>
+	<div>
+		<div (click)="login(f.value)" class="submit-login flex">Login</div>
+	</div>
+</form>
