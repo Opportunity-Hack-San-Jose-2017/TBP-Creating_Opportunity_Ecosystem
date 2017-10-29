@@ -1,48 +1,56 @@
-import { Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  user: any;
   profile: any;
   setupStep = new Subject();
+  name = new Subject();
 
   login(login_cred: Object){
   	this.http.post('http://localhost:8080/applicant/signin', login_cred)
   	.subscribe(
-  		data => {
-        this.user = data
-        if (data["statusCode"] == "400"){
-          alert(data["message"])
-        } else if (data["statusCode"] == "200") {
-          
-        }
+  		(data: any) => {
+        this.name.next(data);
       },
-  		error => console.log(error)
-  		)
+  		(err: HttpErrorResponse) => {
+        if (err["statusCode"] == "400"){
+          alert(err["message"])
+        }
+      }
+  	)
   }
 
   register(registration_cred: Object){
   	this.http.post('http://localhost:8080/applicant/register', registration_cred)
   	.subscribe(
-  		data => this.user = data,
-  		error => console.log(error)
-  		)
+  		(data: any) => {
+        this.name.next(data);
+      },
+  		(err: HttpErrorResponse) => {
+        if (err["statusCode"] == "400"){
+          alert(err["message"])
+        }
+      }
+  	)
+  }
+
+  getName(): Observable<any> {
+    return this.name;
   }
 
   logout() {
-    var data = {}
-    return this.http.post('/applicant/register', data)
+    return this.http.post('/applicant/register', {})
   }
 
   getSession(){
     console.log("this function is being called")
     this.http.get('http://localhost:8080/applicant/activeSession')
-    .subscribe(data => alert(JSON.stringify(data)))
+      .subscribe(data => alert(JSON.stringify(data)))
   }
 
   getProfile(name: String) {

@@ -14,17 +14,23 @@ export class RegisterComponent {
 		password: "",
 		confirmPassword: "",
 		firstName: "",
-		lastName: "",
-		hashValue: ""
+		lastName: ""
 	}
 
 	constructor(private _user: UserService) { }
 
-	ngOnInit() {
-	
-	}
-
 	registration(user: any) {
-		this._user.register(user);
+		const obj = {
+			email: user.email,
+			firstName: user.firstName,
+			lastName: user.lastName,
+			password: user.password,
+			introduction: "",
+			experience: "",
+			skillsSet: [],
+			verified: false,
+			hashValue: ""
+		}
+		this._user.register(obj);
 	} 
 }

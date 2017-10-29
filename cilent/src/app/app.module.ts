@@ -1,3 +1,4 @@
+import { JobCellComponent } from './user-landing/job-cell/job-cell.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ import { CompanyService } from './common/services/company.service';
     RegisterComponent,
     ProfileSetupComponent,
     UserLandingComponent,
+    JobCellComponent,
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent
