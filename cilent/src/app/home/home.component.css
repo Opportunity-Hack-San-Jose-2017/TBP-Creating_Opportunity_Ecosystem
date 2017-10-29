@@ -23,18 +23,19 @@
     border-radius: 1px;
     padding: 20px 30px;
     background: black;
-    margin-top: 100px;
+    position: relative;
+    margin-top: 150px;
     opacity: .83;
     color: white;
     align-items: center;
-    overflow: auto;    
+    overflow-y: auto;    
 }
 
 #login {
     margin-right: 30px;
 }
 
-.links { width: 70%; }
+.links { width: 70%; cursor: pointer; }
 
 .link {
     font-size: 17px;

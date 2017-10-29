@@ -12,13 +12,9 @@ export class RegisterComponent {
 		email: "",
 		token: "",
 		password: "",
+		confirmPassword: "",
 		firstName: "",
 		lastName: "",
-		introduction: "",
-		experience: "",
-		education: "",
-		skillsSet: [],
-		verified: "",
 		hashValue: ""
 	}
 
@@ -28,7 +24,7 @@ export class RegisterComponent {
 	
 	}
 
-	registration() {
-		this._user.register(this.user);
+	registration(user: any) {
+		this._user.register(user);
 	} 
 }

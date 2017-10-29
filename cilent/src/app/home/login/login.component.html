@@ -1,16 +1,29 @@
 <form #f="ngForm" class="flex column">
-	<div class="form-group flex column">
-		<div class="form-group-header">Email</div>
-		<input [(ngModel)]="user['email']" #email="ngModel" type="email" name="email" required>
+	<div [ngClass]="email.invalid && (email.dirty || email.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="email.invalid && (email.dirty || email.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="email.errors.required">
+				Email is required.
+			</div>
+		</div>
+		<input
+		name="email" required placeholder="Email" [(ngModel)]="user.email" 
+		#email="ngModel"
+		class="login-input" type="text">
 	</div>
-	<div class="form-group flex column">
-		<div class="form-group-header">Password</div>
-		<input [(ngModel)]="user['password']" #password="ngModel" type="password" name="pass" required>
+	<div [ngClass]="password.invalid && (password.dirty || password.touched) ? 'err-wrap' : null" class="form-group flex column">
+		<div *ngIf="password.invalid && (password.dirty || password.touched)"
+			class="alert alert-danger">
+			<div class="err" *ngIf="password.errors.required">
+				Password is required.
+			</div>
+		</div>
+		<input
+		name="password" placeholder="Password" required [(ngModel)]="user.password" 
+		#password="ngModel"
+		class="login-input" type="text">
 	</div>
 	<div>
 		<div (click)="login(f.value)" class="submit-login flex">Login</div>
-	</div>
-	<div *ngIf="!error">
-		<p>{{user}}</p>
 	</div>
 </form>
