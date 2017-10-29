@@ -6,6 +6,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf ../server/src/main/resources/static && mkdirp ../server/src/main/resources/static",
+    "deploy": "copyfiles -f dist/** ../server/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
