@@ -25,6 +25,15 @@ export class UserService {
   		)
   }
 
+  logout() {
+    var data = {}
+    return this.http.post('/applicant/register', data)
+  }
+
+  getSession(){
+    return this.http.get('/applicant/activeSession')
+  }
+
   getProfile(name: String) {
     this.http.get("/profile/" + name)
     .subscribe(
