@@ -9,7 +9,7 @@
 	<p>experience: <input type="text" name="experience" [(ngModel)]="job.experience" 
 		#experience="ngModel"></p>
 	<p>shift: 
-		<select [(ngModel)]="job.shift" 
+		<select name="shift" [(ngModel)]="job.shift" 
 		#shift="ngModel">
 		  	<option value="Morning">Morning</option>
 		  	<option value="Noon">Noon</option>
@@ -18,7 +18,7 @@
 		</select>
 	</p>
 	<p>Public Transport Available:
-		<select [(ngModel)]="job.publicTransport" 
+		<select name="publicTransport"[(ngModel)]="job.publicTransport" 
 		#publicTransport="ngModel">
 			<option value="true">Yes</option>
 			<option value="false">No</option>

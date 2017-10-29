@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from './../common/services/jobs.service'
-import { Routes } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-listing',
@@ -29,6 +29,7 @@ export class JobListingComponent implements OnInit {
   submitOpening(){
   	this.jobs.postOpening(this.job)
   	.subscribe(data => {
+  		console.log(data)
   		this.router.navigate(['/'])
   	})
   }
