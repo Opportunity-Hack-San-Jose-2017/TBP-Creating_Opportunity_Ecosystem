@@ -91,6 +91,7 @@ public class ApplicantController {
             }else{
 //	           session.setAttribute("email",applicantObject.getEmail());
                 responseMap.addAttribute("statusCode", "200");
+                responseMap.addAttribute("applicant",applicant);
             }
 
         }
@@ -185,8 +186,6 @@ public class ApplicantController {
     }
 
 
-
-
     @GetMapping(value = "/activeSession")
     @ResponseBody
     public ModelMap activeSession(HttpSession session){
@@ -236,6 +235,7 @@ public class ApplicantController {
                 }
                 session.setAttribute("email",applicant.getEmail());
                 responseMap.addAttribute("statusCode", "200");
+                responseMap.addAttribute("applicant",applicant);
             }
             else{
                 responseMap.addAttribute("statusCode", "400");
