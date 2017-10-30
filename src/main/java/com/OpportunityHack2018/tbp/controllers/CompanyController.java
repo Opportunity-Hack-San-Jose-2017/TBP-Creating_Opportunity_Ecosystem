@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/company")
 public class CompanyController {
+    @Autowired
+    private HttpSession session;
 
     @Autowired
     private CompanyService companyService;
@@ -30,10 +33,12 @@ public class CompanyController {
     @CrossOrigin
     @GetMapping("/profile")
     @ResponseBody
-    public ModelMap getProfile(HttpSession session) {
+    public ModelMap getProfile() {
 
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
+
+        System.out.println("Session in profile :"+session.getId());
 
         if (session.getAttribute("email") == null) {
             responseMap.addAttribute("statusCode", "401");
@@ -55,9 +60,10 @@ public class CompanyController {
     @CrossOrigin
     @PostMapping(value = "/postOpening", produces ="application/json" )
     @ResponseBody
-    public ModelMap postOpening(@RequestBody String jobPosting,
-                                HttpSession session
+    public ModelMap postOpening(@RequestBody String jobPosting
     ){
+
+        System.out.println("Session in postProfile :"+session.getId());
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
         try{
@@ -99,8 +105,8 @@ public class CompanyController {
     @CrossOrigin
     @PostMapping(value = "/update", produces = "application/json")
     @ResponseBody
-    public ModelMap update(@RequestBody String componyInfo,
-                           HttpSession session){
+    public ModelMap update(@RequestBody String componyInfo){
+
 
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
@@ -150,11 +156,10 @@ public class CompanyController {
     @CrossOrigin
     @PostMapping(value = "/register", produces = "application/json")
     @ResponseBody
-    public ModelMap register(@RequestBody String companyJSON,
-                             HttpSession session){
+    public ModelMap register(@RequestBody String companyJSON){
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
-
+        System.out.println("Session in profile :"+session.getId());
         try{
             Company companyObject = mapper.readValue(companyJSON,Company.class);
 
@@ -195,9 +200,8 @@ public class CompanyController {
     @CrossOrigin
     @PostMapping(value = "/signin", produces ="application/json" )
     @ResponseBody
-    public ModelMap signin(@RequestBody String jsonObj,
-                           HttpSession session){
-
+    public ModelMap signin(@RequestBody String jsonObj){
+        System.out.println("Session in signin :"+session.getId());
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
 
@@ -236,7 +240,7 @@ public class CompanyController {
 
     @PostMapping(value = "/logout")
     @ResponseBody
-    public ModelMap logout(HttpSession session){
+    public ModelMap logout(){
         session.invalidate();
         ModelMap responseMap = new ModelMap();
         responseMap.addAttribute("statusCode", "200");

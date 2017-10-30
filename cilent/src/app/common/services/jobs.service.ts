@@ -9,7 +9,7 @@ export class JobsService {
 
 	jobs = []
 
-  
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,18 +20,18 @@ export class JobsService {
   //   headers.append("Access-Control-Allow-Headers", "Origin, Authorization, Content-Type");
   //   return new RequestOptions({ headers: headers });
   // }
-  
+
   //compannies new job
   postOpening(data: Object){
     let headers = new Headers()
     console.log(data)
-  	this.http.post("http://localhost:8080/company/postOpening", data)
+  	this.http.post("http://localhost:8080/company/postOpening", data,{withCredentials: true} )
     .subscribe(data => console.log(data))
   }
 
   //compannies update
   openingUpdate(data: Object){
-  	return this.http.post("/company/update", data)
+  	return this.http.post("/company/update", data,{withCredentials: true})
   }
 
   //job seekers apply
@@ -39,7 +39,7 @@ export class JobsService {
   	var data = {
   		opening_id: opening_id
   	}
-  	return this.http.post("/applicant/apply", data)
+  	return this.http.post("/applicant/apply", data,{withCredentials: true})
   }
 
 }

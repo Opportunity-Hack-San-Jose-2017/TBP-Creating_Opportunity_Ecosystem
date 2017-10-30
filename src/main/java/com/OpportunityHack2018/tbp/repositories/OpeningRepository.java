@@ -34,15 +34,16 @@ public interface OpeningRepository extends JpaRepository<Opening,Integer> {
             "where Concat(o.description,'',o.location,'',o.responsibilities,'',o.title,'',c.name) like %?1%")
     List<Opening> getSearchResults(String word);
 
-    @Query(value = "select * from Opening where Opening.title like ?1", nativeQuery = true)
+    @Query(value = "select * from Opening where Opening.title like ?1%", nativeQuery = true)
     Set<Opening> findByTitle(String title);
-//
-////    @Query(value = "select * from Opening where Opening.location like ?1",nativeQuery = true)
-//    Set<Opening> findByLocation(String location);
-//
-//    @Query(value = "select * from opening o where o.company_email=(select company.email from company where company.name like ?1)",nativeQuery = true)
-//    Set<Opening> findByCompanyNameEmailJoin(String name);
-//
-////    @Query(value = "select * from opening o where o.shift like ?1",nativeQuery = true)
-//    Set<Opening> findByShift(String shift);
+
+    @Query(value = "select * from Opening where Opening.location like ?1%",nativeQuery = true)
+    Set<Opening> findByLocation(String location);
+
+    @Query(value = "select * from opening o where o.company_email=(select company.email from company where company.name like ?1%)",nativeQuery = true)
+    Set<Opening> findByComapnyName(String name);
+
+    @Query(value = "select * from opening o where o.shift like ?1%",nativeQuery = true)
+    Set<Opening> findByShift(String shift);
+
 }

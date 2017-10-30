@@ -57,7 +57,7 @@ public class Opening {
     @DateTimeFormat(pattern="yyyy-MM-dd-HH")
     private Date date;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn
     @JsonIgnore
     private Company company;

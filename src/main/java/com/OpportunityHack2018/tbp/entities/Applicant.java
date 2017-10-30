@@ -50,6 +50,9 @@ public class Applicant {
     @Column
     private String hashValue;
 
+    @Column
+    private String sessionId;
+
     @OneToMany(mappedBy = "applicant")
     private Set<Application> applications;
 
@@ -195,5 +198,13 @@ public class Applicant {
 
     public void setShift(List<String> shift) {
         this.shift = shift;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 }

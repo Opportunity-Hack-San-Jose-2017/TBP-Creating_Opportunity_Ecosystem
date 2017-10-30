@@ -24,7 +24,7 @@ export class CompanyService {
   }
 
   login(data: Object){
-  	this.http.post('http://localhost:8080/company/signin', data)
+  	this.http.post('http://localhost:8080/company/signin', data,{withCredentials: true })
     .subscribe(data => {
       this._router.navigate(['/company/opening/create']),
       console.log(data)
