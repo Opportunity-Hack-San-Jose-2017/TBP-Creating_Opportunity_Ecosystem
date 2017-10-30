@@ -28,7 +28,7 @@ export class StepThreeComponent {
 	
 	handleClick() {
 		this._user.sendProfileInfo(this.userForm.value);
-  }
+	}
   
   back() {
 		this._user.stepBack();

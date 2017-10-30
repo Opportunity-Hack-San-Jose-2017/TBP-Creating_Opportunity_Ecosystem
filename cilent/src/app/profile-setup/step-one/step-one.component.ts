@@ -30,9 +30,10 @@ export class StepOneComponent implements OnInit {
 			about: [' ']
 		});
 	}
-	
-	handleClick(val: Object) {
-		this._user.sendProfileInfo(val);
+
+	handleClick() {
+		console.log(this.userForm.value)
+		this._user.sendProfileInfo(this.userForm.value);
 	}
 
 }

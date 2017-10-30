@@ -1,3 +1,6 @@
+<div class="welcome-wrapper flex column">
+    <div class="start">Give us some details about your ideal job</div>
+  </div>
 <form [formGroup]="userForm" class="flex column">
   <div class="location-lang-wrapper flex">
     <mat-form-field>
@@ -7,45 +10,35 @@
       <input matInput placeholder="Languages" name="languages" formControlName="languages">
     </mat-form-field>
   </div>
-  <div formGroupName="availability" class="availability-wrapper">
+  <div class="availability-wrapper">
     <div class="form-group flex column">
-      <div class="form-group-header">Availability</div>
+      <div class="form-group-header">Preferred Shift(s)</div>
       <div class="flex check-container">
           <div class="check-wrapper flex">
-            <input formControlName="morning" id="morning" type="checkbox" name="morning">
-            <label for="morning">Morning</label>
+              <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
           </div>
           <div class="check-wrapper flex">
-            <input formControlName="noon" id="noon" type="checkbox" name="noon">
-            <label for="noon">Noon</label>
+              <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
           </div>
           <div class="check-wrapper flex">
-            <input formControlName="night" id="night" type="checkbox" name="night">
-            <label for="night">Night</label>
-          </div>
-          <div class="check-wrapper flex">
-            <input formControlName="graveyard" id="graveyard" type="checkbox" name="graveyard">
-            <label for="graveyard">Graveyard</label>
+              <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
           </div>
       </div>
     </div>
   </div>
-  <div formGroupName="jobType" class="job-type-wrapper">
+  <div class="job-type-wrapper">
     <div class="form-group flex column">
-      <div class="form-group-header">Job Type</div>
-      <div class="flex check-container">
-          <div class="check-wrapper flex">
-            <input formControlName="fullTime" id="fullTime" type="checkbox" name="fullTime">
-            <label for="fullTime">Full Time</label>
-          </div>
-          <div class="check-wrapper flex">
-            <input formControlName="partTime" id="partTime" type="checkbox" name="partTime">
-          <label for="noon">Part Time</label>
-          </div>
-          <div class="check-wrapper flex">
-            <input formControlName="temp" id="temporary" type="checkbox" name="temp">
-          <label for="Night">Temporary</label>
-          </div>
+        <div class="form-group-header">Preferred Job Type(s)</div>
+        <div class="flex check-container">
+            <div class="check-wrapper flex">
+                <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
+            </div>
+            <div class="check-wrapper flex">
+                <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
+            </div>
+            <div class="check-wrapper flex">
+                <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
+            </div>
         </div>
     </div>
   </div>

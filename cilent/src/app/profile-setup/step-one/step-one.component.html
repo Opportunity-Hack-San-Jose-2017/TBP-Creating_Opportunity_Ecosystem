@@ -1,6 +1,6 @@
 <div class="welcome-wrapper flex column">
   <div class="welcome">Welcome</div>
-  <div class="start"><i>Get started by filling out your profile</i></div>
+  <div class="start">Get started by filling out your profile</div>
 </div>
 <form [formGroup]="userForm" class="flex column">
   <div class="photo-name-phone flex">
@@ -9,7 +9,7 @@
     </div>
     <div class="name-phone-wrapper flex column">
       <div class="form-group flex column">
-        <div class="form-group-header name">{{name}}</div>
+        <div class="form-group-header name">Name</div>
       </div>
       <mat-form-field>
         <input matInput type="tel" placeholder="Phone Number" name="phone" formControlName="phone">

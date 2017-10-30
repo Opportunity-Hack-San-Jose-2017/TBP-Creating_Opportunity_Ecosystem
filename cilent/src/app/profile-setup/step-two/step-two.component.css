@@ -1,11 +1,17 @@
-.location-lang-wrapper {
-    justify-content: space-between;
+.start {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
 }
 
 form {
     justify-content: space-around;
-    min-height: 300px;
     position: relative;
+}
+
+.location-lang-wrapper {
+    justify-content: space-between;
 }
 
 .check-container {
@@ -18,8 +24,27 @@ form {
 }
 
 .form-group-header {
+    font-size: 1.05rem;
     margin-bottom: 6px;
     color: rgba(255,255,255,.7);
+}
+
+.mat-fab {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.mat-fab:hover {
+    background: #1592aa !important;
+    opacity: .7;
+}
+.active {
+    background: #1592aa !important;
 }
 
 .check-wrapper {

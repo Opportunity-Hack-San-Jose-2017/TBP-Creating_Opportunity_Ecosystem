@@ -10,6 +10,12 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class StepTwoComponent {
 
 	userForm: FormGroup;
+	first: Boolean = false;
+	second: Boolean = false;
+	third: Boolean = false;
+	ft: Boolean;
+	pt: Boolean;
+	temp: Boolean;
 
 	constructor(
 		private _user: UserService,
@@ -21,26 +27,33 @@ export class StepTwoComponent {
 	createForm() {
 		this.userForm = this.fb.group({
 			city: [''],
-			languages: [''],
-			availability: this.fb.group({
-				morning: [''],
-				noon: [''],
-				night: [''],
-				graveyard: ['']
-			}),
-			jobType: this.fb.group({
-				fullTime: [''],
-				partTime: [''],
-				temp: ['']
-			})
+			languages: ['']
 		});
 	  }
 	
 	handleClick() {
-		this._user.sendProfileInfo(this.userForm.value);
-  }
+
+		const obj = Object.assign(this.userForm.value, {
+			availability: Object.assign({}, {
+				morning: this.first ? true : false,
+				noon: this.second ? true : false,
+				night: this.third ? true : false
+			}),
+			jobType: Object.assign({}, {
+				fullTime: this.ft ? true : false,
+				partTime: this.pt ? true : false,
+				temporary: this.temp ? true : false
+			})
+		})
+		console.log(obj);
+		this._user.sendProfileInfo(obj);
+	}
+
+	shiftClick(e: Event) {
+		this[e.target['id']] = !this[e.target['id']];
+	}
   
-  back() {
+	back() {
 		this._user.stepBack();
 	}
 

@@ -19,7 +19,7 @@ form {
     margin-top: 10px;
 }
 
-.photo-wrapper { cursor: pointer; }
+.photo-wrapper { cursor: pointer; padding-bottom: 1.25em; }
 
 .photo-name-phone {
     width: 100%;
@@ -39,23 +39,14 @@ form {
 }
 
 .form-group-header {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: rgba(0,0,0,.5);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+    color: rgba(255,255,255,.7);
 }
 
 mat-form-field {
     width: 100%;
 }
-
-/* .about {
-    height: 60px;
-    padding: 7px;
-    font-size: 12px;
-    resize: none;
-    background: white;
-    opacity: 1;
-} */
 
 .bottom {
     align-items: center;

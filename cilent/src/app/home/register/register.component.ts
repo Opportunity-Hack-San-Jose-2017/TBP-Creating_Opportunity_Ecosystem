@@ -43,14 +43,14 @@ export class RegisterComponent {
 	} 
 
 	createForm() {
-	this.userForm = this.fb.group({
-		firstName: ['', Validators.required ],		
-		lastName: ['', Validators.required ],		
-		caseFileID: ['', Validators.required ],		
-		accept: ['', Validators.required ],		
-		email: ['', [Validators.required, Validators.email]],
-		password: ['', Validators.required ],
-		confirmPassword: ['', Validators.required ],
-	});
-}
+		this.userForm = this.fb.group({
+			firstName: ['', Validators.required ],		
+			lastName: ['', Validators.required ],		
+			caseFileID: ['', Validators.required ],		
+			accept: ['', Validators.required ],		
+			email: ['', [Validators.required, Validators.email]],
+			password: ['', Validators.required ],
+			confirmPassword: ['', Validators.required ],
+		});
+	}
 }
