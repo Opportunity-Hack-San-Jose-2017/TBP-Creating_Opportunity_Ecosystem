@@ -45,7 +45,7 @@
 }
 
 .active {
-    border-bottom: 3px solid #00c9b3;
+    border-bottom: 3px solid #1592aa;
 }
 
 app-company-register, app-company-login { width: 100%; }

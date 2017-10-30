@@ -1,0 +1,158 @@
+.alert {
+    top: -6px;
+    position: absolute;
+}
+.err {
+    color: rgb(211, 29, 29);
+}
+
+.main-wrapper {
+    margin-top: 80px;
+    min-height: 500px;
+    overflow: auto;
+    width: 80%;    
+}
+
+.header {
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(68, 68, 236);
+    width: 80%;
+}
+
+.gap { margin-right: 15px; }
+
+.edit-profile-container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px 35px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-wrap {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    height: 50px;
+}
+
+.form-wrapper {
+    width: 100%;
+    border-radius: 1px;
+    padding: 20px 30px;
+    background: rgba(0,0,0,.83);
+    position: relative;
+    color: white;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.form-top, .form-bottom {
+    width: 100%;
+}
+
+.photo-wrapper {
+    width: 109px;
+}
+
+.form-top-left {
+    align-items: center;
+    margin-right: 20px;
+}
+
+.check-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group-header {
+    margin-bottom: 5px;
+}
+
+.check-wrapper {
+    margin: 0 10px 10px 0;
+    align-items: center;
+}
+
+form {
+    width: 80%;
+    align-items: center;
+    margin: 15px auto 0;
+}
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group-header {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="tel"], input[type="email"] {
+    height: 18px;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    padding-bottom: 2px;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.submit-register {
+    height: 30px;
+    cursor: pointer;
+    width: 100px;
+    background: #1592aa;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+.accept { align-items: center; margin-top: 5px; }
+
+.btn {
+    height: 25px;
+    cursor: pointer;
+    width: 113px;
+    font-size: 12px;
+    background: #490000;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    margin: 0 auto 5px;
+    transition: all .2s ease;
+}
+
+.skills, .experiences {
+    padding: 7px;
+    font-size: 12px;
+    color: rgba(0,0,0,.5);
+    resize: none;
+}
+
+.skills {
+    height: 60px;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.back-btn, .save-btn {
+    background: #1592aa;
+    margin-right: 40px;
+}

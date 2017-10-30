@@ -69,8 +69,9 @@ export class UserService {
 		const obj = stor !== '' ? JSON.parse(stor) : {};
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
-    if (num == 3){
-      return this.register(updatedObj)
+    if (num === 4) {
+      this.router.navigate(['jobs'])
+      this.register(updatedObj);
     }
 	}
 
