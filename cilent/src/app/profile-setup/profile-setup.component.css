@@ -32,7 +32,7 @@ app-step-one, app-step-two, app-step-three {
 
 .profile-setup-wrapper {
     width: 65%;
-    min-width: 34px;
+    min-width: 340px;
     border-radius: 1px;
     padding: 20px 30px;
     background: rgba(0,0,0,.83);
@@ -45,5 +45,10 @@ app-step-one, app-step-two, app-step-three {
 
 @media screen and (max-width: 500px) {
     .profile-setup-container { padding: 0; }
+        
+    .logo-wrap {
+        left: auto;
+    }
+
     .profile-setup-wrapper { width: 90%; }
 }

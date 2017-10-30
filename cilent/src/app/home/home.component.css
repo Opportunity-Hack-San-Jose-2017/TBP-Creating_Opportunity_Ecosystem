@@ -1,14 +1,17 @@
 .home-container {
     width: 100%;
-    height: 100%;
-    background: url('../../assets/images/login-bg.png');
-    background-repeat: no-repeat; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     justify-content: center;
+}
+
+.bg-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
     overflow: hidden;
+}
+
+.bg {
+    object-fit: cover;
 }
 
 .logo-wrap {
@@ -22,10 +25,9 @@
     width: 45%;
     border-radius: 1px;
     padding: 20px 30px;
-    background: black;
+    background: rgba(0,0,0,.83);
     position: relative;
     margin-top: 150px;
-    opacity: .83;
     color: white;
     align-items: center;
     overflow-y: auto;    
@@ -50,6 +52,11 @@
 app-register, app-login { width: 100%; }
 
 @media screen and (max-width: 500px) {
+
+    .logo-wrap {
+        left: auto;
+    }
+
     .login-reg-wrapper {
         width: 80%;
         height: 75vh;

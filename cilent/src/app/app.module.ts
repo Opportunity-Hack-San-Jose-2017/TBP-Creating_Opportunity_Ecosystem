@@ -43,12 +43,9 @@ import { EmployersLandingpageComponent } from './employers-landingpage/employers
     CompanyHomeComponent,
     CompanyLoginComponent,
     CompanyRegisterComponent,
-<<<<<<< HEAD
     ProfileComponent,
-    EditProfileComponent
-=======
+    EditProfileComponent,
     EmployersLandingpageComponent
->>>>>>> 9699bbfdc0ba0e46c9a6d885a3c7c54b0591fa40
   ],
   imports: [
     BrowserModule,
