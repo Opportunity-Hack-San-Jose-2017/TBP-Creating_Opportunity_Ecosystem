@@ -10,9 +10,10 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    align-items: center;
     justify-content: center;
     overflow: hidden;
+    align-items: center; 
+    
 }
 
 app-step-one, app-step-two, app-step-three {
@@ -43,17 +44,26 @@ app-step-one, app-step-two, app-step-three {
     overflow: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 501px) {
     .profile-setup-container {
-        justify-content: space-around;
+        align-items: center; 
+    }   
+}
+
+@media screen and (max-width: 500px) {
+
+    .profile-setup-container {
         padding: 0;
-        flex-direction: column;
     }
         
     .logo-wrap {
-        position: relative;
         left: auto;
     }
 
-    .profile-setup-wrapper { width: 90%; margin-top: 0; }
+    .profile-setup-wrapper {
+        width: 90%;
+        margin-top: 20px;
+        position: absolute;
+        top: 100px;
+    }
 }

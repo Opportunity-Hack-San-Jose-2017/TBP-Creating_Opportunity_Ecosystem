@@ -97,5 +97,15 @@ label {
 }
 
 @media screen  and (max-width: 500px) {
+
     .location-lang-wrapper { flex-direction: column; }
+
+    .mat-fab {
+        height: 40px;
+        width: 40px;
+    }
+    .form-group {
+        margin-bottom: 5px;
+    }
+    
 }
