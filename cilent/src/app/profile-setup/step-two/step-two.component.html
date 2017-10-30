@@ -1,51 +1,49 @@
-<form #f="ngForm" class="flex column">
+<form [formGroup]="userForm" class="flex column">
   <div class="location-lang-wrapper flex">
-    <div class="form-group flex column">
-      <div class="form-group-header">Location</div>
-      <input [(ngModel)]="user.location" #location="ngModel" type="text" name="location" placeholder="e.g. Berkeley, CA">
-    </div>
-    <div class="form-group flex column">
-      <div class="form-group-header">Languages</div>
-      <input [(ngModel)]="user.language" #location="ngModel" type="text" name="languages" placeholder="e.g. English, Spanish">
-    </div>
+    <mat-form-field>
+      <input matInput placeholder="City" name="city" formControlName="city">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Languages" name="languages" formControlName="languages">
+    </mat-form-field>
   </div>
-  <div class="availability-wrapper">
+  <div formGroupName="availability" class="availability-wrapper">
     <div class="form-group flex column">
       <div class="form-group-header">Availability</div>
       <div class="flex check-container">
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.availability.morning" #availability="ngModel" id="morning" type="checkbox" name="morning">
+            <input formControlName="morning" id="morning" type="checkbox" name="morning">
             <label for="morning">Morning</label>
           </div>
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.availability.noon" #availability="ngModel" id="noon" type="checkbox" name="noon">
+            <input formControlName="noon" id="noon" type="checkbox" name="noon">
             <label for="noon">Noon</label>
           </div>
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.availability.night" #availability="ngModel" id="night" type="checkbox" name="night">
-            <label for="Night">Night</label>
+            <input formControlName="night" id="night" type="checkbox" name="night">
+            <label for="night">Night</label>
           </div>
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.availability.graveyard" #availability="ngModel" id="graveyard" type="checkbox" name="graveyard">
-            <label for="Graveyard">Graveyard</label>
+            <input formControlName="graveyard" id="graveyard" type="checkbox" name="graveyard">
+            <label for="graveyard">Graveyard</label>
           </div>
       </div>
     </div>
   </div>
-  <div class="job-type-wrapper">
+  <div formGroupName="jobType" class="job-type-wrapper">
     <div class="form-group flex column">
       <div class="form-group-header">Job Type</div>
       <div class="flex check-container">
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.jobType.fullTime" #jobType="ngModel" id="fullTime" type="checkbox" name="fullTime">
-          <label for="morning">Full Time</label>
+            <input formControlName="fullTime" id="fullTime" type="checkbox" name="fullTime">
+            <label for="fullTime">Full Time</label>
           </div>
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.jobType.partTime" #jobType="ngModel" id="partTime" type="checkbox" name="partTime">
+            <input formControlName="partTime" id="partTime" type="checkbox" name="partTime">
           <label for="noon">Part Time</label>
           </div>
           <div class="check-wrapper flex">
-            <input [(ngModel)]="user.jobType.temp" #jobType="ngModel" id="temporary" type="checkbox" name="temp">
+            <input formControlName="temp" id="temporary" type="checkbox" name="temp">
           <label for="Night">Temporary</label>
           </div>
         </div>
@@ -54,8 +52,8 @@
 </form>
 <div class="bottom flex column">
     <div class="btn-wrapper flex">
-        <div (click)="back()" class="back-btn btn flex">Back</div>
-        <div (click)="handleClick()" class="next-btn btn flex">Next</div>
+      <div (click)="back()" class="back-btn btn flex">Back</div>
+      <div (click)="handleClick()" class="next-btn btn flex">Next</div>
     </div>
   <div class="step-img-wrapper flex">
     <img src="../../assets/images/step_2.png" alt="2">

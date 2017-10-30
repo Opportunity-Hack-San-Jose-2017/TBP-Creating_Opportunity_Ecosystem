@@ -95,3 +95,14 @@ mat-form-field {
     font-size: 13px;
     color: rgba(255,255,255,.9);
 }
+
+@media screen and (max-width: 500px) {
+
+    .photo-wrapper {
+        width: 60px;
+    }
+
+    img.no-point {
+        width: 60px;
+    }
+}

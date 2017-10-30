@@ -1,5 +1,6 @@
 import { UserService } from '../../common/services/user.service';
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-step-two',
@@ -8,17 +9,39 @@ import { Component } from '@angular/core';
 })
 export class StepTwoComponent {
 
-	user = {location: '', languages: '', availability: {morning:false, noon:false, night:false, graveyard:false}, jobType: {fullTime:false, partTime:false, temp:false}}
+	userForm: FormGroup;
 
-	constructor(private _user: UserService) { }
-
-	handleClick(val: Object) {
-		this._user.sendProfileInfo(val);
+	constructor(
+		private _user: UserService,
+		private fb: FormBuilder
+	) {
+		this.createForm();
 	}
+
+	createForm() {
+		this.userForm = this.fb.group({
+			city: [''],
+			languages: [''],
+			availability: this.fb.group({
+				morning: [''],
+				noon: [''],
+				night: [''],
+				graveyard: ['']
+			}),
+			jobType: this.fb.group({
+				fullTime: [''],
+				partTime: [''],
+				temp: ['']
+			})
+		});
+	  }
 	
-	back() {
+	handleClick() {
+		this._user.sendProfileInfo(this.userForm.value);
+  }
+  
+  back() {
 		this._user.stepBack();
 	}
-
 
 }
