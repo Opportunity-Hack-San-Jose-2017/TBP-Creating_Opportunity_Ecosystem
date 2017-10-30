@@ -112,7 +112,7 @@ input[type="checkbox"] {
     height: 30px;
     cursor: pointer;
     width: 100px;
-    background: #00c9b3;
+    background: #1592aa;
     align-items: center;
     color: white;
     justify-content: center;
@@ -153,6 +153,6 @@ input[type="checkbox"] {
 }
 
 .back-btn, .save-btn {
-    background: #00c9b3;
+    background: #1592aa;
     margin-right: 40px;
 }

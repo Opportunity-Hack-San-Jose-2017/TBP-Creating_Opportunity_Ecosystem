@@ -20,9 +20,12 @@
   <textarea class="about" placeholder="About yourself (optional)"></textarea>
 </form>
 <div class="bottom flex column">
-  <div (click)="handleClick(f.value)" class="next-btn flex">Next</div>
+  <div class="btn-wrapper flex">
+    <div (click)="handleClick(f.value)" class="back-btn btn flex">Back</div>
+    <div (click)="handleClick(f.value)" class="next-btn btn flex">Next</div>
+  </div>
   <div class="step-img-wrapper flex">
     <img src="../../assets/images/step_1.png" alt="1">
   </div>
-  <div class="not-now">Not now</div>
+<div class="not-now">Not now</div>
 </div>

@@ -1,8 +1,6 @@
 .no-point { pointer-events: none; }
 
 .profile-setup-container {
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
     padding: 15px 35px;
@@ -12,6 +10,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
 }
@@ -44,10 +43,14 @@ app-step-one, app-step-two, app-step-three {
 }
 
 @media screen and (max-width: 500px) {
-    .profile-setup-container { padding: 0; }
+    .profile-setup-container {
+        justify-content: space-around;
+        padding: 0;
+        flex-direction: column;
+    }
         
     .logo-wrap {
-        left: auto;
+        position: relative;
     }
 
     .profile-setup-wrapper { width: 90%; }

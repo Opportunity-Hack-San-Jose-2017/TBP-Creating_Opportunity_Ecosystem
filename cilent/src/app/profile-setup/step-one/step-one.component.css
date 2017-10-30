@@ -76,15 +76,19 @@ input {
     justify-content: center;
 }
 
-.next-btn {
+.btn-wrapper {
+    justify-content: space-around;
+    width: 100%;
+}
+
+.btn {
     height: 30px;
     cursor: pointer;
     width: 100px;
-    background: #00c9b3;
+    background: #1592aa;
     align-items: center;
     color: white;
     justify-content: center;
-    margin: 0 auto;
 }
 
 .not-now {
