@@ -17,4 +17,13 @@ form {
     color: white;
     justify-content: center;
     margin-top: 10px;
+    transition: all .2s ease;
+}
+
+.submit-login:hover {
+    transform: translateY(-1px);
+}
+
+.submit-login:active {
+    transform: translateY(1px);
 }

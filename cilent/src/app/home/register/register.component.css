@@ -20,6 +20,16 @@ form {
     align-items: center;
     color: white;
     justify-content: center;
+    transition: all .2s ease;
 }
+
+.submit-register:hover {
+    transform: translateY(-1px);
+}
+
+.submit-register:active {
+    transform: translateY(1px);
+}
+
 
 .accept { align-items: center; margin-top: 5px; }

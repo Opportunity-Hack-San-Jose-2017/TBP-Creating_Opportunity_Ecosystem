@@ -33,6 +33,7 @@
     margin-top: 150px;
     color: rgba(255,255,255,.7);
     align-items: center;
+    max-width: 500px;
     overflow-y: auto;    
 }
 
