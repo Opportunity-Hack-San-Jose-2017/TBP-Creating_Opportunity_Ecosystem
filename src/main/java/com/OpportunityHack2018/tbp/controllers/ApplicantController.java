@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/applicant")
 public class ApplicantController {
 
