@@ -62,7 +62,7 @@ export class UserService {
   }
 
 	sendProfileInfo(data: Object) {
-		let num = Number(localStorage.getItem('setupStep')) + 1;
+		const num = Number(localStorage.getItem('setupStep')) + 1;
 		localStorage.setItem('setupStep', num.toString());
 		this.setupStep.next(num);
 		const stor = localStorage.getItem('profile') || '';
@@ -73,7 +73,13 @@ export class UserService {
       this.router.navigate(['jobs'])
       this.register(updatedObj);
     }
-	}
+  }
+  
+  stepBack() {
+    const num = Number(localStorage.getItem('setupStep')) - 1;
+    localStorage.setItem('setupStep', num.toString())
+    this.setupStep.next(num);
+  }
 
 	getSetupStep(): Observable<any> {
 		return this.setupStep;

@@ -51,7 +51,8 @@ app-step-one, app-step-two, app-step-three {
         
     .logo-wrap {
         position: relative;
+        left: auto;
     }
 
-    .profile-setup-wrapper { width: 90%; }
+    .profile-setup-wrapper { width: 90%; margin-top: 0; }
 }

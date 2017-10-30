@@ -15,5 +15,10 @@ export class StepTwoComponent {
 	handleClick(val: Object) {
 		this._user.sendProfileInfo(val);
 	}
+	
+	back() {
+		this._user.stepBack();
+	}
+
 
 }

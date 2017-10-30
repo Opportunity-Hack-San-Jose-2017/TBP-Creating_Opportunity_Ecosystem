@@ -1,4 +1,4 @@
-<form #f="ngForm" class="flex column">
+<form [formGroup]="userForm" class="flex column">
 	<mat-form-field>
 		<input matInput placeholder="First Name" formControlName="firstName">
 		<mat-error *ngIf="userForm.get('firstName').touched && userForm.get('firstName').hasError('required')">
@@ -34,11 +34,11 @@
 		</mat-error>
 	</mat-form-field>
 	<mat-form-field>
-		<input matInput placeholder="Confirm Password" formControlName="passwordConfirmation">
-		<mat-error *ngIf="userForm.get('passwordConfirmation').touched && userForm.get('passwordConfirmation').hasError('required')">
+		<input matInput placeholder="Confirm Password" formControlName="confirmPassword">
+		<mat-error *ngIf="userForm.get('confirmPassword').touched && userForm.get('confirmPassword').hasError('required')">
 			Password Confirmation is <strong>required</strong>
 		</mat-error>
 	</mat-form-field>
-	<mat-checkbox *ngIf="userForm.get('accept').touched && userForm.get('accept').hasError('required')" formControlName="passwordConfirmation">Accept <a href="">terms</a> and agreement</mat-checkbox>
+	<mat-checkbox *ngIf="userForm.get('accept').touched && userForm.get('accept').hasError('required')" formControlName="accept">Accept <a href="">terms</a> and agreement</mat-checkbox>
 	<div (click)="registration()" class="submit-register flex">Register</div>
 </form>

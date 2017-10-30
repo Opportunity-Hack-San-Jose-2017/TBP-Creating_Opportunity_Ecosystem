@@ -16,13 +16,16 @@ export class RegisterComponent {
 		password: "",
 		confirmPassword: "",
 		firstName: "",
-		lastName: ""
+		lastName: "",
+		accept: ""
 	}
 
 	constructor(
 		private _user: UserService,
 		private fb: FormBuilder
-	) { }
+	) {
+		this.createForm();
+	}
 
 	registration() {
 		const obj = {
@@ -47,6 +50,7 @@ export class RegisterComponent {
 		accept: ['', Validators.required ],		
 		email: ['', [Validators.required, Validators.email]],
 		password: ['', Validators.required ],
+		confirmPassword: ['', Validators.required ],
 	});
 }
 }

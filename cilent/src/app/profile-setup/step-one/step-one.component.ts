@@ -1,5 +1,6 @@
 import { UserService } from '../../common/services/user.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-step-one',
@@ -9,15 +10,27 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StepOneComponent implements OnInit {
 	
 	img: String;	
-	user = {telephone: ''};
+	userForm: FormGroup;
 	@Input() name: any;
 
-	constructor(private _user: UserService) { }
+	constructor(
+		private _user: UserService,
+		private fb: FormBuilder
+	) {
+		this.createForm();
+	}
 
 	ngOnInit() {
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
 	}
 
+	createForm() {
+		this.userForm = this.fb.group({
+			phone: [''],
+			about: [' ']
+		});
+	}
+	
 	handleClick(val: Object) {
 		this._user.sendProfileInfo(val);
 	}

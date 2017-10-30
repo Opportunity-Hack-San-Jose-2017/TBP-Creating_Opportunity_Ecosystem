@@ -1,15 +1,16 @@
-<form #f="ngForm" class="flex column">
-  <div class="form-group flex column">
-    <div>Skills</div>
-    <textarea class="skills" placeholder="e.g. baking, laminating, critical thining, and active listening"></textarea>
-  </div>
-  <div class="form-group flex column">
-    <div>Experiences</div>
-    <textarea class="experiences" placeholder="Titles and Descriptions"></textarea>
-  </div>
+<form [formGroup]="userForm" class="flex column">
+  <mat-form-field>
+    <textarea matInput placeholder="Skills" name="skills" formControlName="skills"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+      <textarea matInput placeholder="Experiences (titles and descriptions)" name="experiences" formControlName="experiences"></textarea>
+    </mat-form-field>
 </form>
 <div class="bottom flex column">
-  <div (click)="handleClick(f.value)" class="next-btn flex">Finish</div>
+    <div class="btn-wrapper flex">
+        <div (click)="back()" class="back-btn btn flex">Back</div>
+        <div (click)="handleClick()" class="next-btn btn flex">Finish</div>
+    </div>
   <div class="step-img-wrapper flex">
     <img src="../../assets/images/step_3.png" alt="3">
   </div>

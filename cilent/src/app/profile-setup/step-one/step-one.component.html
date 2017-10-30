@@ -2,7 +2,7 @@
   <div class="welcome">Welcome</div>
   <div class="start"><i>Get started by filling out your profile</i></div>
 </div>
-<form #f="ngForm" class="flex column">
+<form [formGroup]="userForm" class="flex column">
   <div class="photo-name-phone flex">
     <div class="photo-wrapper">
       <img class="no-point" [src]="img" alt="Profile Photo">
@@ -11,21 +11,22 @@
       <div class="form-group flex column">
         <div class="form-group-header name">{{name}}</div>
       </div>
-      <div class="form-group flex column">
-        <div class="form-group-header">Phone Number</div>
-        <input [(ngModel)]="user['telephone']" #phoneNumber="ngModel" type="tel" name="telephone" required>
-      </div>	
+      <mat-form-field>
+        <input matInput type="tel" placeholder="Phone Number" name="phone" formControlName="phone">
+      </mat-form-field>
     </div>
   </div>
-  <textarea class="about" placeholder="About yourself (optional)"></textarea>
+  <mat-form-field>
+    <textarea matInput placeholder="About yourself (optional)" name="about" formControlName="about"></textarea>
+  </mat-form-field>
 </form>
 <div class="bottom flex column">
   <div class="btn-wrapper flex">
-    <div (click)="handleClick(f.value)" class="back-btn btn flex">Back</div>
-    <div (click)="handleClick(f.value)" class="next-btn btn flex">Next</div>
+    <div (click)="back()" class="back-btn btn flex">Back</div>
+    <div (click)="handleClick()" class="next-btn btn flex">Next</div>
   </div>
   <div class="step-img-wrapper flex">
     <img src="../../assets/images/step_1.png" alt="1">
   </div>
-<div class="not-now">Not now</div>
+  <div class="not-now">Not now</div>
 </div>
