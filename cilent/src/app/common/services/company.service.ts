@@ -28,7 +28,8 @@ export class CompanyService {
 	}
 
 	login(data: Object){
-		this.http.post(`${BASE_URL}/profile`, data,{withCredentials: true })
+		console.log("getting here")
+		this.http.post(`${BASE_URL}/company/signin`, data,{withCredentials: true })
 			.subscribe(
 				(data: any) => {
 					console.log(data)
