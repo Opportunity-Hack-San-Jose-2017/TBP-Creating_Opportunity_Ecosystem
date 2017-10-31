@@ -22,14 +22,18 @@ export class UserLandingComponent {
 
 	toggleDropDown = false;
   constructor(
+    private _router: Router,
     private _search: SearchService,
     private _user: UserService
   ) {
-    this.user = JSON.parse(localStorage.getItem('item')) || {};
+    this.user = JSON.parse(localStorage.getItem('user')) || {};
     // commented out for testing ! //
     // _search.getAllJobs()
     //   .subscribe((v: any) => this.jobs = v);
     this.jobs = [job, job, job, job,job,job,job,job,job]
+  }
+
+  ngOnInit() {
   }
 
   logout() {
@@ -38,6 +42,10 @@ export class UserLandingComponent {
 
   dropdowntoggle() {
   	this.toggleDropDown = !this.toggleDropDown
+  }
+
+  goToEditProfile(){
+    this._router.navigate(["profile/edit"])
   }
 
 }

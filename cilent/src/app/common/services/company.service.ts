@@ -39,6 +39,6 @@ export class CompanyService {
 	}
 
 	logout(){
-		return this.http.post(`${BASE_URL}/logout`, {})
+		return this.http.post(`${BASE_URL}/company/logout`, {})
 	}
 }
