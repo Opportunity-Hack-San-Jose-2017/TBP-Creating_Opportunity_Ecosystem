@@ -10,15 +10,6 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 export class RegisterComponent {
 
 	userForm: FormGroup;
-	user = {
-		email: "",
-		token: "",
-		password: "",
-		confirmPassword: "",
-		firstName: "",
-		lastName: "",
-		accept: ""
-	}
 
 	constructor(
 		private _user: UserService,

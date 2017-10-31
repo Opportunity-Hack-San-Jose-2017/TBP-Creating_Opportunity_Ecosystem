@@ -1,12 +1,11 @@
-<div class="edit-profile-container flex">
-
+<div class="edit-profile-container flex column">
   <div class="logo-wrap">
     <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
   </div>
+  <div class="header">Edit Profile</div>
   <div class="main-wrapper flex column">
-    <div class="header">Edit Profile</div>
     <div class="form-wrapper flex column">
-      <form #f="ngForm" class="flex column">
+      <form [formGroup]="userForm" class="flex column">
         <div class="form-top flex">
           <div class="form-top-left flex column">
             <div classs="photo-wrapper">
@@ -18,80 +17,68 @@
           <div class="form-top-right">
             <div class="name-phone-wrapper flex column">
               <div class="name-wrapper flex">
-                <div class="form-group gap">
-                  <input [(ngModel)]="user.firstName" #firstName="ngModel" type="text" name="firstName" placeholder="First Name">
-                </div>
-                <div class="form-group gap">
-                  <input [(ngModel)]="user.lastName" #lastName="ngModel" type="text" name="lastName" placeholder="Last Name">
-                </div>
+                <mat-form-field>
+                  <input matInput placeholder="First Name" name="firstName" formControlName="firstName">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Last Name" name="lastName" formControlName="lastName">
+                </mat-form-field>
               </div>
               <div class="name-wrapper flex">
-                <div class="form-group gap">
-                  <input [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel" type="tel" name="phoneNumber" placeholder="Phone Number">
-                </div>
-                <div class="form-group gap">
-                  <input [(ngModel)]="user.email" #email="ngModel" type="email" name="email" placeholder="Email">
-                </div>
+                <mat-form-field>
+                  <input matInput placeholder="Phone Number" name="phone" formControlName="phone">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Email" name="email" formControlName="email">
+                </mat-form-field>
               </div>
             </div>          
             <div class="availability-wrapper">
               <div class="form-group flex column">
-                <div class="form-group-header">Availability</div>
+                <div class="form-group-header">Preferred Shift(s)</div>
                 <div class="flex check-container">
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.availability.morning" #availability="ngModel" id="morning" type="checkbox" name="morning">
-                    <label for="morning">Morning</label>
-                  </div>
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.availability.noon" #availability="ngModel" id="noon" type="checkbox" name="noon">
-                    <label for="noon">Noon</label>
-                  </div>
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.availability.night" #availability="ngModel" id="night" type="checkbox" name="night">
-                    <label for="Night">Night</label>
-                  </div>
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.availability.graveyard" #availability="ngModel" id="graveyard" type="checkbox" name="graveyard">
-                    <label for="Graveyard">Graveyard</label>
-                  </div>
+                    <div class="check-wrapper flex">
+                        <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
+                    </div>
+                    <div class="check-wrapper flex">
+                        <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
+                    </div>
+                    <div class="check-wrapper flex">
+                        <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
+                    </div>
                 </div>
               </div>
             </div>
             <div class="job-type-wrapper">
               <div class="form-group flex column">
-                <div class="form-group-header">Job Type</div>
-                <div class="flex check-container">
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.jobType.fullTime" #jobType="ngModel" id="fullTime" type="checkbox" name="fullTime">
-                    <label for="morning">Full Time</label>
+                  <div class="form-group-header">Preferred Job Type(s)</div>
+                  <div class="flex check-container">
+                      <div class="check-wrapper flex">
+                          <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
+                      </div>
+                      <div class="check-wrapper flex">
+                          <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
+                      </div>
+                      <div class="check-wrapper flex">
+                          <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
+                      </div>
                   </div>
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.jobType.partTime" #jobType="ngModel" id="partTime" type="checkbox" name="partTime">
-                    <label for="noon">Part Time</label>
-                  </div>
-                  <div class="check-wrapper flex">
-                    <input [(ngModel)]="user.jobType.temp" #jobType="ngModel" id="temporary" type="checkbox" name="temp">
-                    <label for="Night">Temporary</label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="form-bottom flex column">
-          <div class="form-group flex column">
-            <div>Skills</div>
-            <textarea class="skills" placeholder="e.g. baking, laminating, critical thining, and active listening"></textarea>
-          </div>
-          <div class="form-group flex column">
-            <div>Experiences</div>
-            <textarea class="experiences" placeholder="Titles and Descriptions"></textarea>
-          </div>
+          <mat-form-field>
+            <textarea matInput placeholder="Skills" name="skillsSet" formControlName="skillsSet"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Experiences (titles and descriptions)" name="experiences" formControlName="experiences"></textarea>
+          </mat-form-field>
         </div>
       </form>
       <div class="bottom flex">
-        <div (click)="handleClick(f.value)" class="back-btn btn flex">Back</div>
-        <div (click)="handleClick(f.value)" class="save-btn btn flex">Save</div>
+        <div (click)="handleClick()" class="back-btn btn flex">Back</div>
+        <div (click)="handleClick()" class="save-btn btn flex">Save</div>
       </div>
     </div>
   </div>
