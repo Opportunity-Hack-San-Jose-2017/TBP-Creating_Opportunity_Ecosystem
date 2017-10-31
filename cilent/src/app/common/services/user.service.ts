@@ -15,7 +15,7 @@ export class UserService {
   setupStep = new Subject();
 
   login(login_cred: Object){
-  	this.http.post('http://localhost:8080/applicant/signin', login_cred)
+  	this.http.post('http://54.183.64.109/applicant/signin', login_cred)
   	.subscribe(
   		(data: any) => {
         localStorage.setItem('user', JSON.stringify(data));
@@ -30,7 +30,7 @@ export class UserService {
   }
 
   updateProfile(update_cred: Object){
-  	this.http.post('http://localhost:8080/applicant/signin', update_cred)
+  	this.http.post('http://54.183.64.109/applicant/signin', update_cred)
   	.subscribe(
   		(data: any) => {
         localStorage.setItem('user', JSON.stringify(data));
@@ -45,7 +45,7 @@ export class UserService {
   }
 
   register(registration_cred: Object) {
-  	this.http.post('http://localhost:8080/applicant/register', registration_cred)
+  	this.http.post('http://54.183.64.109/applicant/register', registration_cred)
   	.subscribe(
   		(data: any) => {
         localStorage.setItem('user', JSON.stringify(data));
@@ -65,7 +65,7 @@ export class UserService {
   }
 
   getSession(){
-    this.http.get('http://localhost:8080/applicant/activeSession')
+    this.http.get('http://54.183.64.109/applicant/activeSession')
     .subscribe(data => console.log(data))
   }
 

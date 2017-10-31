@@ -9,13 +9,13 @@ export class CompanyService {
   constructor(private http: HttpClient, private _router: Router) { }
 
   getCompanyProfile(){
-  	this.http.get('http://localhost:8080/company/profile')
+  	this.http.get('http://54.183.64.109/company/profile')
     .subscribe(data => console.log(data))
   }
 
   register(data: Object){
 
-  	this.http.post('http://localhost:8080/company/register', data)
+  	this.http.post('http://54.183.64.109/company/register', data)
     .subscribe(data => {
       this._router.navigate(['/company/opening/create'])
     }, error => {
@@ -24,7 +24,7 @@ export class CompanyService {
   }
 
   login(data: Object){
-  	this.http.post('http://localhost:8080/company/signin', data,{withCredentials: true })
+  	this.http.post('http://54.183.64.109/company/signin', data,{withCredentials: true })
     .subscribe(data => {
       this._router.navigate(['/company/opening/create']),
       console.log(data)
@@ -35,6 +35,6 @@ export class CompanyService {
 
   logout(){
   	var data = {}
-  	return this.http.post('http://localhost:8080/company/logout', data)
+  	return this.http.post('http://54.183.64.109/company/logout', data)
   }
 }

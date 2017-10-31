@@ -25,7 +25,7 @@ export class JobsService {
   postOpening(data: Object){
     let headers = new Headers()
     console.log(data)
-  	this.http.post("http://localhost:8080/company/postOpening", data,{withCredentials: true} )
+  	this.http.post("http://54.183.64.109/company/postOpening", data,{withCredentials: true} )
     .subscribe(data => console.log(data))
   }
 
