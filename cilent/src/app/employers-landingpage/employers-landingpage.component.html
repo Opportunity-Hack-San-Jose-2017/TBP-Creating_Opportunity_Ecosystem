@@ -1,3 +1,85 @@
-<p>
-  employers-landingpage works!
-</p>
+<section id="main">
+	<nav>
+		<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+		<div (click)="logout()" class="btn flex logout">Logout</div>
+	</nav>
+	<section id="content" class="flex">
+		<div id="profile_bar">
+			<div>
+				<h2>{{company['name']}}</h2>
+				<img src="../../assets/images/profile-icon.png">
+				<button>Edit Profile</button>
+			</div>
+			<div>
+				<h2>Saved Jobs</h2>
+			</div>
+			<div>
+				<h2>Applied Jobs</h2>
+			</div>
+		</div>
+		<div class="main-container">
+			<div id="search_bar" class="flex">
+				<mat-form-field>
+					<input matInput type="search" placeholder="Search" name="search">
+				</mat-form-field>
+				<div class="dropdown-wrapper">
+					<button class="dropbtn" (click)="dropdowntoggle()">Filter</button>
+					<div class="dropdown-content flex" *ngIf="toggleDropDown">
+						<div class="col flex column">
+							<h4>Job Type</h4>
+							<div class="checkbox_div">
+								<input type="checkbox" name="full_time">
+								<label>Full Time</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="part_time">
+								<label>Part Time</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="temporary">
+								<label>Temporary</label>
+							</div>
+						</div>
+						<div class="col mid flex column">
+							<h4>Shift Type</h4>
+							<div class="checkbox_div">
+								<input type="checkbox" name="morning">
+								<label>morning</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="noon">
+								<label>Noon</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="night">
+								<label>Night</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="graveyard">
+								<label>Graveyard</label>
+							</div>
+						</div>
+						<div class="col flex column">
+							<!-- <div class="checkbox_div">
+								<input type="checkbox" name="public_transport">
+								<label>Public Transport</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="background_check">
+								<label>Background Checks</label>
+							</div>
+							<div class="checkbox_div">
+								<input type="checkbox" name="multilingual">
+								<label>Multilingual</label>
+							</div> -->
+						</div>
+					</div>
+				</div>
+				<button>Search</button>
+			</div>
+			<div id="applicant_feed">
+				
+			</div>
+		</div>
+	</section>
+</section>

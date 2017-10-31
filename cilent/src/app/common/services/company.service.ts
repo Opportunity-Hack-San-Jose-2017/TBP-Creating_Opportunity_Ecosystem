@@ -17,28 +17,39 @@ export class CompanyService {
 	}
 
 	register(data: Object){
-		this.http.post(`${BASE_URL}/register`, data)
+		this.http.post(`${BASE_URL}/company/register`, data, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
 					console.log(data);
-					this._router.navigate(['company/opening/create'])
+					if (data["statusCode"] == "200") {
+						localStorage.setItem("company", JSON.stringify(data["company"]))
+						this._router.navigate(['/company/home'])
+					}
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
 	}
 
 	login(data: Object){
-		this.http.post(`${BASE_URL}/profile`, data,{withCredentials: true })
+		this.http.post(`${BASE_URL}/company/signin`, data,{withCredentials: true })
 			.subscribe(
 				(data: any) => {
-					console.log(data)
-					this._router.navigate(['company/opening/create'])
+					if (data["statusCode"] == "200") {
+						this._router.navigate(['company/home'])
+					} else {
+						console.log(data)
+						alert(data["message"])
+					}				
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
 	}
 
 	logout(){
-		return this.http.post(`${BASE_URL}/logout`, {})
+		this.http.post(`${BASE_URL}/company/logout`, {}, {withCredentials: true})
+		.subscribe(data => {
+			console.log(data)
+		})
+		this._router.navigate(["company/login"])
 	}
 }

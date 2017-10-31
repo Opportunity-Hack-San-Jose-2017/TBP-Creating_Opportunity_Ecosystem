@@ -8,7 +8,7 @@
 			<div>
 				<h2>{{user['firstName']}} {{user['lastName']}}</h2>
 				<img src="../../assets/images/profile-icon.png">
-				<button>Edit Profile</button>
+				<button (click)="goToEditProfile()" >Edit Profile</button>
 			</div>
 			<div>
 				<h2>Saved Jobs</h2>
@@ -87,3 +87,4 @@
 		</div>
 	</section>
 </section>
+

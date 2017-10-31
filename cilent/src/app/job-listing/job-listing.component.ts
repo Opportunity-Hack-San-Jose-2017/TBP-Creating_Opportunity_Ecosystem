@@ -24,13 +24,12 @@ export class JobListingComponent {
 	}
 
   constructor(
-    private jobs: JobsService, 
     private router: Router,
     private _company: CompanyService,
     private _jobs: JobsService,
     private fb: FormBuilder
   ) {
-    this.createForm();
+    // this.createForm();
   }
 
 	jobForm: FormGroup;
@@ -60,7 +59,8 @@ export class JobListingComponent {
   }
 
   submitOpening() {
-    this._jobs.postOpening(this.jobForm.value)
+    // this._jobs.postOpening(this.jobForm.value)
+    this._jobs.postOpening(this.job)
   }
   
 

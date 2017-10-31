@@ -15,14 +15,14 @@ export class CompanyLoginComponent {
 	companyForm: FormGroup;
 	
 		constructor(
-			private _user: UserService,
+			private _company: CompanyService,
 			private fb: FormBuilder
 		) {
 			this.createForm();
 		}
 	
 		login() {
-			this._user.login(this.companyForm.value);
+			this._company.login(this.companyForm.value);
 		}
 	
 		createForm() {

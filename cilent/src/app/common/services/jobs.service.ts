@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
 
+
 @Injectable()
 export class JobsService {
-
 	jobs: Array<any>;
 	constructor(private http: HttpClient) { }
 

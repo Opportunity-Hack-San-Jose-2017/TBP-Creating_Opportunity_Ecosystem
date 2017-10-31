@@ -21,7 +21,7 @@ export class UserService {
 			.subscribe(
 				(data: any) => {
 					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['jobs']);
+					this.router.navigate(['applicant/home']);
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -37,13 +37,13 @@ export class UserService {
 			.subscribe(
 				(data: any) => {
 					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['jobs']);
+					this.router.navigate(['applicant/home']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
 					if (err.status === 400) {
 						console.log(err.message);
-						this.router.navigate(['jobs']);
+						// this.router.navigate(['jobs']);
 					}
 				}
 			)
