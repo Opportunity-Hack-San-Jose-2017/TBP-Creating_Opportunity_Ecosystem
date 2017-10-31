@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import * as BASE_URL from '../config/url';
+import { url as BASE_URL } from '../config/url';
 
 @Injectable()
 export class UserService {
