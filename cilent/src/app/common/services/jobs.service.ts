@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-
-
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+const BASE_URL = "http://54.183.64.109/";
 
 @Injectable()
 export class JobsService {
 
-	jobs = []
-
-
-
-  constructor(private http: HttpClient) { }
+	jobs: Array<any>;
+	constructor(private http: HttpClient) { }
 
   // private generateOptions(): RequestOptions {
   //   let headers = new Headers();
@@ -21,25 +16,33 @@ export class JobsService {
   //   return new RequestOptions({ headers: headers });
   // }
 
-  //compannies new job
-  postOpening(data: Object){
-    let headers = new Headers()
-    console.log(data)
-  	this.http.post("http://localhost:8080/company/postOpening", data,{withCredentials: true} )
-    .subscribe(data => console.log(data))
-  }
+	//companies new job
+	postOpening(data: Object){
+		let headers = new Headers()
+		console.log(data)
+		const url = `${BASE_URL}/company/postOpening`;
+		this.http.post(url, data, {withCredentials: true} )
+			.subscribe(
+				(data: any) => {
+					console.log(data);
+				},
+				(err: HttpErrorResponse) => {
+					console.log(err);
+				}
+			)
+	}
 
-  //compannies update
-  openingUpdate(data: Object){
-  	return this.http.post("/company/update", data,{withCredentials: true})
-  }
+	//compannies update
+	openingUpdate(data: Object){
+		const url = `${BASE_URL}/company/update`;
+		return this.http.post(url, data, {withCredentials: true})
+	}
 
-  //job seekers apply
-  applyToOpenging(opening_id: Number) {
-  	var data = {
-  		opening_id: opening_id
-  	}
-  	return this.http.post("/applicant/apply", data,{withCredentials: true})
-  }
+	//job seekers apply
+	applyToOpening(opening_id: Number) {
+		const data = {opening_id: opening_id};
+		const url = `${BASE_URL}/applicant/apply`;
+		return this.http.post(url, data, {withCredentials: true});
+	}
 
 }

@@ -18,7 +18,7 @@ export class LoginComponent {
 		this.createForm();
 	}
 
-	login(user: any) {
+	login() {
 		this._user.login(this.userForm.value);
 	}
 

@@ -2,7 +2,7 @@
   <div class="logo-wrap">
     <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
   </div>
-  <div class="header">Edit Profile</div>
+  <!-- <div class="header">Edit Profile</div> -->
   <div class="main-wrapper flex column">
     <div class="form-wrapper flex column">
       <form [formGroup]="userForm" class="flex column">
@@ -32,39 +32,39 @@
                   <input matInput placeholder="Email" name="email" formControlName="email">
                 </mat-form-field>
               </div>
-            </div>          
-            <div class="availability-wrapper">
-              <div class="form-group flex column">
-                <div class="form-group-header">Preferred Shift(s)</div>
-                <div class="flex check-container">
-                    <div class="check-wrapper flex">
-                        <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
-                    </div>
-                    <div class="check-wrapper flex">
-                        <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
-                    </div>
-                    <div class="check-wrapper flex">
-                        <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
-                    </div>
+            </div>    
+          </div>
+        </div>
+        <div class="av-wrapper flex">
+          <div class="form-group flex column">
+            <div class="form-group-header">Preferred Shift(s)</div>
+            <div class="flex check-container">
+                <div class="check-wrapper flex">
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
                 </div>
-              </div>
+                <div class="check-wrapper flex">
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
+                </div>
+                <div class="check-wrapper flex">
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
+                </div>
             </div>
-            <div class="job-type-wrapper">
-              <div class="form-group flex column">
-                  <div class="form-group-header">Preferred Job Type(s)</div>
-                  <div class="flex check-container">
-                      <div class="check-wrapper flex">
-                          <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
-                      </div>
-                      <div class="check-wrapper flex">
-                          <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
-                      </div>
-                      <div class="check-wrapper flex">
-                          <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
-                      </div>
+          </div>
+        </div>
+        <div class="jt-wrapper flex">
+          <div class="form-group flex column">
+              <div class="form-group-header">Preferred Job Type(s)</div>
+              <div class="flex check-container">
+                  <div class="check-wrapper flex">
+                      <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
+                  </div>
+                  <div class="check-wrapper flex">
+                      <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
+                  </div>
+                  <div class="check-wrapper flex">
+                      <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
                   </div>
               </div>
-            </div>
           </div>
         </div>
         <div class="form-bottom flex column">

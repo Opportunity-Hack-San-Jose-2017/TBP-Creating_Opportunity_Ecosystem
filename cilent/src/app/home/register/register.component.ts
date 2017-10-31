@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
@@ -10,6 +10,9 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 export class RegisterComponent {
 
 	userForm: FormGroup;
+	checked: Boolean = false;
+	hovered: Boolean = false;	
+	@ViewChild('accept', {read: ElementRef}) accept: ElementRef;
 
 	constructor(
 		private _user: UserService,
@@ -18,19 +21,25 @@ export class RegisterComponent {
 		this.createForm();
 	}
 
+	handleCheck() {
+		this.checked = !this.checked;
+	}
+
 	registration() {
-		const obj = {
-			email: this.userForm.value.email,
-			firstName: this.userForm.value.firstName,
-			lastName: this.userForm.value.lastName,
-			password: this.userForm.value.password,
-			introduction: "",
-			experience: "",
-			skillsSet: [],
-			verified: false,
-			hashValue: ""
+		if (this.accept.nativeElement.checked) {
+			const obj = {
+				email: this.userForm.value.email,
+				firstName: this.userForm.value.firstName,
+				lastName: this.userForm.value.lastName,
+				password: this.userForm.value.password,
+				introduction: "",
+				experience: "",
+				skillsSet: [],
+				verified: false,
+				hashValue: ""
+			}
+			this._user.register(obj);
 		}
-		this._user.register(obj);
 	} 
 
 	createForm() {

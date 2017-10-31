@@ -11,7 +11,7 @@ import { EmployersLandingpageComponent } from './employers-landingpage/employers
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'setup', component: ProfileSetupComponent },
-    { path: 'companies', component: CompanyHomeComponent },
+    { path: 'company', component: CompanyHomeComponent },
     { path: 'jobs', component: UserLandingComponent },
     { path: 'profile/edit', component: EditProfileComponent },
     { path: 'company/opening/create', component: JobListingComponent},
