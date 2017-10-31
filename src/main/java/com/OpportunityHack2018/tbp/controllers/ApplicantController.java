@@ -217,6 +217,7 @@ public class ApplicantController {
         }
     }
 
+    @CrossOrigin
     @GetMapping(value = "/search")
     @ResponseBody
     public ModelMap search(@RequestParam(value= "query") String query, HttpSession session, Pageable pageable) {

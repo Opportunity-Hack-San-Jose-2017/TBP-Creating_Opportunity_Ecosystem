@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/company")
 public class CompanyController {
@@ -34,7 +35,7 @@ public class CompanyController {
 
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
-
+        System.out.println("Session ID in profile :"+session.getId());
         if (session.getAttribute("email") == null) {
             responseMap.addAttribute("statusCode", "401");
             responseMap.addAttribute("message", "Please sign in before requesting profile info.");
@@ -62,7 +63,7 @@ public class CompanyController {
         ModelMap responseMap = new ModelMap();
         try{
             Opening openingObj = mapper.readValue(jobPosting, Opening.class);
-
+            System.out.println("Session id in post Opening :"+session.getId());
             if(session.getAttribute("email")==null){
                 responseMap.addAttribute("statusCode", "400");
                 responseMap.addAttribute("message", "Please log in to post a job");
@@ -200,7 +201,7 @@ public class CompanyController {
 
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
-
+        System.out.println("Spring Session ID :"+session.getId());
         try{
             Company companyObj = mapper.readValue(jsonObj, Company.class);
 
@@ -224,6 +225,7 @@ public class CompanyController {
             System.out.println("Session email :"+session.getAttribute("email"));
             responseMap.addAttribute("statusCode", "200");
             responseMap.addAttribute("company",company);
+            System.out.println("Spring Session ID after setting:"+session.getId());
         }
         catch (Exception e){
             e.printStackTrace();

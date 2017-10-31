@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 
@@ -9,24 +9,12 @@ export class JobsService {
 
 	jobs = []
 
-  
-
   constructor(private http: HttpClient) { }
-
-  // private generateOptions(): RequestOptions {
-  //   let headers = new Headers();
-  //   headers.append("Content-Type", 'application/json');
-  //   headers.append("Access-Control-Allow-Origin", "*");
-  //   headers.append("Access-Control-Allow-Headers", "Origin, Authorization, Content-Type");
-  //   return new RequestOptions({ headers: headers });
-  // }
   
   //compannies new job
   postOpening(data: Object){
-    let headers = new Headers()
-    console.log(data)
   	this.http.post("http://localhost:8080/company/postOpening", data)
-    .subscribe(data => console.log(data))
+  .subscribe(data => console.log(data))
   }
 
   //compannies update
