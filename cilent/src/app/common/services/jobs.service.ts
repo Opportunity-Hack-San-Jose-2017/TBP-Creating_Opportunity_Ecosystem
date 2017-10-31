@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-const BASE_URL = "http://localhost:8080";
+import * as BASE_URL from '../config/url';
 
 @Injectable()
 export class JobsService {

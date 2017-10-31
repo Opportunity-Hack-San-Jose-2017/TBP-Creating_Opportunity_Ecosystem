@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-const BASE_URL = 'http://localhost:8080';
+import * as BASE_URL from '../config/url';
 
 @Injectable()
 export class UserService {
@@ -67,7 +67,8 @@ export class UserService {
 
 	logout() {
 		const url = `${BASE_URL}/applicant/logout`;
-		return this.http.post(url, {});
+		this.http.post(url, {})
+			.subscribe((v: any) => this.router.navigate(['/']))
 	}
 
 	getSession(){

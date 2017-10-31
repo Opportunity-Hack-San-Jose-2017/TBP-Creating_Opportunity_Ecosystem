@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-const BASE_URL = 'http://localhost:8080/company';
+import * as BASE_URL from '../config/url';
 
 @Injectable()
 export class CompanyService {
