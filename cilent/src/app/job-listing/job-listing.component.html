@@ -2,13 +2,13 @@
 	<div class="form-wrapper flex">
 		<form [formGroup]="jobForm" class="flex column">
 			<mat-form-field>
-					<textarea matInput placeholder="Description" name="description" formControlName="description"></textarea>
+				<textarea matInput placeholder="Description" name="description" formControlName="description"></textarea>
 				<mat-error *ngIf="jobForm.get('description').touched && jobForm.get('description').hasError('required')">
 					Description is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
 			<mat-form-field>
-					<textarea matInput placeholder="Responsibilites" name="responsibilities" formControlName="responsibilities"></textarea>
+				<textarea matInput placeholder="Responsibilites" name="responsibilities" formControlName="responsibilities"></textarea>
 				<mat-error *ngIf="jobForm.get('responsibilities').touched && jobForm.get('responsibilities').hasError('required')">
 						Responsibilites are <strong>required</strong>
 				</mat-error>
