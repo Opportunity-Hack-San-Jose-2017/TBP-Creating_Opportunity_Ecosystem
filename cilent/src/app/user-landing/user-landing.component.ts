@@ -66,6 +66,7 @@ export class UserLandingComponent {
   searchClick() {
     this.search = !this.search;
   }
+  
   ngOnInit() {
   }
 

@@ -27,7 +27,20 @@ export class StepThreeComponent {
 	}
 	
 	handleClick() {
-		this._user.sendProfileInfo(this.userForm.value);
+		const user: any = JSON.parse(localStorage.getItem('user'));
+		const obj = {
+			skillsSet: [this.userForm.value.skillsSet], 
+			experience: this.userForm.value.experience,
+			email: user.email,
+			token: user.token,
+			firstName: user.firstName,
+			lastName: user.lastName,
+			education: user.education,
+			verified: user.verified,
+			hashValue: user.hashValue,
+			pendingApplications: user.pendingApplications
+		}
+		this._user.sendProfileInfo(obj);
 	}
   
   back() {

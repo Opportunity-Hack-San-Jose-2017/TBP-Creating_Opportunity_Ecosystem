@@ -26,8 +26,8 @@ export class StepOneComponent implements OnInit {
 
 	createForm() {
 		this.userForm = this.fb.group({
-			phone: [''],
-			about: [' ']
+			phoneNumber: [''],
+			introduction: [' ']
 		});
 	}
 
