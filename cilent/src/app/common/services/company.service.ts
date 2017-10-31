@@ -35,6 +35,7 @@ export class CompanyService {
 			.subscribe(
 				(data: any) => {
 					if (data["statusCode"] == "200") {
+						localStorage.setItem("company", JSON.stringify(data["company"]))
 						this._router.navigate(['company/home'])
 					} else {
 						console.log(data)
