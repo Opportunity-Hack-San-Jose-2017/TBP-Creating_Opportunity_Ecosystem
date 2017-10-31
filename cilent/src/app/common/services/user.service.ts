@@ -24,8 +24,8 @@ export class UserService {
 					this.router.navigate(['jobs']);
 				},
 				(err: HttpErrorResponse) => {
-					if (err["statusCode"] == "400") {
-						alert(err["message"])
+					if (err.status === 400) {
+						console.log(err.message)
 					}
 				}
 			)
@@ -58,8 +58,8 @@ export class UserService {
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
-					if (err["statusCode"] == "400"){
-						alert(err["message"])
+					if (err.status === 400){
+						console.log(err.message)
 					}
 				}
 			)
