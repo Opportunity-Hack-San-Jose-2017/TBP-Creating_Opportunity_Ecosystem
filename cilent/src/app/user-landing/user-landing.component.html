@@ -18,6 +18,10 @@
 			</div>
 		</div>
 		<div class="main-container">
+			<div id="mobile_search" class="flex search" (click)="searchClick()">Search</div>
+			<div class="filter-menu" [@slideAnimation] *ngIf="search">
+				<app-filter></app-filter>
+			</div>
 			<div id="search_bar" class="flex">
 				<mat-form-field>
 					<input matInput type="search" placeholder="Search" name="search">
@@ -60,7 +64,7 @@
 							</div>
 						</div>
 						<div class="col flex column">
-							<!-- <div class="checkbox_div">
+							<div class="checkbox_div">
 								<input type="checkbox" name="public_transport">
 								<label>Public Transport</label>
 							</div>
@@ -71,7 +75,7 @@
 							<div class="checkbox_div">
 								<input type="checkbox" name="multilingual">
 								<label>Multilingual</label>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>

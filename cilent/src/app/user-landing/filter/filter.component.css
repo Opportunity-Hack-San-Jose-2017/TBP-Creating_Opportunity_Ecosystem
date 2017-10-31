@@ -1,0 +1,46 @@
+* {
+    color: rgba(255,255,255,.7);
+}
+
+.filter-wrapper {
+    background: rgba(0,0,0,.83);
+    padding-bottom: 7px;
+}
+.wrapper, .check-container, .form-group {
+    width: 90%;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.check-container {
+    align-items: center;
+}
+
+.mat-form-field {
+    width: 80%;
+    margin: 0 auto;
+}
+.mat-fab {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    cursor: pointer;
+    font-size: .7rem;
+}
+
+.mat-fab:hover {
+    background: #1592aa !important;
+    opacity: .7;
+}
+
+.active {
+    background: #1592aa !important;
+}
+
+.check-wrapper {
+    margin-bottom: 10px;
+    align-items: center;
+}
