@@ -189,7 +189,14 @@ button {
 		top: 70px;
 		z-index: 10;
 		justify-content: flex-start;
-		padding-left: 10%;
+		padding-left: 5%;
+	}
+
+	.filter-menu {
+		position: fixed;
+		top: 110px;
+		width: 100%;
+		z-index: 10;
 	}
 
 	#search_bar { display: none; }

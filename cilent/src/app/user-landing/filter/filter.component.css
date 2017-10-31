@@ -7,9 +7,26 @@
     padding-bottom: 7px;
 }
 .wrapper, .check-container, .form-group {
-    width: 90%;
     justify-content: space-around;
     margin: 0 auto;
+}
+
+.form-group { width: 90%; }
+
+.form-group-header { flex: 1; }
+
+.wrapper {
+    margin: 8px 0;
+}
+
+.mat-form-field {
+    width: 90%;
+}
+.wrapper {
+    width: 100%;
+}
+.availability-wrapper {
+    margin-top: 0;
 }
 
 .check-container {
@@ -17,12 +34,13 @@
 }
 
 .mat-form-field {
-    width: 80%;
     margin: 0 auto;
 }
 .mat-fab {
     height: 30px;
+    max-width: 30px;
     width: 30px;
+    margin-right: 10px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
