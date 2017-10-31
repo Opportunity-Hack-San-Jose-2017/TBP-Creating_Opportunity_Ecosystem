@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-=======
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
->>>>>>> 86707a5486a6b2b327d2c655c1022a4694276bc2
 import { Router } from '@angular/router';
 const BASE_URL = 'http://localhost:8080/company';
 
