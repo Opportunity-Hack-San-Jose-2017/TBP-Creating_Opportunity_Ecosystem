@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../common/services/search.service';
+import { Router } from '@angular/router';
+import { UserService } from '../common/services/user.service';
 const job = {
   location: "San Francisco",
   company: 'Paypal',
@@ -19,11 +21,19 @@ export class UserLandingComponent {
   jobs: any;
 
 	toggleDropDown = false;
-  constructor(private _search: SearchService) {
+  constructor(
+    private _search: SearchService,
+    private _user: UserService
+  ) {
     this.user = JSON.parse(localStorage.getItem('item')) || {};
+    // commented out for testing ! //
     // _search.getAllJobs()
     //   .subscribe((v: any) => this.jobs = v);
     this.jobs = [job, job, job, job,job,job,job,job,job]
+  }
+
+  logout() {
+    this._user.logout();
   }
 
   dropdowntoggle() {

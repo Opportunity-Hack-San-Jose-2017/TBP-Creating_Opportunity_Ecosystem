@@ -1,6 +1,5 @@
-.alert {
-    top: -6px;
-    position: absolute;
+* {
+    color: rgba(255,255,255,.7);
 }
 
 .select {
@@ -14,7 +13,7 @@
 .listing-container {
     align-items: center;
     justify-content: center;
-    min-height: 100%;
+    height: 100vh;
     width: 100%;
     background: url('../../assets/images/login-bg.png');
     background-repeat: no-repeat; 
@@ -33,15 +32,25 @@
     background: rgba(0,0,0,.83);
     position: relative;
     color: white;
-    align-items: center;
+    max-height: calc(100vh - 80px);
     overflow-y: auto;    
 }
 
 form {
     width: 80%;
+    height: 100%;
     align-items: center;
     margin: 15px auto 0;
 }
+
+.wrapper {
+    width: 100%;
+}
+
+.check-container {
+    justify-content: space-between;
+}
+
 .form-group {
     width: 100%;
     margin-bottom: 15px;
@@ -50,19 +59,6 @@ form {
 
 .form-group-header {
     font-size: 15px;
-    font-weight: bold;
-}
-
-input {
-    height: 18px;
-    outline: none;
-    background: transparent;
-    color: white;
-    margin-top: 15px;
-    font-size: 16px;
-    padding-bottom: 2px;
-    border: none;
-    border-bottom: 1px solid white;
 }
 
 select {
@@ -74,6 +70,29 @@ select {
 label {
     font-size: 16px;
     color: #999999;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-fab {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.mat-fab:hover {
+    background: #1592aa !important;
+    opacity: .7;
+}
+
+.active {
+    background: #1592aa !important;
 }
 
 .description {

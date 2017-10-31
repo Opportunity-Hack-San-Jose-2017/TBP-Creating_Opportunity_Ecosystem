@@ -1,124 +1,99 @@
 <div class="listing-container flex">
 	<div class="form-wrapper flex">
-		<form #f="ngForm" class="flex column">
-			<div [ngClass]="title.invalid && (title.dirty || title.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="title.invalid && (title.dirty || title.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="title.errors.required">
-						Title is required.
+		<form [formGroup]="jobForm" class="flex column">
+			<mat-form-field>
+					<textarea matInput placeholder="Description" name="description" formControlName="description"></textarea>
+				<mat-error *ngIf="jobForm.get('description').touched && jobForm.get('description').hasError('required')">
+					Description is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field>
+					<textarea matInput placeholder="Responsibilites" name="responsibilities" formControlName="responsibilities"></textarea>
+				<mat-error *ngIf="jobForm.get('responsibilities').touched && jobForm.get('responsibilities').hasError('required')">
+						Responsibilites are <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<div class="experience wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Experienced required?</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="circleClick($event)" class="mat-fab flex" [ngClass]="yes ? 'active' : ''" id="yes">Yes</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="circleClick($event)" class="mat-fab flex" [ngClass]="!yes ? 'active' : ''" id="no">No</div>
+						</div>
 					</div>
-				</div> -->
-				<input
-				name="title" required placeholder="Title" [(ngModel)]="job.title" 
-				#title="ngModel"
-				class="create-input" type="text">
+				</div>
+				<mat-form-field [hidden]="yes">
+						<textarea matInput placeholder="Experience" name="experience" formControlName="experience"></textarea>
+					<mat-error *ngIf="jobForm.get('experience').touched && jobForm.get('experience').hasError('required')">
+							Level of experience is <strong>required</strong>
+					</mat-error>
+				</mat-form-field>
 			</div>
-			<div [ngClass]="description.invalid && (description.dirty || description.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="description.invalid && (description.dirty || description.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="description.errors.required">
-						Description is required.
+			<div class="shift wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Shift</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="flexible ? 'active' : ''" id="flexible">Flexible</div>
+						</div>
 					</div>
-				</div> -->
-				<textarea
-				name="description" class="description" required placeholder="Description" [(ngModel)]="job.description" 
-				#description="ngModel"></textarea>
+				</div>
 			</div>
-			<div [ngClass]="responsibilities.invalid && (responsibilities.dirty || responsibilities.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="responsibilities.invalid && (responsibilities.dirty || responsibilities.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="responsibilities.errors.required">
-						Responsibilities are required.
+			<div class="p-trans wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Is your office accessible by public transportation?</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ptYes ? 'active' : ''" id="pt-yes">Yes</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="!ptYes ? 'active' : ''" id="pt-no">No</div>
+						</div>
 					</div>
-				</div> -->
-				<input
-				name="title" required placeholder="Responsibilities" [(ngModel)]="job.responsibilities" 
-				#responsibilities="ngModel"
-				class="create-input" type="text">
+				</div>
 			</div>
-			<div [ngClass]="experience.invalid && (experience.dirty || experience.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="experience.invalid && (experience.dirty || experience.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="experience.errors.required">
-						Experience is required.
+			<mat-form-field>
+				<input matInput placeholder="Location" formControlName="location">
+				<mat-error *ngIf="jobForm.get('location').touched && jobForm.get('location').hasError('required')">
+					Location is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<div class="p-trans wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Is this role paid hourly or by salary?</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="hourly ? 'active' : ''" id="hourly">Hourly</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="!hourly ? 'active' : ''" id="salary">Salary</div>
+						</div>
 					</div>
-				</div> -->
-				<input
-				name="title" required placeholder="Experience" [(ngModel)]="job.experience" 
-				#experience="ngModel"
-				class="create-input" type="number">
+				</div>
 			</div>
-			<div [ngClass]="shift.invalid && (shift.dirty || shift.touched) ? 'err-text' : null" class="form-group flex select">
-				<!-- <div *ngIf="shift.invalid && (shift.dirty || shift.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="shift.errors.required">
-						Shift is required.
-					</div>
-				</div> -->
-				<label for="shift">Shift:</label>
-				<select name="shift" id="shift" [(ngModel)]="job.shift" 
-				#shift="ngModel">
-						<option value="Morning">Morning</option>
-						<option value="Noon">Noon</option>
-						<option value="Night">Night</option>
-						<option value="Temporary">Temporary</option>
-				</select>
-			</div>
-			<div [ngClass]="publicTransport.invalid && (publicTransport.dirty || publicTransport.touched) ? 'err-text' : null" class="form-group flex select">
-				<!-- <div *ngIf="publicTransport.invalid && (publicTransport.dirty || publicTransport.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="publicTransport.errors.required">
-						Please indicate Public Transportation accessibility.
-					</div>
-				</div> -->
-				<label for="transport">Public Transport Available?</label>
-				<select name="publicTransport" id="transport" [(ngModel)]="job.publicTransport" 
-				#publicTransport="ngModel">
-					<option value="true">Yes</option>
-					<option value="false">No</option>
-				</select>
-			</div>
-			<div [ngClass]="location.invalid && (location.dirty || location.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="location.invalid && (location.dirty || location.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="location.errors.required">
-						Location is required.
-					</div>
-				</div> -->
-				<input
-				name="title" required placeholder="Location" [(ngModel)]="job.location" 
-				#location="ngModel"
-				class="create-input" type="text">
-			</div>
-			<div [ngClass]="minSalary.invalid && (minSalary.dirty || minSalary.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="minSalary.invalid && (minSalary.dirty || minSalary.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="minSalary.errors.required">
-						Min Salary is required.
-					</div>
-				</div> -->
-				<input
-				name="title" required placeholder="Min Salary" [(ngModel)]="job.minSalary" 
-				#minSalary="ngModel"
-				class="create-input" min="0" type="number">
-			</div>
-			<div [ngClass]="maxSalary.invalid && (maxSalary.dirty || maxSalary.touched) ? 'err-text' : null" class="form-group flex column">
-				<!-- <div *ngIf="maxSalary.invalid && (maxSalary.dirty || maxSalary.touched)"
-					class="alert alert-danger">
-					<div class="err" *ngIf="maxSalary.errors.required">
-						Max Salary is required.
-					</div>
-				</div> -->
-				<input
-				name="title" required placeholder="Max Salary" [(ngModel)]="job.maxSalary" 
-				#maxSalary="ngModel"
-				class="create-input" min="0" type="number">
-			</div>
+			<mat-form-field>
+				<input matInput type="number" min="0" placeholder="Min Salary" name="minSalary" formControlName="minSalary">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput type="number" min="0" placeholder="Max Salary" name="maxSalary" formControlName="maxSalary">
+			</mat-form-field>
 			<div>
-				<div (click)="submitOpening(f.value)" class="submit-create flex">Upload</div>
+				<div (click)="submitOpening()" class="submit-create flex">Upload</div>
 			</div>
 		</form>
 	</div>
 </div>
 
-<button (click)="testProfile()">test button</button>
+<!-- <button (click)="testProfile()">test button</button> -->

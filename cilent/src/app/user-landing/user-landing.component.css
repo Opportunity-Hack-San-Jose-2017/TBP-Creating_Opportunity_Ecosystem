@@ -18,13 +18,34 @@ nav {
 	background: white;
 	z-index: 10;
 	display: flex;
-	justify-content: flex-start;
-	padding-left: 10px;
+	justify-content: space-between;
+	padding: 0 10px;
 	align-items: center;
 }
 nav img {
 	height: 60px;
 }
+
+.btn {
+    height: 30px;
+	cursor: pointer;
+	font-size: .8rem;
+    width: 100px;
+    background: #1592aa;
+    align-items: center;
+    color: white;
+    justify-content: center;
+	transition: all .2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
 #content {
 	max-width: 1200px;
 	margin: 80px auto 0;
@@ -35,10 +56,11 @@ nav img {
 	width: 176px;
 }
 #profile_bar div {
-	background-color: grey;
+	background: rgba(0,0,0,.83);
 	padding: 30px;
 	margin-bottom: 10px;
 	text-align: center;
+	color: white;
 }
 
 h2 {
@@ -68,10 +90,11 @@ h2 {
 
 #search_bar {
 	position: fixed;
+	color: white;
 	top: 80px;
 	width: inherit;
 	max-width: 780px;
-    background: gray;
+	background: rgba(0,0,0,.83);
     height: 80px;
     align-items: center;
 }
@@ -162,8 +185,6 @@ button {
 		justify-content: space-around;
 		display: flex;
 		z-index: 10;
-		left: 10px;
-		background: gray;
 		height: 60px;
 		align-items: center;
 	}

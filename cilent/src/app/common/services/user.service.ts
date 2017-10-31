@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-const BASE_URL = 'http://localhost:8080';
+import { url as BASE_URL } from '../config/url';
 
 @Injectable()
 export class UserService {
@@ -42,7 +42,8 @@ export class UserService {
 				(err: HttpErrorResponse) => {
 					console.log(err);
 					if (err.status === 400) {
-						console.log(err.message)
+						console.log(err.message);
+						this.router.navigate(['jobs']);
 					}
 				}
 			)
@@ -67,7 +68,8 @@ export class UserService {
 
 	logout() {
 		const url = `${BASE_URL}/applicant/logout`;
-		return this.http.post(url, {});
+		this.http.post(url, {})
+			.subscribe((v: any) => this.router.navigate(['/']))
 	}
 
 	getSession(){
@@ -97,6 +99,7 @@ export class UserService {
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
+			localStorage.removeItem('setupStep');
 			this.updateProfile(updatedObj);
 		}
 	}
