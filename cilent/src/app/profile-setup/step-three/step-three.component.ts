@@ -21,8 +21,8 @@ export class StepThreeComponent {
 
 	createForm() {
 		this.userForm = this.fb.group({
-			skills: [''],
-			experiences: [' ']
+			skillsSet: [''],
+			experiences: ['']
 		});
 	}
 	
