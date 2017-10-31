@@ -29,7 +29,7 @@ export class JobListingComponent {
     private _jobs: JobsService,
     private fb: FormBuilder
   ) {
-    // this.createForm();
+    this.createForm();
   }
 
 	jobForm: FormGroup;
@@ -59,8 +59,7 @@ export class JobListingComponent {
   }
 
   submitOpening() {
-    // this._jobs.postOpening(this.jobForm.value)
-    this._jobs.postOpening(this.job)
+    this._jobs.postOpening(this.jobForm.value)
   }
   
 

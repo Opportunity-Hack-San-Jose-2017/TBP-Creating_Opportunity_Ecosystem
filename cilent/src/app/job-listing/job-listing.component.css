@@ -112,3 +112,9 @@ label {
 }
 
 .accept { align-items: center; margin-top: 5px; }
+
+@media screen and (max-width: 500px) {
+    .form-wrapper {
+        width: 90%;
+    }
+}
