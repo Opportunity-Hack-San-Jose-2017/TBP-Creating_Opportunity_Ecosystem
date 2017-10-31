@@ -61,33 +61,40 @@ public class ApplicantController {
     @CrossOrigin
     @PostMapping(value = "/register", produces="application/json")
     @ResponseBody
-    public ModelMap register(@RequestBody String applicantJSON,
+    public ModelMap register(@RequestBody Applicant applicant,
                              HttpSession session){
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
 
         try{
-            Applicant applicantObject = mapper.readValue(applicantJSON, Applicant.class);
-//    		System.out.println(applicantObject.getEmail());
-
-            if(session.getAttribute("email")!=null)
-            {
-                responseMap.addAttribute("statusCode", "400");
-                responseMap.addAttribute("message","Please sign out before registering.");
-                return responseMap;
-            }
-
-            Applicant applicant=new Applicant();
-            applicant.setEducation(applicantObject.getEducation());
-            applicant.setExperience(applicantObject.getExperience());
-            applicant.setSkillsSet(applicantObject.getSkillsSet());
-            applicant.setEmail(applicantObject.getEmail());
-            applicant.setPassword(applicantObject.getPassword());
-            applicant.setLastName(applicantObject.getLastName());
-            applicant.setFirstName(applicantObject.getFirstName());
-            applicant.setPhoneNumber(applicantObject.getPhoneNumber());
-            applicant.setAvailability(applicantObject.getAvailability());
-            applicant.setShift(applicantObject.getShift());
+//            Applicant applicantObject = mapper.readValue(applicantJSON, Applicant.class);
+////    		System.out.println(applicantObject.getEmail());
+//
+//            if(session.getAttribute("email")!=null)
+//            {
+//                responseMap.addAttribute("statusCode", "400");
+//                responseMap.addAttribute("message","Please sign out before registering.");
+//                return responseMap;
+//            }
+//
+//            Applicant applicant=new Applicant();
+//            applicant.setEducation(applicantObject.getEducation());
+//            applicant.setExperience(applicantObject.getExperience());
+//            System.out.println(applicantObject.getSkillsSet());
+//            applicant.setSkillsSet(applicantObject.getSkillsSet());
+            System.out.println("Skill Set set as :"+applicant.getSkillsSet());
+//            applicant.setEmail(applicantObject.getEmail());
+//            applicant.setPassword(applicantObject.getPassword());
+//            applicant.setLastName(applicantObject.getLastName());
+//            applicant.setFirstName(applicantObject.getFirstName());
+//            applicant.setPhoneNumber(applicantObject.getPhoneNumber());
+//            applicant.setAvailability(applicantObject.getAvailability());
+//            applicant.setShift(applicantObject.getShift());
+//            applicant.setCity(applicantObject.getCity());
+//            applicant.setCountry(applicantObject.getCountry());
+//            applicant.setRating(0);
+//            applicant.setPosition(applicantObject.getPosition());
+//            applicant.setNumberOfRatings(0);
 
             if(!applicantService.register(applicant)){
                 responseMap.addAttribute("statusCode", "400");
