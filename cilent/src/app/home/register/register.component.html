@@ -39,6 +39,10 @@
 			Password Confirmation is <strong>required</strong>
 		</mat-error>
 	</mat-form-field>
-	<mat-checkbox *ngIf="userForm.get('accept').touched && userForm.get('accept').hasError('required')" formControlName="accept">Accept <a href="">terms</a> and agreement</mat-checkbox>
-	<div (click)="registration()" class="submit-register flex">Register</div>
+	<div class="flex check">
+		<input (click)="handleCheck()" type="checkbox" id="accept" #accept />
+		<label for="accept">Accept <a href="">terms</a> and agreement</label>
+	</div>
+	<span class="tip" *ngIf="!checked && hovered">Please accept terms.</span>
+	<div (mouseenter)="hovered = true" (mouseout)="hovered = false" (click)="registration()" class="submit-register flex">Register</div>
 </form>

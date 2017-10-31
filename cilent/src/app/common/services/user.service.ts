@@ -50,7 +50,7 @@ export class UserService {
 
 	register(registration_cred: Object) {
 		const url = `${BASE_URL}/applicant/register`;
-		this.http.post(url, registration_cred)
+		this.http.post(url, registration_cred, {withCredentials:true})
 			.subscribe(
 				(data: any) => {
 					localStorage.setItem('user', JSON.stringify(data));
