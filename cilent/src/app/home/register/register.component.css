@@ -27,7 +27,7 @@ form {
     transform: translateY(1px);
 }
 
-.check { align-items: center; margin-bottom: 7px; }
+.check { align-items: center; margin: 10px 0 15px; }
 
 label { margin-left: 5px; }
 

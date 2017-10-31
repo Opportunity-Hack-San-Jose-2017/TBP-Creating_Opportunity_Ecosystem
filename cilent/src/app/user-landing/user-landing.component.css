@@ -104,6 +104,27 @@ h2 {
 	vertical-align: top;
 }
 
+#mobile_search { display: none; }
+
+.search {
+	color: rgba(255,255,255,.7);
+	height: 40px;
+	width: 100%;
+	padding: 10px;
+	background: rgba(0,0,0,.83);
+	align-items: center;
+	justify-content: space-around;
+	cursor: pointer;
+}
+
+.filter-menu {
+	transform-origin: top;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	height: 250px;
+}
+
 #textInput {
 	flex: 10;
 	height: 30px;
@@ -125,11 +146,12 @@ button {
 }
 
 .dropdown {
-    display: inline-block;
+	display: inline-block;
 }
 
 .dropdown-content {
 	position: absolute;
+	color: rgba(0,0,0,.83) !important;
 	background-color: white;
 	border: 3px solid #4b1900;
 }
@@ -161,10 +183,21 @@ button {
 
 @media screen and (max-width: 500px) {
 
+	#mobile_search {
+		display: flex;
+		position: fixed;
+		top: 70px;
+		z-index: 10;
+		justify-content: flex-start;
+		padding-left: 10%;
+	}
+
+	#search_bar { display: none; }
+
 	nav {
 		display: flex;
 		width: 100%;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		height: 70px;
 	}
@@ -178,7 +211,7 @@ button {
 		width: 100vw;
 	}
 
-	#search_bar {
+	/* #search_bar {
 		position: fixed;
 		top: 70px;
 		width: 100%;
@@ -187,7 +220,7 @@ button {
 		z-index: 10;
 		height: 60px;
 		align-items: center;
-	}
+	} */
 
 	#search_bar * {
 		margin: 0 3px;
@@ -201,7 +234,7 @@ button {
 		position: relative;
 		width: 100%;
 		padding: 0;
-		padding-top: 30px;
+		margin-top: 30px;
 		left: 0;
 	}
 
