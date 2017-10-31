@@ -33,7 +33,6 @@
     padding: 20px 30px;
     background: rgba(0,0,0,.83);
     position: relative;
-    /* margin-top: 100px; */
     color: rgba(255,255,255,.7);
     align-items: center;
     max-width: 500px;
@@ -44,7 +43,7 @@
     margin-right: 30px;
 }
 
-.links { width: 70%; cursor: pointer; }
+.links { width: 70%; cursor: pointer; margin-bottom: 10px; }
 
 .link {
     font-size: 17px;
