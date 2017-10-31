@@ -134,7 +134,6 @@ public class ApplicantController {
                 responseMap.addAttribute("message","This application is previously submitted and is not in terminal state.");
                 return responseMap;
             }else
-
             if(statusCode==402){
                 responseMap.addAttribute("statusCode", "402");
                 responseMap.addAttribute("message","You cannot have more than five pending applications.");

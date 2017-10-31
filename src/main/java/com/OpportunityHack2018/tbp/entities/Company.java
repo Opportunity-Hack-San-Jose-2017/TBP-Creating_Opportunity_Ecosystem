@@ -36,10 +36,8 @@ public class Company {
     @Column
     private String token;
 
-    @Column
-    private String sessionId;
-
     @OneToMany(mappedBy = "company")
+    @JsonBackReference
     private List<Opening> openings;
 
     public String getEmail() {
@@ -120,13 +118,5 @@ public class Company {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
     }
 }

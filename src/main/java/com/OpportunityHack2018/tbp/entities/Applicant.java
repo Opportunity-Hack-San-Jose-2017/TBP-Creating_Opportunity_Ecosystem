@@ -1,5 +1,7 @@
 package com.OpportunityHack2018.tbp.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -50,10 +52,8 @@ public class Applicant {
     @Column
     private String hashValue;
 
-    @Column
-    private String sessionId;
-
     @OneToMany(mappedBy = "applicant")
+    @JsonBackReference
     private Set<Application> applications;
 
     @ElementCollection
@@ -198,13 +198,5 @@ public class Applicant {
 
     public void setShift(List<String> shift) {
         this.shift = shift;
-    }
-
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
     }
 }
