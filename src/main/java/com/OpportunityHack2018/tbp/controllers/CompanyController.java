@@ -1,14 +1,12 @@
 package com.OpportunityHack2018.tbp.controllers;
 
-import com.OpportunityHack2018.tbp.entities.Application;
-import com.OpportunityHack2018.tbp.entities.Company;
-import com.OpportunityHack2018.tbp.entities.InterviewSchedule;
-import com.OpportunityHack2018.tbp.entities.Opening;
+import com.OpportunityHack2018.tbp.entities.*;
 import com.OpportunityHack2018.tbp.services.ApplicantService;
 import com.OpportunityHack2018.tbp.services.ApplicationService;
 import com.OpportunityHack2018.tbp.services.CompanyService;
 import com.OpportunityHack2018.tbp.services.OpeningService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
@@ -580,6 +578,34 @@ public class CompanyController {
             responseMap.addAttribute("msg","Cannot make offer right now. Please try again later");
             return responseMap;
         }
+    }
+
+    @GetMapping("/searchApplicants")
+    public ModelMap searchApplicants(@RequestParam(value = "min_ratings") String min_ratings,
+                                     @RequestParam(value = "skillSets") Set<String> skills,
+                                     @RequestParam(value="positions")Set<String> positions,
+                                     @RequestParam(value = "min_experience")Integer min_experience ,
+                                     @RequestParam(value = "availability") String availability,
+                                     @RequestParam(value = "education") String education,
+                                     @RequestParam(value = "city") String city,
+                                     @RequestParam(value = "country") String country
+  ,HttpSession session){
+        ModelMap responseMap=new ModelMap();
+        List<Applicant> applicantList=null;
+        try {
+            applicantList = applicantService.searchApplicants(min_ratings, min_experience, skills, positions, availability, education, city, country);
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+            responseMap.addAttribute("statusCode",500);
+            responseMap.addAttribute("message","Oops! Something went wrong. Please try again.");
+            return responseMap;
+        }
+
+        responseMap.addAttribute("statusCode",200);
+        responseMap.addAttribute("candidates",applicantList);
+
+        return responseMap;
     }
 
 

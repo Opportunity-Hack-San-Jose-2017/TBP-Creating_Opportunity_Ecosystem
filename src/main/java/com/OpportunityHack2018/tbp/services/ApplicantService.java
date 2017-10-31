@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -157,4 +159,64 @@ public class ApplicantService {
     }
 
 
+    public List<Applicant> searchApplicants(String min_ratings, Integer min_experience, Set<String> skills, Set<String> positions, String availability, String education, String city, String country) {
+        List<Applicant> candidates=applicantRepository.searchCandidates(""+min_experience,min_ratings);
+        List<Applicant> qualified=new ArrayList<>();
+        System.out.println("Found search results :"+candidates.size());
+
+        for(Applicant applicant:candidates){
+            System.out.println("Applicant Availibility :"+applicant.getAvailability());
+            if(availability!=null && availability.length()>0){
+                if(!applicant.getAvailability().contains(availability)) continue;
+            }
+
+            System.out.println("Availibility passed ");
+
+            if(education!=null && education.length()>0){
+                if(!education.trim().toLowerCase().contains(applicant.getEducation().toLowerCase())) continue;
+            }
+
+            System.out.println("education passed ");
+
+            if(city!=null && city.length()>0){
+                if(!city.trim().equalsIgnoreCase(applicant.getCity())) continue;
+            }
+
+            System.out.println("City passed ");
+
+            if(country!=null && country.length()>0){
+                if(!country.trim().equalsIgnoreCase(applicant.getCountry())) continue;
+            }
+
+            System.out.println("Country passed ");
+            System.out.println("Skills :"+skills);
+            if(skills!=null && skills.size()>0){
+                boolean fail=true;
+                for(String skill:skills){
+                    for(String appSkill:applicant.getSkillsSet())
+                        if(appSkill.trim().toLowerCase().contains(skill)){
+                            fail=false;
+                            break;
+                        }
+                }
+                if(fail) continue;
+            }
+
+            System.out.println("Skills passed ");
+            if(positions!=null && positions.size()>0){
+                boolean fail=true;
+                for(String position:positions){
+                    if(applicant.getPosition().trim().equalsIgnoreCase(position)) {
+                        fail = false;
+                        break;
+                    }
+                }
+                if(fail) continue;
+            }
+            System.out.println("positions passed ");
+            qualified.add(applicant);
+        }
+
+        return qualified;
+    }
 }
