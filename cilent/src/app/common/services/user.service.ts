@@ -42,7 +42,8 @@ export class UserService {
 				(err: HttpErrorResponse) => {
 					console.log(err);
 					if (err.status === 400) {
-						console.log(err.message)
+						console.log(err.message);
+						this.router.navigate(['jobs']);
 					}
 				}
 			)
@@ -98,6 +99,7 @@ export class UserService {
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
+			localStorage.removeItem('setupStep');
 			this.updateProfile(updatedObj);
 		}
 	}
