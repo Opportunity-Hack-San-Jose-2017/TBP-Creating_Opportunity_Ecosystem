@@ -6,9 +6,9 @@
 	<section id="content" class="flex">
 		<div id="profile_bar">
 			<div>
-				<h2>{{user['firstName']}} {{user['lastName']}}</h2>
+				<h2>{{company['name']}}</h2>
 				<img src="../../assets/images/profile-icon.png">
-				<button (click)="goToEditProfile()" >Edit Profile</button>
+				<button>Edit Profile</button>
 			</div>
 			<div>
 				<h2>Saved Jobs</h2>
@@ -77,8 +77,8 @@
 				</div>
 				<button>Search</button>
 			</div>
-			<div id="job_feed">
-				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
+			<div id="applicant_feed">
+				
 			</div>
 		</div>
 	</section>

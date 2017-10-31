@@ -243,6 +243,7 @@ public class CompanyController {
     @PostMapping(value = "/logout")
     @ResponseBody
     public ModelMap logout(HttpSession session){
+        System.out.println("Session id:"+ session.getId());
         session.invalidate();
         ModelMap responseMap = new ModelMap();
         responseMap.addAttribute("statusCode", "200");
