@@ -17,11 +17,11 @@ export class CompanyService {
 	}
 
 	register(data: Object){
-		this.http.post(`${BASE_URL}/register`, data)
+		this.http.post(`${BASE_URL}/company/register`, data)
 			.subscribe(
 				(data: any) => {
 					console.log(data);
-					this._router.navigate(['company/opening/create'])
+					this._router.navigate(['company'])
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
