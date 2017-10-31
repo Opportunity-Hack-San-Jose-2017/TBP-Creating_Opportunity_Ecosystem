@@ -1,14 +1,24 @@
 nav {
     height: 120px;
-    display: block;
+	display: block;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
 }
 nav img {
 	margin-top: 10px;
     margin-left: 30px;
 }
+#content {
+	max-width: 1200px;
+	margin: 120px auto 0;
+}
 #profile_bar {
 	margin: 0px 10px 0px 30px;
 	display:inline-block;
+	position: fixed;
 }
 #profile_bar div {
 	background-color: grey;
@@ -16,6 +26,11 @@ nav img {
 	margin-bottom: 10px;
 	text-align: center;
 }
+
+h2 {
+	font-size: 20px;
+}
+
 #profile_bar div img {
 	display: block;
 	margin: auto;
@@ -27,12 +42,22 @@ nav img {
 	display: inline-block;
 	background-color: grey;
 	padding: 10px;
+	height: calc(100vh - 130px);
+	overflow: auto;
 	width: 65%;
+	left: 220px;
+	position: relative;
 }
 
 #search_bar {
-	display: flex;
-
+	position: fixed;
+	top: 120px;
+	width: inherit;
+	max-width: 780px;
+    background: gray;
+    height: 60px;
+    align-items: center;
+    margin-left: -10px;
 }
 
 #search_bar *{
@@ -82,8 +107,7 @@ button {
 }
 
 #job_feed {
-	margin: 20px 5px 0px 5px;
-	width: 99%;
+	margin-top: 50px;
 }
 .job_cell {
 	padding: 10px 20px;
@@ -93,4 +117,56 @@ button {
 
 .checkbox_div *{
 	display: inline-block;
+}
+
+@media screen and (max-width: 500px) {
+
+	nav {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		height: 100px;
+	}
+
+	nav img {
+		margin: 0;
+		height: 80px;
+	}
+
+	#search_bar {
+		position: fixed;
+		top: 100px;
+		width: 100%;
+		justify-content: space-around;
+		display: flex;
+		z-index: 10;
+		left: 10px;
+		background: gray;
+		height: 60px;
+		align-items: center;
+	}
+
+	#search_bar * {
+		margin: 0 3px;
+	}
+
+	#profile_bar {
+		display: none;
+	}
+
+	.main-container {
+		position: relative;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		left: 0;
+	}
+
+	#job_feed {
+		position: relative;
+		top: 30px;
+		margin: 0;
+		width: 100%;
+	}
 }

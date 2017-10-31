@@ -1,23 +1,44 @@
-.alert {
-    top: -6px;
-    position: absolute;
+* {
+    color: rgba(255,255,255,.7);
 }
-.err {
-    color: rgb(211, 29, 29);
-}
-
 .main-wrapper {
-    margin-top: 80px;
+    margin-top: 45px;
     min-height: 500px;
     overflow: auto;
-    width: 80%;    
+    width: 80%;
+    max-width: 700px;
+}
+
+.mat-form-field {
+    margin-right: 10px;
+}
+
+.mat-fab {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.mat-fab:hover {
+    background: #1592aa !important;
+    opacity: .7;
+}
+
+.active {
+    background: #1592aa !important;
 }
 
 .header {
     font-size: 35px;
     font-weight: bold;
-    color: rgb(68, 68, 236);
-    width: 80%;
+    margin-top: 15px;
+    color: rgb(54, 54, 184);
+    width: 100%;
+    text-align: center;
 }
 
 .gap { margin-right: 15px; }
@@ -43,14 +64,18 @@
     width: 100%;
     border-radius: 1px;
     padding: 20px 30px;
+    justify-content: center;
     background: rgba(0,0,0,.83);
     position: relative;
     color: white;
     align-items: center;
-    overflow-y: auto;
 }
 
 .form-top, .form-bottom {
+    width: 100%;
+}
+
+.form-bottom * {
     width: 100%;
 }
 
@@ -61,11 +86,17 @@
 .form-top-left {
     align-items: center;
     margin-right: 20px;
+    padding-top: 1em;
 }
 
 .check-container {
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+form {
+    align-items: center;
+    margin: 15px auto 0;
 }
 
 .form-group-header {
@@ -77,35 +108,15 @@
     align-items: center;
 }
 
-form {
-    width: 80%;
-    align-items: center;
-    margin: 15px auto 0;
-}
 .form-group {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     position: relative;
 }
 
 .form-group-header {
     font-size: 15px;
     font-weight: bold;
-}
-
-input[type="text"], input[type="tel"], input[type="email"] {
-    height: 18px;
-    outline: none;
-    background: transparent;
-    color: white;
-    font-size: 16px;
-    padding-bottom: 2px;
-    border: none;
-    border-bottom: 1px solid white;
-}
-
-input[type="checkbox"] {
-    margin-right: 5px;
 }
 
 .submit-register {
@@ -155,4 +166,10 @@ input[type="checkbox"] {
 .back-btn, .save-btn {
     background: #1592aa;
     margin-right: 40px;
+}
+
+@media screen and (max-width: 500px) {
+    .name-phone-wrapper {
+        flex-direction: column;
+    }
 }

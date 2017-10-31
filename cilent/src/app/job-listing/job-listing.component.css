@@ -8,7 +8,7 @@
 }
 
 .err {
-    color: rgb(211, 29, 29);
+    color: #8c1d2b;
 }
 
 .listing-container {
@@ -73,7 +73,7 @@ select {
 
 label {
     font-size: 16px;
-    color: gray;
+    color: #999999;
 }
 
 .description {

@@ -31,8 +31,9 @@
     background: rgba(0,0,0,.83);
     position: relative;
     margin-top: 150px;
-    color: white;
+    color: rgba(255,255,255,.7);
     align-items: center;
+    max-width: 500px;
     overflow-y: auto;    
 }
 
@@ -62,6 +63,5 @@ app-register, app-login { width: 100%; }
 
     .login-reg-wrapper {
         width: 80%;
-        height: 75vh;
     }
 }

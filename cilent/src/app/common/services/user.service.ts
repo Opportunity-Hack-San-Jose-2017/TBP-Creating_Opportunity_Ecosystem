@@ -29,6 +29,21 @@ export class UserService {
   	)
   }
 
+  updateProfile(update_cred: Object){
+  	this.http.post('http://localhost:8080/applicant/signin', update_cred)
+  	.subscribe(
+  		(data: any) => {
+        localStorage.setItem('user', JSON.stringify(data));
+        this.router.navigate(['jobs']);
+      },
+  		(err: HttpErrorResponse) => {
+        if (err["statusCode"] == "400") {
+          alert(err["message"])
+        }
+      }
+  	)
+  }
+
   register(registration_cred: Object) {
   	this.http.post('http://localhost:8080/applicant/register', registration_cred)
   	.subscribe(
@@ -61,8 +76,8 @@ export class UserService {
     )
   }
 
-	sendProfileInfo(data: Object) {
-		let num = Number(localStorage.getItem('setupStep')) + 1;
+sendProfileInfo(data: Object) {
+		const num = Number(localStorage.getItem('setupStep')) + 1;
 		localStorage.setItem('setupStep', num.toString());
 		this.setupStep.next(num);
 		const stor = localStorage.getItem('profile') || '';
@@ -70,10 +85,16 @@ export class UserService {
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
     if (num === 4) {
-      this.router.navigate(['jobs'])
+      this.router.navigate(['jobs']);
       this.register(updatedObj);
     }
-	}
+  }
+  
+  stepBack() {
+    const num = Number(localStorage.getItem('setupStep')) - 1;
+    localStorage.setItem('setupStep', num.toString())
+    this.setupStep.next(num);
+  }
 
 	getSetupStep(): Observable<any> {
 		return this.setupStep;

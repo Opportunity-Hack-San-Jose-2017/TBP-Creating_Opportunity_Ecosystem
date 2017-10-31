@@ -1,7 +1,9 @@
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobsService } from './common/services/jobs.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +27,7 @@ import { CompanyRegisterComponent } from './company-home/company-register/compan
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { EmployersLandingpageComponent } from './employers-landingpage/employers
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     FormsModule,
     RouterModule,
     HttpClientModule
