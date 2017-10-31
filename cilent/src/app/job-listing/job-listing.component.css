@@ -2,23 +2,36 @@
     top: -6px;
     position: absolute;
 }
+
+.select {
+    align-items: center;
+}
+
 .err {
-    color: rgb(211, 29, 29);
+    color: #8c1d2b;
 }
 
 .listing-container {
     align-items: center;
     justify-content: center;
     min-height: 100%;
+    width: 100%;
+    background: url('../../assets/images/login-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .form-wrapper {
     width: 45%;
     border-radius: 1px;
     padding: 20px 30px;
-    background: black;
+    background: rgba(0,0,0,.83);
     position: relative;
-    opacity: .83;
     color: white;
     align-items: center;
     overflow-y: auto;    
@@ -52,13 +65,28 @@ input {
     border-bottom: 1px solid white;
 }
 
-label { margin-top: 15px; }
+select {
+    height: 20px;
+    flex: 1;
+    margin-left: 10px;
+}
+
+label {
+    font-size: 16px;
+    color: #999999;
+}
+
+.description {
+    font-size: 16px;
+    resize: none;
+    height: 60px;
+}
 
 .submit-create {
     height: 30px;
     cursor: pointer;
     width: 100px;
-    background: #00c9b3;
+    background: #1592aa;
     align-items: center;
     color: white;
     justify-content: center;

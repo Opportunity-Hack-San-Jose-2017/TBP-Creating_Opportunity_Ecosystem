@@ -1,10 +1,8 @@
 .no-point { pointer-events: none; }
 
 .profile-setup-container {
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 15px 35px;
     background: url('../../assets/images/newuser-bg.png');
     background-repeat: no-repeat; 
@@ -14,11 +12,15 @@
     background-size: cover;
     justify-content: center;
     overflow: hidden;
+    align-items: center; 
+    
 }
 
 app-step-one, app-step-two, app-step-three {
     width: 85%;
-    min-height: 400px;
+    max-width: 500px;
+    min-height: 380px;
+    height: 100%;
     justify-content: space-between;
     position: relative;
 }
@@ -32,18 +34,49 @@ app-step-one, app-step-two, app-step-three {
 
 .profile-setup-wrapper {
     width: 65%;
-    min-width: 34px;
-    border-radius: 1px;
-    padding: 20px 30px;
+    max-width: 700px;
+    max-height: 77vh;
+    height: 450px;
     background: rgba(0,0,0,.83);
-    margin-top: 100px;
+    border-radius: 1px;
     color: white;
+    padding: 20px 30px;
     align-items: center;
     justify-content: space-between;
     overflow: auto;
+    position: absolute;
+    top: 120px;
+}
+
+@media screen and (min-width: 501px) {
+    .profile-setup-container {
+        align-items: center; 
+    }   
 }
 
 @media screen and (max-width: 500px) {
-    .profile-setup-container { padding: 0; }
-    .profile-setup-wrapper { width: 90%; }
+
+    app-step-one, app-step-two, app-step-three {
+        width: 95%;
+    }
+
+    app-step-two {
+        min-height: 425px;
+    }
+
+    .profile-setup-container {
+        padding: 0;
+    }
+        
+    .logo-wrap {
+        left: auto;
+    }
+
+    .profile-setup-wrapper {
+        width: 90%;
+        height: auto;
+        margin-top: 20px;
+        position: absolute;
+        top: 100px;
+    }
 }

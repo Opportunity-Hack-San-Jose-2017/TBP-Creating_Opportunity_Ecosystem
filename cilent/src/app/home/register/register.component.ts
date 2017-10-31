@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,29 +9,48 @@ import { UserService } from '../../common/services/user.service';
 })
 export class RegisterComponent {
 
-	user = {
-		email: "",
-		token: "",
-		password: "",
-		confirmPassword: "",
-		firstName: "",
-		lastName: ""
+	userForm: FormGroup;
+	checked: Boolean = false;
+	hovered: Boolean = false;	
+	@ViewChild('accept', {read: ElementRef}) accept: ElementRef;
+
+	constructor(
+		private _user: UserService,
+		private fb: FormBuilder
+	) {
+		this.createForm();
 	}
 
-	constructor(private _user: UserService) { }
+	handleCheck() {
+		this.checked = !this.checked;
+	}
 
-	registration(user: any) {
-		const obj = {
-			email: user.email,
-			firstName: user.firstName,
-			lastName: user.lastName,
-			password: user.password,
-			introduction: "",
-			experience: "",
-			skillsSet: [],
-			verified: false,
-			hashValue: ""
+	registration() {
+		if (this.accept.nativeElement.checked) {
+			const obj = {
+				email: this.userForm.value.email,
+				firstName: this.userForm.value.firstName,
+				lastName: this.userForm.value.lastName,
+				password: this.userForm.value.password,
+				introduction: "",
+				experience: "",
+				skillsSet: [],
+				verified: false,
+				hashValue: ""
+			}
+			this._user.register(obj);
 		}
-		this._user.register(obj);
 	} 
+
+	createForm() {
+		this.userForm = this.fb.group({
+			firstName: ['', Validators.required ],		
+			lastName: ['', Validators.required ],		
+			caseFileID: ['', Validators.required ],		
+			accept: ['', Validators.required ],		
+			email: ['', [Validators.required, Validators.email]],
+			password: ['', Validators.required ],
+			confirmPassword: ['', Validators.required ],
+		});
+	}
 }

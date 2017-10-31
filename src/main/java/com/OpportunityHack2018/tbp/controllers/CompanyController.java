@@ -1,18 +1,19 @@
 package com.OpportunityHack2018.tbp.controllers;
 
-import com.OpportunityHack2018.tbp.entities.Company;
-import com.OpportunityHack2018.tbp.entities.Opening;
+import com.OpportunityHack2018.tbp.entities.*;
 import com.OpportunityHack2018.tbp.services.ApplicantService;
 import com.OpportunityHack2018.tbp.services.ApplicationService;
 import com.OpportunityHack2018.tbp.services.CompanyService;
 import com.OpportunityHack2018.tbp.services.OpeningService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -59,6 +60,8 @@ public class CompanyController {
     public ModelMap postOpening(@RequestBody String jobPosting,
                                 HttpSession session
     ){
+
+        System.out.println("Session in profile :"+session.getId());
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
         try{
@@ -102,6 +105,7 @@ public class CompanyController {
     @ResponseBody
     public ModelMap update(@RequestBody String componyInfo,
                            HttpSession session){
+
 
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
@@ -155,7 +159,7 @@ public class CompanyController {
                              HttpSession session){
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
-
+        System.out.println("Session in profile :"+session.getId());
         try{
             Company companyObject = mapper.readValue(companyJSON,Company.class);
 
@@ -198,7 +202,7 @@ public class CompanyController {
     @ResponseBody
     public ModelMap signin(@RequestBody String jsonObj,
                            HttpSession session){
-
+        System.out.println("Session in sign :"+session.getId());
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
         System.out.println("Spring Session ID :"+session.getId());
@@ -244,6 +248,366 @@ public class CompanyController {
         responseMap.addAttribute("statusCode", "200");
         return responseMap;
     }
+
+    @GetMapping(value = "/allOpenings")
+    @ResponseBody
+    public ModelMap getOpenings(HttpSession session){
+        ModelMap responseMap = new ModelMap();
+        if(session.getAttribute("email")==null) {
+            responseMap.addAttribute("statusCode", "400");
+            responseMap.addAttribute("message", "Please login to continue");
+            return responseMap;
+        }
+
+        try {
+            Set<Opening> openings = companyService.getAllOpenings(session.getAttribute("email").toString());
+            List<ModelMap> openingMap = new ArrayList<ModelMap>();
+            for(Opening o : openings){
+                ModelMap m = new ModelMap();
+                m.addAttribute("title", o.getTitle());
+                m.addAttribute("location", o.getLocation());
+                m.addAttribute("description", o.getDescription());
+                m.addAttribute("responsibility", o.getResponsibilities());
+                m.addAttribute("companyName", o.getCompany().getName());
+                m.addAttribute("date", o.getDate());
+                m.addAttribute("id", o.getOpening_id());
+//                m.addAttribute("imageUrl",o.getCompany().getImageUrl());
+                m.addAttribute("openingStatus",o.getStatus());
+                m.addAttribute("minSalary",o.getMinSalary());
+                m.addAttribute("maxSalary",o.getMaxSalary());
+                openingMap.add(m);
+            }
+            responseMap.addAttribute("statusCode", "400");
+            responseMap.addAttribute(openingMap);
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode", "400");
+            responseMap.addAttribute("message", "Snap! Something went wrong please try again later");
+            return responseMap;
+        }
+        return responseMap;
+    }
+
+    @GetMapping(value = "/opening")
+    @ResponseBody
+    public ModelMap getOpening(@RequestParam ("opening_id") Integer opening_id,HttpSession session){
+        ModelMap responseMap = new ModelMap();
+        System.out.println("Opening id:"+opening_id);
+        if(session.getAttribute("email")==null || opening_id==null){
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message","Please sign in before fetching opening and provide job id.");
+        }
+
+        try {
+            Opening opening=openingService.getOpening(opening_id);
+            responseMap.addAttribute("title",opening.getTitle());
+            responseMap.addAttribute("description",opening.getDescription());
+            responseMap.addAttribute("date",opening.getDate());
+            responseMap.addAttribute("location",opening.getLocation());
+            responseMap.addAttribute("responsibilites",opening.getResponsibilities());
+            responseMap.addAttribute("minSalary",opening.getMinSalary());
+            responseMap.addAttribute("maxSalary",opening.getMaxSalary());
+            responseMap.addAttribute("applications",opening.getApplications());
+//            responseMap.addAttribute("imageUrl",opening.getCompany().getImageUrl());
+            responseMap.addAttribute("openingStatus",opening.getStatus());
+
+
+            List<ModelMap> app_list = new ArrayList<>();
+            HashMap<String,String> mapofapp = new HashMap<String,String>();
+            for(int i=0;i<opening.getApplications().size();i++){
+                ModelMap m = new ModelMap();
+                System.out.println("Email:"+opening.getApplications().get(i).getApplicant().getEmail());
+                System.out.println("Error:");
+                m.addAttribute("applicantInfo",opening.getApplications().get(i).getApplicant());
+                m.addAttribute("applicationStatuscustom",opening.getApplications().get(i).getStatus());
+                m.addAttribute("applicantResume",opening.getApplications().get(i).getResumeUrl());
+                m.addAttribute("applicationId",opening.getApplications().get(i).getApplication_id());
+                app_list.add(m);
+                mapofapp.put(opening.getApplications().get(i).getApplicant().getEmail(),opening.getApplications().get(i).getStatus());
+
+            }
+
+            responseMap.addAttribute("applicantsInfo",app_list);
+
+
+
+            responseMap.addAttribute("applicationscustom",mapofapp);
+            responseMap.addAttribute("company",opening.getCompany().getName());
+            responseMap.addAttribute("statusCode","200");
+            return responseMap;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode","500");
+            responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+            return responseMap;
+        }
+    }
+
+
+    @PostMapping(value = "/cancelOpening")
+    @ResponseBody
+    public ModelMap cancelOpening(@RequestBody String jsonObj,HttpSession session) {
+        ObjectMapper mapper = new ObjectMapper();
+        ModelMap responseMap = new ModelMap();
+
+        if (session.getAttribute("email") == null) {
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message", "Please sign in before updating opening.");
+        }
+
+        try {
+            JSONObject obj = new JSONObject(jsonObj);
+            int openingId = obj.getInt("openingId");
+            Opening opening = openingService.getOpeningForCompany(openingId, session.getAttribute("email").toString());
+            /*Opening openingReqObj = mapper.readValue(jsonObj, Opening.class);
+            Opening opening = openingService.getOpeningForCompany(openingReqObj.getOpening_id(), session.getAttribute("email").toString());*/
+            List<Application> applications=opening.getApplications();
+            for(Application application:applications){
+                if(application.getStatus().equals("OfferAccepted")){
+                    responseMap.addAttribute("statusCode", "401");
+                    responseMap.addAttribute("message","Cannot cancel this position! An offer for this opening is already accepted.");
+                    return responseMap;
+                }
+            }
+            for(Application application:applications){
+                if(!application.isTerminal() && !applicationService.cancelApplication(application)){
+                    System.out.println("The application :"+application.getApplication_id()+" is already in terminal state. But leaving it as is.");
+                }
+            }
+
+            openingService.cancelOpening(opening);
+            responseMap.addAttribute("statusCode", "200");
+            responseMap.addAttribute("message","Opening canceled successfully!");
+            return responseMap;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+            return responseMap;
+        }
+    }
+
+    @PostMapping(value = "/updateOpening")
+    @ResponseBody
+    public ModelMap updateOpening(@RequestBody String jsonObj,HttpSession session){
+
+        ObjectMapper mapper = new ObjectMapper();
+        ModelMap responseMap = new ModelMap();
+
+        if(session.getAttribute("email")==null){
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message","Please sign in before updating opening.");
+        }
+
+        try {
+            Opening openingReqObj = mapper.readValue(jsonObj, Opening.class);
+            Opening opening=openingService.getOpeningForCompany(openingReqObj.getOpening_id(),session.getAttribute("email").toString());
+            if(companyService.updateOpening(openingReqObj,opening)) {
+
+                responseMap.addAttribute("statusCode", "200");
+                responseMap.addAttribute("message", "Opening updated successfully!");
+            }else {
+                responseMap.addAttribute("statusCode","500");
+                responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode","500");
+            responseMap.addAttribute("message","Snap! Something went wrong. Please try again.");
+        }
+        return responseMap;
+    }
+
+    @GetMapping(value="/interview")
+    @ResponseBody
+    public ModelMap getInterviews(@RequestParam ("opening_id") Integer opening_id, HttpSession session){
+
+        System.out.println("Opening id:"+opening_id);
+
+        ModelMap responseMap = new ModelMap();
+
+        if (session.getAttribute("email") == null) {
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message", "Please sign in before updating opening.");
+        }
+
+        try {
+
+
+            Opening opening=openingService.getOpening(opening_id);
+            if(opening==null){
+                responseMap.addAttribute("statusCode","404");
+                responseMap.addAttribute("message","Opening not found.");
+                return responseMap;
+            }
+            List<Application> applications=opening.getApplications();
+            List<InterviewSchedule> currentInterviews=new ArrayList<>();
+            List<String> emails=new ArrayList<>();
+            for(Application application:applications){
+                if(application.getInterviewSchedule()!=null) {
+                    currentInterviews.add(application.getInterviewSchedule());
+                    emails.add(application.getApplicant().getEmail());
+                }
+            }
+            responseMap.addAttribute("statusCode", "200");
+            responseMap.addAttribute("message", "Scheduled interviews found successfully");
+            responseMap.addAttribute("email",emails);
+            responseMap.addAttribute("ScheduledInterviews",currentInterviews);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode", "404");
+            responseMap.addAttribute("message", "Snap! Something went wrong. Please try again.");
+        }
+        return responseMap;
+    }
+
+    @PostMapping(value = "/interview")
+    @ResponseBody
+    public ModelMap scheduleInterview(@RequestBody String jsonObj,HttpSession session) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        ModelMap responseMap = new ModelMap();
+
+        JSONObject obj = new JSONObject(jsonObj);
+
+        int application_id = obj.getInt("application_id");
+        String startDate = obj.getString("startTime");
+        String endDate = obj.getString("endTime");
+
+        String location = obj.getString("location");
+        System.out.println("App id:"+application_id);
+        System.out.println("startDate :"+startDate);
+        System.out.println("endDate :"+endDate);
+        System.out.println("location :"+location);
+
+
+        if (session.getAttribute("email") == null) {
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message", "Please sign in before updating opening.");
+        }
+
+        try {
+            Application application=applicationService.getApplication(application_id);
+            if(application==null){
+                responseMap.addAttribute("statusCode","404");
+                responseMap.addAttribute("message","Application not found.");
+                return responseMap;
+            }
+            InterviewSchedule interviewSchedule=new InterviewSchedule();
+            interviewSchedule.setStartDate(startDate);
+            interviewSchedule.setEndDate(endDate);
+            interviewSchedule.setLocation(location);
+            interviewSchedule.setScheduled(true);
+            application.setInterviewSchedule(interviewSchedule);
+            applicationService.save(application);
+
+            //send mail
+//            calendarexample.createCalendar(application_id,location,startDate,endDate,application.getApplicant().getEmail());
+
+
+
+            responseMap.addAttribute("statusCode","200");
+            responseMap.addAttribute("message","Interview Scheduled Successfully!");
+            return responseMap;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode","404");
+            responseMap.addAttribute("message","Snap! Something went wrong.");
+            return responseMap;
+        }
+    }
+
+    @PostMapping(value = "/rejectApplicant")
+    public ModelMap rejectApplicant(@RequestBody String json, HttpSession session){
+        ModelMap responseMap = new ModelMap();
+
+        JSONObject obj = new JSONObject(json);
+        int applicationId = obj.getInt("applicationId");
+
+        if(session.getAttribute("email")==null) {
+            responseMap.addAttribute("statusCode","403");
+            responseMap.addAttribute("msg","Please login to continue");
+            return responseMap;        }
+        try {
+            Application application = applicationService.getApplication(applicationId);
+            if(applicationService.rejectCandidate(application) && applicantService.reducePendingApplication(application.getApplicant().getEmail())) {
+                responseMap.addAttribute("statusCode","200");
+                responseMap.addAttribute("msg","Application Rejected Successfully");
+                return responseMap;
+            }
+            responseMap.addAttribute("statusCode","400");
+            responseMap.addAttribute("msg","Cannot Reject Applicant");
+            return responseMap;        }catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode","400");
+            responseMap.addAttribute("msg","Cannot deny application right now. Please try again later");
+            return responseMap;
+        }
+    }
+
+    @PostMapping(value = "/acceptApplicant")
+    public ModelMap acceptApplicant(@RequestBody String json, HttpSession session){
+        ModelMap responseMap = new ModelMap();
+        JSONObject obj = new JSONObject(json);
+        int applicationId = obj.getInt("applicationId");
+        if(session.getAttribute("email")==null) {
+            responseMap.addAttribute("statusCode","403");
+            responseMap.addAttribute("msg","Please login to continue");
+            return responseMap;
+        }
+        try {
+            Application application = applicationService.getApplication(applicationId);
+            if(applicationService.acceptCandidate(application)) {
+                responseMap.addAttribute("statusCode","200");
+                responseMap.addAttribute("msg","Offer Made Successfully");
+                return responseMap;
+            }
+            responseMap.addAttribute("statusCode","400");
+            responseMap.addAttribute("msg","Cannot Make Offer");
+            return responseMap;
+        }catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode","400");
+            responseMap.addAttribute("msg","Cannot make offer right now. Please try again later");
+            return responseMap;
+        }
+    }
+
+    @GetMapping("/searchApplicants")
+    public ModelMap searchApplicants(@RequestParam(value = "min_ratings") String min_ratings,
+                                     @RequestParam(value = "skillSets") Set<String> skills,
+                                     @RequestParam(value="positions")Set<String> positions,
+                                     @RequestParam(value = "min_experience")Integer min_experience ,
+                                     @RequestParam(value = "availability") String availability,
+                                     @RequestParam(value = "education") String education,
+                                     @RequestParam(value = "city") String city,
+                                     @RequestParam(value = "country") String country
+  ,HttpSession session){
+        ModelMap responseMap=new ModelMap();
+        List<Applicant> applicantList=null;
+        try {
+            applicantList = applicantService.searchApplicants(min_ratings, min_experience, skills, positions, availability, education, city, country);
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+            responseMap.addAttribute("statusCode",500);
+            responseMap.addAttribute("message","Oops! Something went wrong. Please try again.");
+            return responseMap;
+        }
+
+        responseMap.addAttribute("statusCode",200);
+        responseMap.addAttribute("candidates",applicantList);
+
+        return responseMap;
+    }
+
 
 
 }

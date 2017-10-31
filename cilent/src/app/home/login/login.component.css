@@ -1,49 +1,33 @@
-.alert {
-    top: -6px;
-    position: absolute;
-}
-
-.err {
-    color: rgb(211, 29, 29);
-}
-
 form {
     width: 80%;
     align-items: center;
     margin: 15px auto 0;
 }
 
-.form-group {
-    width: 100%;
-    margin-bottom: 15px;
-    position: relative;
+.mat-form-field {
+    width: 300px !important;
 }
 
-.form-group-header {
-    font-size: 15px;
-    font-weight: bold;
-}
-
-input {
-    height: 18px;
-    outline: none;
-    background: transparent;
-    color: white;
-    padding-bottom: 2px;
-    margin-top: 15px;
-    font-size: 16px;
-    border: none;
-    border-bottom: 1px solid white;
+.mat-focused {
+    color: white !important;    
 }
 
 .submit-login {
     height: 30px;
     cursor: pointer;
     width: 100px;
-    background: #00c9b3;
+    background: #1592aa;
     align-items: center;
     color: white;
     justify-content: center;
+    margin-top: 10px;
+    transition: all .2s ease;
 }
 
-.accept { align-items: center; }
+.submit-login:hover {
+    transform: translateY(-1px);
+}
+
+.submit-login:active {
+    transform: translateY(1px);
+}

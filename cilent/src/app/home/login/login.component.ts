@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,23 @@ import { UserService } from '../../common/services/user.service';
 })
 export class LoginComponent {
 
-	user = {email: "", password: ""};
-	error;
+	userForm: FormGroup;
 
-	constructor(private _user: UserService) { }
+	constructor(
+		private _user: UserService,
+		private fb: FormBuilder
+	) {
+		this.createForm();
+	}
 
-	login(user: any) {
-		this._user.login(user);
+	login() {
+		this._user.login(this.userForm.value);
+	}
+
+	createForm() {
+		this.userForm = this.fb.group({
+			email: ['', [Validators.required, Validators.email]],
+			password: ['', Validators.required ],
+		});
 	}
 }

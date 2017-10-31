@@ -9,7 +9,7 @@ export class SearchService {
   	constructor(private _http: HttpClient) { }
 
   	getAllJobs(){
-  		return this._http.get('/applicant/getJobs')
+  		return this._http.get('/applicant/getJobs');
   	}
 
   	getJobBySkill(skill: String){

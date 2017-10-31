@@ -1,8 +1,13 @@
-<div class="main">
+<div class="main flex">
 	<img src="../../assets/images/profile-icon.png">
 	<div class="inner_text">
 		<h2 class="title">{{job['title']}}</h2>
-		<p class="details">{{job['location']}} | {{job['shift']}} | {{job['jobType']}}</p>
+		<div class="company">{{job['company']}}</div>
+		<div class="details">
+			<div>Location: {{job['location']}}</div>
+			<div>Shift: {{job['shift']}}</div>
+			<div>Type: {{job['jobType']}}</div>
+		</div>
 		<p class="desc">{{job['description']}}</p>
 		<ul *ngIf="!show">
 			<li>Shift: {{job['shift']}}</li>

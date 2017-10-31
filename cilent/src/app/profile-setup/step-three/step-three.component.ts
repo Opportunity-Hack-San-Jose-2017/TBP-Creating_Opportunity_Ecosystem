@@ -1,5 +1,6 @@
 import { UserService } from '../../common/services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-step-three',
@@ -8,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepThreeComponent {
 
-  constructor(private _user: UserService) { }
+	userForm: FormGroup;
+	@Input() name: any;
 
-	handleClick(val: Object) {
-		this._user.sendProfileInfo(val);
+	constructor(
+		private _user: UserService,
+		private fb: FormBuilder
+	) {
+		this.createForm();
+	}
+
+	createForm() {
+		this.userForm = this.fb.group({
+			skills: [''],
+			experiences: [' ']
+		});
+	}
+	
+	handleClick() {
+		this._user.sendProfileInfo(this.userForm.value);
+	}
+  
+  back() {
+		this._user.stepBack();
 	}
 
 }
