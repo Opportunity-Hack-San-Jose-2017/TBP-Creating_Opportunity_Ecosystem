@@ -20,6 +20,10 @@
 	margin: 5px 0px;
 }
 
+.details {
+	font-size: .8rem;
+}
+
 button {
 	background-color: #0098af;
 	color: white;

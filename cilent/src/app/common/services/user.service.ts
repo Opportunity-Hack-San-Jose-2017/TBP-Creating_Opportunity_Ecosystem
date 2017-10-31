@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-const BASE_URL = 'http://54.183.64.109';
+const BASE_URL = 'http://localhost:8080';
 
 @Injectable()
 export class UserService {
@@ -20,7 +20,7 @@ export class UserService {
 		this.http.post(url, login_cred)
 			.subscribe(
 				(data: any) => {
-					localStorage.setItem('user', JSON.stringify(data));
+					localStorage.setItem('user', JSON.stringify(data.applicant));
 					this.router.navigate(['jobs']);
 				},
 				(err: HttpErrorResponse) => {
@@ -36,8 +36,8 @@ export class UserService {
 		this.http.post(url, update_cred)
 			.subscribe(
 				(data: any) => {
-				localStorage.setItem('user', JSON.stringify(data));
-				this.router.navigate(['jobs']);
+					localStorage.setItem('user', JSON.stringify(data.applicant));
+					this.router.navigate(['jobs']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
@@ -50,10 +50,10 @@ export class UserService {
 
 	register(registration_cred: Object) {
 		const url = `${BASE_URL}/applicant/register`;
-		this.http.post(url, registration_cred, {withCredentials:true})
+		this.http.post(url, registration_cred)
 			.subscribe(
 				(data: any) => {
-					localStorage.setItem('user', JSON.stringify(data));
+					localStorage.setItem('user', JSON.stringify(data.applicant));
 					this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
@@ -97,8 +97,7 @@ export class UserService {
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
-			this.register(updatedObj);
-			this.router.navigate(['jobs']);
+			this.updateProfile(updatedObj);
 		}
 	}
   

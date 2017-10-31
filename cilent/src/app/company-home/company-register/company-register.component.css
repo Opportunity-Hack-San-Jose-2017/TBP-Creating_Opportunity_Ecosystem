@@ -1,9 +1,5 @@
-.alert {
-    top: -6px;
-    position: absolute;
-}
-.err {
-    color: rgb(211, 29, 29);
+.mat-form-field {
+    width: 300px !important;
 }
 
 form {

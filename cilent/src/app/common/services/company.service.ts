@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+const BASE_URL = 'http://localhost:8080/company';
 
 @Injectable()
 export class CompanyService {
@@ -11,32 +12,33 @@ export class CompanyService {
 	) { }
 
 	getCompanyProfile(){
-		this.http.get('http://54.183.64.109/company/profile')
+		this.http.get(`${BASE_URL}/profile`)
 			.subscribe((data: any) => console.log(data))
 	}
 
 	register(data: Object){
-		this.http.post('http://54.183.64.109/company/register', data)
+		this.http.post(`${BASE_URL}/register`, data)
 			.subscribe(
 				(data: any) => {
-					this._router.navigate(['/company/opening/create'])
+					console.log(data);
+					this._router.navigate(['company/opening/create'])
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
 	}
 
 	login(data: Object){
-		this.http.post('http://54.183.64.109/company/signin', data,{withCredentials: true })
+		this.http.post(`${BASE_URL}/profile`, data,{withCredentials: true })
 			.subscribe(
 				(data: any) => {
 					console.log(data)
-					this._router.navigate(['/company/opening/create'])
+					this._router.navigate(['company/opening/create'])
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
 	}
 
 	logout(){
-		return this.http.post('http://54.183.64.109/company/logout', {})
+		return this.http.post(`${BASE_URL}/logout`, {})
 	}
 }

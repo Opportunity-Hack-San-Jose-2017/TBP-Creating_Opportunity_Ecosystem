@@ -1,8 +1,6 @@
 .home-container {
     width: 100%;
     justify-content: center;
-    height: 100vh;
-    align-items: center;
 }
 
 .bg-wrapper {
@@ -26,24 +24,29 @@
     height: 50px;
 }
 
+.logo {
+    height: 10vh;
+}
+
 .login-reg-wrapper {
     width: 45%;
-    max-height: calc(100vh - 104px);
     border-radius: 1px;
     padding: 20px 30px;
+    max-height: calc(100vh - 105px);
     background: rgba(0,0,0,.83);
     position: relative;
+    margin-top: 60px;
     color: rgba(255,255,255,.7);
     align-items: center;
     max-width: 500px;
-    overflow-y: auto;  
+    overflow-y: auto;    
 }
 
 #login {
     margin-right: 30px;
 }
 
-.links { width: 70%; cursor: pointer; margin-bottom: 10px; }
+.links { width: 70%; cursor: pointer; }
 
 .link {
     font-size: 17px;
@@ -63,11 +66,11 @@ app-register, app-login { width: 100%; }
         left: auto;
     }
 
-    .login-reg-wrapper {
-        width: 80%;
-    }
-
     .logo {
         height: 40px;
+    }
+
+    .login-reg-wrapper {
+        width: 90%;
     }
 }

@@ -4,6 +4,10 @@ form {
     margin: 15px auto 0;
 }
 
+.mat-form-field {
+    width: 300px !important;
+}
+
 .submit-register {
     height: 30px;
     cursor: pointer;

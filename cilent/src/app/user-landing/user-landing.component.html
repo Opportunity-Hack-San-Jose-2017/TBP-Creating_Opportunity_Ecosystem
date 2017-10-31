@@ -18,9 +18,11 @@
 		</div>
 		<div class="main-container">
 			<div id="search_bar" class="flex">
-				<input type="text" name="search" id="textInput">
+				<mat-form-field>
+					<input matInput type="search" placeholder="Search" name="search">
+				</mat-form-field>
 				<div class="dropdown-wrapper">
-					<button class="dropbtn" (click)="dropdowntoggle()">Dropdown</button>
+					<button class="dropbtn" (click)="dropdowntoggle()">Filter</button>
 					<div class="dropdown-content flex" *ngIf="toggleDropDown">
 						<div class="col flex column">
 							<h4>Job Type</h4>
@@ -75,7 +77,6 @@
 				<button>Search</button>
 			</div>
 			<div id="job_feed">
-				<!-- jobs -->
 				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
 			</div>
 		</div>
