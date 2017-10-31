@@ -9,11 +9,9 @@ export class JobCellComponent implements OnInit {
   show = true;
   @Input() job: any;
   isAccessible: String = '';
-  constructor() {
-    this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
-  }
 
   ngOnInit() {
+    this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
   }
 
   toggle(){
