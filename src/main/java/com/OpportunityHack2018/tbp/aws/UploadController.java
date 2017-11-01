@@ -5,7 +5,10 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -13,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/aws/s3")
-@CrossOrigin
 public class UploadController {
 
     @Autowired
@@ -23,11 +25,10 @@ public class UploadController {
     public List<PutObjectResult> upload(@RequestParam("file") MultipartFile[] multipartFiles) {
 
         List<PutObjectResult> p = s3Wrapper.upload(multipartFiles);
+
         System.out.println("return messages3:"+p.toString());
         System.out.println("return size:"+p.size());
-
-            return p;
-
+        return p;
 
     }
 

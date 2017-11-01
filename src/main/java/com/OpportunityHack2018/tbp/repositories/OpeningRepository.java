@@ -40,7 +40,7 @@ public interface OpeningRepository extends JpaRepository<Opening,Integer> {
     @Query(value = "select * from Opening where Opening.location like ?1%",nativeQuery = true)
     Set<Opening> findByLocation(String location);
 
-    @Query(value = "select * from opening o where o.company_email=(select company.email from company where company.name like ?1%)",nativeQuery = true)
+    @Query(value = "select o.* from opening o inner join company c on o.company_email=c.email where c.name like  ?1%",nativeQuery = true)
     Set<Opening> findByComapnyName(String name);
 
     @Query(value = "select * from opening o where o.shift like ?1%",nativeQuery = true)
