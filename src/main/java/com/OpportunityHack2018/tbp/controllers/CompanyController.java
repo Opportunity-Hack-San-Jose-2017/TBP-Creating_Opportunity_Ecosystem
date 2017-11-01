@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/company")
+@CrossOrigin
 public class CompanyController {
 
     @Autowired
@@ -240,6 +241,7 @@ public class CompanyController {
         return responseMap;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/logout")
     @ResponseBody
     public ModelMap logout(HttpSession session){
@@ -252,6 +254,7 @@ public class CompanyController {
 
     @GetMapping(value = "/allOpenings")
     @ResponseBody
+    @CrossOrigin
     public ModelMap getOpenings(HttpSession session){
         ModelMap responseMap = new ModelMap();
         if(session.getAttribute("email")==null) {
@@ -293,6 +296,7 @@ public class CompanyController {
 
     @GetMapping(value = "/opening")
     @ResponseBody
+    @CrossOrigin
     public ModelMap getOpening(@RequestParam ("opening_id") Integer opening_id,HttpSession session){
         ModelMap responseMap = new ModelMap();
         System.out.println("Opening id:"+opening_id);
@@ -350,6 +354,7 @@ public class CompanyController {
 
     @PostMapping(value = "/cancelOpening")
     @ResponseBody
+    @CrossOrigin
     public ModelMap cancelOpening(@RequestBody String jsonObj,HttpSession session) {
         ObjectMapper mapper = new ObjectMapper();
         ModelMap responseMap = new ModelMap();
@@ -394,6 +399,7 @@ public class CompanyController {
 
     @PostMapping(value = "/updateOpening")
     @ResponseBody
+    @CrossOrigin
     public ModelMap updateOpening(@RequestBody String jsonObj,HttpSession session){
 
         ObjectMapper mapper = new ObjectMapper();
@@ -426,6 +432,7 @@ public class CompanyController {
 
     @GetMapping(value="/interview")
     @ResponseBody
+    @CrossOrigin
     public ModelMap getInterviews(@RequestParam ("opening_id") Integer opening_id, HttpSession session){
 
         System.out.println("Opening id:"+opening_id);
@@ -470,6 +477,7 @@ public class CompanyController {
 
     @PostMapping(value = "/interview")
     @ResponseBody
+    @CrossOrigin
     public ModelMap scheduleInterview(@RequestBody String jsonObj,HttpSession session) {
 
         ObjectMapper mapper = new ObjectMapper();
@@ -526,6 +534,7 @@ public class CompanyController {
     }
 
     @PostMapping(value = "/rejectApplicant")
+    @CrossOrigin
     public ModelMap rejectApplicant(@RequestBody String json, HttpSession session){
         ModelMap responseMap = new ModelMap();
 
@@ -554,6 +563,7 @@ public class CompanyController {
     }
 
     @PostMapping(value = "/acceptApplicant")
+    @CrossOrigin
     public ModelMap acceptApplicant(@RequestBody String json, HttpSession session){
         ModelMap responseMap = new ModelMap();
         JSONObject obj = new JSONObject(json);

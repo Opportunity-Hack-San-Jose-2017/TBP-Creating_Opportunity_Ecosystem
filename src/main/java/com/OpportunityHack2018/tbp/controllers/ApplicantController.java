@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/applicant")
+@CrossOrigin
 public class ApplicantController {
 
     @Autowired
@@ -366,9 +366,9 @@ public class ApplicantController {
         return responseMap;
     }
 
-    @CrossOrigin
     @PostMapping(value = "/logout")
     @ResponseBody
+    @CrossOrigin
     public ModelMap logout(HttpSession session){
         session.invalidate();
         ModelMap responseMap = new ModelMap();

@@ -68,10 +68,10 @@ export class UserService {
 	logout() {
 		const url = `${BASE_URL}/applicant/logout`;
 		this.http.post(url, {}, {withCredentials: true})
-		.subscribe(data => {
-			console.log(data);
-			this.router.navigate(['/']);
-		})
+			.subscribe(data => {
+				console.log(data);
+				this.router.navigate(['/']);
+			})
 	}
 
 	getSession(){
