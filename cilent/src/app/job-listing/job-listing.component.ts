@@ -33,40 +33,47 @@ export class JobListingComponent {
   }
 
 	jobForm: FormGroup;
-  yes: Boolean = false;
-  ptYes: Boolean = false;
-  first: Boolean = false;
-  second: Boolean = false;
-  third: Boolean = false;
-  flexible: Boolean = false;
+	yes: Boolean = false;
+	ptYes: Boolean = false;
+	first: Boolean = false;
+	second: Boolean = false;
+	third: Boolean = false;
+	flexible: Boolean = false;
 	@ViewChild('accept', {read: ElementRef}) accept: ElementRef;
 
-	handleCheck() {
-		this.yes = !this.yes;
+	circleClick() {
+		this.ptYes = !this.ptYes;
 	}
 
 	createForm() {
 		this.jobForm = this.fb.group({
+			title: ['', Validators.required],		
 			description: ['', Validators.required ],		
 			responsibilities: ['', Validators.required ],		
-			experience: ['', Validators.required ],		
+			experience: [0, Validators.required ],		
 			shift: ['', Validators.required ],		
-			minSalary: [''],
-      maxSalary: [''],
-      publicTransport: ['', Validators.required ],
-      location: ['', Validators.required ],
+			minSalary: [0],
+			maxSalary: [0],
+			publicTransport: [false, Validators.required ],
+			location: ['', Validators.required ],
 		});
-  }
-
-  submitOpening() {
-    this._jobs.postOpening(this.jobForm.value)
-  }
+	}
 
   testForm(){
     this._jobs.postOpening(this.job)
   }
 
-  testProfile(){
-    this._company.getCompanyProfile()
-  }
+	logout() {
+		this._company.logout();
+	}
+
+	shiftClick(e: Event) {
+		this[e.target['id']] = !this[e.target['id']];
+	}
+
+	submitOpening() {
+		console.log(this.jobForm.value);
+		const obj = this.jobForm.value
+		this._jobs.postOpening(this.jobForm.value)
+	}
 }

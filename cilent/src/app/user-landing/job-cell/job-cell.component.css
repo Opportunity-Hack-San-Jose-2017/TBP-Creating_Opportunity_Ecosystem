@@ -21,6 +21,8 @@
 	margin: 5px 0px;
 }
 
+.biz-logo, .inner-text { margin-right: 10px; }
+
 .details {
 	font-size: .8rem;
 }

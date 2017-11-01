@@ -58,13 +58,17 @@ export class UserLandingComponent {
   ) {
     this.user = JSON.parse(localStorage.getItem('user')) || {};
     // commented out for testing ! //
-    // _search.getAllJobs()
-    //   .subscribe((v: any) => this.jobs = v);
-    this.jobs = [job, job, job, job,job,job,job,job,job]
+    this.jobs = _search.getAllJobs()
+      // .subscribe((v: any) => this.jobs = v);
+    // this.jobs = [job, job, job, job,job,job,job,job,job]
   }
 
   searchClick() {
     this.search = !this.search;
+  }
+
+  handleSearch(e: Event) {
+    this._search.getJobBySkill(e.target['value']);;
   }
   
   ngOnInit() {

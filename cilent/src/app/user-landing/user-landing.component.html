@@ -5,92 +5,33 @@
 	</nav>
 	<section id="content" class="flex">
 		<div id="profile_bar">
-			<div>
-				<h2>{{user['firstName']}} {{user['lastName']}}</h2>
+			<div class="pb-div flex column">
+				<div>{{user['firstName']}} {{user['lastName']}}</div>
 				<img src="../../assets/images/profile-icon.png">
-				<button (click)="goToEditProfile()" >Edit Profile</button>
+				<div class="btn flex" routerLink="applicant/profile/edit">Edit Profile</div>
 			</div>
-			<div>
-				<h2>Saved Jobs</h2>
-			</div>
-			<div>
-				<h2>Applied Jobs</h2>
-			</div>
+			<div class="pb-div">Saved Jobs</div>
+			<div class="pb-div">Applied Jobs</div>
 		</div>
 		<div class="main-container">
-			<div id="mobile_search" class="flex search" (click)="searchClick()">
+			<div id="search_bar" class="flex search">
 				<mat-form-field>
-					<input matInput type="search" placeholder="Search" name="search">
+					<input matInput type="search" (click)="handleSearch($event)" placeholder="Search" name="search">
 				</mat-form-field>
 				<div class="icons flex">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<i class="fa fa-caret-down" aria-hidden="true"></i>
+					<div class="flex caret-wrapper mag">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</div>
+					<div (click)="searchClick()" class="flex caret-wrapper caret">
+						<i class="fa fa-caret-down" id="caret" aria-hidden="true"></i>
+					</div>
 				</div>
 			</div>
 			<div class="filter-menu" [@slideAnimation] *ngIf="search">
 				<app-filter></app-filter>
 			</div>
-			<div id="search_bar" class="flex">
-				<mat-form-field>
-					<input matInput type="search" placeholder="Search" name="search">
-				</mat-form-field>
-				<div class="dropdown-wrapper">
-					<button class="dropbtn" (click)="dropdowntoggle()">Filter</button>
-					<div class="dropdown-content flex" *ngIf="toggleDropDown">
-						<div class="col flex column">
-							<h4>Job Type</h4>
-							<div class="checkbox_div">
-								<input type="checkbox" name="full_time">
-								<label>Full Time</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="part_time">
-								<label>Part Time</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="temporary">
-								<label>Temporary</label>
-							</div>
-						</div>
-						<div class="col mid flex column">
-							<h4>Shift Type</h4>
-							<div class="checkbox_div">
-								<input type="checkbox" name="morning">
-								<label>morning</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="noon">
-								<label>Noon</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="night">
-								<label>Night</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="graveyard">
-								<label>Graveyard</label>
-							</div>
-						</div>
-						<div class="col flex column">
-							<div class="checkbox_div">
-								<input type="checkbox" name="public_transport">
-								<label>Public Transport</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="background_check">
-								<label>Background Checks</label>
-							</div>
-							<div class="checkbox_div">
-								<input type="checkbox" name="multilingual">
-								<label>Multilingual</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<button>Search</button>
-			</div>
 			<div id="job_feed">
-				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
+				<app-job-cell *ngFor="let job of jobs | async" [job]="job"></app-job-cell>
 			</div>
 		</div>
 	</section>
