@@ -36,7 +36,7 @@ export class UserService {
 	updateProfile(update_cred: Object){
 		const url = `${BASE_URL}/applicant/update`;
 		console.log(update_cred)
-		this.http.put(url, update_cred, {withCredentials: true})
+		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
 					console.log(data);
