@@ -54,7 +54,7 @@ export class UserService {
 				(data: any) => {
 					console.log(data);
 					localStorage.setItem('user', JSON.stringify(data.applicant));
-					// this.router.navigate(['setup']);
+					this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);

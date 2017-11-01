@@ -58,8 +58,8 @@ export class UserLandingComponent {
   ) {
     this.user = JSON.parse(localStorage.getItem('user')) || {};
     // commented out for testing ! //
-    this.jobs = _search.getAllJobs()
-      // .subscribe((v: any) => this.jobs = v);
+    _search.getAllJobs().do(v => console.log(v))
+    .subscribe((v: any) => this.jobs = v.openings);
     // this.jobs = [job, job, job, job,job,job,job,job,job]
   }
 

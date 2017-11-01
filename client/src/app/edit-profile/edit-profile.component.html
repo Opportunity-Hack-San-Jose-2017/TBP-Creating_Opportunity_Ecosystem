@@ -18,7 +18,7 @@
             <div class="name-phone-wrapper flex column">
               <div class="name-wrapper flex">
                 <mat-form-field>
-                  <input matInput placeholder="First Name" name="firstName" formControlName="firstName">
+                  <input matInput placeholder="First Name" name="firstName" formControlName="firstName" [value]="user[firstName]">
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput placeholder="Last Name" name="lastName" formControlName="lastName">

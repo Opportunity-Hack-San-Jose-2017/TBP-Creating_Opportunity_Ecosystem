@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class JobsService {
 	jobs: Array<any>;
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		private _router: Router
+		) { }
 
   // private generateOptions(): RequestOptions {
   //   let headers = new Headers();
@@ -25,6 +29,9 @@ export class JobsService {
 			.subscribe(
 				(data: any) => {
 					console.log(data);
+					if (data["statusCode"] == "200") {
+						this._router.navigate(["company/home"])
+					}
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);

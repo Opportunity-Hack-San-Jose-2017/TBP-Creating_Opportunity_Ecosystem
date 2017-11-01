@@ -8,7 +8,7 @@
 			<div class="pb-div flex column">
 				<div>{{user['firstName']}} {{user['lastName']}}</div>
 				<img src="../../assets/images/profile-icon.png">
-				<div class="btn flex" routerLink="applicant/profile/edit">Edit Profile</div>
+				<div class="btn flex" routerLink="/profile/edit">Edit Profile</div>
 			</div>
 			<div class="pb-div">Saved Jobs</div>
 			<div class="pb-div">Applied Jobs</div>
@@ -31,7 +31,7 @@
 				<app-filter></app-filter>
 			</div>
 			<div id="job_feed">
-				<app-job-cell *ngFor="let job of jobs | async" [job]="job"></app-job-cell>
+				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
 			</div>
 		</div>
 	</section>
