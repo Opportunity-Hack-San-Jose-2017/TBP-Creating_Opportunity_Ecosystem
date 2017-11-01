@@ -51,10 +51,12 @@ nav img {
 	margin: 80px auto 0;
 	width: calc(65vw + 190px);
 }
+
 #profile_bar {
 	position: fixed;
 	width: 176px;
 }
+
 #profile_bar div {
 	background: rgba(0,0,0,.83);
 	padding: 30px;
@@ -79,7 +81,7 @@ h2 {
 }
 
 .main-container {
-	height: calc(100vh - 110px);
+	height: calc(100vh - 80px);
 	overflow: auto;
 	width: 65vw;
 	max-width: 780px;
@@ -87,26 +89,13 @@ h2 {
 	position: relative;
 }
 
-/* #search_bar {
-	position: fixed;
-	color: white;
-	top: 80px;
-	width: inherit;
-	max-width: 780px;
-	background: rgba(0,0,0,.83);
-    height: 80px;
-    align-items: center;
-} */
-
-#search_bar { display: none; }
-
-#mobile_search {
+#search_bar {
 	position: fixed;
 	width: inherit;
 	max-width: 780px;
 	top: 80px;
-	padding: 10px;
-	height: 50px;
+	padding-left: 3%;
+	height: 70px;
 	z-index: 10;
 	justify-content: flex-start;
 }
@@ -122,12 +111,21 @@ h2 {
 	cursor: pointer;
 }
 
+.caret-wrapper {
+	cursor: pointer;
+	height: 30px;
+	width: 30px;
+	align-items: center;
+	justify-content: center;
+}
+
 .filter-menu {
 	transform-origin: top;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
 	height: 250px;
+	top: 150px;
 	width: inherit;
 	max-width: 780px;
 	position: fixed;
@@ -139,17 +137,13 @@ h2 {
 
 .icons {
 	max-width: 180px;
+	margin-left: 20px;
 	justify-content: space-around;
 }
 
-.fa { margin-right: 20px; font-size: 24px; }
+.fa { font-size: 24px; pointer-events: none; }
 
-/* #search_bar *{
-	margin: 0px 5px;
-	vertical-align: top;
-} */
-
-/* #mobile_search { display: none; } */
+.mag { margin-right: 20px; }
 
 #textInput {
 	flex: 10;
@@ -167,44 +161,13 @@ button {
     border:none;
 }
 
-.dropbtn {
-	background-color: #4b1900;
-}
-
-.dropdown {
-	display: inline-block;
-}
-
-.dropdown-content {
-	position: absolute;
-	color: rgba(0,0,0,.83) !important;
-	background-color: white;
-	border: 3px solid #4b1900;
-}
-
-.col a {
-	display: block;
-	color: black;
-	padding: 12px 16px;
-    text-decoration: none;
-}
-
-.mid {
-	border-left: 2px solid #4b1900;
-	border-right: 2px solid #4b1900;
-}
-
 #job_feed {
-	margin-top: 50px;
+	margin-top: 70px;
 }
 .job_cell {
 	padding: 10px 20px;
 	background-color: white;
 	width: 100%;
-}
-
-.checkbox_div *{
-	display: inline-block;
 }
 
 @media screen and (max-width: 500px) {
@@ -240,21 +203,6 @@ button {
 
 	#content {
 		width: 100vw;
-	}
-
-	/* #search_bar {
-		position: fixed;
-		top: 70px;
-		width: 100%;
-		justify-content: space-around;
-		display: flex;
-		z-index: 10;
-		height: 60px;
-		align-items: center;
-	} */
-
-	#search_bar * {
-		margin: 0 3px;
 	}
 
 	#profile_bar {

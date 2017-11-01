@@ -66,6 +66,10 @@ export class UserLandingComponent {
   searchClick() {
     this.search = !this.search;
   }
+
+  handleSearch(e: Event) {
+    this._search.getJobBySkill(e.target['value']);;
+  }
   
   ngOnInit() {
   }
