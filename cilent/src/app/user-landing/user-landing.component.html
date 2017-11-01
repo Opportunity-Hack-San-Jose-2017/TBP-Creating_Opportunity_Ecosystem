@@ -31,7 +31,7 @@
 				<app-filter></app-filter>
 			</div>
 			<div id="job_feed">
-				<app-job-cell *ngFor="let job of jobs | async" [job]="job"></app-job-cell>
+				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
 			</div>
 		</div>
 	</section>

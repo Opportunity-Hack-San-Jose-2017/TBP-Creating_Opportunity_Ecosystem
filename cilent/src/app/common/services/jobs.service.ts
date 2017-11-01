@@ -18,8 +18,6 @@ export class JobsService {
 
 	//companies new job
 	postOpening(data: Object){
-		let headers = new Headers()
-		console.log(data);
 		const url = `${BASE_URL}/company/postOpening`;
 		this.http.post(url, data, {withCredentials: true} )
 			.subscribe(
@@ -33,7 +31,7 @@ export class JobsService {
 	}
 
 	//compannies update
-	openingUpdate(data: Object){
+	openingUpdate(data: Object) {
 		const url = `${BASE_URL}/company/update`;
 		return this.http.post(url, data, {withCredentials: true})
 	}

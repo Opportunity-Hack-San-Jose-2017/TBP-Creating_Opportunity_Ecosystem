@@ -12,7 +12,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class JobListingComponent {
 
 	job = {
-		title: "",
+		title: "Something",
 		description: "",
 		responsibilities: "",
 		experience: "",
@@ -59,6 +59,10 @@ export class JobListingComponent {
 		});
 	}
 
+  testForm(){
+    this._jobs.postOpening(this.job)
+  }
+
 	logout() {
 		this._company.logout();
 	}
@@ -72,5 +76,4 @@ export class JobListingComponent {
 		const obj = this.jobForm.value
 		this._jobs.postOpening(this.jobForm.value)
 	}
-
 }

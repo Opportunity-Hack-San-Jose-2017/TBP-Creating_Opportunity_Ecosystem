@@ -10,10 +10,10 @@ export class SearchService {
   	constructor(private _http: HttpClient) { }
 
   	getAllJobs(){
-  		return this._http.get(`${BASE_URL}/applicant/getJobs`);
+  		return this._http.get(`${BASE_URL}/applicant/allJobs`, {withCredentials:true});
   	}
 
-  	getJobBySkill(skill: String){
+  	getJobBySkill(skill: String) {
   		// return this._http.post('/')
   	}
 }
