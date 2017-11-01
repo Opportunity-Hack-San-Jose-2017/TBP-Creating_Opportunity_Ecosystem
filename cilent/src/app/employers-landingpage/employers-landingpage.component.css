@@ -63,8 +63,15 @@ nav img {
 	color: white;
 }
 
+.title {
+	background-color: rgba(0,0,0,.83);
+	padding-top: 10px;
+	padding-left: 30px;
+}
 h2 {
 	font-size: 20px;
+	color: white;
+	display: block;
 }
 
 #profile_bar div img {
@@ -82,14 +89,14 @@ h2 {
 	height: calc(100vh - 110px);
 	overflow: auto;
 	width: 65vw;
-	margin-top: 30px;
+/*	margin-top: 30px;*/
 	max-width: 780px;
 	left: 190px;
 	position: relative;
 }
 
 #search_bar {
-	position: fixed;
+/*	position: fixed;*/
 	color: white;
 	top: 80px;
 	width: inherit;
@@ -97,6 +104,8 @@ h2 {
 	background: rgba(0,0,0,.83);
     height: 80px;
     align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 #search_bar *{
@@ -136,7 +145,6 @@ button {
 }
 
 .dropdown-content {
-	position: absolute;
 	background-color: white;
 	border: 3px solid #4b1900;
 }

@@ -8,7 +8,8 @@ import { CompanyService } from './../common/services/company.service';
 })
 export class EmployersLandingpageComponent implements OnInit {
 
-	company:any = {}
+	toggleDropDown = false;
+	company: any = { "name" : "redbull"}
 	constructor(
 		private _company: CompanyService
 	) {
@@ -16,6 +17,10 @@ export class EmployersLandingpageComponent implements OnInit {
 	}
 
 	ngOnInit() {
+	}
+
+	dropdowntoggle() {
+		this.toggleDropDown = !this.toggleDropDown
 	}
 
 	logout() {
