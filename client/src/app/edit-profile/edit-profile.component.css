@@ -1,6 +1,25 @@
 * {
     color: rgba(255,255,255,.7);
 }
+
+nav {
+    height: 80px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
+}
+
+nav img {
+	height: 60px;
+}
+
+
+
 .main-wrapper {
     min-height: 500px;
     overflow: auto;
@@ -142,10 +161,25 @@ form {
     font-size: 12px;
     background: #490000;
     align-items: center;
-    color: white;
+    color: rgba(255,255,255,.7);
     justify-content: center;
     margin: 0 auto 5px;
     transition: all .2s ease;
+}
+
+.lg-btn {
+    height: 30px;
+	font-size: .8rem;
+    width: 100px;
+    margin: 0;
+    background: #1592aa;
+}
+
+.res-lbl {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .skills, .experiences {

@@ -7,13 +7,14 @@ import { url as BASE_URL } from '../config/url';
 @Injectable()
 export class UserService {
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+	profile: any;
+	setupStep = new Subject();
+	successMessage = new Subject();
 
-  profile: any;
-  setupStep = new Subject();
+	constructor(
+		private http: HttpClient,
+		private router: Router
+	) { }
 
 	login(login_cred: Object){
 		const url = `${BASE_URL}/applicant/signin`;
@@ -120,5 +121,9 @@ export class UserService {
 		return this.http.get(`${BASE_URL}`, {
 			
 		})
+	}
+
+	uploadResume(file: Object) {
+		return this.http.post(`${BASE_URL}/api/aws/upload`, file, {withCredentials:true});
 	}
 }

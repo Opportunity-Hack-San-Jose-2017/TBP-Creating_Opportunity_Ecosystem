@@ -25,22 +25,24 @@ export class EditProfileComponent implements OnInit {
 		"firstName":"",
 		"lastName":"",
 		"phoneNumber": "",
-		"availability":[],
-		"shift":[],
-		"position":null,
+		"availability":[''],
+		"shift":[''],
+		// "position":null,
 		"introduction":"",
 		"experience":"",
-		"education":null,
+		"education":"",
 		"verified":false,
 		"hashValue":"",
-		"city":null,
-		"country":null,
-		"rating":0,
-		"numberOfRatings":0,
+		// "city":null,
+		// "country":null,
+		// "rating":0,
+		// "numberOfRatings":0,
 		"skillsSet":[],
-		"pendingApplications":0,
-		"imageUrl":null
+		"pendingApplications":0
+		// "imageUrl":null
 	}
+	shifts: any = ['first', 'second', 'third'];
+	types: any = ['ft', 'pt', 'temp'];
 
 	constructor(
 		private _user: UserService,
@@ -48,11 +50,17 @@ export class EditProfileComponent implements OnInit {
 		private _router: Router
 	) {
 		this.createForm();
-		this.user = localStorage.getItem("user")
+		this.checkCircles();
+		this.user = localStorage.getItem("user") || this.user;
 	}
 
 	ngOnInit() {		
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
+	}
+
+	checkCircles() {
+		this.user.shift.forEach(s => this[s] = true);
+		this.user.availability.forEach(a => this[a] = true);
 	}
   
 	createForm() {
@@ -60,7 +68,7 @@ export class EditProfileComponent implements OnInit {
 			firstName: [this.user.firstName, Validators.required],
 			lastName: [this.user.lastName, Validators.required],
 			email: [this.user.email, [Validators.required, Validators.email]],
-			phone: [this.user.phoneNumber],
+			phoneNumber: [this.user.phoneNumber],
 			skillsSet: this.user.skillsSet,
 			experiences: [this.user.experience]
 		});
@@ -72,30 +80,28 @@ export class EditProfileComponent implements OnInit {
 
 	handleClick() {
 		const obj = Object.assign(this.userForm.value, {
-			availability: Object.assign({}, {
-				morning: this.first ? true : false,
-				noon: this.second ? true : false,
-				night: this.third ? true : false
-			}),
-			jobType: Object.assign({}, {
-				fullTime: this.ft ? true : false,
-				partTime: this.pt ? true : false,
-				temporary: this.temp ? true : false
-			})
+			shift: this.shifts.filter(x => this[x]),
+			availability: this.types.filter(x => this[x])
 		})
-		var temp = this.userForm.value.skillsSet.split(",")
-		for (var i = 0; i < temp.length; i++) {
-			temp[i] = temp[i].trim();
-		}
-		obj["skillsSet"] = temp;
-		console.log(obj)
+		console.log(obj);
 		const newObj = Object.assign(this.user, obj);
-		//this broke the front page, fixing when we meet.
 		// this._user.updateProfile(newObj);
 	}
   	
   	backButton(){
-  		this._router.navigate(["applicant/home"])
-  	}
+  		this._router.navigate(["applicant"]);
+	}
+	  
+	  handleFile(e: Event) {
+		const files = e.target['files'];
+		for (let i = 0; i < files.length; i++) {
+			const file = {name:this.user.id, file:window.URL.createObjectURL(files[i])};
+			this._user.uploadResume(file);
+		}
+	}
+
+	logout() {
+		this._user.logout();
+	}
 
 }
