@@ -27,18 +27,27 @@
 			Case File ID is <strong>required</strong>
 		</mat-error>
 	</mat-form-field>
-	<mat-form-field>
-		<input matInput placeholder="Password" formControlName="password">
-		<mat-error *ngIf="userForm.get('password').touched && userForm.get('password').hasError('required')">
-			Password is <strong>required</strong>
-		</mat-error>
-	</mat-form-field>
-	<mat-form-field>
-		<input matInput placeholder="Confirm Password" formControlName="confirmPassword">
-		<mat-error *ngIf="userForm.get('confirmPassword').touched && userForm.get('confirmPassword').hasError('required')">
-			Password Confirmation is <strong>required</strong>
-		</mat-error>
-	</mat-form-field>
+	<span formGroupName="passwords">
+		<mat-form-field>
+			<input matInput placeholder="Password" formControlName="password">
+			<mat-error *ngIf="userForm.get('passwords.password').touched && userForm.get('passwords.password').hasError('required')">
+				Password is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Confirm Password" formControlName="confirmPassword">
+			<mat-error *ngIf="userForm.get('passwords.confirmPassword').touched && userForm.get('passwords.confirmPassword').hasError('required')">
+				Password Confirmation is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+		<!-- <span *ngIf="userForm.get['passwords'].errors && userForm.get['passwords'].errors.areEqual &&
+		userForm.get['passwords'].controls.repeat_new_password.touched &&
+		userForm.get['passwords'].controls.new_password.touched" class="help-block text-danger">
+			<div>
+				The two passwords aren't the same
+			</div>
+		</span> -->
+	</span>
 	<div class="flex check">
 		<input (click)="handleCheck()" type="checkbox" id="accept" #accept />
 		<label for="accept">Accept <a href="">terms</a> and agreement</label>
