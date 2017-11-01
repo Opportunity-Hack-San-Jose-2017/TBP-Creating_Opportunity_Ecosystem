@@ -43,6 +43,8 @@ export class EditProfileComponent implements OnInit {
 	}
 	shifts: any = ['first', 'second', 'third'];
 	types: any = ['ft', 'pt', 'temp'];
+	success: Boolean = true;
+	failed: Boolean = false;
 
 	constructor(
 		private _user: UserService,
@@ -52,6 +54,8 @@ export class EditProfileComponent implements OnInit {
 		this.createForm();
 		this.checkCircles();
 		this.user = localStorage.getItem("user") || this.user;
+		_user.getSuccessMsg().subscribe((v: any) => this.success = v)
+		_user.getFailedMsg().subscribe((v: any) => this.failed = v);
 	}
 
 	ngOnInit() {		
@@ -86,6 +90,10 @@ export class EditProfileComponent implements OnInit {
 		console.log(obj);
 		const newObj = Object.assign(this.user, obj);
 		// this._user.updateProfile(newObj);
+	}
+
+	closeMsg() {
+		this._user.closeMsg()
 	}
   	
   	backButton(){

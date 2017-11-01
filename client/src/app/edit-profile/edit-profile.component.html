@@ -5,6 +5,14 @@
 <div class="edit-profile-container flex column">
   <!-- <div class="header">Edit Profile</div> -->
   <div class="main-wrapper flex column">
+    <div class="success msg flex" *ngIf="success">
+      <div>Resume uploaded!</div>
+      <div class="close flex" (click)="closeMsg()"><i class="fa fa-times" aria-hidden="true"></i> </div> 
+    </div>
+    <div class="failed msg flex" *ngIf="failed">
+      <div>Resume uploaded failed :(</div>
+      <div class="close flex" (click)="closeMsg()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    </div>
     <div class="form-wrapper flex column">
       <form [formGroup]="userForm" class="flex column">
         <div class="form-top flex">

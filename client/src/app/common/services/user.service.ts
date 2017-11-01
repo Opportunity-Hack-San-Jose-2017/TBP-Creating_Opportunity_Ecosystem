@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
@@ -9,7 +9,8 @@ export class UserService {
 
 	profile: any;
 	setupStep = new Subject();
-	successMessage = new Subject();
+	successMessage = new BehaviorSubject(false);
+	failedMessage = new BehaviorSubject(false);
 
 	constructor(
 		private http: HttpClient,
@@ -124,6 +125,29 @@ export class UserService {
 	}
 
 	uploadResume(file: Object) {
-		return this.http.post(`${BASE_URL}/api/aws/upload`, file, {withCredentials:true});
+		this.http.post(`${BASE_URL}/api/aws/upload`, file, {withCredentials:true})
+			.subscribe(
+				(v: any) => {
+				console.log(v);
+				this.successMessage.next(true);
+			},
+				(err: HttpErrorResponse) => {
+					console.log(err);
+					this.failedMessage.next(true);
+				}		
+			)
+	}
+
+	getSuccessMsg(): Observable<any> {
+		return this.successMessage;
+	}
+
+	closeMsg() {
+		this.successMessage.next(false)
+		this.failedMessage.next(false)
+	}
+
+	getFailedMsg(): Observable<any> {
+		return this.failedMessage;
 	}
 }
