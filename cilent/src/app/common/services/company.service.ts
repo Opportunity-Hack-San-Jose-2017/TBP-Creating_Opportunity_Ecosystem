@@ -21,10 +21,8 @@ export class CompanyService {
 			.subscribe(
 				(data: any) => {
 					console.log(data);
-					if (data["statusCode"] == "200") {
-						localStorage.setItem("company", JSON.stringify(data["company"]))
-						this._router.navigate(['/company/home'])
-					}
+					localStorage.setItem("company", JSON.stringify(data.company))
+					this._router.navigate(['company/home'])
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
@@ -34,13 +32,8 @@ export class CompanyService {
 		this.http.post(`${BASE_URL}/company/signin`, data,{withCredentials: true })
 			.subscribe(
 				(data: any) => {
-					if (data["statusCode"] == "200") {
-						localStorage.setItem("company", JSON.stringify(data["company"]))
-						this._router.navigate(['company/home'])
-					} else {
-						console.log(data)
-						alert(data["message"])
-					}				
+					localStorage.setItem("company", JSON.stringify(data.company))
+					this._router.navigate(['company/home'])			
 				}, (error: HttpErrorResponse) => {
 					console.log(error)
 				})
@@ -49,8 +42,8 @@ export class CompanyService {
 	logout(){
 		this.http.post(`${BASE_URL}/company/logout`, {}, {withCredentials: true})
 		.subscribe(data => {
-			console.log(data)
+			alert(JSON.stringify(data))
+			this._router.navigate(['company'])
 		})
-		this._router.navigate(["company/login"])
 	}
 }

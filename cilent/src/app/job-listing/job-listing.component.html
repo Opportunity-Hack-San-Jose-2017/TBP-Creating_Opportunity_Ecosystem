@@ -1,6 +1,16 @@
+<nav>
+	<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+	<div (click)="logout()" class="btn flex logout">Logout</div>
+</nav>
 <div class="listing-container flex">
 	<div class="form-wrapper flex">
 		<form [formGroup]="jobForm" class="flex column">
+			<mat-form-field>
+				<input matInput placeholder="Title" formControlName="title">
+				<mat-error *ngIf="jobForm.get('title').touched && jobForm.get('title').hasError('required')">
+					Title is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
 			<mat-form-field>
 				<textarea matInput placeholder="Description" name="description" formControlName="description"></textarea>
 				<mat-error *ngIf="jobForm.get('description').touched && jobForm.get('description').hasError('required')">
@@ -13,25 +23,26 @@
 						Responsibilites are <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
-			<div class="experience wrapper">
+			<!-- <div class="experience wrapper">
 				<div class="form-group flex column">
 					<div class="form-group-header">Experienced required?</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
-							<div (click)="circleClick($event)" class="mat-fab flex" [ngClass]="yes ? 'active' : ''" id="yes">Yes</div>
+							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="yes ? 'active' : ''" id="yes">Yes</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="circleClick($event)" class="mat-fab flex" [ngClass]="!yes ? 'active' : ''" id="no">No</div>
+							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="!yes ? 'active' : ''" id="no">No</div>
 						</div>
 					</div>
-				</div>
-				<mat-form-field [hidden]="yes">
-						<textarea matInput placeholder="Experience" name="experience" formControlName="experience"></textarea>
-					<mat-error *ngIf="jobForm.get('experience').touched && jobForm.get('experience').hasError('required')">
+				</div> -->
+				<mat-form-field class="flex exp">
+					<input matInput placeholder="Experience" type="number" formControlName="experience">
+					<!-- <mat-error *ngIf="jobForm.get('experience').touched && jobForm.get('experience').hasError('required')">
 							Level of experience is <strong>required</strong>
-					</mat-error>
+					</mat-error> -->
+					<span>(years)</span>
 				</mat-form-field>
-			</div>
+			<!-- </div> -->
 			<div class="shift wrapper">
 				<div class="form-group flex column">
 					<div class="form-group-header">Shift</div>
@@ -56,10 +67,10 @@
 					<div class="form-group-header">Is your office accessible by public transportation?</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ptYes ? 'active' : ''" id="pt-yes">Yes</div>
+							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="ptYes ? 'active' : ''" id="pt-yes">Yes</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="!ptYes ? 'active' : ''" id="pt-no">No</div>
+							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="!ptYes ? 'active' : ''" id="pt-no">No</div>
 						</div>
 					</div>
 				</div>

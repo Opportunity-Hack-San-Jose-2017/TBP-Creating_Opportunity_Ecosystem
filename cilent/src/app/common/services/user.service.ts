@@ -37,9 +37,9 @@ export class UserService {
 		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data)
-					// localStorage.setItem('user', JSON.stringify(data.applicant));
-					// this.router.navigate(['applicant/home']);
+					console.log(data);
+					localStorage.setItem('user', JSON.stringify(data.applicant));
+					this.router.navigate(['applicant/home']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
@@ -52,8 +52,9 @@ export class UserService {
 		this.http.post(url, registration_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
+					console.log(data);
 					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['setup']);
+					// this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
@@ -68,8 +69,8 @@ export class UserService {
 		const url = `${BASE_URL}/applicant/logout`;
 		this.http.post(url, {}, {withCredentials: true})
 		.subscribe(data => {
-			console.log(data)
-			this.router.navigate(['/'])
+			console.log(data);
+			this.router.navigate(['/']);
 		})
 	}
 

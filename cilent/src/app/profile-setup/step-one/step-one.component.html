@@ -9,15 +9,15 @@
     </div>
     <div class="name-phone-wrapper flex column">
       <div class="form-group flex column">
-        <div class="form-group-header name">Name</div>
+        <div class="form-group-header name">{{name}}</div>
       </div>
       <mat-form-field>
-        <input matInput type="tel" placeholder="Phone Number" name="phone" formControlName="phone">
+        <input matInput type="tel" placeholder="Phone Number" name="phoneNumber" formControlName="phoneNumber">
       </mat-form-field>
     </div>
   </div>
   <mat-form-field>
-    <textarea matInput placeholder="About yourself (optional)" name="about" formControlName="about"></textarea>
+    <textarea matInput placeholder="About yourself (optional)" name="introduction" formControlName="introduction"></textarea>
   </mat-form-field>
 </form>
 <div class="bottom flex column">

@@ -19,7 +19,7 @@ export class JobsService {
 	//companies new job
 	postOpening(data: Object){
 		let headers = new Headers()
-		console.log(data)
+		console.log(data);
 		const url = `${BASE_URL}/company/postOpening`;
 		this.http.post(url, data, {withCredentials: true} )
 			.subscribe(

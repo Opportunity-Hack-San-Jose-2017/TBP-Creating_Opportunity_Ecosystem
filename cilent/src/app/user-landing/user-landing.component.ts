@@ -58,9 +58,9 @@ export class UserLandingComponent {
   ) {
     this.user = JSON.parse(localStorage.getItem('user')) || {};
     // commented out for testing ! //
-    // _search.getAllJobs()
-    //   .subscribe((v: any) => this.jobs = v);
-    this.jobs = [job, job, job, job,job,job,job,job,job]
+    this.jobs = _search.getAllJobs()
+      // .subscribe((v: any) => this.jobs = v);
+    // this.jobs = [job, job, job, job,job,job,job,job,job]
   }
 
   searchClick() {

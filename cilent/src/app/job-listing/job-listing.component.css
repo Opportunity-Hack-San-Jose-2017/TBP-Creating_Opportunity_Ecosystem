@@ -2,12 +2,45 @@
     color: rgba(255,255,255,.7);
 }
 
-.select {
-    align-items: center;
+nav {
+    height: 80px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
 }
 
-.err {
-    color: #8c1d2b;
+nav img {
+	height: 60px;
+}
+
+.btn {
+    height: 30px;
+	cursor: pointer;
+	font-size: .8rem;
+    width: 100px;
+    background: #1592aa;
+    align-items: center;
+    color: white;
+    justify-content: center;
+	transition: all .2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.select {
+    align-items: center;
 }
 
 .listing-container {
@@ -26,7 +59,8 @@
 }
 
 .form-wrapper {
-    width: 45%;
+    width: 60%;
+    max-width: 600px;
     border-radius: 1px;
     padding: 20px 30px;
     background: rgba(0,0,0,.83);
@@ -74,6 +108,15 @@ label {
 
 .mat-form-field {
     width: 100%;
+}
+
+.mat-form-field.exp input {
+    width: 50px;
+}
+
+.mat-form-field.exp span {
+    position: relative;
+    left: calc(100% - 100px);
 }
 
 .mat-fab {

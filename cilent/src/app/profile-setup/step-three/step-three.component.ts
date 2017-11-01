@@ -36,6 +36,7 @@ export class StepThreeComponent {
 			firstName: user.firstName,
 			lastName: user.lastName,
 			education: user.education,
+			password: user.password,
 			verified: user.verified,
 			hashValue: user.hashValue,
 			pendingApplications: user.pendingApplications

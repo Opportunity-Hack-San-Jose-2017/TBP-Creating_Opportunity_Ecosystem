@@ -5,17 +5,13 @@
 	</nav>
 	<section id="content" class="flex">
 		<div id="profile_bar">
-			<div>
-				<h2>{{user['firstName']}} {{user['lastName']}}</h2>
+			<div class="pb-div flex column">
+				<div>{{user['firstName']}} {{user['lastName']}}</div>
 				<img src="../../assets/images/profile-icon.png">
-				<button (click)="goToEditProfile()" >Edit Profile</button>
+				<div class="btn flex" routerLink="applicant/profile/edit">Edit Profile</div>
 			</div>
-			<div>
-				<h2>Saved Jobs</h2>
-			</div>
-			<div>
-				<h2>Applied Jobs</h2>
-			</div>
+			<div class="pb-div">Saved Jobs</div>
+			<div class="pb-div">Applied Jobs</div>
 		</div>
 		<div class="main-container">
 			<div id="search_bar" class="flex search">
@@ -35,7 +31,7 @@
 				<app-filter></app-filter>
 			</div>
 			<div id="job_feed">
-				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
+				<app-job-cell *ngFor="let job of jobs | async" [job]="job"></app-job-cell>
 			</div>
 		</div>
 	</section>
