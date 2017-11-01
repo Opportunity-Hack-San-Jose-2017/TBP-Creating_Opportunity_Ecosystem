@@ -18,18 +18,18 @@
             <div class="name-phone-wrapper flex column">
               <div class="name-wrapper flex">
                 <mat-form-field>
-                  <input matInput placeholder="First Name" name="firstName" formControlName="firstName" [value]="user[firstName]">
+                  <input matInput placeholder="First Name" name="firstName" formControlName="firstName" [value]="user.firstName">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Last Name" name="lastName" formControlName="lastName" [value]="user[lastName]>
+                  <input matInput placeholder="Last Name" name="lastName" formControlName="lastName" [value]="user.lastName">
                 </mat-form-field>
               </div>
               <div class="name-wrapper flex">
                 <mat-form-field>
-                  <input matInput placeholder="Phone Number" name="phone" formControlName="phone">
+                  <input matInput placeholder="Phone Number" name="phone" formControlName="phone" [value]="user.phoneNumber">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Email" name="email" formControlName="email">
+                  <input matInput placeholder="Email" name="email" formControlName="email" [value]="user.email">
                 </mat-form-field>
               </div>
             </div>    

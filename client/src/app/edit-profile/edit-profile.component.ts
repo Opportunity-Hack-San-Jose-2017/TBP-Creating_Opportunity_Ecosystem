@@ -48,21 +48,22 @@ export class EditProfileComponent implements OnInit {
 		private _router: Router
 	) {
 		this.createForm();
-		this.user = localStorage.getItem("user")
 	}
 
 	ngOnInit() {		
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
+		this.user = JSON.parse(localStorage.getItem("user"))
+		console.log(this.user)
 	}
   
 	createForm() {
 		this.userForm = this.fb.group({
-			firstName: [this.user.firstName, Validators.required],
-			lastName: [this.user.lastName, Validators.required],
-			email: [this.user.email, [Validators.required, Validators.email]],
-			phone: [this.user.phoneNumber],
-			skillsSet: this.user.skillsSet,
-			experiences: [this.user.experience]
+			firstName: [ "", Validators.required],
+			lastName: ["", Validators.required],
+			email: ["", [Validators.required, Validators.email]],
+			phone: [""],
+			skillsSet: "",
+			experiences: [""]
 		});
 	}
 
@@ -88,8 +89,8 @@ export class EditProfileComponent implements OnInit {
 			temp[i] = temp[i].trim();
 		}
 		obj["skillsSet"] = temp;
-		console.log(obj)
 		const newObj = Object.assign(this.user, obj);
+		console.log(newObj)
 		//this broke the front page, fixing when we meet.
 		// this._user.updateProfile(newObj);
 	}
