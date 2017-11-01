@@ -53,7 +53,7 @@
 	color: #0098af;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
 
 	.desc {
 		display: none;

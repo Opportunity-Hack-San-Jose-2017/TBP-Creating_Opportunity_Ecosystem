@@ -53,11 +53,15 @@
 	color: #0098af;
 }
 
-@media screen and (max-width: 500px) {
+.mobile-desc {display: none;}
 
-	.desc {
+@media screen and (max-width: 700px) {
+
+	.desc, .desk-desc {
 		display: none;
 	}
+
+	.mobile-desc { display: block; }
 	
 	.main {
 		margin: 0;

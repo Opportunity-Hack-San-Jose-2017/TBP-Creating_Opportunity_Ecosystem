@@ -31,6 +31,9 @@ import { MaterialModule } from './common/material.module';
 import { JobsComponent } from './user-landing/jobs/jobs.component';
 import { ApplicationsComponent } from './user-landing/applications/applications.component';
 import { ApplicationCellComponent } from './user-landing/applications/application-cell/application-cell.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
+import { AuthGuard } from './common/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { ApplicationCellComponent } from './user-landing/applications/applicatio
     FilterComponent,
     JobsComponent,
     ApplicationsComponent,
-    ApplicationCellComponent
+    ApplicationCellComponent,
+    SideNavComponent,
+    SavedJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ import { ApplicationCellComponent } from './user-landing/applications/applicatio
     UserService,
     SearchService,
     CompanyService,
-    JobsService
+    JobsService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

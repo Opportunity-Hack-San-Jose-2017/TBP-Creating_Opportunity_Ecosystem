@@ -18,6 +18,19 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs/Observable';
 
+const job = {
+	shift: 'Morning',
+	type: 'Part Time',
+	title: 'Baker',
+	company: 'Paypal',
+	description: 'This job has a lot of description',
+	responsibilites: 'The job requires the baker to bake bread, cookies, and cake.',
+	publicTransport: true,
+	location: 'Berkeley',
+	experience: 1
+
+}
+
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
@@ -50,6 +63,9 @@ export class JobsComponent implements AfterViewInit {
 		private fb: FormBuilder
 	) {
 		this.createForm();
+		this.jobs = [job,job,job,job,job,job,job,job,job,job,job,job,job]
+		// this._search.getAllJobs()
+		// 	.subscribe((v: any) => this.jobs = v.openings);
 
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)
@@ -67,8 +83,8 @@ export class JobsComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this._search.getAllJobs()
-			.subscribe((v: any) => this.jobs = v.openings);
+		// this._search.getAllJobs()
+		// 	.subscribe((v: any) => this.jobs = v.openings);
 	}
 
 	handleSearch(e: Event) {

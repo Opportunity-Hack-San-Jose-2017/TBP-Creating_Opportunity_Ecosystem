@@ -49,7 +49,7 @@
     background: #1592aa !important;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     .mat-fab {
         height: 30px;
         max-width: 30px;

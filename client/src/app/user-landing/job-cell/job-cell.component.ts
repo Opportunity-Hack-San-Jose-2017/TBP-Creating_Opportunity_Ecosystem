@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./job-cell.component.css']
 })
 export class JobCellComponent implements OnInit {
+
 	show = true;
+	time: String = "";
 	@Input() job: any;
 	isAccessible: String = '';
 
@@ -16,6 +18,7 @@ export class JobCellComponent implements OnInit {
 
 	ngOnInit() {
 		this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
+		this.time = this.job.experience === 1 ? 'year' : 'years'
 	}
 
 	toggle(){

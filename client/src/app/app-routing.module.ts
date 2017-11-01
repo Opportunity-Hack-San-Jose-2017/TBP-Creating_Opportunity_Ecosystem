@@ -9,17 +9,19 @@ import { ProfileSetupComponent } from './profile-setup/profile-setup.component';
 import { HomeComponent } from './home/home.component';
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component'
+import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'setup', component: ProfileSetupComponent },
     { path: 'company', component: CompanyHomeComponent },
     { path: 'company/home', component: EmployersLandingpageComponent},
-    { path: 'profile/edit', component: EditProfileComponent },
     { path: 'company/opening/create', component: JobListingComponent},
     { path: 'applicant', component: UserLandingComponent, children: [
 		{ path: '', component: JobsComponent, pathMatch: 'full' },
-		{ path: 'applications', component: ApplicationsComponent }
+		{ path: 'profile/edit', component: EditProfileComponent },
+		{ path: 'jobs/applied', component: ApplicationsComponent },
+		{ path: 'jobs/saved', component: SavedJobsComponent }
 	] },
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
 	// { path: '**', component: PageNotFoundComponent }
