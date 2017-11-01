@@ -115,4 +115,10 @@ export class UserService {
 	getSetupStep(): Observable<any> {
 		return this.setupStep;
 	}
+
+	getApplications(): Observable<any> {
+		return this.http.get(`${BASE_URL}`, {
+			
+		})
+	}
 }

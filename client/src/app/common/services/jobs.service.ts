@@ -32,7 +32,7 @@ export class JobsService {
 	}
 
 	applyToOpening(opening_id: Number) {
-		const data = {opening_id: opening_id};
+		const data = {opening_id};
 		const url = `${BASE_URL}/applicant/apply`;
 		return this.http.post(url, data, {withCredentials: true});
 	}

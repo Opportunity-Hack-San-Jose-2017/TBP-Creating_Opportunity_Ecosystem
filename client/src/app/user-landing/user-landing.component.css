@@ -1,3 +1,5 @@
+.gray { color: rgba(255,255,255,.7) }
+
 nav {
     height: 80px;
 	position: fixed;
@@ -14,6 +16,8 @@ nav {
 nav img {
 	height: 60px;
 }
+
+.name { text-transform: capitalize; font-size: 18px; margin-bottom: 10px; }
 
 .btn {
     height: 30px;
@@ -36,7 +40,7 @@ nav img {
 }
 
 #content {
-	max-width: 1200px;
+	max-width: 970px;
 	margin: 150px auto 0;
 	width: calc(65vw + 190px);
 }
@@ -54,7 +58,6 @@ nav img {
 	margin-bottom: 10px;
 	align-items: center;
 	justify-content: center;
-	color: white;
 }
 
 #profile_bar div img {
@@ -63,112 +66,14 @@ nav img {
 	margin-bottom: 10px;
 }
 
-.mat-form-field {
-	width: auto;
-	flex: 1;
-}
-
 .main-container {
-	height: calc(100vh - 150px);
-	overflow: auto;
 	width: 65vw;
 	max-width: 780px;
 	left: 190px;
 	position: relative;
 }
 
-form {
-	position: fixed;
-	width: inherit;
-	max-width: 780px;
-	top: 80px;
-}
-
-#search_bar {
-	position: fixed;
-	width: inherit;
-	max-width: 780px;
-	padding-left: 3%;
-	height: 70px;
-	z-index: 10;
-	justify-content: flex-start;
-}
-
-.search {
-	color: rgba(255,255,255,.7);
-	height: 40px;
-	width: 100%;
-	padding: 10px;
-	background: rgba(0,0,0,.83);
-	align-items: center;
-	justify-content: space-around;
-	cursor: pointer;
-}
-
-.caret-wrapper {
-	cursor: pointer;
-	height: 30px;
-	width: 30px;
-	align-items: center;
-	justify-content: center;
-}
-
-.filter-menu {
-	transform-origin: top;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	height: 250px;
-	top: 150px;
-	width: inherit;
-	max-width: 780px;
-	position: fixed;
-}
-
-#mobile_search .mat-form-field { 
-	max-width: 600px;
- }
-
-.icons {
-	max-width: 180px;
-	margin-left: 20px;
-	justify-content: space-around;
-}
-
-.fa { font-size: 24px; pointer-events: none; }
-
-.mag { margin-right: 20px; }
-
-#textInput {
-	flex: 10;
-	height: 30px;
-}
-
-.job_cell {
-	padding: 10px 20px;
-	background-color: white;
-	width: 100%;
-}
-
 @media screen and (max-width: 500px) {
-
-	#mobile_search {
-		display: flex;
-		position: fixed;
-		top: 70px;
-		z-index: 10;
-		justify-content: flex-start;
-		padding-left: 5%;
-	}
-
-	#search_bar { top: 70px; }
-
-	.filter-menu {
-		position: fixed;
-		top: 140px;
-		width: 100%;
-		z-index: 10;
-	}
 
 	nav {
 		display: flex;
@@ -199,10 +104,4 @@ form {
 		left: 0;
 	}
 
-	#job_feed {
-		position: relative;
-		top: 0;
-		margin: 0;
-		width: 100%;
-	}
 }

@@ -1,3 +1,5 @@
+import { ApplicationsComponent } from './user-landing/applications/applications.component';
+import { JobsComponent } from './user-landing/jobs/jobs.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,9 +15,12 @@ const appRoutes: Routes = [
     { path: 'setup', component: ProfileSetupComponent },
     { path: 'company', component: CompanyHomeComponent },
     { path: 'company/home', component: EmployersLandingpageComponent},
-    { path: 'applicant/home', component: UserLandingComponent },
     { path: 'profile/edit', component: EditProfileComponent },
     { path: 'company/opening/create', component: JobListingComponent},
+    { path: 'applicant', component: UserLandingComponent, children: [
+		{ path: '', component: JobsComponent, pathMatch: 'full' },
+		{ path: 'applications', component: ApplicationsComponent }
+	] },
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
 	// { path: '**', component: PageNotFoundComponent }
 ];
