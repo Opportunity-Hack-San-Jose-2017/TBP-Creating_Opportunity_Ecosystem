@@ -52,14 +52,13 @@ export class UserService {
 		this.http.post(url, registration_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data);
 					localStorage.setItem('user', JSON.stringify(data.applicant));
 					this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
 					if (err.status === 400){
-						console.log(err.message)
+						console.log(err.message);
 					}
 				}
 			)

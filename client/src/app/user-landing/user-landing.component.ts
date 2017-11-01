@@ -18,14 +18,6 @@ import {
 } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const job = {
-  location: "San Francisco",
-  company: 'Paypal',
-  shift: 'First',
-  jobType: 'Full Time',
-  description: 'this is a full time software engineering role pelase join the team',
-  publicTransport: true
-}
 @Component({
   selector: 'app-user-landing',
   templateUrl: './user-landing.component.html',
@@ -58,9 +50,8 @@ export class UserLandingComponent {
   ) {
     this.user = JSON.parse(localStorage.getItem('user')) || {};
     // commented out for testing ! //
-    _search.getAllJobs().do(v => console.log(v))
-    .subscribe((v: any) => this.jobs = v.openings);
-    // this.jobs = [job, job, job, job,job,job,job,job,job]
+    _search.getAllJobs()
+      .subscribe((v: any) => this.jobs = v.openings);
   }
 
   searchClick() {

@@ -29,7 +29,7 @@ export class CompanyService {
 	}
 
 	login(data: Object){
-		this.http.post(`${BASE_URL}/company/signin`, data,{withCredentials: true })
+		this.http.post(`${BASE_URL}/company/signin`, data, {withCredentials: true })
 			.subscribe(
 				(data: any) => {
 					localStorage.setItem("company", JSON.stringify(data.company))
