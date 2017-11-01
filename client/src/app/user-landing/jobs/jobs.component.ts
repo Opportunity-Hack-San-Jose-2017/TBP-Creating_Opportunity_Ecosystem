@@ -36,7 +36,7 @@ import { Observable } from 'rxjs/Observable';
 		  ]
 	  )]
 })
-export class JobsComponent {
+export class JobsComponent implements AfterViewInit {
 
 	jobs: Array<any>;
 	searchForm: FormGroup;
@@ -49,8 +49,6 @@ export class JobsComponent {
 		private _search: SearchService,
 		private fb: FormBuilder
 	) {
-		_search.getAllJobs()
-			.subscribe((v: any) => this.jobs = v.openings);
 		this.createForm();
 
 		Observable.fromEvent(document, 'keyup')
@@ -66,6 +64,11 @@ export class JobsComponent {
 					}
 				}
 			})
+	}
+
+	ngAfterViewInit() {
+		this._search.getAllJobs()
+			.subscribe((v: any) => this.jobs = v.openings);
 	}
 
 	handleSearch(e: Event) {

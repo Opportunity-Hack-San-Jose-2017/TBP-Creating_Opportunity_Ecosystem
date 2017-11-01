@@ -30,8 +30,9 @@ form {
 }
 
 .mat-fab {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 80px;
+    padding: 5px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -103,7 +104,7 @@ label {
 
     .mat-fab {
         height: 35px;
-        width: 35px;
+        width: 60px;
         font-size: .7rem;
     }
     .form-group {

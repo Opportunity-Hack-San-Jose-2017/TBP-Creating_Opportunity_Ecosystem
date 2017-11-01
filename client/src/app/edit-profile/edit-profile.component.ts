@@ -41,7 +41,7 @@ export class EditProfileComponent implements OnInit {
 		"pendingApplications":0
 		// "imageUrl":null
 	}
-	shifts: any = ['first', 'second', 'third'];
+	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
 	success: Boolean = true;
 	failed: Boolean = false;

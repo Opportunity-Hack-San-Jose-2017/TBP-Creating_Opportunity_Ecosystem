@@ -44,21 +44,24 @@
                   <input matInput placeholder="Email" name="email" formControlName="email">
                 </mat-form-field>
               </div>
-            </div>    
+            </div>
           </div>
         </div>
-        <div class="av-wrapper flex">
+        <div class="av-wrapper">
           <div class="form-group flex column">
             <div class="form-group-header">Preferred Shift(s)</div>
             <div class="flex check-container">
                 <div class="check-wrapper flex">
-                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
                 </div>
                 <div class="check-wrapper flex">
-                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="noon ? 'active' : ''" id="noon">Noon</div>
                 </div>
                 <div class="check-wrapper flex">
-                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="night ? 'active' : ''" id="night">Night</div>
+                </div>
+                <div class="check-wrapper flex">
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
                 </div>
             </div>
           </div>

@@ -34,9 +34,9 @@ export class UserService {
 	}
 
 	updateProfile(update_cred: Object){
-		const url = `${BASE_URL}/applicant/signin`;
+		const url = `${BASE_URL}/applicant/update`;
 		console.log(update_cred)
-		this.http.post(url, update_cred, {withCredentials: true})
+		this.http.put(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
 					console.log(data);
@@ -56,7 +56,7 @@ export class UserService {
 				(data: any) => {
 					console.log(data);
 					localStorage.setItem('user', JSON.stringify(data.applicant));
-					// this.router.navigate(['setup']);
+					this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
