@@ -8,7 +8,7 @@
 			<div class="pb-div flex column">
 				<div>{{user['firstName']}} {{user['lastName']}}</div>
 				<img src="../../assets/images/profile-icon.png">
-				<div class="btn flex" routerLink="applicant/profile/edit">Edit Profile</div>
+				<div class="btn flex" routerLink="/profile/edit">Edit Profile</div>
 			</div>
 			<div class="pb-div flex">Saved Jobs</div>
 			<div class="pb-div flex">Applied Jobs</div>
@@ -17,7 +17,7 @@
 			<form [formGroup]="searchForm">
 				<div id="search_bar" class="flex search">
 					<mat-form-field>
-						<input matInput type="search" placeholder="Search" formControlName="search" name="search">
+						<input matInput #searchEl type="search" placeholder="Search" formControlName="search" name="search">
 					</mat-form-field>
 					<div class="icons flex">
 						<div (click)="handleSearch()" class="flex caret-wrapper mag">

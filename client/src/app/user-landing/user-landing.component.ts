@@ -18,6 +18,7 @@ import {
 } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-user-landing',
@@ -39,6 +40,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class UserLandingComponent {
 
+	@ViewChild('searchEl', { read: ElementRef }) searchEl: ElementRef;
 	user: any;
 	search: Boolean = false;
 	jobs: any;
@@ -56,6 +58,19 @@ export class UserLandingComponent {
 		this.createForm();
 		_search.getAllJobs()
 			.subscribe((v: any) => this.jobs = v.openings);
+		Observable.fromEvent(document, 'keyup')
+			.filter((v: any) => v.keyCode === 13)
+			.subscribe(() => {
+				if (document.getElementById('mat-input-0') === document.activeElement) {
+					if (this.searchForm.value.search !== "") {
+						_search.filterJobs(this.searchForm.value)
+							.subscribe((v: any) => this.jobs = v.openings);
+					} else {
+						_search.getAllJobs()
+							.subscribe((v: any) => this.jobs = v.openings);
+					}
+				}
+			})
 	}
 
 	createForm() {

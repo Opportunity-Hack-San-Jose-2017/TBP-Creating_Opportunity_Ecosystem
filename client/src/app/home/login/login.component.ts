@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,9 @@ export class LoginComponent {
 		private fb: FormBuilder
 	) {
 		this.createForm();
+		Observable.fromEvent(document, 'keyup')
+			.filter((v: any) => v.keyCode === 13)
+			.subscribe(() => this.login())
 	}
 
 	login() {
