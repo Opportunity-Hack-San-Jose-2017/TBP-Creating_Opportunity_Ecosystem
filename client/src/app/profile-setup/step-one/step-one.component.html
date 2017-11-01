@@ -1,0 +1,31 @@
+<div class="welcome-wrapper flex column">
+  <div class="welcome">Welcome</div>
+  <div class="start">Get started by filling out your profile</div>
+</div>
+<form [formGroup]="userForm" class="flex column">
+  <div class="photo-name-phone flex">
+    <div class="photo-wrapper">
+      <img class="no-point" [src]="img" alt="Profile Photo">
+    </div>
+    <div class="name-phone-wrapper flex column">
+      <div class="form-group flex column">
+        <div class="form-group-header name">{{name}}</div>
+      </div>
+      <mat-form-field>
+        <input matInput type="tel" placeholder="Phone Number" name="phoneNumber" formControlName="phoneNumber">
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-form-field>
+    <textarea matInput placeholder="About yourself (optional)" name="introduction" formControlName="introduction"></textarea>
+  </mat-form-field>
+</form>
+<div class="bottom flex column">
+  <div class="btn-wrapper flex">
+    <div (click)="handleClick()" class="next-btn btn flex">Next</div>
+  </div>
+  <div class="step-img-wrapper flex">
+    <img src="../../assets/images/step_1.png" alt="1">
+  </div>
+  <div class="not-now">Not now</div>
+</div>

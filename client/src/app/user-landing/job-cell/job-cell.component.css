@@ -1,0 +1,58 @@
+.main {
+	background-color: white;
+	color: black;
+	padding: 10px;
+	justify-content: space-between;
+	transition: all .2s ease;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.main:hover {
+	background: rgb(235, 232, 232);
+}
+
+.main img {
+	height: 109px;
+}
+
+.right_side_nav *{
+	display: block;
+	text-align: center;
+	margin: 5px 0px;
+}
+
+.biz-logo, .inner-text { margin-right: 10px; }
+
+.inner_text { flex: 1; }
+
+.details {
+	font-size: .8rem;
+}
+
+button {
+	background-color: #0098af;
+	color: white;
+	border: none;
+	width: 100px;
+	height: 30px;
+}
+
+.toggle {
+	text-decoration: none;
+	color: #0098af;
+}
+
+@media screen and (max-width: 500px) {
+
+	.desc {
+		display: none;
+	}
+	
+	.main {
+		margin: 0;
+	}
+
+	.main img {
+		height: 50px;
+	}
+}

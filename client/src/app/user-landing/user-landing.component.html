@@ -1,0 +1,41 @@
+<section id="main">
+	<nav>
+		<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+		<div (click)="logout()" class="btn flex logout">Logout</div>
+	</nav>
+	<section id="content" class="flex">
+		<div id="profile_bar">
+			<div class="pb-div flex column">
+				<div>{{user['firstName']}} {{user['lastName']}}</div>
+				<img src="../../assets/images/profile-icon.png">
+				<div class="btn flex" routerLink="/profile/edit">Edit Profile</div>
+			</div>
+			<div class="pb-div flex">Saved Jobs</div>
+			<div class="pb-div flex">Applied Jobs</div>
+		</div>
+		<div class="main-container">
+			<form [formGroup]="searchForm">
+				<div id="search_bar" class="flex search">
+					<mat-form-field>
+						<input matInput #searchEl type="search" placeholder="Search" formControlName="search" name="search">
+					</mat-form-field>
+					<div class="icons flex">
+						<div (click)="handleSearch()" class="flex caret-wrapper mag">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</div>
+						<div (click)="searchClick()" class="flex caret-wrapper caret">
+							<i class="fa fa-caret-down" id="caret" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="filter-menu" [@slideAnimation] *ngIf="search">
+				<app-filter></app-filter>
+			</div>
+			<div id="job_feed">
+				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
+			</div>
+		</div>
+	</section>
+</section>
+
