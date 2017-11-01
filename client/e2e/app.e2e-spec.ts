@@ -1,10 +1,10 @@
-import { CilentPage } from './app.po';
+import { ClientPage } from './app.po';
 
-describe('cilent App', () => {
-  let page: CilentPage;
+describe('client App', () => {
+  let page: ClientPage;
 
   beforeEach(() => {
-    page = new CilentPage();
+    page = new ClientPage();
   });
 
   it('should display welcome message', () => {

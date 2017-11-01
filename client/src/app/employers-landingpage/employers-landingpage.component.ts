@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CompanyService } from './../common/services/company.service';
 
 @Component({
@@ -6,25 +6,22 @@ import { CompanyService } from './../common/services/company.service';
   templateUrl: './employers-landingpage.component.html',
   styleUrls: ['./employers-landingpage.component.css']
 })
-export class EmployersLandingpageComponent implements OnInit {
+export class EmployersLandingpageComponent {
 
 	toggleDropDown = false;
 	company: any = { "name" : "redbull"}
 	constructor(
 		private _company: CompanyService
 	) {
-		this.company = localStorage.getItem("company")
-	}
-
-	ngOnInit() {
+		this.company = localStorage.getItem("company") || {};
 	}
 
 	dropdowntoggle() {
-		this.toggleDropDown = !this.toggleDropDown
+		this.toggleDropDown = !this.toggleDropDown;
 	}
 
 	logout() {
+		localStorage.clear();
 		this._company.logout()
-		localStorage.clear()
 	}
 }

@@ -1,6 +1,6 @@
 <div class="filter-wrapper flex column">
 	<mat-form-field>
-		<input matInput type="search" placeholder="Location" name="location">
+		<input (keyup)="loc.emit(location.value)" #location matInput type="search" placeholder="Location" name="location">
 	</mat-form-field>
 	<div class="availability-wrapper wrapper flex">
 		<div class="form-group flex">

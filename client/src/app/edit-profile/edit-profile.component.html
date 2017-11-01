@@ -1,9 +1,18 @@
+<nav class="flex">
+	<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+	<div (click)="logout()" class="lg-btn btn flex logout">Logout</div>
+</nav>
 <div class="edit-profile-container flex column">
-  <div class="logo-wrap">
-    <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
-  </div>
   <!-- <div class="header">Edit Profile</div> -->
   <div class="main-wrapper flex column">
+    <div class="success msg flex" *ngIf="success">
+      <div>Resume uploaded!</div>
+      <div class="close flex" (click)="closeMsg()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    </div>
+    <div class="failed msg flex" *ngIf="failed">
+      <div>Resume uploaded failed :(</div>
+      <div class="close flex" (click)="closeMsg()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    </div>
     <div class="form-wrapper flex column">
       <form [formGroup]="userForm" class="flex column">
         <div class="form-top flex">
@@ -12,7 +21,10 @@
               <img class="no-point" [src]="img" alt="Profile Photo">
             </div>
             <div class="change-photo btn flex">Change Photo</div>
-            <div class="resume btn flex">Upload Resume</div>
+            <div class="resume btn flex">
+              <input (change)="handleFiles($event)" id="resume" type="file" hidden />
+              <label class="flex res-lbl" for="resume">Upload Resume</label>
+            </div>
           </div>
           <div class="form-top-right">
             <div class="name-phone-wrapper flex column">
@@ -26,27 +38,30 @@
               </div>
               <div class="name-wrapper flex">
                 <mat-form-field>
-                  <input matInput placeholder="Phone Number" name="phone" formControlName="phone" [value]="user.phoneNumber">
+                  <input matInput placeholder="Phone Number" name="phone" formControlName="phoneNumber" >
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput placeholder="Email" name="email" formControlName="email" [value]="user.email">
                 </mat-form-field>
               </div>
-            </div>    
+            </div>
           </div>
         </div>
-        <div class="av-wrapper flex">
+        <div class="av-wrapper">
           <div class="form-group flex column">
             <div class="form-group-header">Preferred Shift(s)</div>
             <div class="flex check-container">
                 <div class="check-wrapper flex">
-                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="first ? 'active' : ''" id="first">1st</div>
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
                 </div>
                 <div class="check-wrapper flex">
-                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="second ? 'active' : ''" id="second">2nd</div>
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="noon ? 'active' : ''" id="noon">Noon</div>
                 </div>
                 <div class="check-wrapper flex">
-                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="third ? 'active' : ''" id="third">3rd</div>
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="night ? 'active' : ''" id="night">Night</div>
+                </div>
+                <div class="check-wrapper flex">
+                    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
                 </div>
             </div>
           </div>

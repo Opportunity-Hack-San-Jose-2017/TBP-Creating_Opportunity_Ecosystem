@@ -1,0 +1,13 @@
+.sn {
+    height: 100%;
+    width: 100%;
+}
+
+.pb-div {
+    height: 40px;
+    color: rgba(0,0,0,.83);
+	font-size: 16px;
+    align-items: center;
+    padding-left: 10px;
+	/* justify-content: center; */
+}

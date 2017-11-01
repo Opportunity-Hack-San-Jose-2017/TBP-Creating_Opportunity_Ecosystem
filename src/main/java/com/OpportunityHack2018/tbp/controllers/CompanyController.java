@@ -619,6 +619,38 @@ public class CompanyController {
         return responseMap;
     }
 
+    @PutMapping(value = "/rate")
+    @ResponseBody
+    @CrossOrigin
+    public ModelMap rate(@RequestBody String jsonObj, HttpSession session){
+        ModelMap responseMap=new ModelMap();
+        if(session.getAttribute("email")==null){
+            responseMap.addAttribute("statusCode", "401");
+            responseMap.addAttribute("message", "Please sign in to rate.");
+            return responseMap;
+        }
+
+        JSONObject rateObj=new JSONObject(jsonObj);
+        try {
+            if (rateObj.get("applicant_email") == null || applicantService.fetch(rateObj.getString("applicant_email")) == null) {
+                responseMap.addAttribute("statusCode", "404");
+                responseMap.addAttribute("message", "Applicant not found");
+                return responseMap;
+            }
+
+            Applicant applicant = applicantService.fetch(rateObj.getString("applicant_email"));
+            applicant.setRating(rateObj.getInt("rating"));
+            applicantService.save(applicant);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        responseMap.addAttribute("statusCode","201");
+        return responseMap;
+    }
+
+
 
 
 }

@@ -15,24 +15,37 @@
 	height: 109px;
 }
 
-.right_side_nav *{
-	display: block;
+.right_side_nav * {
 	text-align: center;
 	margin: 5px 0px;
 }
 
 .biz-logo, .inner-text { margin-right: 10px; }
 
+.inner_text { flex: 1; }
+
 .details {
 	font-size: .8rem;
 }
 
-button {
-	background-color: #0098af;
-	color: white;
-	border: none;
-	width: 100px;
-	height: 30px;
+.btn {
+    height: 30px;
+	cursor: pointer;
+	font-size: .8rem;
+    width: 100px;
+    background: #1592aa;
+    align-items: center;
+    color: white;
+    justify-content: center;
+	transition: all .2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
 }
 
 .toggle {
@@ -40,11 +53,15 @@ button {
 	color: #0098af;
 }
 
-@media screen and (max-width: 500px) {
+.mobile-desc {display: none;}
 
-	.desc {
+@media screen and (max-width: 700px) {
+
+	.desc, .desk-desc {
 		display: none;
 	}
+
+	.mobile-desc { display: block; }
 	
 	.main {
 		margin: 0;

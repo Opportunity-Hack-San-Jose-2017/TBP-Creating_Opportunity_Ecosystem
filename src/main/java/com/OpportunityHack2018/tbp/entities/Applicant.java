@@ -26,6 +26,9 @@ public class Applicant {
     private String lastName;
 
     @Column
+    private String resumeURL;
+
+    @Column
     private String phoneNumber;
 
     @Column
@@ -254,5 +257,13 @@ public class Applicant {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getResumeURL() {
+        return resumeURL;
+    }
+
+    public void setResumeURL(String resumeURL) {
+        this.resumeURL = resumeURL;
     }
 }

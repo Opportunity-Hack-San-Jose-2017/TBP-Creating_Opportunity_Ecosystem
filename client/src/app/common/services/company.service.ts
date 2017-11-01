@@ -32,6 +32,7 @@ export class CompanyService {
 		this.http.post(`${BASE_URL}/company/signin`, data, {withCredentials: true })
 			.subscribe(
 				(data: any) => {
+					console.log(data);
 					localStorage.setItem("company", JSON.stringify(data.company))
 					this._router.navigate(['company/home'])			
 				}, (error: HttpErrorResponse) => {

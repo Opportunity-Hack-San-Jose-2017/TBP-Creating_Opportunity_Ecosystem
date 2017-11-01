@@ -1,9 +1,71 @@
 * {
     color: rgba(255,255,255,.7);
 }
+
+nav {
+    height: 80px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
+}
+
+nav img {
+	height: 60px;
+}
+
+.edit-profile-container {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    padding: 15px 35px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-wrap {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    height: 50px;
+}
+
+.logo { height: 40px; }
+
+.msg {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+.fa {pointer-events: none;}
+.success { background: rgb(2, 143, 2); }
+.failed { background: rgb(192, 1, 1); }
+
 .main-wrapper {
     min-height: 500px;
     overflow: auto;
+    position: relative;
     width: 80%;
     max-width: 700px;
 }
@@ -13,8 +75,9 @@
 }
 
 .mat-fab {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 80px;
+    padding: 5px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -41,26 +104,6 @@
 }
 
 .gap { margin-right: 15px; }
-
-.edit-profile-container {
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    padding: 15px 35px;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.logo-wrap {
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    height: 50px;
-}
-
-.logo { height: 40px; }
 
 .form-wrapper {
     width: 100%;
@@ -114,7 +157,7 @@ form {
 
 .form-group {
     width: 80%;
-    margin-bottom: 5px;
+    margin: 0 auto 5px;
     position: relative;
 }
 
@@ -142,10 +185,25 @@ form {
     font-size: 12px;
     background: #490000;
     align-items: center;
-    color: white;
+    color: rgba(255,255,255,.7);
     justify-content: center;
     margin: 0 auto 5px;
     transition: all .2s ease;
+}
+
+.lg-btn {
+    height: 30px;
+	font-size: .8rem;
+    width: 100px;
+    margin: 0;
+    background: #1592aa;
+}
+
+.res-lbl {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .skills, .experiences {
@@ -172,7 +230,7 @@ form {
     margin-right: 40px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
 
     .form-wrapper, .edit-profile-container {
         padding: 0;
@@ -192,7 +250,7 @@ form {
 
     .mat-fab {
         height: 35px;
-        width: 35px;
+        width: 60px;
         font-size: .7rem;
     }
 
