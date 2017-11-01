@@ -60,7 +60,7 @@ export class JobListingComponent {
 	}
 
   testForm(){
-    this._jobs.postOpening(this.job)
+    this._jobs.postOpening(this.job);
   }
 
 	logout() {

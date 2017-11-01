@@ -17,6 +17,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-landing',
@@ -38,43 +39,51 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class UserLandingComponent {
 
-  user: any;
-  search: Boolean = false;
-  jobs: any;
+	user: any;
+	search: Boolean = false;
+	jobs: any;
+	searchForm: FormGroup;
 
 	toggleDropDown = false;
-  constructor(
-    private _router: Router,
-    private _search: SearchService,
-    private _user: UserService
-  ) {
-    this.user = JSON.parse(localStorage.getItem('user')) || {};
-    // commented out for testing ! //
-    _search.getAllJobs()
-      .subscribe((v: any) => this.jobs = v.openings);
-  }
+	constructor(
+		private _router: Router,
+		private _search: SearchService,
+		private _user: UserService,
+		private fb: FormBuilder
+		
+	) {
+		this.user = JSON.parse(localStorage.getItem('user'));
+		this.createForm();
+		_search.getAllJobs()
+			.subscribe((v: any) => this.jobs = v.openings);
+	}
 
-  searchClick() {
-    this.search = !this.search;
-  }
+	createForm() {
+		this.searchForm = this.fb.group({
+			search: ['']
+		});
+	}
+	searchClick() {
+		this.search = !this.search;
+	}
 
-  handleSearch(e: Event) {
-    this._search.getJobBySkill(e.target['value']);;
-  }
+	handleSearch(e: Event) {
+		this._search.filterJobs(this.searchForm.value)
+			.do(v => console.log(v))
+			.subscribe((v: any) => this.jobs = v.openings);
+	}
   
-  ngOnInit() {
-  }
 
-  logout() {
-    this._user.logout();
-  }
+	logout() {
+		this._user.logout();
+	}
 
-  dropdowntoggle() {
-  	this.toggleDropDown = !this.toggleDropDown
-  }
+	dropdowntoggle() {
+		this.toggleDropDown = !this.toggleDropDown
+	}
 
-  goToEditProfile(){
-    this._router.navigate(["profile/edit"])
-  }
+	goToEditProfile(){
+		this._router.navigate(["profile/edit"])
+	}
 
 }

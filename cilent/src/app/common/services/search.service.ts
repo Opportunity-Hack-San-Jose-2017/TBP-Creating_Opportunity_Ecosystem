@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { url as BASE_URL } from '../config/url';
 
@@ -7,13 +7,24 @@ export class SearchService {
 
 	jobs: Array<any>;
 
-  	constructor(private _http: HttpClient) { }
+  	constructor(
+		  private _http: HttpClient
+		) { }
 
   	getAllJobs(){
   		return this._http.get(`${BASE_URL}/applicant/allJobs`, {withCredentials:true});
   	}
 
-  	getJobBySkill(skill: String) {
+  	getJobBySkill(skill: string) {
   		// return this._http.post('/')
-  	}
+	}
+	
+	filterJobs(query: any) {
+		console.log(query.search);
+		return this._http.get(`${BASE_URL}/applicant/search`, {
+			params: new HttpParams().set('query', query.search),
+			withCredentials: true
+		})
+	}
+	
 }
