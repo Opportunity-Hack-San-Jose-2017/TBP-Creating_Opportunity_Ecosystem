@@ -72,9 +72,5 @@ export class JobListingComponent {
 		const obj = this.jobForm.value
 		this._jobs.postOpening(this.jobForm.value)
 	}
-  
 
-  testProfile(){
-    this._company.getCompanyProfile()
-  }
 }
