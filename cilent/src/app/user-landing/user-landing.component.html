@@ -1,13 +1,14 @@
 <section id="main">
 	<nav>
 		<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+		<div (click)="logout()" class="btn flex logout">Logout</div>
 	</nav>
 	<section id="content" class="flex">
 		<div id="profile_bar">
 			<div>
 				<h2>{{user['firstName']}} {{user['lastName']}}</h2>
 				<img src="../../assets/images/profile-icon.png">
-				<button>Edit Profile</button>
+				<button (click)="goToEditProfile()" >Edit Profile</button>
 			</div>
 			<div>
 				<h2>Saved Jobs</h2>
@@ -17,10 +18,24 @@
 			</div>
 		</div>
 		<div class="main-container">
+			<div id="mobile_search" class="flex search" (click)="searchClick()">
+				<mat-form-field>
+					<input matInput type="search" placeholder="Search" name="search">
+				</mat-form-field>
+				<div class="icons flex">
+					<i class="fa fa-search" aria-hidden="true"></i>
+					<i class="fa fa-caret-down" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="filter-menu" [@slideAnimation] *ngIf="search">
+				<app-filter></app-filter>
+			</div>
 			<div id="search_bar" class="flex">
-				<input type="text" name="search" id="textInput">
+				<mat-form-field>
+					<input matInput type="search" placeholder="Search" name="search">
+				</mat-form-field>
 				<div class="dropdown-wrapper">
-					<button class="dropbtn" (click)="dropdowntoggle()">Dropdown</button>
+					<button class="dropbtn" (click)="dropdowntoggle()">Filter</button>
 					<div class="dropdown-content flex" *ngIf="toggleDropDown">
 						<div class="col flex column">
 							<h4>Job Type</h4>
@@ -57,7 +72,7 @@
 							</div>
 						</div>
 						<div class="col flex column">
-							<!-- <div class="checkbox_div">
+							<div class="checkbox_div">
 								<input type="checkbox" name="public_transport">
 								<label>Public Transport</label>
 							</div>
@@ -68,16 +83,16 @@
 							<div class="checkbox_div">
 								<input type="checkbox" name="multilingual">
 								<label>Multilingual</label>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
 				<button>Search</button>
 			</div>
 			<div id="job_feed">
-				<!-- jobs -->
 				<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
 			</div>
 		</div>
 	</section>
 </section>
+

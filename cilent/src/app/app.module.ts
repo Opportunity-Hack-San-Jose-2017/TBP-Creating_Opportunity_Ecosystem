@@ -1,4 +1,3 @@
-import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobsService } from './common/services/jobs.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +26,8 @@ import { CompanyRegisterComponent } from './company-home/company-register/compan
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component';
+import { FilterComponent } from './user-landing/filter/filter.component';
+import { MaterialModule } from './common/material.module';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { EmployersLandingpageComponent } from './employers-landingpage/employers
     CompanyRegisterComponent,
     ProfileComponent,
     EditProfileComponent,
-    EmployersLandingpageComponent
+    EmployersLandingpageComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

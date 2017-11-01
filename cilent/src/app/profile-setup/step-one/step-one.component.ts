@@ -26,13 +26,12 @@ export class StepOneComponent implements OnInit {
 
 	createForm() {
 		this.userForm = this.fb.group({
-			phone: [''],
-			about: [' ']
+			phoneNumber: [''],
+			introduction: [' ']
 		});
 	}
 
 	handleClick() {
-		console.log(this.userForm.value)
 		this._user.sendProfileInfo(this.userForm.value);
 	}
 

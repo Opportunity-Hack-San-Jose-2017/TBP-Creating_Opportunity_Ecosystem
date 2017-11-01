@@ -36,7 +36,7 @@ export class CompanyRegisterComponent {
 				token: this.companyForm.value.token
 			}
 			const newObj = Object.assign(obj, company);
-			this._company.register(obj);
+			this._company.register(obj)
 		}
 	} 
 

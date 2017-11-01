@@ -16,6 +16,8 @@ export class StepTwoComponent {
 	ft: Boolean;
 	pt: Boolean;
 	temp: Boolean;
+	shifts: any = ['first', 'second', 'third'];
+	types: any = ['ft', 'pt', 'temp'];
 
 	constructor(
 		private _user: UserService,
@@ -32,18 +34,9 @@ export class StepTwoComponent {
 	  }
 	
 	handleClick() {
-
-		const obj = Object.assign(this.userForm.value, {
-			availability: Object.assign({}, {
-				morning: this.first ? true : false,
-				noon: this.second ? true : false,
-				night: this.third ? true : false
-			}),
-			jobType: Object.assign({}, {
-				fullTime: this.ft ? true : false,
-				partTime: this.pt ? true : false,
-				temporary: this.temp ? true : false
-			})
+		const obj = Object.assign({}, {
+			shift: this.shifts.filter(x => this[x]),
+			availability: this.types.filter(x => this[x])
 		})
 		console.log(obj);
 		this._user.sendProfileInfo(obj);

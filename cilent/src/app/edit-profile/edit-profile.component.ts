@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,34 +18,51 @@ export class EditProfileComponent implements OnInit {
 	ft: Boolean;
 	pt: Boolean;
 	temp: Boolean;
+	user: any = {
+		"email":"",
+		"token": "",
+		"password":"",
+		"firstName":"",
+		"lastName":"",
+		"phoneNumber": "",
+		"availability":[],
+		"shift":[],
+		"position":null,
+		"introduction":"",
+		"experience":"",
+		"education":null,
+		"verified":false,
+		"hashValue":"",
+		"city":null,
+		"country":null,
+		"rating":0,
+		"numberOfRatings":0,
+		"skillsSet":[],
+		"pendingApplications":0,
+		"imageUrl":null
+	}
 
 	constructor(
 		private _user: UserService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private _router: Router
 	) {
 		this.createForm();
+		this.user = localStorage.getItem("user")
 	}
 
-	user = {
-		password: "",
-		introduction: "",
-		verified: "",
-		hashValue: "",
-		location: "",
-	}
-
-	ngOnInit() {
+	ngOnInit() {		
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
 	}
   
 	createForm() {
 		this.userForm = this.fb.group({
-			firstName: ['', Validators.required],
-			lastName: ['', Validators.required],
-			email: ['', [Validators.required, Validators.email]],
-			phone: ['' ],
-			skillsSet: [''],
-			experiences: ['']
+			firstName: [this.user.firstName, Validators.required],
+			lastName: [this.user.lastName, Validators.required],
+			email: [this.user.email, [Validators.required, Validators.email]],
+			phone: [this.user.phoneNumber],
+			skillsSet: this.user.skillsSet,
+			experiences: [this.user.experience]
 		});
 	}
 
@@ -65,10 +83,19 @@ export class EditProfileComponent implements OnInit {
 				temporary: this.temp ? true : false
 			})
 		})
-		console.log(obj);
+		var temp = this.userForm.value.skillsSet.split(",")
+		for (var i = 0; i < temp.length; i++) {
+			temp[i] = temp[i].trim();
+		}
+		obj["skillsSet"] = temp;
+		console.log(obj)
 		const newObj = Object.assign(this.user, obj);
-		this._user.sendProfileInfo(newObj);
+		//this broke the front page, fixing when we meet.
+		// this._user.updateProfile(newObj);
 	}
-  
+  	
+  	backButton(){
+  		this._router.navigate(["applicant/home"])
+  	}
 
 }

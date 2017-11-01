@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-const BASE_URL = "http://54.183.64.109/";
+import { url as BASE_URL } from '../config/url';
+
 
 @Injectable()
 export class JobsService {
-
 	jobs: Array<any>;
 	constructor(private http: HttpClient) { }
 

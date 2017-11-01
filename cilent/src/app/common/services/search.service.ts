@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { url as BASE_URL } from '../config/url';
 
 @Injectable()
 export class SearchService {
@@ -9,7 +10,7 @@ export class SearchService {
   	constructor(private _http: HttpClient) { }
 
   	getAllJobs(){
-  		return this._http.get('/applicant/getJobs');
+  		return this._http.get(`${BASE_URL}/applicant/getJobs`);
   	}
 
   	getJobBySkill(skill: String){

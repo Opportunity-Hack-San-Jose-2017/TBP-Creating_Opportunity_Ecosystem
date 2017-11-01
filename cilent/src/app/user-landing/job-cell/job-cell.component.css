@@ -4,6 +4,7 @@
 	padding: 10px;
 	justify-content: space-between;
 	transition: all .2s ease;
+	border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
 .main:hover {
@@ -18,6 +19,10 @@
 	display: block;
 	text-align: center;
 	margin: 5px 0px;
+}
+
+.details {
+	font-size: .8rem;
 }
 
 button {

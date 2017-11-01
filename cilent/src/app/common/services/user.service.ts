@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-const BASE_URL = 'http://54.183.64.109';
+import { url as BASE_URL } from '../config/url';
 
 @Injectable()
 export class UserService {
@@ -17,11 +17,11 @@ export class UserService {
 
 	login(login_cred: Object){
 		const url = `${BASE_URL}/applicant/signin`;
-		this.http.post(url, login_cred)
+		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					localStorage.setItem('user', JSON.stringify(data));
-					this.router.navigate(['jobs']);
+					localStorage.setItem('user', JSON.stringify(data.applicant));
+					this.router.navigate(['applicant/home']);
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -33,27 +33,26 @@ export class UserService {
 
 	updateProfile(update_cred: Object){
 		const url = `${BASE_URL}/applicant/signin`;
-		this.http.post(url, update_cred)
+		console.log(update_cred)
+		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-				localStorage.setItem('user', JSON.stringify(data));
-				this.router.navigate(['jobs']);
+					console.log(data)
+					// localStorage.setItem('user', JSON.stringify(data.applicant));
+					// this.router.navigate(['applicant/home']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
-					if (err.status === 400) {
-						console.log(err.message)
-					}
 				}
 			)
 	}
 
 	register(registration_cred: Object) {
 		const url = `${BASE_URL}/applicant/register`;
-		this.http.post(url, registration_cred, {withCredentials:true})
+		this.http.post(url, registration_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					localStorage.setItem('user', JSON.stringify(data));
+					localStorage.setItem('user', JSON.stringify(data.applicant));
 					this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
@@ -67,7 +66,11 @@ export class UserService {
 
 	logout() {
 		const url = `${BASE_URL}/applicant/logout`;
-		return this.http.post(url, {});
+		this.http.post(url, {}, {withCredentials: true})
+		.subscribe(data => {
+			console.log(data)
+			this.router.navigate(['/'])
+		})
 	}
 
 	getSession(){
@@ -97,8 +100,8 @@ export class UserService {
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
-			this.register(updatedObj);
-			this.router.navigate(['jobs']);
+			localStorage.removeItem('setupStep');
+			this.updateProfile(updatedObj);
 		}
 	}
   
