@@ -54,12 +54,13 @@ export class EditProfileComponent implements OnInit {
 	}
 
 	createForm() {
+		var tempSkillsSet = this.user.skillsSet.join(", ");
 		this.userForm = this.fb.group({
 			firstName: [this.user.firstName , Validators.required],
 			lastName: [this.user.lastName, Validators.required],
 			email: [this.user.email, [Validators.required, Validators.email]],
 			phoneNumber: [this.user.phoneNumber],
-			skillsSet: this.user.skillsSet,
+			skillsSet: tempSkillsSet,
 			introduction: [this.user.introduction]
 		});
 	}
