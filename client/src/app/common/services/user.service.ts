@@ -44,12 +44,11 @@ export class UserService {
 						localStorage.setItem('user', JSON.stringify(data.applicant));
 						this.router.navigate(['applicant']);
 					} else {
-						console.log(data)
+						console.log(data);
 					}
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
-					// this.router.navigate(['applicant']);
 				}
 			)
 	}
