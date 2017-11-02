@@ -43,6 +43,8 @@ export class UserService {
 					if (data["statusCode"] == 200){
 						localStorage.setItem('user', JSON.stringify(data.applicant));
 						this.router.navigate(['applicant']);
+					} else {
+						console.log(data)
 					}
 				},
 				(err: HttpErrorResponse) => {

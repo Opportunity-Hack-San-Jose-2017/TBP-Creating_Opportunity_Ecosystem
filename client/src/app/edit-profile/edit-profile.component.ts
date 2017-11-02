@@ -29,7 +29,7 @@ export class EditProfileComponent implements OnInit {
 		"shift": [""],
 		// "position":null,
 		"introduction":"",
-		"experience":"",
+		// "experience":"",
 		"education":"",
 		"verified":false,
 		"hashValue":"",
@@ -41,6 +41,9 @@ export class EditProfileComponent implements OnInit {
 		"pendingApplications":0
 		// "imageUrl":null
 	}
+
+
+
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
 	success: Boolean = true;
@@ -51,16 +54,15 @@ export class EditProfileComponent implements OnInit {
 		private fb: FormBuilder,
 		private _router: Router
 	) {
-		this.createForm();
 		this.checkCircles();
-		this.user = localStorage.getItem("user") || this.user;
+		this.user = JSON.parse(localStorage.getItem("user")) || this.user;
+		this.createForm();
 		_user.getSuccessMsg().subscribe((v: any) => this.success = v)
 		_user.getFailedMsg().subscribe((v: any) => this.failed = v);
 	}
 
 	ngOnInit() {		
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
-		this.user = JSON.parse(localStorage.getItem("user"))
 		console.log(this.user)
 	}
 
@@ -71,12 +73,12 @@ export class EditProfileComponent implements OnInit {
   
 	createForm() {
 		this.userForm = this.fb.group({
-			firstName: [ "", Validators.required],
-			lastName: ["", Validators.required],
-			email: ["", [Validators.required, Validators.email]],
-			phoneNumber: [""],
-			skillsSet: "",
-			experiences: [""]
+			firstName: [this.user.firstName , Validators.required],
+			lastName: [this.user.lastName, Validators.required],
+			email: [this.user.email, [Validators.required, Validators.email]],
+			phoneNumber: [this.user.phoneNumber],
+			skillsSet: this.user.skillsSet,
+			introduction: [this.user.introduction]
 		});
 	}
 
@@ -89,15 +91,18 @@ export class EditProfileComponent implements OnInit {
 			shift: this.shifts.filter(x => this[x]),
 			availability: this.types.filter(x => this[x])
 		})
-		var temp = this.userForm.value.skillsSet.split(",")
+		try {
+			var temp = this.userForm.value.skillsSet.split(",")
+		} catch(err) {
+			temp = []
+		}
 		for (var i = 0; i < temp.length; i++) {
 			temp[i] = temp[i].trim();
 		}
 		obj["skillsSet"] = temp;
-		const newObj = Object.assign(this.user, obj);
-		console.log(newObj)
+		console.log(obj)
 		// this broke the front page, fixing when we meet.
-		this._user.updateProfile(newObj);
+		this._user.updateProfile(obj);
 	}
 
 	closeMsg() {
