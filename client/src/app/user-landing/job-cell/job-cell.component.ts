@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { JobsService } from '../../common/services/jobs.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-cell',
@@ -14,7 +15,10 @@ export class JobCellComponent implements OnInit {
 	@Input() job: any;
 	isAccessible: String = '';
 
-	constructor(private _jobs: JobsService) { }
+	constructor(
+		private _jobs: JobsService,
+		private _router: Router
+		) { }
 
 	ngOnInit() {
 		this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
@@ -31,6 +35,8 @@ export class JobCellComponent implements OnInit {
 				(v: any) => {
 					const curApps = JSON.parse(localStorage.getItem('apps')) || {};
 					const newApps = Object.assign(curApps, this.job);
+					location.reload()
+					alert("You successfully applied")
 				}, (err: HttpErrorResponse) => {
 					console.log(err);
 				})
