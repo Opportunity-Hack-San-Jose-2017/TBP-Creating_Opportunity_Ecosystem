@@ -96,8 +96,8 @@ export class EditProfileComponent implements OnInit {
 		obj["skillsSet"] = temp;
 		const newObj = Object.assign(this.user, obj);
 		console.log(newObj)
-		//this broke the front page, fixing when we meet.
-		// this._user.updateProfile(newObj);
+		// this broke the front page, fixing when we meet.
+		this._user.updateProfile(newObj);
 	}
 
 	closeMsg() {
