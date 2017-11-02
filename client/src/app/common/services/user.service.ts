@@ -22,9 +22,11 @@ export class UserService {
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					this.setStorage(data.applicant);
-					setupProfile ? this.router.navigate(['setup']) :
+					if (data.statusCode == '200') {
+						this.setStorage(data.applicant);
+						setupProfile ? this.router.navigate(['setup']) :
 						this.router.navigate(['applicant'])
+					}
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -57,13 +59,17 @@ export class UserService {
 		localStorage.setItem('user', JSON.stringify(data));		
 	}
 
-	register(registration_cred: Object) {
+	register(registration_cred: any) {
 		const url = `${BASE_URL}/applicant/register`;
 		this.http.post(url, registration_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					const obj = { email: data.applicant['email'], password: data.applicant['password'] };
-					this.login(obj, true);
+					if (data.statusCode == '200') {
+						const obj = {email: registration_cred.email, password: data.password};
+						this.login(obj, true);
+					} else {
+						console.log(data);
+					}
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
@@ -88,8 +94,7 @@ export class UserService {
 		this.http.get(url)
 			.subscribe(
 				(data: any) => console.log(data),
-				(err: HttpErrorResponse) => console.log(err)
-				)
+				(err: HttpErrorResponse) => console.log(err))
 	}
 
 	getProfile(id: String) {
@@ -101,6 +106,9 @@ export class UserService {
 			)
 	}
 
+	/* applicant setup process is 3 consecutive forms. method will combine the values of the 3 forms into 
+	 a single object using localStorage. method also keeps track of current form - will be either 1, 2, or 3
+	*/
 	sendProfileInfo(data: Object) {
 		const num = Number(localStorage.getItem('setupStep')) + 1;
 		localStorage.setItem('setupStep', num.toString());
@@ -134,9 +142,11 @@ export class UserService {
 		this.http.post(`${BASE_URL}/api/aws/s3/upload`, file, {withCredentials:true})
 			.subscribe(
 				(v: any) => {
-				console.log(v);
-				this.successMessage.next(true);
-			},
+					if (v.statusCode == '200') {
+						console.log(v);
+						this.successMessage.next(true);
+					}
+				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
 					this.failedMessage.next(true);

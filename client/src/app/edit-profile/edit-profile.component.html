@@ -1,9 +1,8 @@
 <nav class="flex">
 	<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
-	<div (click)="logout()" class="lg-btn btn flex logout">Logout</div>
+	<button (click)="logout()" mat-button class="lg-btn btn">Logout</button>
 </nav>
 <div class="edit-profile-container flex column">
-  <!-- <div class="header">Edit Profile</div> -->
   <div class="main-wrapper flex column">
     <div class="success msg flex" *ngIf="success">
       <div>Resume uploaded!</div>
@@ -17,13 +16,13 @@
       <form [formGroup]="userForm" class="flex column">
         <div class="form-top flex">
           <div class="form-top-left flex column">
-            <div classs="photo-wrapper">
-              <img class="no-point" [src]="img" alt="Profile Photo">
+            <div class="photo-wrapper">
+              <img class="pro-pic no-point" [src]="img" alt="Profile Photo">
             </div>
-            <div class="change-photo btn flex">Change Photo</div>
-            <div class="resume btn flex">
+            <button mat-button class="space side btn">Change Photo</button>
+            <div class="round side btn flex">
               <input (change)="handleFiles($event)" id="resume" type="file" hidden />
-              <label class="flex res-lbl" for="resume">Upload Resume</label>
+              <button (click)="labelClick($event)" mat-button class="btn side"><label class="res-lbl" id="lbl" #resume for="resume">Upload Resume</label></button>
             </div>
           </div>
           <div class="form-top-right">
@@ -41,7 +40,7 @@
                   <input matInput placeholder="Phone Number" name="phone" formControlName="phoneNumber">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Email" name="email" formControlName="email">
+                  <input matInput type="number" placeholder="Experience" name="experience" formControlName="experience">
                 </mat-form-field>
               </div>
             </div>
@@ -91,8 +90,8 @@
           </mat-form-field>
         </div>
         <div class="bottom flex">
-          <div (click)="backButton()" class="back-btn btn flex">Back</div>
-          <div (click)="handleClick()" class="save-btn btn flex">Save</div>
+          <button (click)="backButton()" class="back-btn btn" mat-button>Cancel</button>
+          <button (click)="handleClick()" class="save-btn btn" mat-button>Save</button>     
         </div>
       </form>
     </div>

@@ -1,10 +1,11 @@
-<div class="profile-setup-container flex">
-	<div class="logo-wrap">
-		<img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
-	</div>
+<nav>
+	<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+	<div (click)="logout()" class="btn flex logout">Logout</div>
+</nav>
+<section class="profile-setup-container flex">
 	<div class="profile-setup-wrapper flex column">
 		<app-step-one [name]="name" class="flex column" *ngIf="step === 1"></app-step-one>
 		<app-step-two class="flex column" *ngIf="step === 2"></app-step-two>
 		<app-step-three class="flex column" *ngIf="step === 3"></app-step-three>
 	</div>
-</div>
+</section>

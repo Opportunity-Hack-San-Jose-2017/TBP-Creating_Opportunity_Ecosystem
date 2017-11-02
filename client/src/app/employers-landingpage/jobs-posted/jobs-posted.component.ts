@@ -1,39 +1,13 @@
 import { Observable } from 'rxjs/Rx';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SearchService } from '../../common/services/search.service';
-import {
-	AfterViewInit,
-	animate,
-	Component,
-	ElementRef,
-	EventEmitter,
-	Input,
-	OnInit,
-	Output,
-	state,
-	style,
-	transition,
-	trigger,
-	ViewChild,
-} from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { filterSlide } from '../../common/animations/filterSlide';
 @Component({
   selector: 'app-jobs-posted',
   templateUrl: './jobs-posted.component.html',
   styleUrls: ['./jobs-posted.component.css'],
-  animations: [
-	  trigger('slideAnimation',
-		  [
-			  transition(':enter', [
-				  style({ transform: 'scaleY(0)' }),
-				  animate('190ms', style({ transform: 'scaleY(1)' }))
-			  ]),
-			  transition(':leave', [
-				  style({ transform: 'scaleY(1)' }),
-				  animate('190ms', style({ transform: 'scaleY(0)' }))
-			  ])
-		  ]
-	  )]
+  animations: [filterSlide]
 })
 export class JobsPostedComponent {
 

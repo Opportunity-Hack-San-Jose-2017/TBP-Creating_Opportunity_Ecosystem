@@ -1,6 +1,6 @@
 <div class="jobs-wrapper">
 	<form [formGroup]="searchForm">
-		<div id="search_bar" class="flex search">
+		<div class="search-bar flex">
 			<mat-form-field>
 				<input matInput #searchEl type="search" placeholder="Search" formControlName="search" name="search">
 			</mat-form-field>
@@ -14,10 +14,10 @@
 			</div>
 		</div>
 	</form>
-	<div class="filter-menu" [@slideAnimation] *ngIf="search">
+	<div class="filter-menu" [@filterSlide] *ngIf="search">
 		<app-filter (loc)="handleLoc($event)" (val)="handleVal($event)"></app-filter>
 	</div>
-	<div id="job_feed">
+	<div id="jobs_posted_feed">
 		<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
 	</div>
 </div>

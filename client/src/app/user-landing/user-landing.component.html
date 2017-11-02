@@ -1,22 +1,26 @@
-<section id="main">
-	<nav>
-		<div (click)="nav()" class="ham flex"><i class="fa fa-bars" aria-hidden="true"></i></div>	
-		<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
-		<div (click)="logout()" class="btn flex logout">Logout</div>
-	</nav>
+<nav>
+	<div (click)="nav()" class="ham flex"><i class="fa fa-bars" aria-hidden="true"></i></div>	
+	<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
+	<button (click)="logout()" class="btn logout" mat-button>Logout</button>
+</nav>
+<section id="ap-home" class="main flex">
 	<div [@slideAnimation] *ngIf="navState" class="nav-wrap">
 		<app-side-nav></app-side-nav>
 		<div class="close flex" (click)="nav()"><i class="fa fa-times" aria-hidden="true"></i></div>
 	</div>
-	<section id="content" class="flex">
-		<div id="profile_bar">
+	<section class="content flex">
+		<div class="profile_bar">
 			<div class="pb-div flex column">
 				<div class="name gray">{{user['firstName']}} {{user['lastName']}}</div>
 				<img src="../../assets/images/profile-icon.png">
-				<div class="btn flex" (click)="edit()">Edit Profile</div>
+				<button class="btn" (click)="edit()" mat-button>Edit Profile</button>
 			</div>
-			<div class="pb-div flex gray">Saved Jobs</div>
-			<div class="pb-div flex gray">Applied Jobs</div>
+			<div class="pb-div flex gray">
+				<button class="btn" mat-button>Saved Jobs</button>
+			</div>
+			<div class="pb-div flex gray">
+				<button class="btn" mat-button>Applied Jobs</button>
+			</div>			
 		</div>
 		<div class="main-container">
 			<router-outlet></router-outlet>

@@ -1,5 +1,5 @@
 import { UploadService } from '../common/services/upload.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,13 +24,14 @@ export class EditProfileComponent implements OnInit {
 	user: any = {
 		"availability": [""],
 		"shift": [""],
-		"skillsSet":[],
+		"skillsSet":[""]
 	}
 
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
 	success: Boolean = true;
 	failed: Boolean = false;
+	@ViewChild('resume', {read:ElementRef}) resume: ElementRef;
 
 	constructor(
 		private _user: UserService,
@@ -53,20 +54,40 @@ export class EditProfileComponent implements OnInit {
 	}
 
 	checkCircles() {
-		this.user.shift.forEach(s => this[s] = true);
-		this.user.availability.forEach(a => this[a] = true);
+		if (this.user) {
+			this.user.shift.forEach(s => this[s] = true);
+			this.user.availability.forEach(a => this[a] = true);
+		}
+	}
+
+	labelClick(e: Event) {
+		if (e.target['id'] !== 'lbl') {
+			this.resume.nativeElement.click();
+			console.log(e)
+		}
 	}
 
 	createForm() {
-		var tempSkillsSet = this.user.skillsSet.join(", ");
-		this.userForm = this.fb.group({
-			firstName: [this.user.firstName , Validators.required],
-			lastName: [this.user.lastName, Validators.required],
-			email: [this.user.email, [Validators.required, Validators.email]],
-			phoneNumber: [this.user.phoneNumber],
-			skillsSet: tempSkillsSet,
-			introduction: [this.user.introduction]
-		});
+		if (this.user) {
+			var tempSkillsSet = this.user.skillsSet.join(", ");
+			this.userForm = this.fb.group({
+				firstName: [this.user.firstName, Validators.required],
+				lastName: [this.user.lastName, Validators.required],
+				experience: [this.user.experience],
+				phoneNumber: [this.user.phoneNumber],
+				skillsSet: [tempSkillsSet],
+				introduction: [this.user.introduction]
+			});
+		} else {
+			this.userForm = this.fb.group({
+				firstName: ["", Validators.required],
+				lastName: ["", Validators.required],
+				experience: [0],
+				phoneNumber: [""],
+				skillsSet: [""],
+				introduction: [""]
+			})
+		}
 	}
 
 	shiftClick(e: Event) {

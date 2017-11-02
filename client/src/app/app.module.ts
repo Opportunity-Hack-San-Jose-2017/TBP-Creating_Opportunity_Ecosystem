@@ -81,7 +81,7 @@ import { Interceptor } from './common/interceptors/interceptor';
   providers: [
     UserService,
     SearchService,
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     CompanyService,
     JobsService,
     AuthGuard,

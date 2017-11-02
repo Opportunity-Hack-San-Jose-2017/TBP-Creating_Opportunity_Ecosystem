@@ -33,14 +33,11 @@ textarea.mat-input-element {
 }
 
 .btn {
-    height: 30px;
-    cursor: pointer;
+	cursor: pointer;
     width: 100px;
     background: #1592aa;
-    align-items: center;
     color: white;
-    justify-content: center;
-    transition: all .2s ease;
+	transition: all .2s ease;
 }
 
 .btn:hover {
@@ -50,6 +47,7 @@ textarea.mat-input-element {
 .btn:active {
     transform: translateY(1px);
 }
+
 
 .not-now {
     font-size: 13px;
