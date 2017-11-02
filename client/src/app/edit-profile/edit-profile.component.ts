@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,6 +14,7 @@ export class EditProfileComponent implements OnInit {
 
 	img: String;
 	userForm: FormGroup;
+	progress: any;
 	first: Boolean = false;
 	second: Boolean = false;
 	third: Boolean = false;
@@ -41,8 +43,8 @@ export class EditProfileComponent implements OnInit {
 		this.createForm();
 		_upload.getSuccessMsg().subscribe((v: any) => this.success = v)
 		_upload.getFailedMsg().subscribe((v: any) => this.failed = v)
-		this._upload.getFile()
-			.subscribe(v => console.log(v));
+		// this._upload.getFile()
+		// 	.subscribe(v => console.log(v));
 	}
 
 	ngOnInit() {	
@@ -101,10 +103,14 @@ export class EditProfileComponent implements OnInit {
 	handleFiles(e: Event) {
 		const x = e.target['files'];
 		const file = x.item(0);
-		// for (let i = 0; i < files.length; i++) {
-			// const file = {name:'img.png',file:window.URL.createObjectURL(files[i])};
-			this._upload.sendFile(file);
-		// }
+		this._upload.sendFile(file)
+			.subscribe(event => {
+				if (event.type === HttpEventType.UploadProgress) {
+					this.progress.percentage = Math.round(100 * event.loaded / event.total);
+				} else if (event instanceof HttpResponse) {
+					console.log('File is completely uploaded!');
+				}
+			})
 	}
 
 	logout() {

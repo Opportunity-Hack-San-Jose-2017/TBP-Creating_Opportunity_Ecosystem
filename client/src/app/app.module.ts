@@ -36,6 +36,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from './common/interceptors/interceptor';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
   providers: [
     UserService,
     SearchService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     CompanyService,
     JobsService,
     AuthGuard,

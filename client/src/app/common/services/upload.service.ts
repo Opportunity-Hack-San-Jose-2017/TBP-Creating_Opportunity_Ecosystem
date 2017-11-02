@@ -21,20 +21,20 @@ export class UploadService {
 		const req = new HttpRequest('POST', `${BASE_URL}/api/aws/s3/upload`, formdata, {
 			withCredentials: true
 		});
-		this._http.request(req)
-			.subscribe(
-				(v: any) => {
-					console.log(v);
-					if (v.type === HttpEventType.UploadProgress) {
-						console.log(v.total, v.loaded);
-					}
-					this.successMessage.next(true);
-				},
-				(err: HttpErrorResponse) => {
-					console.log(err);
-					this.failedMessage.next(true);
-				}
-			)
+		return this._http.request(req)
+			// .subscribe(
+			// 	(v: any) => {
+			// 		console.log(v);
+			// 		if (v.type === HttpEventType.UploadProgress) {
+			// 			console.log(v.total, v.loaded);
+			// 		}
+			// 		this.successMessage.next(true);
+			// 	},
+			// 	(err: HttpErrorResponse) => {
+			// 		console.log(err);
+			// 		this.failedMessage.next(true);
+			// 	}
+			// )
 	}
 
 	getFile(): Observable<any> {
