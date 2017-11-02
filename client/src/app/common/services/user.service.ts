@@ -99,7 +99,7 @@ export class UserService {
 
 	getProfile(id: String) {
 		const url = `${BASE_URL}/profile/${id}`;
-		this.http.get(url)
+		this.http.get(url, {withCredentials: true})
 			.subscribe(
 				(data: any) => this.profile = data,
 				(err: HttpErrorResponse) => console.log(err)

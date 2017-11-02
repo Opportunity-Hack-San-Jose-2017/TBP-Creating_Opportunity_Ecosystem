@@ -85,5 +85,8 @@ export class JobsComponent implements AfterViewInit {
 		});
 	}
 
+	getAppliedJobs(){
+		
+	}
 
 }

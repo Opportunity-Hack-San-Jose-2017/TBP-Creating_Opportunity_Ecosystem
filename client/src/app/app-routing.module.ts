@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component'
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
+import { ProfileComponent } from './profile/profile.component'
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -21,8 +22,9 @@ const appRoutes: Routes = [
     { path: 'applicant', component: UserLandingComponent, children: [
 		{ path: '', component: JobsComponent, pathMatch: 'full' },
 		{ path: 'jobs/applied', component: ApplicationsComponent },
-		{ path: 'jobs/saved', component: SavedJobsComponent }
+		{ path: 'jobs/saved', component: SavedJobsComponent },
 	] },
+	{ path: 'applicant/profile/:id', component: ProfileComponent},
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
 	// { path: '**', component: PageNotFoundComponent }
 ];
