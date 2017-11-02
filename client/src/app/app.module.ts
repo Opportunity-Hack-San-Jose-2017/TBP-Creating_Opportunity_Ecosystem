@@ -1,3 +1,4 @@
+import { UploadService } from './common/services/upload.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobsService } from './common/services/jobs.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -80,7 +81,8 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
     SearchService,
     CompanyService,
     JobsService,
-    AuthGuard
+    AuthGuard,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })
