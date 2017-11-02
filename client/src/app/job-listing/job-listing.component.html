@@ -29,7 +29,7 @@
 			</mat-form-field>
 			<div class="shift-wrapper">
 				<div class="form-group flex column">
-					<div class="form-group-header">Preferred Shift(s)</div>
+					<div class="form-group-header">Shift</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
 							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
@@ -42,6 +42,22 @@
 						</div>
 						<div class="check-wrapper flex">
 							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="job-type-wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Type</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
 						</div>
 					</div>
 				</div>
