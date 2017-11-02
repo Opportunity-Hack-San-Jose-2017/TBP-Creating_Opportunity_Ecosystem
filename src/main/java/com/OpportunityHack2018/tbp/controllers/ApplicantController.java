@@ -284,6 +284,28 @@ public class ApplicantController {
     }
 
     @CrossOrigin
+    @GetMapping("/appliedJobs")
+    @ResponseBody
+    public ModelMap appliedJobs(HttpSession session){
+        ModelMap responseMap = new ModelMap();
+        try {
+            if (session.getAttribute("email") == null) {
+                System.out.println(" Please login first");
+                return null;
+            }
+            List<Opening> openings = applicantService.getAppliedOpenings(session.getAttribute("email").toString());
+            responseMap.addAttribute("statusCode",200);
+            responseMap.addAttribute("openings",openings);
+            return responseMap;
+        }
+        catch (Exception e){
+            responseMap.addAttribute("statusCode",500);
+            e.printStackTrace();
+        }
+        return responseMap;
+    }
+
+    @CrossOrigin
     @GetMapping(value = "/activeSession")
     @ResponseBody
     public ModelMap activeSession(HttpSession session){

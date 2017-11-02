@@ -201,4 +201,8 @@ public class OpeningService {
         }
         return false;
     }
+
+    public List<Opening> getAppliedOpenings(String email) {
+        return openingRepository.findAppliedOpenings(email);
+    }
 }
