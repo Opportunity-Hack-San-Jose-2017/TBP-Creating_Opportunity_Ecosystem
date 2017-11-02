@@ -1,104 +1,57 @@
-import { SearchService } from '../common/services/search.service';
-import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
+import { Router } from '@angular/router';
 import {
-  AfterViewInit,
-  animate,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  state,
-  style,
-  transition,
-  trigger,
-  ViewChild,
+	animate,
+	Component,
+	state,
+	style,
+	transition,
+	trigger
 } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-user-landing',
-  templateUrl: './user-landing.component.html',
-  styleUrls: ['./user-landing.component.css'],
-  animations: [
-    trigger('slideAnimation',
-		[
-			transition(':enter', [
-				style({transform:'scaleY(0)'}),
-				animate('190ms', style({transform:'scaleY(1)'}))
-			]),
-			transition(':leave', [
-				style({transform:'scaleY(1)'}),
-				animate('190ms', style({transform:'scaleY(0)'}))
-			])
-		]
-	)]
+	selector: 'app-user-landing',
+	templateUrl: './user-landing.component.html',
+	styleUrls: ['./user-landing.component.css'],
+	animations: [
+		trigger('slideAnimation',
+			[
+				transition(':enter', [
+					style({ transform: 'translateX(-250px)' }),
+					animate('200ms', style({ transform: 'translateX(0)' }))
+				]),
+				transition(':leave', [
+					style({ transform: 'translateX(0)' }),
+					animate('125ms', style({ transform: 'translateX(-250px)' }))
+				])
+			]
+		)
+	]
 })
 export class UserLandingComponent {
 
-	@ViewChild('searchEl', { read: ElementRef }) searchEl: ElementRef;
 	user: any;
-	search: Boolean = false;
-	jobs: any;
-	searchForm: FormGroup;
+	navState: Boolean = false;
 
-	toggleDropDown = false;
 	constructor(
 		private _router: Router,
-		private _search: SearchService,
-		private _user: UserService,
-		private fb: FormBuilder
-		
+		private _user: UserService
 	) {
 		this.user = JSON.parse(localStorage.getItem('user'));
-		this.createForm();
-		_search.getAllJobs()
-			.subscribe((v: any) => this.jobs = v.openings);
-		Observable.fromEvent(document, 'keyup')
-			.filter((v: any) => v.keyCode === 13)
-			.subscribe(() => {
-				if (document.getElementById('mat-input-0') === document.activeElement) {
-					if (this.searchForm.value.search !== "") {
-						_search.filterJobs(this.searchForm.value)
-							.subscribe((v: any) => this.jobs = v.openings);
-					} else {
-						_search.getAllJobs()
-							.subscribe((v: any) => this.jobs = v.openings);
-					}
-				}
-			})
 	}
 
-	createForm() {
-		this.searchForm = this.fb.group({
-			search: ['']
-		});
+	edit(){
+		this._router.navigate(["profile/edit"])
 	}
-	searchClick() {
-		this.search = !this.search;
-	}
-
-	handleSearch(e: Event) {
-		this._search.filterJobs(this.searchForm.value)
-			.do(v => console.log(v))
-			.subscribe((v: any) => this.jobs = v.openings);
-	}
-  
 
 	logout() {
 		this._user.logout();
 	}
 
-	dropdowntoggle() {
-		this.toggleDropDown = !this.toggleDropDown
-	}
-
-	goToEditProfile(){
-		this._router.navigate(["profile/edit"])
+	nav() {
+		this.navState = !this.navState;
 	}
 
 }

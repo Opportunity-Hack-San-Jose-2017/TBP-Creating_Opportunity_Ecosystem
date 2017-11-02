@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
@@ -7,21 +7,24 @@ import { url as BASE_URL } from '../config/url';
 @Injectable()
 export class UserService {
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+	profile: any;
+	setupStep = new Subject();
+	successMessage = new BehaviorSubject(false);
+	failedMessage = new BehaviorSubject(false);
 
-  profile: any;
-  setupStep = new Subject();
+	constructor(
+		private http: HttpClient,
+		private router: Router
+	) { }
 
 	login(login_cred: Object){
 		const url = `${BASE_URL}/applicant/signin`;
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['applicant/home']);
+					console.log(data);
+					localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
+					this.router.navigate(['applicant']);
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -32,17 +35,18 @@ export class UserService {
 	}
 
 	updateProfile(update_cred: Object){
-		const url = `${BASE_URL}/applicant/signin`;
+		const url = `${BASE_URL}/applicant/update`;
 		console.log(update_cred)
 		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
 					console.log(data);
-					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['applicant/home']);
+					// localStorage.setItem('user', JSON.stringify(data.applicant));
+					this.router.navigate(['applicant']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
+					this.router.navigate(['applicant']);
 				}
 			)
 	}
@@ -54,7 +58,7 @@ export class UserService {
 				(data: any) => {
 					console.log(data);
 					localStorage.setItem('user', JSON.stringify(data.applicant));
-					// this.router.navigate(['setup']);
+					this.router.navigate(['setup']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
@@ -102,6 +106,7 @@ export class UserService {
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
 			localStorage.removeItem('setupStep');
+			localStorage.removeItem('profile');			
 			this.updateProfile(updatedObj);
 		}
 	}
@@ -114,5 +119,38 @@ export class UserService {
 
 	getSetupStep(): Observable<any> {
 		return this.setupStep;
+	}
+
+	getApplications(): Observable<any> {
+		return this.http.get(`${BASE_URL}`, {
+			
+		})
+	}
+
+	uploadResume(file: Object) {
+		this.http.post(`${BASE_URL}/api/aws/upload`, file, {withCredentials:true})
+			.subscribe(
+				(v: any) => {
+				console.log(v);
+				this.successMessage.next(true);
+			},
+				(err: HttpErrorResponse) => {
+					console.log(err);
+					this.failedMessage.next(true);
+				}		
+			)
+	}
+
+	getSuccessMsg(): Observable<any> {
+		return this.successMessage;
+	}
+
+	closeMsg() {
+		this.successMessage.next(false)
+		this.failedMessage.next(false)
+	}
+
+	getFailedMsg(): Observable<any> {
+		return this.failedMessage;
 	}
 }

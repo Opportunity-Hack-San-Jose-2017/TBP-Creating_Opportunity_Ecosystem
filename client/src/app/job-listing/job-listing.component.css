@@ -81,9 +81,9 @@ form {
     width: 100%;
 }
 
-.check-container {
+/* .check-container {
     justify-content: space-between;
-}
+} */
 
 .form-group {
     width: 100%;
@@ -119,14 +119,34 @@ label {
     left: calc(100% - 100px);
 }
 
+.check-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group-header {
+    margin-bottom: 6px;
+    color: rgba(255,255,255,.7);
+}
+
 .mat-fab {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 80px;
+    padding: 5px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
     transition: all .2s ease;
     cursor: pointer;
+}
+
+.mat-fab:hover {
+    background: #1592aa !important;
+    opacity: .7;
 }
 
 .mat-fab:hover {
@@ -156,7 +176,7 @@ label {
 
 .accept { align-items: center; margin-top: 5px; }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     .form-wrapper {
         width: 90%;
     }

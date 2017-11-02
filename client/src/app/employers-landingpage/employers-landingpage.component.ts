@@ -22,6 +22,6 @@ export class EmployersLandingpageComponent {
 
 	logout() {
 		localStorage.clear();
-		this._company.logout()
+		this._company.logout();
 	}
 }

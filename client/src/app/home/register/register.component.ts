@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
-import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,8 @@ export class RegisterComponent {
 
 	userForm: FormGroup;
 	checked: Boolean = false;
-	hovered: Boolean = false;	
+	hovered: Boolean = false;
+	
 	@ViewChild('accept', {read: ElementRef}) accept: ElementRef;
 
 	constructor(
@@ -31,7 +32,8 @@ export class RegisterComponent {
 				email: this.userForm.value.email,
 				firstName: this.userForm.value.firstName,
 				lastName: this.userForm.value.lastName,
-				password: this.userForm.value.password,
+				token: this.userForm.value.caseFileID,
+				password: this.userForm.value.passwords.password,
 				phoneNumber: "",
 				education: "",
 				pendingApplications: 0,
@@ -54,8 +56,18 @@ export class RegisterComponent {
 			caseFileID: ['', Validators.required ],		
 			accept: ['', Validators.required ],		
 			email: ['', [Validators.required, Validators.email]],
-			password: ['', Validators.required ],
-			confirmPassword: ['', Validators.required ],
+			passwords: this.fb.group({
+				password: ['', Validators.required],
+				confirmPassword: ['', Validators.required]
+				}, RegisterComponent.areEqual)
 		});
 	}
+	static areEqual(c: AbstractControl): ValidationErrors | null {
+		const keys: string[] = Object.keys(c.value);
+		for (const i in keys) {
+		  if (i !== '0' && c.value[ keys[ +i - 1 ] ] !== c.value[ keys[ i ] ]) {
+			return { areEqual: true };
+		  }
+		}
+	  }
 }

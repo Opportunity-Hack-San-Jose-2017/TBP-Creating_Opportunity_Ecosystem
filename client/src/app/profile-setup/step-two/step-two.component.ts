@@ -10,13 +10,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class StepTwoComponent {
 
 	userForm: FormGroup;
-	first: Boolean = false;
-	second: Boolean = false;
-	third: Boolean = false;
+	morning: Boolean = false;
+	noon: Boolean = false;
+	night: Boolean = false;
+	graveyard: Boolean = false;
 	ft: Boolean;
 	pt: Boolean;
 	temp: Boolean;
-	shifts: any = ['first', 'second', 'third'];
+	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
 
 	constructor(
