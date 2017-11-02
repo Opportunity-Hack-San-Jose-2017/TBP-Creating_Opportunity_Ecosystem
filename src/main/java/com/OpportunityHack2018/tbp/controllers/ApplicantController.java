@@ -2,6 +2,7 @@ package com.OpportunityHack2018.tbp.controllers;
 
 
 import com.OpportunityHack2018.tbp.entities.Applicant;
+import com.OpportunityHack2018.tbp.entities.Application;
 import com.OpportunityHack2018.tbp.entities.Opening;
 import com.OpportunityHack2018.tbp.services.ApplicantService;
 import com.OpportunityHack2018.tbp.services.ApplicationService;
@@ -251,7 +252,15 @@ public class ApplicantController {
                 List<Opening> openingsList=new ArrayList<>();
                 List<String> imageURLs=new ArrayList<>();
                 for(Opening o : openings){
-                    openingsList.add(o);
+                    boolean ignore=false;
+                    for(Application application:o.getApplications()){
+                        if(application.getApplicant().getEmail().equalsIgnoreCase(session.getAttribute("email").toString())){
+                            ignore=true;
+                            break;
+                        }
+                    }
+                    if(!ignore && o.getStatus()== Opening.Status.OPEN)
+                        openingsList.add(o);
 //                    imageURLs.add(o.getCompany().getImageUrl());
                 }
 
