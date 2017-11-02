@@ -40,7 +40,7 @@ export class UploadService {
 	getFile(): Observable<any> {
 		const user = JSON.parse(localStorage.getItem('user'))
 		return this._http.get(`${BASE_URL}/api/aws/s3/download`, {
-			params: new HttpParams().set('key', 'blob:http://localhost:4200/f9997dba-9b6c-4ed7-b63a-b96f350f6bb1'),
+			params: new HttpParams().set('key', 'img.png'),
 		withCredentials:true});
 	}
 
