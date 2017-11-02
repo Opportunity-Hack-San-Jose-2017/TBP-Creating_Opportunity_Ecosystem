@@ -40,13 +40,15 @@ export class UserService {
 		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data);
-					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['applicant']);
+					if (data["statusCode"] == 200){
+						localStorage.setItem('user', JSON.stringify(data.applicant));
+						this.router.navigate(['applicant']);
+					} else {
+						console.log(data);
+					}
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
-					this.router.navigate(['applicant']);
 				}
 			)
 	}
@@ -122,9 +124,7 @@ export class UserService {
 	}
 
 	getApplications(): Observable<any> {
-		return this.http.get(`${BASE_URL}`, {
-			
-		})
+		return this.http.get(`${BASE_URL}`)
 	}
 
 	uploadResume(file: Object) {

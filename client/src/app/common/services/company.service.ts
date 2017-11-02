@@ -16,6 +16,10 @@ export class CompanyService {
 			.subscribe((data: any) => console.log(data))
 	}
 
+	getAllOpenings(){
+		return this.http.get(`${BASE_URL}/company/allOpenings`, {withCredentials: true})
+	}
+
 	register(data: Object){
 		this.http.post(`${BASE_URL}/company/register`, data, {withCredentials: true})
 			.subscribe(

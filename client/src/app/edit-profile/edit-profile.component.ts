@@ -23,6 +23,9 @@ export class EditProfileComponent implements OnInit {
 		"shift": [""],
 		"skillsSet":[],
 	}
+
+
+
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
 	success: Boolean = true;
@@ -42,6 +45,7 @@ export class EditProfileComponent implements OnInit {
 
 	ngOnInit() {	
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
+		console.log(this.user)
 	}
 
 	checkCircles() {
@@ -51,12 +55,12 @@ export class EditProfileComponent implements OnInit {
 
 	createForm() {
 		this.userForm = this.fb.group({
-			firstName: [this.user.firstName, Validators.required],
+			firstName: [this.user.firstName , Validators.required],
 			lastName: [this.user.lastName, Validators.required],
 			email: [this.user.email, [Validators.required, Validators.email]],
 			phoneNumber: [this.user.phoneNumber],
-			skillsSet: [this.user.skillsSet],
-			experiences: [this.user.experience]
+			skillsSet: this.user.skillsSet,
+			introduction: [this.user.introduction]
 		});
 	}
 
@@ -69,9 +73,19 @@ export class EditProfileComponent implements OnInit {
 			shift: this.shifts.filter(x => this[x]),
 			availability: this.types.filter(x => this[x])
 		})
-		console.log(obj);
-		const newObj = Object.assign(this.user, obj);
-		this._user.updateProfile(newObj);
+		try {
+			var temp = this.userForm.value.skillsSet.split(",")
+		} catch(err) {
+			temp = []
+		}
+		for (var i = 0; i < temp.length; i++) {
+			temp[i] = temp[i].trim();
+		}
+		obj["skillsSet"] = temp;
+		console.log(obj)
+		// this broke the front page, fixing when we meet.
+		this._user.updateProfile(obj);
+
 	}
 
 	closeMsg() {
