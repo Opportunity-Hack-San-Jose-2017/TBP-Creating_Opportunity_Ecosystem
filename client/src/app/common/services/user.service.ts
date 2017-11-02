@@ -22,8 +22,9 @@ export class UserService {
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.router.navigate(['applicant/home']);
+					console.log(data);
+					localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
+					this.router.navigate(['applicant']);
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -105,6 +106,7 @@ export class UserService {
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
 			localStorage.removeItem('setupStep');
+			localStorage.removeItem('profile');			
 			this.updateProfile(updatedObj);
 		}
 	}

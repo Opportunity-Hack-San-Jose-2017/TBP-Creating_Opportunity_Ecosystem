@@ -1,5 +1,5 @@
 <form [formGroup]="userForm" class="flex column">
-	<mat-form-field>
+	<mat-form-field class="first">
 		<input matInput placeholder="First Name" formControlName="firstName">
 		<mat-error *ngIf="userForm.get('firstName').touched && userForm.get('firstName').hasError('required')">
 			First Name is <strong>required</strong>
@@ -27,7 +27,7 @@
 			Case File ID is <strong>required</strong>
 		</mat-error>
 	</mat-form-field>
-	<span formGroupName="passwords">
+	<span class="pw-grp" formGroupName="passwords">
 		<mat-form-field>
 			<input matInput placeholder="Password" formControlName="password">
 			<mat-error *ngIf="userForm.get('passwords.password').touched && userForm.get('passwords.password').hasError('required')">
