@@ -64,8 +64,10 @@ export class JobsComponent implements AfterViewInit {
 	) {
 		this.createForm();
 		this.jobs = [job,job,job,job,job,job,job,job,job,job,job,job,job]
-		// this._search.getAllJobs()
-		// 	.subscribe((v: any) => this.jobs = v.openings);
+		this._search.getAllJobs()
+		// 	.subscribe((v: any) => {
+		// 		this.jobs = [...v.openings, this.jobs]
+		// 	});
 
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)
@@ -73,6 +75,7 @@ export class JobsComponent implements AfterViewInit {
 				if (document.getElementById('mat-input-0') === document.activeElement) {
 					if (this.searchForm.value.search !== "") {
 						_search.filterJobs(this.searchForm.value)
+							.do(v => console.log(v))
 							.subscribe((v: any) => this.jobs = v.openings);
 					} else {
 						_search.getAllJobs()
@@ -83,8 +86,8 @@ export class JobsComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		// this._search.getAllJobs()
-		// 	.subscribe((v: any) => this.jobs = v.openings);
+		this._search.getAllJobs()
+			.subscribe((v: any) => this.jobs = v.openings);
 	}
 
 	handleSearch(e: Event) {

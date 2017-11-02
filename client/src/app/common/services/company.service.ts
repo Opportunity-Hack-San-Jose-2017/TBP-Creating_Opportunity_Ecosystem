@@ -42,9 +42,8 @@ export class CompanyService {
 
 	logout(){
 		this.http.post(`${BASE_URL}/company/logout`, {}, {withCredentials: true})
-		.subscribe(data => {
-			alert(JSON.stringify(data))
-			this._router.navigate(['company'])
-		})
+			.subscribe(data => {
+				this._router.navigate(['company'])
+			})
 	}
 }

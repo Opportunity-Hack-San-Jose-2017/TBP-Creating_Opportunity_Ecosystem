@@ -42,10 +42,7 @@ export class UserLandingComponent {
 		this.user = JSON.parse(localStorage.getItem('user'));
 	}
 
-	ngAfterViewInit() {
-		console.log(this.navState)
-	}
-	goToEditProfile(){
+	edit(){
 		this._router.navigate(["profile/edit"])
 	}
 
