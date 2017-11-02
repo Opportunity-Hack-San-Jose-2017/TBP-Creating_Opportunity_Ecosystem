@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { UploadService } from '../common/services/upload.service';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,6 +14,7 @@ export class EditProfileComponent implements OnInit {
 
 	img: String;
 	userForm: FormGroup;
+	progress: any;
 	first: Boolean = false;
 	second: Boolean = false;
 	third: Boolean = false;
@@ -21,26 +24,28 @@ export class EditProfileComponent implements OnInit {
 	user: any = {
 		"availability": [""],
 		"shift": [""],
-		"skillsSet":[],
+		"skillsSet":[""]
 	}
-
-
 
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
 	success: Boolean = true;
 	failed: Boolean = false;
+	@ViewChild('resume', {read:ElementRef}) resume: ElementRef;
 
 	constructor(
 		private _user: UserService,
 		private fb: FormBuilder,
-		private _router: Router
+		private _router: Router,
+		private _upload: UploadService
 	) {
 		this.user = JSON.parse(localStorage.getItem("user"));
 		this.checkCircles();
 		this.createForm();
-		_user.getSuccessMsg().subscribe((v: any) => this.success = v)
-		_user.getFailedMsg().subscribe((v: any) => this.failed = v);
+		_upload.getSuccessMsg().subscribe((v: any) => this.success = v)
+		_upload.getFailedMsg().subscribe((v: any) => this.failed = v)
+		// this._upload.getFile()
+		// 	.subscribe(v => console.log(v));
 	}
 
 	ngOnInit() {	
@@ -49,20 +54,40 @@ export class EditProfileComponent implements OnInit {
 	}
 
 	checkCircles() {
-		this.user.shift.forEach(s => this[s] = true);
-		this.user.availability.forEach(a => this[a] = true);
+		if (this.user) {
+			this.user.shift.forEach(s => this[s] = true);
+			this.user.availability.forEach(a => this[a] = true);
+		}
+	}
+
+	labelClick(e: Event) {
+		if (e.target['id'] !== 'lbl') {
+			this.resume.nativeElement.click();
+			console.log(e)
+		}
 	}
 
 	createForm() {
-		var tempSkillsSet = this.user.skillsSet.join(", ");
-		this.userForm = this.fb.group({
-			firstName: [this.user.firstName , Validators.required],
-			lastName: [this.user.lastName, Validators.required],
-			email: [this.user.email, [Validators.required, Validators.email]],
-			phoneNumber: [this.user.phoneNumber],
-			skillsSet: tempSkillsSet,
-			introduction: [this.user.introduction]
-		});
+		if (this.user) {
+			var tempSkillsSet = this.user.skillsSet.join(", ");
+			this.userForm = this.fb.group({
+				firstName: [this.user.firstName, Validators.required],
+				lastName: [this.user.lastName, Validators.required],
+				experience: [this.user.experience],
+				phoneNumber: [this.user.phoneNumber],
+				skillsSet: [tempSkillsSet],
+				introduction: [this.user.introduction]
+			});
+		} else {
+			this.userForm = this.fb.group({
+				firstName: ["", Validators.required],
+				lastName: ["", Validators.required],
+				experience: [0],
+				phoneNumber: [""],
+				skillsSet: [""],
+				introduction: [""]
+			})
+		}
 	}
 
 	shiftClick(e: Event) {
@@ -84,13 +109,12 @@ export class EditProfileComponent implements OnInit {
 		}
 		obj["skillsSet"] = temp;
 		console.log(obj)
-		// this broke the front page, fixing when we meet.
 		this._user.updateProfile(obj);
 
 	}
 
 	closeMsg() {
-		this._user.closeMsg()
+		this._upload.closeMsg();
 	}
   	
   	backButton(){
@@ -98,11 +122,16 @@ export class EditProfileComponent implements OnInit {
 	}
 	  
 	handleFiles(e: Event) {
-		const files = e.target['files'];
-		for (let i = 0; i < files.length; i++) {
-			const file = {name:this.user.id, file:window.URL.createObjectURL(files[i])};
-			this._user.uploadResume(file);
-		}
+		const x = e.target['files'];
+		const file = x.item(0);
+		this._upload.sendFile(file)
+			.subscribe(event => {
+				if (event.type === HttpEventType.UploadProgress) {
+					this.progress.percentage = Math.round(100 * event.loaded / event.total);
+				} else if (event instanceof HttpResponse) {
+					console.log('File is completely uploaded!');
+				}
+			})
 	}
 
 	logout() {

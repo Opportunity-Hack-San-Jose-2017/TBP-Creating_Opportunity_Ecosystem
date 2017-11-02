@@ -1,52 +1,15 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SearchService } from '../../common/services/search.service';
-import {
-	AfterViewInit,
-	animate,
-	Component,
-	ElementRef,
-	EventEmitter,
-	Input,
-	OnInit,
-	Output,
-	state,
-	style,
-	transition,
-	trigger,
-	ViewChild,
-} from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
-const job = {
-	shift: 'Morning',
-	type: 'Part Time',
-	title: 'Baker',
-	company: 'Paypal',
-	description: 'This job has a lot of description',
-	responsibilites: 'The job requires the baker to bake bread, cookies, and cake.',
-	publicTransport: true,
-	location: 'Berkeley',
-	experience: 1
-}
+import { filterSlide } from '../../common/animations/filterSlide';
+import { job } from '../../common/seed_data/jobs'; 
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.css'],
-  animations: [
-	  trigger('slideAnimation',
-		  [
-			  transition(':enter', [
-				  style({ transform: 'scaleY(0)' }),
-				  animate('190ms', style({ transform: 'scaleY(1)' }))
-			  ]),
-			  transition(':leave', [
-				  style({ transform: 'scaleY(1)' }),
-				  animate('190ms', style({ transform: 'scaleY(0)' }))
-			  ])
-		  ]
-	  )]
+  animations: [filterSlide]
 })
 export class JobsComponent implements AfterViewInit {
 
@@ -63,7 +26,10 @@ export class JobsComponent implements AfterViewInit {
 	) {
 		this.createForm();
 		this._search.getAllJobs()
-		.subscribe((v: any) => this.jobs = v.openings);
+		.subscribe((v: any) => {
+			this.jobs = v.openings
+			console.log(this.jobs)
+		});
 
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)

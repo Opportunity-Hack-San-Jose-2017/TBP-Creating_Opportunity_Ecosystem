@@ -1,3 +1,4 @@
+import { UploadService } from './common/services/upload.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobsService } from './common/services/jobs.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +36,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
+import { EmployerJobCellComponent } from './employers-landingpage/employer-job-cell/employer-job-cell.component';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from './common/interceptors/interceptor';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,8 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
     ApplicationCellComponent,
     SideNavComponent,
     SavedJobsComponent,
-    JobsPostedComponent
+    JobsPostedComponent,
+    EmployerJobCellComponent
 
   ],
   imports: [
@@ -78,9 +83,11 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
   providers: [
     UserService,
     SearchService,
+    // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     CompanyService,
     JobsService,
-    AuthGuard
+    AuthGuard,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

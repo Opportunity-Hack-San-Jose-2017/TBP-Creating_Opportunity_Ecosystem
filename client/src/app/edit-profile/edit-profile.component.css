@@ -2,12 +2,18 @@
     color: rgba(255,255,255,.7);
 }
 
+#lbl {
+    color: white;
+}
+
+.round {border-radius: 5px; }
+
 nav {
     height: 80px;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	background: transparent;
+	background: white;
 	z-index: 10;
 	justify-content: space-between;
 	padding: 0 10px;
@@ -19,14 +25,18 @@ nav img {
 }
 
 .edit-profile-container {
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    padding: 15px 35px;
     justify-content: center;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    width: 100vw;
     overflow: hidden;
+    background: url('../../assets/images/newuser-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .logo-wrap {
@@ -42,7 +52,7 @@ nav img {
     position: absolute;
     width: 100%;
     z-index: 100;
-    top: 0;
+    top: 80px;
     height: 35px;
     justify-content: center;
     align-items: center;
@@ -66,7 +76,7 @@ nav img {
     min-height: 500px;
     overflow: auto;
     position: relative;
-    width: 80%;
+    width: 90%;
     max-width: 700px;
 }
 
@@ -77,7 +87,7 @@ nav img {
 .mat-fab {
     height: 40px;
     width: 80px;
-    padding: 5px;
+    /* padding: 5px; */
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -108,7 +118,8 @@ nav img {
 .form-wrapper {
     width: 100%;
     overflow: auto;
-    height: calc(100vh - 80px);
+    max-height: calc(100vh - 120px);
+    height: 605px;
     border-radius: 1px;
     padding: 20px 30px;
     justify-content: center;
@@ -122,18 +133,24 @@ nav img {
     width: 100%;
 }
 
+.form-top { margin-bottom: 9px; }
+
 .form-bottom * {
     width: 100%;
 }
 
 .photo-wrapper {
-    width: 109px;
+    width: 100%;
+}
+
+.pro-pic {
+    object-fit: cover;
+    width: 100%;
 }
 
 .form-top-left {
     align-items: center;
     margin-right: 20px;
-    padding-top: 1em;
 }
 
 .check-container {
@@ -145,6 +162,9 @@ form {
     width: 90%;
     align-items: center;
     margin: 15px auto 0;
+    min-height: 605px;
+    position: absolute;
+    top: 20px;
 }
 
 .form-group-header {
@@ -160,7 +180,7 @@ form {
 
 .form-group {
     width: 90%;
-    margin: 0 auto 5px;
+    margin: 0 auto 9px;
     position: relative;
 }
 
@@ -169,44 +189,21 @@ form {
     justify-content: space-around;
 }
 
-.submit-register {
-    height: 30px;
-    cursor: pointer;
-    width: 100px;
-    background: #1592aa;
-    align-items: center;
-    color: white;
-    justify-content: center;
-}
-
 .accept { align-items: center; margin-top: 5px; }
 
 .btn {
-    height: 25px;
-    cursor: pointer;
-    width: 113px;
-    font-size: 12px;
-    background: #490000;
-    align-items: center;
-    color: rgba(255,255,255,.7);
-    justify-content: center;
-    margin: 0 auto 5px;
-    transition: all .2s ease;
-}
-
-.lg-btn {
-    height: 30px;
-	font-size: .8rem;
+	cursor: pointer;
     width: 100px;
-    margin: 0;
     background: #1592aa;
+    color: white;
+	transition: all .2s ease;
 }
 
-.res-lbl {
-    height: 100%;
+.side { width: 100%; }
+.space { margin-bottom: 5px; }
+.res-lbl { 
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
 }
 
 .skills, .experiences {
@@ -216,22 +213,22 @@ form {
     resize: none;
 }
 
-.skills {
-    height: 60px;
+.bottom {
+    width: 250px;
+    justify-content: space-between;
 }
 
-.btn:hover {
-    transform: translateY(-1px);
-}
+.skills { height: 60px; }
 
-.btn:active {
-    transform: translateY(1px);
-}
+.btn:hover { transform: translateY(-1px); }
 
-.back-btn, .save-btn {
-    background: #1592aa;
-    margin-right: 40px;
-}
+.btn:active { transform: translateY(1px); }
+
+.back-btn, .save-btn { background: #1592aa; }
+
+.back-btn { margin-right: 40px; }
+
+.bottom { align-items: center; justify-content: space-between; }
 
 @media screen and (max-width: 800px) {
 
@@ -245,8 +242,8 @@ form {
         margin-bottom: 10px;
     }
 
-    .mat-form-field {
-        width: 40% !important;
+    .mat-form-field:not(.textarea) {
+        width: 100% !important;
     }
 
     .mat-fab {

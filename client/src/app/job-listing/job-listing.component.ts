@@ -73,7 +73,8 @@ export class JobListingComponent {
 
 	submitOpening() {
 		console.log(this.jobForm.value);
-		const obj = this.jobForm.value
-		this._jobs.postOpening(this.jobForm.value)
+		var obj = this.jobForm.value
+		obj["publicTransport"] = this.ptYes
+		this._jobs.postOpening(obj)
 	}
 }

@@ -24,6 +24,10 @@ export class ProfileSetupComponent {
 		this.step = Number(localStorage.getItem('setupStep'));
 	}
 
+	logout() {
+		this._user.logout();
+	}
+
 	handleClick() {
 		this.step = Number(localStorage.getItem('setupStep'));
 	}

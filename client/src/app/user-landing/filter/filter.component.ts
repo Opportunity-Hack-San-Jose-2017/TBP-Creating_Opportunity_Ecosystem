@@ -10,12 +10,15 @@ export class FilterComponent {
 
 	bg: Boolean;
 	notBg: Boolean;
-	ft: Boolean = false;
-	pt: Boolean = false;
-	temp: Boolean = false;
-	first: Boolean = false;
-	second: Boolean = false;
-	third: Boolean = false;
+	morning: Boolean = false;
+	noon: Boolean = false;
+	night: Boolean = false;
+	graveyard: Boolean = false;
+	ft: Boolean;
+	pt: Boolean;
+	temp: Boolean;
+	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
+	types: any = ['ft', 'pt', 'temp'];
 	@Output() val = new EventEmitter();
 	@Output() loc = new EventEmitter();
 

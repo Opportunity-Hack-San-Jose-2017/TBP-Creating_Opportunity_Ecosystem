@@ -11,6 +11,13 @@
 	flex: 1;
 }
 
+form {
+	position: fixed;
+	width: inherit;
+	max-width: 780px;
+	top: 100px;
+}
+
 .btn {
     height: 30px;
 	cursor: pointer;
@@ -31,33 +38,19 @@
     transform: translateY(1px);
 }
 
-
-form {
+.search-bar {
 	position: fixed;
+	color: rgba(255,255,255,.7);
 	width: inherit;
 	max-width: 780px;
-	top: 80px;
-}
-
-#search_bar {
-	position: fixed;
-	width: inherit;
-	max-width: 780px;
+	background: rgba(0,0,0,.83);
+	padding: 10px;
 	padding-left: 3%;
+	align-items: center;
+	cursor: pointer;
 	height: 70px;
 	z-index: 10;
 	justify-content: flex-start;
-}
-
-.search {
-	color: rgba(255,255,255,.7);
-	height: 40px;
-	width: 100%;
-	padding: 10px;
-	background: rgba(0,0,0,.83);
-	align-items: center;
-	justify-content: space-around;
-	cursor: pointer;
 }
 
 .caret-wrapper {
@@ -74,7 +67,7 @@ form {
 	backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
 	height: 250px;
-	top: 150px;
+	top: 170px;
 	width: inherit;
 	max-width: 780px;
 	position: fixed;
@@ -119,7 +112,7 @@ form {
 		width: 100vw;
 	}
 
-	#search_bar { top: 70px; }
+	.search-bar { top: 70px; }
 
 	.filter-menu {
 		position: fixed;
@@ -128,7 +121,7 @@ form {
 		z-index: 10;
     }
 
-    #job_feed {
+    #jobs_posted_feed {
 		position: relative;
 		top: 0;
 		margin: 0;

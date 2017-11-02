@@ -1,5 +1,20 @@
 .gray { color: rgba(255,255,255,.7) }
 
+.main {
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px);
+	margin-top: 80px;
+    width: 100vw;
+    overflow: hidden;
+    background: url('../../assets/images/newuser-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 nav {
     height: 80px;
 	position: fixed;
@@ -32,14 +47,10 @@ nav img { height: 60px; }
 .name { text-transform: capitalize; font-size: 18px; margin-bottom: 10px; }
 
 .btn {
-    height: 30px;
 	cursor: pointer;
-	font-size: .8rem;
     width: 100px;
     background: #1592aa;
-    align-items: center;
     color: white;
-    justify-content: center;
 	transition: all .2s ease;
 }
 
@@ -76,16 +87,16 @@ nav img { height: 60px; }
 
 .fa {pointer-events: none; font-size: 22px; }
 
-#content {
+.content {
 	max-width: 970px;
 	margin: 150px auto 0;
 	width: calc(65vw + 190px);
 }
 
-#profile_bar {
+.profile_bar {
 	position: fixed;
 	width: 176px;
-	top: 80px;
+	top: 100px;
 }
 
 .pb-div {
@@ -97,7 +108,7 @@ nav img { height: 60px; }
 	justify-content: center;
 }
 
-#profile_bar div img {
+.profile_bar div img {
 	display: block;
 	margin: auto;
 	margin-bottom: 10px;
@@ -129,12 +140,12 @@ nav img { height: 60px; }
 
 	.ham { display: inherit; }
 
-	#content {
+	.content {
 		width: 100vw;
 		margin-top: 140px;
 	}
 
-	#profile_bar {
+	.profile_bar {
 		display: none;
 	}
 
