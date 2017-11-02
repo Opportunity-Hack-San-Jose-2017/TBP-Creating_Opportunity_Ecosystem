@@ -120,6 +120,10 @@ nav img { height: 60px; }
 	position: relative;
 }
 
+.name {
+	color: white;
+}
+
 @media screen and (max-width: 700px) {
 
 	nav {

@@ -1,9 +1,6 @@
 <div class="jobs-wrapper">
 	<form [formGroup]="searchForm">
 		<div class="search-bar flex">
-			<mat-form-field>
-				<input matInput #searchEl type="search" placeholder="Search" formControlName="search" name="search">
-			</mat-form-field>
 			<div class="icons flex">
 				<div (click)="handleSearch()" class="flex caret-wrapper mag">
 					<i class="fa fa-search" aria-hidden="true"></i>
@@ -18,6 +15,6 @@
 		<app-filter (loc)="handleLoc($event)" (val)="handleVal($event)"></app-filter>
 	</div>
 	<div id="jobs_posted_feed">
-		<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
+		<app-employer-job-cell *ngFor="let job of jobs" [job]="job"></app-employer-job-cell>
 	</div>
 </div>

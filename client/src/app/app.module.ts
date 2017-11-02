@@ -36,6 +36,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
+import { EmployerJobCellComponent } from './employers-landingpage/employer-job-cell/employer-job-cell.component';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
 
@@ -65,7 +66,8 @@ import { Interceptor } from './common/interceptors/interceptor';
     ApplicationCellComponent,
     SideNavComponent,
     SavedJobsComponent,
-    JobsPostedComponent
+    JobsPostedComponent,
+    EmployerJobCellComponent
 
   ],
   imports: [
