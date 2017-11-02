@@ -19,27 +19,9 @@ export class EditProfileComponent implements OnInit {
 	pt: Boolean;
 	temp: Boolean;
 	user: any = {
-		"email":"",
-		"token": "",
-		"password":"",
-		"firstName":"",
-		"lastName":"",
-		"phoneNumber": "",
 		"availability": [""],
 		"shift": [""],
-		// "position":null,
-		"introduction":"",
-		// "experience":"",
-		"education":"",
-		"verified":false,
-		"hashValue":"",
-		// "city":null,
-		// "country":null,
-		// "rating":0,
-		// "numberOfRatings":0,
 		"skillsSet":[],
-		"pendingApplications":0
-		// "imageUrl":null
 	}
 
 
@@ -54,14 +36,14 @@ export class EditProfileComponent implements OnInit {
 		private fb: FormBuilder,
 		private _router: Router
 	) {
+		this.user = JSON.parse(localStorage.getItem("user"));
 		this.checkCircles();
-		this.user = JSON.parse(localStorage.getItem("user")) || this.user;
 		this.createForm();
 		_user.getSuccessMsg().subscribe((v: any) => this.success = v)
 		_user.getFailedMsg().subscribe((v: any) => this.failed = v);
 	}
 
-	ngOnInit() {		
+	ngOnInit() {	
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
 		console.log(this.user)
 	}
@@ -70,7 +52,7 @@ export class EditProfileComponent implements OnInit {
 		this.user.shift.forEach(s => this[s] = true);
 		this.user.availability.forEach(a => this[a] = true);
 	}
-  
+
 	createForm() {
 		this.userForm = this.fb.group({
 			firstName: [this.user.firstName , Validators.required],
@@ -103,6 +85,7 @@ export class EditProfileComponent implements OnInit {
 		console.log(obj)
 		// this broke the front page, fixing when we meet.
 		this._user.updateProfile(obj);
+
 	}
 
 	closeMsg() {
@@ -113,7 +96,7 @@ export class EditProfileComponent implements OnInit {
   		this._router.navigate(["applicant"]);
 	}
 	  
-	  handleFile(e: Event) {
+	handleFiles(e: Event) {
 		const files = e.target['files'];
 		for (let i = 0; i < files.length; i++) {
 			const file = {name:this.user.id, file:window.URL.createObjectURL(files[i])};
