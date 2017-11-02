@@ -179,6 +179,11 @@ public class CompanyController {
             company.setPassword(companyObject.getPassword());
             company.setWebsite(companyObject.getWebsite());
 
+            if(company.getEmail()==null || company.getPassword()==null || company.getName()==null){
+                responseMap.addAttribute("statusCode",403);
+                responseMap.addAttribute("message","Invalid registration form fields. Check email, password and name");
+                return responseMap;
+            }
             if(!companyService.register(company)){
                 responseMap.addAttribute("statusCode", "400");
                 responseMap.addAttribute("message", "Email already in use! Please try with a new email.");

@@ -107,6 +107,8 @@ nav img {
 
 .form-wrapper {
     width: 100%;
+    overflow: auto;
+    height: calc(100vh - 80px);
     border-radius: 1px;
     padding: 20px 30px;
     justify-content: center;
@@ -140,6 +142,7 @@ nav img {
 }
 
 form {
+    width: 90%;
     align-items: center;
     margin: 15px auto 0;
 }
@@ -230,7 +233,7 @@ form {
     margin-right: 40px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
 
     .form-wrapper, .edit-profile-container {
         padding: 0;
@@ -242,10 +245,8 @@ form {
         margin-bottom: 10px;
     }
 
-    .main-wrapper {width: 100%;}
-
-    .name-wrapper {
-        flex-direction: column;
+    .mat-form-field {
+        width: 40% !important;
     }
 
     .mat-fab {
@@ -254,4 +255,18 @@ form {
         font-size: .7rem;
     }
 
+}
+
+@media screen  and (max-width: 630px) {
+
+    .form-top-right {
+        flex: 1;
+    }
+    .name-wrapper {
+        flex-direction: column;
+    }
+
+    .mat-form-field {
+        width: 100% !important;
+    }
 }
