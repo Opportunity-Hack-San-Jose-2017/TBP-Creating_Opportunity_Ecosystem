@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { CompanyService } from './../common/services/company.service';
 
@@ -11,6 +12,7 @@ export class EmployersLandingpageComponent {
 	toggleDropDown = false;
 	company: any = { "name" : "redbull"}
 	constructor(
+		private _router: Router,
 		private _company: CompanyService
 	) {
 		this.company = localStorage.getItem("company") || {};
@@ -18,6 +20,10 @@ export class EmployersLandingpageComponent {
 
 	dropdowntoggle() {
 		this.toggleDropDown = !this.toggleDropDown;
+	}
+
+	newJob() {
+		this._router.navigate(['company/opening/create']);
 	}
 
 	logout() {

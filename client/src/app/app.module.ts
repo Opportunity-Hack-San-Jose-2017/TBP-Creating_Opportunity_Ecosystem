@@ -34,6 +34,7 @@ import { ApplicationCellComponent } from './user-landing/applications/applicatio
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
+import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AuthGuard } from './common/guards/auth.guard';
     ApplicationsComponent,
     ApplicationCellComponent,
     SideNavComponent,
-    SavedJobsComponent
+    SavedJobsComponent,
+    JobsPostedComponent
   ],
   imports: [
     BrowserModule,

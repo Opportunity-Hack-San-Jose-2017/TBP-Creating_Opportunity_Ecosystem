@@ -1,36 +1,36 @@
 <div class="main flex">
-	<img class="biz-logo" src="../../assets/images/profile-icon.png">
-	<div class="inner_text">
-		<h2 class="title">{{job['title']}}</h2>
-		<div class="company">{{job['company']}}</div>
-		<div class="details">
-			<div class="flex">
-				<div>{{job['location']}}</div>
-				<span>&nbsp;|&nbsp;</span>
-				<div>{{job['shift']}}</div>
-				<span>&nbsp;|&nbsp;</span>
-				<div>{{job['type']}}</div>
-			</div>
-			<div>Required experience: {{job['experience']}} {{time}}</div>
-			<div>Accessible by public transportation: {{isAccessible}}</div>
+<img class="biz-logo" src="../../assets/images/profile-icon.png">
+<div class="inner_text">
+	<h2 class="title">{{job['title']}}</h2>
+	<div class="company">{{job['company']}}</div>
+	<div class="details">
+		<div class="flex">
+			<div>{{job['location']}}</div>
+			<span>&nbsp;|&nbsp;</span>
+			<div>{{job['shift']}}</div>
+			<span>&nbsp;|&nbsp;</span>
+			<div>{{job['type']}}</div>
 		</div>
-		<div class="desk-desc">
+		<div>Required experience: {{job['experience']}} {{time}}</div>
+		<div>Accessible by public transportation: {{isAccessible}}</div>
+	</div>
+	<div class="desk-desc">
+		<div class="desc">{{job['description']}}</div>
+		<div *ngIf="!show" class="more-wrapper">
+			<div class="desc">{{job['responsibilites']}}</div>
+		</div>
+	</div>
+	<div class="mobile-desc">
+		<div *ngIf="!show" class="more-wrapper">
 			<div class="desc">{{job['description']}}</div>
-			<div *ngIf="!show" class="more-wrapper">
-				<div class="desc">{{job['responsibilites']}}</div>
-			</div>
-		</div>
-		<div class="mobile-desc">
-			<div *ngIf="!show" class="more-wrapper">
-				<div class="desc">{{job['description']}}</div>
-				<div class="desc">{{job['responsibilites']}}</div>
-			</div>
+			<div class="desc">{{job['responsibilites']}}</div>
 		</div>
 	</div>
-	<div class="right_side_nav">
-		<div (click)="apply()" class="btn flex">Apply</div>
-		<div (click)="message()" class="btn flex">Message</div>
-		<p *ngIf="show" class="toggle" (click)="toggle()">More</p>
-		<p *ngIf="!show" class="toggle" (click)="toggle()">Less</p>
-	</div>
+</div>
+<div class="right_side_nav">
+	<div (click)="apply()" class="btn flex">Apply</div>
+	<div (click)="message()" class="btn flex">Message</div>
+	<p *ngIf="show" class="toggle" (click)="toggle()">More</p>
+	<p *ngIf="!show" class="toggle" (click)="toggle()">Less</p>
+</div>
 </div>
