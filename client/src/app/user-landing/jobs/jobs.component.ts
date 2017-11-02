@@ -63,7 +63,6 @@ export class JobsComponent implements AfterViewInit {
 		private fb: FormBuilder
 	) {
 		this.createForm();
-		// this.jobs = [job,job,job,job,job,job,job,job,job,job,job,job,job]
 		this._search.getAllJobs()
 			.subscribe((v: any) => this.jobs = v.openings);
 
