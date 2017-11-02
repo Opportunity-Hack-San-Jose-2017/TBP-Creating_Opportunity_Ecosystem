@@ -1,19 +1,31 @@
 .no-point { pointer-events: none; }
 
-.profile-setup-container {
+nav {
+    height: 80px;
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 100vh;
-    padding: 15px 35px;
+    background: white;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+}
+
+.profile-setup-container {
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px);
+	margin-top: 80px;
+    width: 100vw;
+    overflow: hidden;
     background: url('../../assets/images/newuser-bg.png');
     background-repeat: no-repeat; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    justify-content: center;
-    overflow: hidden;
-    align-items: center; 
-    
 }
 
 app-step-one, app-step-two, app-step-three {
@@ -25,17 +37,11 @@ app-step-one, app-step-two, app-step-three {
     position: relative;
 }
 
-.logo-wrap {
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    height: 50px;
-}
+nav img { height: 60px; }
 
 .profile-setup-wrapper {
     width: 65%;
     max-width: 700px;
-    max-height: 77vh;
     height: 450px;
     background: rgba(0,0,0,.83);
     border-radius: 1px;
@@ -44,8 +50,26 @@ app-step-one, app-step-two, app-step-three {
     align-items: center;
     justify-content: space-between;
     overflow: auto;
-    position: absolute;
-    top: 120px;
+}
+
+.btn {
+    height: 30px;
+	cursor: pointer;
+	font-size: .8rem;
+    width: 100px;
+    background: #1592aa;
+    align-items: center;
+    color: white;
+    justify-content: center;
+	transition: all .2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
 }
 
 @media screen and (min-width: 701px) {

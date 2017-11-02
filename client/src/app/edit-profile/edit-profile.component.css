@@ -2,12 +2,18 @@
     color: rgba(255,255,255,.7);
 }
 
+#lbl {
+    color: white;
+}
+
+.round {border-radius: 5px; }
+
 nav {
     height: 80px;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	background: transparent;
+	background: white;
 	z-index: 10;
 	justify-content: space-between;
 	padding: 0 10px;
@@ -19,13 +25,18 @@ nav img {
 }
 
 .edit-profile-container {
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
     justify-content: center;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    width: 100vw;
     overflow: hidden;
+    background: url('../../assets/images/newuser-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .logo-wrap {
@@ -76,7 +87,7 @@ nav img {
 .mat-fab {
     height: 40px;
     width: 80px;
-    padding: 5px;
+    /* padding: 5px; */
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -106,9 +117,9 @@ nav img {
 
 .form-wrapper {
     width: 100%;
-    margin-top: 80px;
     overflow: auto;
-    height: calc(100vh - 80px);
+    max-height: calc(100vh - 120px);
+    height: 605px;
     border-radius: 1px;
     padding: 20px 30px;
     justify-content: center;
@@ -129,7 +140,12 @@ nav img {
 }
 
 .photo-wrapper {
-    width: 109px;
+    width: 100%;
+}
+
+.pro-pic {
+    object-fit: cover;
+    width: 100%;
 }
 
 .form-top-left {
@@ -146,7 +162,7 @@ form {
     width: 90%;
     align-items: center;
     margin: 15px auto 0;
-    min-height: 555px;
+    min-height: 605px;
     position: absolute;
     top: 20px;
 }
@@ -173,44 +189,21 @@ form {
     justify-content: space-around;
 }
 
-.submit-register {
-    height: 30px;
-    cursor: pointer;
-    width: 100px;
-    background: #1592aa;
-    align-items: center;
-    color: white;
-    justify-content: center;
-}
-
 .accept { align-items: center; margin-top: 5px; }
 
 .btn {
-    height: 25px;
-    cursor: pointer;
-    width: 113px;
-    font-size: 12px;
-    background: #490000;
-    align-items: center;
-    color: rgba(255,255,255,.7);
-    justify-content: center;
-    margin: 0 auto 5px;
-    transition: all .2s ease;
-}
-
-.lg-btn {
-    height: 30px;
-	font-size: .8rem;
+	cursor: pointer;
     width: 100px;
-    margin: 0;
     background: #1592aa;
+    color: white;
+	transition: all .2s ease;
 }
 
-.res-lbl {
-    height: 100%;
+.side { width: 100%; }
+.space { margin-bottom: 5px; }
+.res-lbl { 
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
 }
 
 .skills, .experiences {
@@ -218,6 +211,11 @@ form {
     font-size: 12px;
     color: rgba(0,0,0,.5);
     resize: none;
+}
+
+.bottom {
+    width: 250px;
+    justify-content: space-between;
 }
 
 .skills { height: 60px; }

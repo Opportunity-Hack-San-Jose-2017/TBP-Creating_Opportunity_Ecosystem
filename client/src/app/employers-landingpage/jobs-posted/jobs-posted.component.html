@@ -1,6 +1,6 @@
 <div class="jobs-wrapper">
 	<form [formGroup]="searchForm">
-		<div id="search_bar" class="flex search">
+		<div class="search-bar flex">
 			<div class="icons flex">
 				<div (click)="handleSearch()" class="flex caret-wrapper mag">
 					<i class="fa fa-search" aria-hidden="true"></i>
@@ -11,10 +11,10 @@
 			</div>
 		</div>
 	</form>
-	<div class="filter-menu" [@slideAnimation] *ngIf="search">
+	<div class="filter-menu" [@filterSlide] *ngIf="search">
 		<app-filter (loc)="handleLoc($event)" (val)="handleVal($event)"></app-filter>
 	</div>
-	<div id="job_feed">
+	<div id="jobs_posted_feed">
 		<app-employer-job-cell *ngFor="let job of jobs" [job]="job"></app-employer-job-cell>
 	</div>
 </div>

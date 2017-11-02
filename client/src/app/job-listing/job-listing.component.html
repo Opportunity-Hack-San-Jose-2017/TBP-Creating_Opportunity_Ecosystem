@@ -1,6 +1,6 @@
-<nav>
+<nav class="flex">
 	<img class="TBP-Logo" src="../../assets/images/TBP-Logo.png" alt="logo">
-	<div (click)="logout()" class="btn flex logout">Logout</div>
+	<button (click)="logout()" mat-button class="btn logout">Logout</button>
 </nav>
 <div class="listing-container flex">
 	<div class="form-wrapper flex">
@@ -23,29 +23,13 @@
 						Responsibilites are <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
-			<!-- <div class="experience wrapper">
-				<div class="form-group flex column">
-					<div class="form-group-header">Experienced required?</div>
-					<div class="flex check-container">
-						<div class="check-wrapper flex">
-							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="yes ? 'active' : ''" id="yes">Yes</div>
-						</div>
-						<div class="check-wrapper flex">
-							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="!yes ? 'active' : ''" id="no">No</div>
-						</div>
-					</div>
-				</div> -->
-				<mat-form-field class="flex exp">
-					<input matInput placeholder="Experience" type="number" formControlName="experience">
-					<!-- <mat-error *ngIf="jobForm.get('experience').touched && jobForm.get('experience').hasError('required')">
-							Level of experience is <strong>required</strong>
-					</mat-error> -->
-					<span>(years)</span>
-				</mat-form-field>
-			<!-- </div> -->
+			<mat-form-field class="flex exp">
+				<input matInput placeholder="Experience" type="number" formControlName="experience">
+				<span>(years)</span>
+			</mat-form-field>
 			<div class="shift-wrapper">
 				<div class="form-group flex column">
-					<div class="form-group-header">Preferred Shift(s)</div>
+					<div class="form-group-header">Shift</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
 							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
@@ -58,6 +42,22 @@
 						</div>
 						<div class="check-wrapper flex">
 							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="job-type-wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Type</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
 						</div>
 					</div>
 				</div>
@@ -100,8 +100,9 @@
 			<mat-form-field>
 				<input matInput type="number" min="0" placeholder="Max Salary" name="maxSalary" formControlName="maxSalary">
 			</mat-form-field>
-			<div>
-				<div (click)="submitOpening()" class="submit-create flex">Upload</div>
+			<div class="bottom flex">
+				<button (click)="backButton()" class="back-btn btn" mat-button>Cancel</button>
+				<button (click)="submitOpening()" class="save-btn btn" mat-button>Upload</button>     
 			</div>
 		</form>
 	</div>

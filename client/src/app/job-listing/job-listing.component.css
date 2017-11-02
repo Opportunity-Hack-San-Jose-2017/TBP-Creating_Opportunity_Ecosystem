@@ -1,7 +1,3 @@
-* {
-    color: rgba(255,255,255,.7);
-}
-
 nav {
     height: 80px;
 	position: fixed;
@@ -9,7 +5,6 @@ nav {
 	width: 100%;
 	background: white;
 	z-index: 10;
-	display: flex;
 	justify-content: space-between;
 	padding: 0 10px;
 	align-items: center;
@@ -20,14 +15,10 @@ nav img {
 }
 
 .btn {
-    height: 30px;
 	cursor: pointer;
-	font-size: .8rem;
     width: 100px;
     background: #1592aa;
-    align-items: center;
     color: white;
-    justify-content: center;
 	transition: all .2s ease;
 }
 
@@ -46,44 +37,50 @@ nav img {
 .listing-container {
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100%;
-    background: url('../../assets/images/login-bg.png');
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    width: 100vw;
+    overflow: hidden;
+    background: url('../../assets/images/newuser-bg.png');
     background-repeat: no-repeat; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    justify-content: center;
-    overflow: hidden;
 }
 
 .form-wrapper {
-    width: 60%;
-    max-width: 600px;
+    width: 90%;
+    color: rgba(255,255,255,.7);
+    overflow: auto;
+    max-height: calc(100vh - 120px);
+    height: 605px;
     border-radius: 1px;
+    max-width: 700px;
     padding: 20px 30px;
+    justify-content: center;
     background: rgba(0,0,0,.83);
     position: relative;
     color: white;
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;    
+    align-items: center;
 }
 
 form {
-    width: 80%;
-    height: 100%;
+    width: 90%;
     align-items: center;
     margin: 15px auto 0;
+    min-height: 870px;
+    position: absolute;
+    top: 0;
 }
 
-.wrapper {
-    width: 100%;
+.wrapper, .shift-wrapper, .job-type-wrapper, .mat-form-field {
+    width: 90%;
 }
 
-/* .check-container {
+.check-container {
     justify-content: space-between;
-} */
+}
 
 .form-group {
     width: 100%;
@@ -95,15 +92,9 @@ form {
     font-size: 15px;
 }
 
-select {
-    height: 20px;
-    flex: 1;
-    margin-left: 10px;
-}
-
 label {
     font-size: 16px;
-    color: #999999;
+    color: rgba(255,255,255,.7);
 }
 
 .mat-form-field {
@@ -136,7 +127,7 @@ label {
 .mat-fab {
     height: 40px;
     width: 80px;
-    padding: 5px;
+    color: rgba(255,255,255,.7);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -154,9 +145,9 @@ label {
     opacity: .7;
 }
 
-.active {
-    background: #1592aa !important;
-}
+.active { background: #1592aa !important; }
+
+.back-btn { margin-right: 80px; }
 
 .description {
     font-size: 16px;
@@ -164,17 +155,21 @@ label {
     height: 60px;
 }
 
-.submit-create {
-    height: 30px;
-    cursor: pointer;
-    width: 100px;
-    background: #1592aa;
-    align-items: center;
-    color: white;
-    justify-content: center;
-}
-
 .accept { align-items: center; margin-top: 5px; }
+
+@media screen and (max-width: 800px) {
+    
+    .mat-fab {
+        height: 35px;
+        width: 60px;
+        font-size: .7rem;
+    }
+
+    .wrapper, .shift-wrapper, .job-type-wrapper, .mat-form-field {
+        width: 100%;
+    }
+
+}
 
 @media screen and (max-width: 700px) {
     .form-wrapper {

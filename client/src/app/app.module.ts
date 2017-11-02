@@ -40,7 +40,6 @@ import { EmployerJobCellComponent } from './employers-landingpage/employer-job-c
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +83,7 @@ import { Interceptor } from './common/interceptors/interceptor';
   providers: [
     UserService,
     SearchService,
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     CompanyService,
     JobsService,
     AuthGuard,

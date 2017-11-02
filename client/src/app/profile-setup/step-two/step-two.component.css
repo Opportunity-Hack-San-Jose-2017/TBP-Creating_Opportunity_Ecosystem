@@ -32,7 +32,7 @@ form {
 .mat-fab {
     height: 40px;
     width: 80px;
-    padding: 5px;
+    /* padding: 5px; */
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -75,14 +75,11 @@ label {
 }
 
 .btn {
-    height: 30px;
-    cursor: pointer;
+	cursor: pointer;
     width: 100px;
     background: #1592aa;
-    align-items: center;
     color: white;
-    justify-content: center;
-    transition: all .2s ease;
+	transition: all .2s ease;
 }
 
 .btn:hover {
