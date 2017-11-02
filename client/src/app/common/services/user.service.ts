@@ -23,7 +23,7 @@ export class UserService {
 			.subscribe(
 				(data: any) => {
 					console.log(data);
-					localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
+					this.setStorage(data.applicant);
 					this.router.navigate(['applicant']);
 				},
 				(err: HttpErrorResponse) => {
@@ -41,7 +41,7 @@ export class UserService {
 			.subscribe(
 				(data: any) => {
 					if (data["statusCode"] == 200){
-						localStorage.setItem('user', JSON.stringify(data.applicant));
+						this.setStorage(data.applicant);
 						this.router.navigate(['applicant']);
 					} else {
 						console.log(data);
@@ -51,6 +51,11 @@ export class UserService {
 					console.log(err);
 				}
 			)
+	}
+
+	setStorage(data: any) {
+		delete data.password;
+		localStorage.setItem('user', JSON.stringify(data));		
 	}
 
 	register(registration_cred: Object) {
