@@ -99,11 +99,12 @@ export class EditProfileComponent implements OnInit {
 	}
 	  
 	handleFiles(e: Event) {
-		const files = e.target['files'];
-		for (let i = 0; i < files.length; i++) {
-			const file = {file:window.URL.createObjectURL(files[i])};
+		const x = e.target['files'];
+		const file = x.item(0);
+		// for (let i = 0; i < files.length; i++) {
+			// const file = {name:'img.png',file:window.URL.createObjectURL(files[i])};
 			this._upload.sendFile(file);
-		}
+		// }
 	}
 
 	logout() {
