@@ -87,7 +87,7 @@ public class CompanyController {
             opening.setExperience(openingObj.getExperience());
             opening.setSkillsSet(openingObj.getSkillsSet());
             opening.setShift(openingObj.getShift());
-            opening.setPublicTransport(openingObj.isPublicTransport());
+            opening.setPublicTransport(openingObj.getPublicTransport());
             opening.setStatus(Opening.Status.OPEN);
             companyService.postOpening(opening);
             responseMap.addAttribute("statusCode", "200");

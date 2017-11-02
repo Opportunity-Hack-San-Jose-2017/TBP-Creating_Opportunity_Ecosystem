@@ -4,19 +4,19 @@
 	</mat-form-field>
 	<div class="availability-wrapper wrapper flex">
 		<div class="form-group flex">
-			<div class="form-group-header flex">Preferred Shift(s)</div>
+			<div class="form-group-header">Preferred Shift(s)</div>
 			<div class="flex check-container">
 				<div class="check-wrapper flex">
-	              	<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
+					<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
 				</div>
 				<div class="check-wrapper flex">
-				    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="noon ? 'active' : ''" id="noon">Noon</div>
+					<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="noon ? 'active' : ''" id="noon">Noon</div>
 				</div>
 				<div class="check-wrapper flex">
-				    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="night ? 'active' : ''" id="night">Night</div>
+					<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="night ? 'active' : ''" id="night">Night</div>
 				</div>
 				<div class="check-wrapper flex">
-				    <div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
+					<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
 				</div>
 			</div>
 		</div>

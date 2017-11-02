@@ -17,17 +17,14 @@ export class UserService {
 		private router: Router
 	) { }
 
-	login(login_cred: Object){
+	login(login_cred: object, setupProfile: boolean){
 		const url = `${BASE_URL}/applicant/signin`;
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					if (data["statusCode"]== "200"){
-						localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
-						this.router.navigate(['applicant']);
-					} else {
-						alert(data["message"])
-					}
+					this.setStorage(data.applicant);
+					setupProfile ? this.router.navigate(['setup']) :
+						this.router.navigate(['applicant'])
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -37,13 +34,13 @@ export class UserService {
 			)
 	}
 
-	updateProfile(update_cred: Object){
+	updateProfile(update_cred: object){
 		const url = `${BASE_URL}/applicant/update`;
 		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
 					if (data["statusCode"] == 200){
-						localStorage.setItem('user', JSON.stringify(data.applicant));
+						this.setStorage(data.applicant);
 						this.router.navigate(['applicant']);
 					} else {
 						console.log(data);
@@ -55,14 +52,18 @@ export class UserService {
 			)
 	}
 
+	setStorage(data: any) {
+		delete data.password;
+		localStorage.setItem('user', JSON.stringify(data));		
+	}
+
 	register(registration_cred: Object) {
 		const url = `${BASE_URL}/applicant/register`;
 		this.http.post(url, registration_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data);
-					localStorage.setItem('user', JSON.stringify(data.applicant));
-					this.login({email:data.applicant['email'], password:data.applicant['password']})
+					const obj = { email: data.applicant['email'], password: data.applicant['password'] };
+					this.login(obj, true);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
@@ -130,7 +131,7 @@ export class UserService {
 	}
 
 	uploadResume(file: Object) {
-		this.http.post(`${BASE_URL}/api/aws/upload`, file, {withCredentials:true})
+		this.http.post(`${BASE_URL}/api/aws/s3/upload`, file, {withCredentials:true})
 			.subscribe(
 				(v: any) => {
 				console.log(v);
@@ -141,18 +142,5 @@ export class UserService {
 					this.failedMessage.next(true);
 				}		
 			)
-	}
-
-	getSuccessMsg(): Observable<any> {
-		return this.successMessage;
-	}
-
-	closeMsg() {
-		this.successMessage.next(false)
-		this.failedMessage.next(false)
-	}
-
-	getFailedMsg(): Observable<any> {
-		return this.failedMessage;
 	}
 }
