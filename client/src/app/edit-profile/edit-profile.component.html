@@ -90,11 +90,11 @@
             <textarea matInput placeholder="Experiences (titles and descriptions)" name="experiences" formControlName="experiences"></textarea>
           </mat-form-field>
         </div>
+        <div class="bottom flex">
+          <div (click)="backButton()" class="back-btn btn flex">Back</div>
+          <div (click)="handleClick()" class="save-btn btn flex">Save</div>
+        </div>
       </form>
-      <div class="bottom flex">
-        <div (click)="backButton()" class="back-btn btn flex">Back</div>
-        <div (click)="handleClick()" class="save-btn btn flex">Save</div>
-      </div>
     </div>
   </div>
 </div>
