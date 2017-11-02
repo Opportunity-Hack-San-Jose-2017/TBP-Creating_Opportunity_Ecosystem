@@ -17,9 +17,9 @@ const appRoutes: Routes = [
     { path: 'company', component: CompanyHomeComponent },
     { path: 'company/home', component: EmployersLandingpageComponent},
     { path: 'company/opening/create', component: JobListingComponent},
+	{ path: 'profile/edit', component: EditProfileComponent },
     { path: 'applicant', component: UserLandingComponent, children: [
 		{ path: '', component: JobsComponent, pathMatch: 'full' },
-		{ path: 'profile/edit', component: EditProfileComponent },
 		{ path: 'jobs/applied', component: ApplicationsComponent },
 		{ path: 'jobs/saved', component: SavedJobsComponent }
 	] },
