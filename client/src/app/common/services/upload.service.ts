@@ -1,9 +1,9 @@
-import { Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
+import { Headers, RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
 
 @Injectable()
@@ -16,12 +16,16 @@ export class UploadService {
 
 	sendFile(file: any) {
 		let formdata: FormData = new FormData();
-		formdata['file'] = file;
-		const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
-		return this._http.post(`${BASE_URL}/api/aws/s3/upload`, JSON.stringify(formdata), { headers, withCredentials: true })
+		formdata.append('file', file);
+		const req = new HttpRequest('POST', `${BASE_URL}/api/aws/s3/upload`, formdata, {
+			withCredentials: true
+		});
+		this._http.request(req)
 			.subscribe(
 				(v: any) => {
-					console.log(v);
+					if (v.type === HttpEventType.UploadProgress) {
+						console.log(v.total, v.loaded);
+					}
 					this.successMessage.next(true);
 				},
 				(err: HttpErrorResponse) => {
