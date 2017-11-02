@@ -1,11 +1,11 @@
 form {
-    width: 80%;
+    width: 85%;
     align-items: center;
     margin: 15px auto 0;
 }
 
 .mat-form-field {
-    width: 300px !important;
+    width: 100% !important;
 }
 
 .mat-focused {

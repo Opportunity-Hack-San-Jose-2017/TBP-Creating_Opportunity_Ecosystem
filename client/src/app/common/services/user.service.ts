@@ -22,8 +22,8 @@ export class UserService {
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data)
-					localStorage.setItem('user', JSON.stringify(data.applicant));
+					console.log(data);
+					localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
 					this.router.navigate(['applicant']);
 				},
 				(err: HttpErrorResponse) => {
@@ -106,6 +106,7 @@ export class UserService {
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
 		if (num === 4) {
 			localStorage.removeItem('setupStep');
+			localStorage.removeItem('profile');			
 			this.updateProfile(updatedObj);
 		}
 	}
@@ -121,9 +122,7 @@ export class UserService {
 	}
 
 	getApplications(): Observable<any> {
-		return this.http.get(`${BASE_URL}`, {
-			
-		})
+		return this.http.get(`${BASE_URL}`)
 	}
 
 	uploadResume(file: Object) {

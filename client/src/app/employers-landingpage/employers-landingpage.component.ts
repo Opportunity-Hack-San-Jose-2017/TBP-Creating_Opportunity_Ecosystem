@@ -8,12 +8,20 @@ import { CompanyService } from './../common/services/company.service';
 })
 export class EmployersLandingpageComponent {
 
+	openings: any = ["something"];
 	toggleDropDown = false;
 	company: any = { "name" : "redbull"}
 	constructor(
 		private _company: CompanyService
 	) {
 		this.company = localStorage.getItem("company") || {};
+		this.getAllOpenings()
+	}
+
+	getAllOpenings(){
+		this._company.getAllOpenings()
+		.subscribe((data: any) => console.log(data))
+		console.log(this.openings)
 	}
 
 	dropdowntoggle() {
