@@ -37,7 +37,7 @@ public class ApplicantController {
     @CrossOrigin
     @GetMapping(value = "/profile")
     @ResponseBody
-    public ModelMap getProfile(ModelMap model,HttpSession session){
+    public ModelMap getProfile(@RequestParam(value = "email",required = false)String email,HttpSession session){
         //System.out.println("Trying to get the applicant with email :"+email);
         ModelMap map = new ModelMap();
         if(session.getAttribute("email")==null) {
@@ -47,7 +47,13 @@ public class ApplicantController {
         }
 
         try {
-            Applicant applicant=applicantService.fetch(session.getAttribute("email").toString());
+            String applicant_email="";
+            if(email==null || email.length()==0){
+                applicant_email=session.getAttribute("email").toString();
+            }
+            else
+                applicant_email=email;
+            Applicant applicant=applicantService.fetch(applicant_email);
             System.out.println("Found applicant "+applicant.toString());
             map.addAttribute("profile", applicant);
             map.addAttribute("statusCode", "200");
