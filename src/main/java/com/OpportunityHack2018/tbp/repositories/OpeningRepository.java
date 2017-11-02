@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Transactional
 public interface OpeningRepository extends JpaRepository<Opening,Integer> {
-    @Query(value = "select * from opening where company_email = %?1%", nativeQuery = true)
+    @Query(value = "select * from opening where company_email = ?1", nativeQuery = true)
     Set<Opening> findByEmail(String email);
 
     @Query(value = "delete from opening where email = ?1%", nativeQuery = true)
