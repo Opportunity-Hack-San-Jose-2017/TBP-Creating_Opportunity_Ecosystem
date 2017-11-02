@@ -120,8 +120,8 @@ public class ApplicantService {
             }
         }
 
-        if(applicant.getPendingApplications()>4)
-            return 402;
+//        if(applicant.getPendingApplications()>4)
+//            return 402;
         application.setApplicant(applicant);
         application.setOpening(opening);
         application.setStatus("Pending");
@@ -218,5 +218,9 @@ public class ApplicantService {
         }
 
         return qualified;
+    }
+
+    public List<Opening> getAppliedOpenings(String email) {
+        return openingService.getAppliedOpenings(email);
     }
 }

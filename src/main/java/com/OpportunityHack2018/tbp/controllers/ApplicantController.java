@@ -2,6 +2,7 @@ package com.OpportunityHack2018.tbp.controllers;
 
 
 import com.OpportunityHack2018.tbp.entities.Applicant;
+import com.OpportunityHack2018.tbp.entities.Application;
 import com.OpportunityHack2018.tbp.entities.Opening;
 import com.OpportunityHack2018.tbp.services.ApplicantService;
 import com.OpportunityHack2018.tbp.services.ApplicationService;
@@ -36,7 +37,7 @@ public class ApplicantController {
     @CrossOrigin
     @GetMapping(value = "/profile")
     @ResponseBody
-    public ModelMap getProfile(ModelMap model,HttpSession session){
+    public ModelMap getProfile(@RequestParam(value = "email",required = false)String email,HttpSession session){
         //System.out.println("Trying to get the applicant with email :"+email);
         ModelMap map = new ModelMap();
         if(session.getAttribute("email")==null) {
@@ -46,7 +47,13 @@ public class ApplicantController {
         }
 
         try {
-            Applicant applicant=applicantService.fetch(session.getAttribute("email").toString());
+            String applicant_email="";
+            if(email==null || email.length()==0){
+                applicant_email=session.getAttribute("email").toString();
+            }
+            else
+                applicant_email=email;
+            Applicant applicant=applicantService.fetch(applicant_email);
             System.out.println("Found applicant "+applicant.toString());
             map.addAttribute("profile", applicant);
             map.addAttribute("statusCode", "200");
@@ -251,7 +258,15 @@ public class ApplicantController {
                 List<Opening> openingsList=new ArrayList<>();
                 List<String> imageURLs=new ArrayList<>();
                 for(Opening o : openings){
-                    openingsList.add(o);
+                    boolean ignore=false;
+                    for(Application application:o.getApplications()){
+                        if(application.getApplicant().getEmail().equalsIgnoreCase(session.getAttribute("email").toString())){
+                            ignore=true;
+                            break;
+                        }
+                    }
+                    if(!ignore && o.getStatus()== Opening.Status.OPEN)
+                        openingsList.add(o);
 //                    imageURLs.add(o.getCompany().getImageUrl());
                 }
 
@@ -272,6 +287,28 @@ public class ApplicantController {
             responseMap.addAttribute("status","404");
             return responseMap;
         }
+    }
+
+    @CrossOrigin
+    @GetMapping("/appliedJobs")
+    @ResponseBody
+    public ModelMap appliedJobs(HttpSession session){
+        ModelMap responseMap = new ModelMap();
+        try {
+            if (session.getAttribute("email") == null) {
+                System.out.println(" Please login first");
+                return null;
+            }
+            List<Opening> openings = applicantService.getAppliedOpenings(session.getAttribute("email").toString());
+            responseMap.addAttribute("statusCode",200);
+            responseMap.addAttribute("openings",openings);
+            return responseMap;
+        }
+        catch (Exception e){
+            responseMap.addAttribute("statusCode",500);
+            e.printStackTrace();
+        }
+        return responseMap;
     }
 
     @CrossOrigin
