@@ -36,12 +36,10 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
-<<<<<<< HEAD
 import { EmployerJobCellComponent } from './employers-landingpage/employer-job-cell/employer-job-cell.component';
-=======
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
->>>>>>> 338b7df4a769c782a2c9dfca97f3b7277c8038f7
+
 
 @NgModule({
   declarations: [

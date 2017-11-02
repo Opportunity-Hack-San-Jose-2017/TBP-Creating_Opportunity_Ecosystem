@@ -63,7 +63,10 @@ export class JobsComponent implements AfterViewInit {
 	) {
 		this.createForm();
 		this._search.getAllJobs()
-		.subscribe((v: any) => this.jobs = v.openings);
+		.subscribe((v: any) => {
+			this.jobs = v.openings
+			console.log(this.jobs)
+		});
 
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)
