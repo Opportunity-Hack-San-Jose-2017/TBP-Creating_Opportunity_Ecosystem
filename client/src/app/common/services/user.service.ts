@@ -22,9 +22,12 @@ export class UserService {
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data);
-					localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
-					this.router.navigate(['applicant']);
+					if (data["statusCode"]== "200"){
+						localStorage.setItem('user', JSON.stringify(data.applicant)) || {};
+						this.router.navigate(['applicant']);
+					} else {
+						alert(data["message"])
+					}
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {

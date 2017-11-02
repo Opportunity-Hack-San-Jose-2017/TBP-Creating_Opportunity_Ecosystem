@@ -169,7 +169,7 @@ public class Opening {
         this.shift = shift;
     }
 
-    public boolean isPublicTransport() {
+    public boolean getPublicTransport() {
         return publicTransport;
     }
 

@@ -35,6 +35,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
+import { EmployerJobCellComponent } from './employers-landingpage/employer-job-cell/employer-job-cell.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
     ApplicationCellComponent,
     SideNavComponent,
     SavedJobsComponent,
-    JobsPostedComponent
+    JobsPostedComponent,
+    EmployerJobCellComponent
 
   ],
   imports: [
