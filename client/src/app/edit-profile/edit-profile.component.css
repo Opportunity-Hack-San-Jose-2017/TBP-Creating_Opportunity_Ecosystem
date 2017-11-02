@@ -24,7 +24,6 @@ nav img {
     min-height: 100vh;
     width: 100%;
     height: 100%;
-    padding: 15px 35px;
     justify-content: center;
     overflow: hidden;
 }
@@ -66,7 +65,7 @@ nav img {
     min-height: 500px;
     overflow: auto;
     position: relative;
-    width: 80%;
+    width: 90%;
     max-width: 700px;
 }
 
@@ -107,6 +106,7 @@ nav img {
 
 .form-wrapper {
     width: 100%;
+    margin-top: 80px;
     overflow: auto;
     height: calc(100vh - 80px);
     border-radius: 1px;
@@ -122,6 +122,8 @@ nav img {
     width: 100%;
 }
 
+.form-top { margin-bottom: 9px; }
+
 .form-bottom * {
     width: 100%;
 }
@@ -133,7 +135,6 @@ nav img {
 .form-top-left {
     align-items: center;
     margin-right: 20px;
-    padding-top: 1em;
 }
 
 .check-container {
@@ -145,6 +146,9 @@ form {
     width: 90%;
     align-items: center;
     margin: 15px auto 0;
+    min-height: 555px;
+    position: absolute;
+    top: 20px;
 }
 
 .form-group-header {
@@ -160,7 +164,7 @@ form {
 
 .form-group {
     width: 90%;
-    margin: 0 auto 5px;
+    margin: 0 auto 9px;
     position: relative;
 }
 
@@ -216,22 +220,17 @@ form {
     resize: none;
 }
 
-.skills {
-    height: 60px;
-}
+.skills { height: 60px; }
 
-.btn:hover {
-    transform: translateY(-1px);
-}
+.btn:hover { transform: translateY(-1px); }
 
-.btn:active {
-    transform: translateY(1px);
-}
+.btn:active { transform: translateY(1px); }
 
-.back-btn, .save-btn {
-    background: #1592aa;
-    margin-right: 40px;
-}
+.back-btn, .save-btn { background: #1592aa; }
+
+.back-btn { margin-right: 40px; }
+
+.bottom { align-items: center; justify-content: space-between; }
 
 @media screen and (max-width: 800px) {
 
@@ -245,8 +244,8 @@ form {
         margin-bottom: 10px;
     }
 
-    .mat-form-field {
-        width: 40% !important;
+    .mat-form-field:not(.textarea) {
+        width: 100% !important;
     }
 
     .mat-fab {

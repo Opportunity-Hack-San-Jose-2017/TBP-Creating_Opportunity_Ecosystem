@@ -40,7 +40,9 @@ export class EditProfileComponent implements OnInit {
 		this.checkCircles();
 		this.createForm();
 		_upload.getSuccessMsg().subscribe((v: any) => this.success = v)
-		_upload.getFailedMsg().subscribe((v: any) => this.failed = v);
+		_upload.getFailedMsg().subscribe((v: any) => this.failed = v)
+		this._upload.getFile()
+			.subscribe(v => console.log(v));
 	}
 
 	ngOnInit() {	
@@ -99,7 +101,7 @@ export class EditProfileComponent implements OnInit {
 	handleFiles(e: Event) {
 		const files = e.target['files'];
 		for (let i = 0; i < files.length; i++) {
-			const file = { name: this.user.email, file: window.URL.createObjectURL(files[i]), type: "multipart/form-data"};
+			const file = {file:window.URL.createObjectURL(files[i])};
 			this._upload.sendFile(file);
 		}
 	}

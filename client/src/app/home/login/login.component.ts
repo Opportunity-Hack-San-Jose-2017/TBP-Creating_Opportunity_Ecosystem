@@ -23,7 +23,7 @@ export class LoginComponent {
 	}
 
 	login() {
-		this._user.login(this.userForm.value);
+		this._user.login(this.userForm.value, false);
 	}
 
 	createForm() {

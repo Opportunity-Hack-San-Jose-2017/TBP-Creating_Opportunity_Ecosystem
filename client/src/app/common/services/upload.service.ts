@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType, HttpParams } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
 
 @Injectable()
@@ -17,12 +17,14 @@ export class UploadService {
 	sendFile(file: any) {
 		let formdata: FormData = new FormData();
 		formdata.append('file', file);
+		console.log(file);
 		const req = new HttpRequest('POST', `${BASE_URL}/api/aws/s3/upload`, formdata, {
 			withCredentials: true
 		});
 		this._http.request(req)
 			.subscribe(
 				(v: any) => {
+					console.log(v);
 					if (v.type === HttpEventType.UploadProgress) {
 						console.log(v.total, v.loaded);
 					}
@@ -35,8 +37,11 @@ export class UploadService {
 			)
 	}
 
-	getFiles(): Observable<any> {
-		return this._http.get('/getallfiles')
+	getFile(): Observable<any> {
+		const user = JSON.parse(localStorage.getItem('user'))
+		return this._http.get(`${BASE_URL}/api/aws/s3/download`, {
+			params: new HttpParams().set('key', 'blob:http://localhost:4200/f9997dba-9b6c-4ed7-b63a-b96f350f6bb1'),
+		withCredentials:true});
 	}
 
 	getSuccessMsg(): Observable<any> {

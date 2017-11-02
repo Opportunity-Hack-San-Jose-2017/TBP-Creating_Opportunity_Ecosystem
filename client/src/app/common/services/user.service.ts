@@ -17,14 +17,14 @@ export class UserService {
 		private router: Router
 	) { }
 
-	login(login_cred: Object){
+	login(login_cred: object, setupProfile: boolean){
 		const url = `${BASE_URL}/applicant/signin`;
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					console.log(data);
 					this.setStorage(data.applicant);
-					this.router.navigate(['applicant']);
+					setupProfile ? this.router.navigate(['setup']) :
+						this.router.navigate(['applicant'])
 				},
 				(err: HttpErrorResponse) => {
 					if (err.status === 400) {
@@ -34,9 +34,8 @@ export class UserService {
 			)
 	}
 
-	updateProfile(update_cred: Object){
+	updateProfile(update_cred: object){
 		const url = `${BASE_URL}/applicant/update`;
-		console.log(update_cred);
 		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
@@ -64,7 +63,7 @@ export class UserService {
 			.subscribe(
 				(data: any) => {
 					const obj = { email: data.applicant['email'], password: data.applicant['password'] };
-					this.login(obj)
+					this.login(obj, true);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
