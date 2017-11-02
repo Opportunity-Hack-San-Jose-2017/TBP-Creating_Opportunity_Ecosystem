@@ -178,7 +178,7 @@ public class ApplicantController {
 //            if(reqObj.getResume()!=null)
 //                applicant.setEducation(reqObj.getResume());
             applicantService.save(applicant);
-
+            responseMap.addAttribute("applicant",applicant);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -187,6 +187,7 @@ public class ApplicantController {
             return responseMap;
         }
         responseMap.addAttribute("statusCode", "200");
+
         return responseMap;
     }
 
