@@ -28,7 +28,6 @@ const job = {
 	publicTransport: true,
 	location: 'Berkeley',
 	experience: 1
-
 }
 
 @Component({
@@ -63,9 +62,9 @@ export class JobsComponent implements AfterViewInit {
 		private fb: FormBuilder
 	) {
 		this.createForm();
-		this.jobs = [job,job,job,job,job,job,job,job,job,job,job,job,job]
-		// this._search.getAllJobs()
-		// 	.subscribe((v: any) => this.jobs = v.openings);
+		// this.jobs = [job,job,job,job,job,job,job,job,job,job,job,job,job]
+		this._search.getAllJobs()
+			.subscribe((v: any) => this.jobs = v.openings);
 
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)

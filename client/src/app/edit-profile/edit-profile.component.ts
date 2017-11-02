@@ -52,13 +52,10 @@ export class EditProfileComponent implements OnInit {
 		private _router: Router
 	) {
 		this.createForm();
-<<<<<<< HEAD
-=======
 		this.checkCircles();
 		this.user = localStorage.getItem("user") || this.user;
 		_user.getSuccessMsg().subscribe((v: any) => this.success = v)
 		_user.getFailedMsg().subscribe((v: any) => this.failed = v);
->>>>>>> 69b2c6ced2708242538e73b9bf06fc0f032b46cf
 	}
 
 	ngOnInit() {		
@@ -74,21 +71,12 @@ export class EditProfileComponent implements OnInit {
   
 	createForm() {
 		this.userForm = this.fb.group({
-<<<<<<< HEAD
 			firstName: [ "", Validators.required],
 			lastName: ["", Validators.required],
 			email: ["", [Validators.required, Validators.email]],
 			phone: [""],
 			skillsSet: "",
 			experiences: [""]
-=======
-			firstName: [this.user.firstName, Validators.required],
-			lastName: [this.user.lastName, Validators.required],
-			email: [this.user.email, [Validators.required, Validators.email]],
-			phoneNumber: [this.user.phoneNumber],
-			skillsSet: this.user.skillsSet,
-			experiences: [this.user.experience]
->>>>>>> 69b2c6ced2708242538e73b9bf06fc0f032b46cf
 		});
 	}
 
@@ -101,7 +89,6 @@ export class EditProfileComponent implements OnInit {
 			shift: this.shifts.filter(x => this[x]),
 			availability: this.types.filter(x => this[x])
 		})
-<<<<<<< HEAD
 		var temp = this.userForm.value.skillsSet.split(",")
 		for (var i = 0; i < temp.length; i++) {
 			temp[i] = temp[i].trim();
@@ -110,10 +97,6 @@ export class EditProfileComponent implements OnInit {
 		const newObj = Object.assign(this.user, obj);
 		console.log(newObj)
 		//this broke the front page, fixing when we meet.
-=======
-		console.log(obj);
-		const newObj = Object.assign(this.user, obj);
->>>>>>> 69b2c6ced2708242538e73b9bf06fc0f032b46cf
 		// this._user.updateProfile(newObj);
 	}
 

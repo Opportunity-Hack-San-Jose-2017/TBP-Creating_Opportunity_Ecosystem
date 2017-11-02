@@ -11,9 +11,9 @@
 	<section id="content" class="flex">
 		<div id="profile_bar">
 			<div class="pb-div flex column">
-				<!-- <div class="name gray">{{user['firstName']}} {{user['lastName']}}</div> -->
+				<div class="name gray">{{user['firstName']}} {{user['lastName']}}</div>
 				<img src="../../assets/images/profile-icon.png">
-				<div class="btn flex" routerLink="/profile/edit">Edit Profile</div>
+				<div class="btn flex" (click)="goToEditProfile()">Edit Profile</div>
 			</div>
 			<div class="pb-div flex gray">Saved Jobs</div>
 			<div class="pb-div flex gray">Applied Jobs</div>

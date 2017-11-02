@@ -46,7 +46,7 @@ export class UserLandingComponent {
 		console.log(this.navState)
 	}
 	goToEditProfile(){
-		this._router.navigate(["profile/edit"])
+		this._router.navigate(["/applicant/profile/edit"])
 	}
 
 	logout() {
