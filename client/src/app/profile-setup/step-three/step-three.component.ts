@@ -22,7 +22,7 @@ export class StepThreeComponent {
 	createForm() {
 		this.userForm = this.fb.group({
 			skillsSet: [''],
-			experiences: ['']
+			experience: [0]
 		});
 	}
 	
@@ -33,13 +33,13 @@ export class StepThreeComponent {
 			experience: this.userForm.value.experience,
 			email: user.email,
 			token: user.token,
+			position: user.position,
 			firstName: user.firstName,
 			lastName: user.lastName,
 			education: user.education,
 			password: user.password,
 			verified: user.verified,
-			hashValue: user.hashValue,
-			pendingApplications: user.pendingApplications
+			hashValue: user.hashValue
 		}
 		this._user.sendProfileInfo(obj);
 	}

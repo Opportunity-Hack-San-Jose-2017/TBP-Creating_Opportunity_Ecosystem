@@ -63,6 +63,7 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
     SideNavComponent,
     SavedJobsComponent,
     JobsPostedComponent
+
   ],
   imports: [
     BrowserModule,
