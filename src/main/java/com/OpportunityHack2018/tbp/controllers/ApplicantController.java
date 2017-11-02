@@ -97,6 +97,11 @@ public class ApplicantController {
 //            applicant.setPosition(applicantObject.getPosition());
 //            applicant.setNumberOfRatings(0);
 
+            if(applicant.getPassword()==null || applicant.getEmail()==null || applicant.getFirstName() == null || applicant.getLastName()==null){
+                responseMap.addAttribute("statusCode",403);
+                responseMap.addAttribute("message","Invalid registration form data. Check Email, Password and name.");
+                return responseMap;
+            }
             if(!applicantService.register(applicant)){
                 responseMap.addAttribute("statusCode", "400");
                 responseMap.addAttribute("message", "Email already in use! Please try with a new email.");
@@ -115,6 +120,76 @@ public class ApplicantController {
         }
         return responseMap;
     }
+
+
+    @PostMapping(value = "/update")
+    @ResponseBody
+    @CrossOrigin
+    public ModelMap update(@RequestBody String json, HttpSession session) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        ModelMap responseMap = new ModelMap();
+
+        if(session.getAttribute("email")==null){
+            responseMap.addAttribute("statusCode", "400");
+            responseMap.addAttribute("message","Please sign in before updating.");
+            return responseMap;
+        }
+        try{
+            Applicant reqObj = mapper.readValue(json, Applicant.class);
+            Applicant applicant=applicantService.fetch(session.getAttribute("email").toString());
+
+            if(applicant==null){
+                responseMap.addAttribute("statusCode", "400");
+                responseMap.addAttribute("message", "Email could not be found. Make sure you are registered.");
+                return responseMap;
+            }
+
+
+            System.out.println("intro: "+reqObj.getIntroduction());
+
+
+            if(reqObj.getFirstName()!=null)
+                applicant.setFirstName(reqObj.getFirstName());
+            if(reqObj.getLastName()!=null)
+                applicant.setLastName(reqObj.getLastName());
+            if(reqObj.getIntroduction()!=null)
+                applicant.setIntroduction(reqObj.getIntroduction());
+            if(reqObj.getExperience()!=null)
+                applicant.setExperience(reqObj.getExperience());
+            if(reqObj.getSkillsSet()!=null)
+                applicant.setSkillsSet(reqObj.getSkillsSet());
+            if(reqObj.getEducation()!=null)
+                applicant.setEducation(reqObj.getEducation());
+            if(reqObj.getPhoneNumber()!=null)
+                applicant.setPhoneNumber(reqObj.getPhoneNumber());
+            if(reqObj.getPosition()!=null)
+                applicant.setPosition(reqObj.getPosition());
+            if(reqObj.getAvailability()!=null)
+                applicant.setAvailability(reqObj.getAvailability());
+            if(reqObj.getShift()!=null)
+                applicant.setShift(reqObj.getShift());
+            if(reqObj.getCity()!=null)
+                applicant.setCity(reqObj.getCity());
+            if(reqObj.getCountry()!=null)
+                applicant.setCity(reqObj.getCountry());
+            if(reqObj.getImageUrl()!=null)
+                applicant.setImageUrl(reqObj.getImageUrl());
+//            if(reqObj.getResume()!=null)
+//                applicant.setEducation(reqObj.getResume());
+            applicantService.save(applicant);
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            responseMap.addAttribute("statusCode", "400");
+            responseMap.addAttribute("message", "Snap! Something went wrong please try again later");
+            return responseMap;
+        }
+        responseMap.addAttribute("statusCode", "200");
+        return responseMap;
+    }
+
 
     @CrossOrigin
     @PostMapping(value = "/apply",produces="application/json")
