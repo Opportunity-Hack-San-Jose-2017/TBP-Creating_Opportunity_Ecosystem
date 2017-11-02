@@ -20,6 +20,7 @@ public class UploadController {
     private S3Wrapper s3Wrapper;
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @CrossOrigin
     public List<PutObjectResult> upload(@RequestParam("file") MultipartFile[] multipartFiles) {
 
         List<PutObjectResult> p = s3Wrapper.upload(multipartFiles);
@@ -31,11 +32,13 @@ public class UploadController {
     }
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
+    @CrossOrigin
     public ResponseEntity<byte[]> download(@RequestParam String key) throws IOException {
         return s3Wrapper.download(key);
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @CrossOrigin
     public List<S3ObjectSummary> list() throws IOException {
         System.out.println("Reached in S3 list");
         return s3Wrapper.list();
