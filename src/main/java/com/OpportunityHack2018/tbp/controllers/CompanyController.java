@@ -286,7 +286,7 @@ public class CompanyController {
                 m.addAttribute("maxSalary",o.getMaxSalary());
                 openingMap.add(m);
             }
-            responseMap.addAttribute("statusCode", "400");
+            responseMap.addAttribute("statusCode", "200");
             responseMap.addAttribute(openingMap);
 
         }
