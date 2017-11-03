@@ -56,6 +56,8 @@ public class Opening {
     @Column
     public Status status;
 
+    private String companyName;
+
     @Column
     @DateTimeFormat(pattern="yyyy-MM-dd-HH")
     private Date date;
@@ -194,5 +196,13 @@ public class Opening {
 
     public void setAvailability(String availability) {
         this.availability = availability;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
