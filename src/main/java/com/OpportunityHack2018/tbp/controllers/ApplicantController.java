@@ -182,6 +182,8 @@ public class ApplicantController {
                 applicant.setCity(reqObj.getCountry());
             if(reqObj.getImageUrl()!=null)
                 applicant.setImageUrl(reqObj.getImageUrl());
+            if(reqObj.getResumeURL()!=null)
+                applicant.setResumeURL(reqObj.getResumeURL());
 //            if(reqObj.getResume()!=null)
 //                applicant.setEducation(reqObj.getResume());
             applicantService.save(applicant);
