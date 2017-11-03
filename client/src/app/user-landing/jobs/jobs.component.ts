@@ -4,6 +4,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { Observable } from 'rxjs/Observable';
 import { filterSlide } from '../../common/animations/filterSlide';
 import { job } from '../../common/seed_data/jobs'; 
+import { JobsService } from '../../common/services/jobs.service';
 
 @Component({
   selector: 'app-jobs',
@@ -22,7 +23,8 @@ export class JobsComponent implements AfterViewInit {
 
 	constructor(
 		private _search: SearchService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private _jobs: JobsService
 	) {
 		this.createForm();
 		this._search.getAllJobs()
@@ -86,7 +88,6 @@ export class JobsComponent implements AfterViewInit {
 	}
 
 	getAppliedJobs(){
-		
 	}
 
 }

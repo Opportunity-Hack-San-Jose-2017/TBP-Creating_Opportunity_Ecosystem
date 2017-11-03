@@ -97,11 +97,12 @@ export class UserService {
 				(err: HttpErrorResponse) => console.log(err))
 	}
 
-	getProfile(id: String) {
-		const url = `${BASE_URL}/profile/${id}`;
+	getProfile(email: String) {
+		const url = `${BASE_URL}/applicant/profile?email=${email}`;
 		this.http.get(url, {withCredentials: true})
 			.subscribe(
-				(data: any) => this.profile = data,
+				// (data: any) => this.profile = data,
+				(data: any) => console.log(data),
 				(err: HttpErrorResponse) => console.log(err)
 			)
 	}
@@ -135,7 +136,7 @@ export class UserService {
 	}
 
 	getApplications(): Observable<any> {
-		return this.http.get(`${BASE_URL}`)
+		return this.http.get(`${BASE_URL}/`, {withCredentials: true})
 	}
 
 	uploadResume(file: Object) {

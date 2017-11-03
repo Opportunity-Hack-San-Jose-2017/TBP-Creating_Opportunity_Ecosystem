@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { CompanyService } from './../common/services/company.service';
+import { UserService } from './../common/services/user.service';
 
 @Component({
   selector: 'app-employers-landingpage',
@@ -12,7 +13,8 @@ export class EmployersLandingpageComponent {
 	company: any;
 	constructor(
 		private _router: Router,
-		private _company: CompanyService
+		private _company: CompanyService,
+		private _user: UserService
 	) {
 		this.company = JSON.parse(localStorage.getItem("company")) || {};
 		this.getAllOpenings()
@@ -35,5 +37,9 @@ export class EmployersLandingpageComponent {
 	logout() {
 		localStorage.clear();
 		this._company.logout();
+	}
+
+	getThisPerson(){
+		this._user.getProfile("lormanlau@gmail.com")
 	}
 }
