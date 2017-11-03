@@ -18,10 +18,11 @@ export class EditProfileComponent implements OnInit {
 
 	img: String;
 	userForm: FormGroup;
-	progress: any;
-	first: Boolean = false;
-	second: Boolean = false;
-	third: Boolean = false;
+	progress: any; 
+	morning: Boolean = false;
+	noon: Boolean = false;
+	night: Boolean = false;
+	graveyard: Boolean = false;
 	ft: Boolean;
 	pt: Boolean;
 	temp: Boolean;

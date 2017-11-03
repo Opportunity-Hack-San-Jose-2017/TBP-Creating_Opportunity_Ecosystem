@@ -1,0 +1,267 @@
+* {
+    color: rgba(255,255,255,.7);
+}
+
+#lbl {
+    color: white;
+}
+
+.round {border-radius: 5px; }
+
+nav {
+    height: 80px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
+}
+
+nav img {
+	height: 60px;
+}
+
+.profile-container {
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    width: 100vw;
+    overflow: hidden;
+    background: url('../../assets/images/newuser-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.logo-wrap {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    height: 50px;
+}
+
+.logo { height: 40px; }
+
+.msg {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+.fa {pointer-events: none;}
+.success { background: rgb(2, 143, 2); }
+.failed { background: rgb(192, 1, 1); }
+
+.main-wrapper {
+    min-height: 500px;
+    overflow: auto;
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+}
+
+.mat-form-field {
+    margin-right: 10px;
+}
+
+.mat-fab {
+    height: 40px;
+    width: 80px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    cursor: default;
+}
+
+.active {
+    background: #1592aa !important;
+}
+
+.header {
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: rgb(54, 54, 184);
+    width: 100%;
+    text-align: center;
+}
+
+.gap { margin-right: 15px; }
+
+.form-wrapper {
+    width: 100%;
+    overflow: auto;
+    max-height: calc(100vh - 120px);
+    height: 605px;
+    border-radius: 1px;
+    padding: 20px 30px;
+    justify-content: center;
+    background: rgba(0,0,0,.83);
+    position: relative;
+    color: white;
+    align-items: center;
+}
+
+.form-top, .form-bottom {
+    width: 100%;
+}
+
+.form-top { margin-bottom: 9px; }
+
+.form-bottom * {
+    width: 100%;
+}
+
+.photo-wrapper {
+    width: 100%;
+}
+
+.pro-pic {
+    object-fit: cover;
+    width: 100%;
+}
+
+.form-top-left {
+    align-items: center;
+    margin-right: 20px;
+}
+
+.check-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form {
+    width: 90%;
+    align-items: center;
+    margin: 15px auto 0;
+    min-height: 605px;
+    position: absolute;
+    top: 20px;
+}
+
+.form-group-header {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.check-wrapper {
+    margin: 0 10px 10px 0;
+    align-items: center;
+}
+
+.form-group {
+    width: 90%;
+    margin: 0 auto 9px;
+    position: relative;
+}
+
+.av-wrapper, .jt-wrapper {
+    width: 100%;
+    justify-content: space-around;
+}
+
+.accept { align-items: center; margin-top: 5px; }
+
+.btn {
+	cursor: pointer;
+    width: 100px;
+    background: #1592aa;
+    color: white;
+	transition: all .2s ease;
+}
+
+.side { width: 100%; }
+.space { margin-bottom: 5px; }
+.res-lbl { 
+    width: 100%;
+    height: 100%;
+}
+
+.skills, .experiences {
+    padding: 7px;
+    font-size: 12px;
+    color: rgba(0,0,0,.5);
+    resize: none;
+}
+
+.bottom {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.group-header { font-weight: bold; margin-bottom: 10px; }
+.name-wrapper { margin-bottom: 10px; }
+.space { margin-bottom: 7px; }
+.name { font-weight: bold; font-size: 18px; }
+.skills { height: 60px; }
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn:active { transform: translateY(1px); }
+
+.back-btn, .save-btn { background: #1592aa; }
+
+.back-btn { margin-right: 40px; }
+
+.bottom { align-items: center; justify-content: space-between; }
+
+@media screen and (max-width: 800px) {
+
+    .form-wrapper, .edit-profile-container {
+        padding: 0;
+    }
+
+    .logo-wrap {
+        position: relative;
+        left: auto;
+        margin-bottom: 10px;
+    }
+
+    .mat-form-field:not(.textarea) {
+        width: 100% !important;
+    }
+
+    .mat-fab {
+        height: 35px;
+        width: 60px;
+        font-size: .7rem;
+    }
+
+}
+
+@media screen  and (max-width: 630px) {
+
+    .form-top-right {
+        flex: 1;
+    }
+    .name-wrapper {
+        flex-direction: column;
+    }
+
+    .mat-form-field {
+        width: 100% !important;
+    }
+}

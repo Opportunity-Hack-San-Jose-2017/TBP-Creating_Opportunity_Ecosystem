@@ -40,6 +40,7 @@ import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
 import { ApplicantCellComponent } from './employers-landingpage/applicant-cell/applicant-cell.component';
 import { ApplicantsComponent } from './employers-landingpage/applicants/applicants.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { ApplicantsComponent } from './employers-landingpage/applicants/applican
     EmployerJobCellComponent,
     ApplicantCellComponent,
     ApplicantsComponent,
+    ProfilePageComponent,
 
   ],
   imports: [
