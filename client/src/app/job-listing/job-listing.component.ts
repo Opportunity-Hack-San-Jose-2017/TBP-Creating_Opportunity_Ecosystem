@@ -22,6 +22,8 @@ export class JobListingComponent {
 		minSalary: "",
 		maxSalary: ""
 	}
+	isNotAccessible: boolean = false;
+	isAccessible: boolean = false;	
 
   constructor(
     private _router: Router,
@@ -63,6 +65,16 @@ export class JobListingComponent {
 			publicTransport: [false, Validators.required ],
 			location: ['', Validators.required ]
 		});
+	}
+
+	addAccess() {
+		this.isAccessible = !this.isAccessible;
+		this.isNotAccessible = false;
+	}
+
+	removeAccess() {
+		this.isNotAccessible = !this.isNotAccessible;
+		this.isAccessible = false;
 	}
 
   testForm(){
