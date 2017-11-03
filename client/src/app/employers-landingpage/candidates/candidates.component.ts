@@ -26,7 +26,7 @@ export class CandidatesComponent {
     this.createForm();
     _search.getCandidates('')
       .do(v => console.log(v))
-      .subscribe((v: any) => this.candidates = v)
+      .subscribe((v: any) => this.candidates = v.candidates)
 
       Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)

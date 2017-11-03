@@ -3,13 +3,13 @@
       <h2 [routerLink]="['profile', candidate['email']]"class="title">{{candidate['firstName']}} {{candidate['lastName']}}</h2>
       <div class="details">
         <div class="flex">
-          <div>{{candidate['location']}}</div>
+          <div>{{candidate['city']}}</div>
           <span>&nbsp;|&nbsp;</span>
           <div>{{candidate['shift']}}</div>
           <span>&nbsp;|&nbsp;</span>
           <div>{{candidate['availability']}}</div>
         </div>
-        <div>Experience: {{user['experience']}} year(s)</div>
+        <div>Experience: {{candidate['experience']}} year(s)</div>
         <div>Accessible by public transportation: {{isAccessible}}</div>
       </div>
       <!-- <div class="desk-desc">

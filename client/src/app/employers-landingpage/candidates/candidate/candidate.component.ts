@@ -12,7 +12,7 @@ export class CandidateComponent implements OnInit {
 
 	@Input() candidate: any;
   user: any
-  isAccessible: Boolean;
+  isAccessible: String = "";
   constructor(
   	private _company: CompanyService,
   	private router: Router,
@@ -23,6 +23,8 @@ export class CandidateComponent implements OnInit {
 		ngOnInit() {
 			console.log(this.candidate)		
       // this.user = this.candidate["applicant"];	
+      this.isAccessible = this.candidate['publicTransport'] ? 'Yes' : 'No';
+
     }
 
   interviewApplicant(){
