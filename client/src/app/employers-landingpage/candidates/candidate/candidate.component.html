@@ -1,0 +1,50 @@
+<div class="main flex">
+    <div class="inner_text">
+      <h2 [routerLink]="['profile', user['email']]"class="title">{{user['firstName']}} {{user['lastName']}}</h2>
+      <div class="details">
+        <div class="flex">
+          <div>{{user['location']}}</div>
+          <span>&nbsp;|&nbsp;</span>
+          <div>{{user['shift']}}</div>
+          <span>&nbsp;|&nbsp;</span>
+          <div>{{user['availability']}}</div>
+        </div>
+        <div>Experience: {{user['experience']}} year(s)</div>
+        <div>Accessible by public transportation: {{isAccessible}}</div>
+      </div>
+      <!-- <div class="desk-desc">
+        <div class="desc">{{user['description']}}</div>
+        <div *ngIf="!show" class="more-wrapper">
+          <div class="desc">{{['responsibilites']}}</div>
+      <h2 class="title">{{applicant['title']}}</h2>
+      <div class="company">{{applicant['company']}}</div>
+      <div class="details">
+        <div class="flex">
+          <div>{{applicant['location']}}</div>
+          <span>&nbsp;|&nbsp;</span>
+          <div>{{applicant['shift']}}</div>
+          <span>&nbsp;|&nbsp;</span>
+          <div>{{applicant['type']}}</div>
+        </div>
+        <div>Required experience: {{applicant['experience']}} {{time}}</div>
+        <div>Accessible by public transportation: {{isAccessible}}</div>
+      </div>
+      <div class="desk-desc">
+        <div class="desc">{{applicant['description']}}</div>
+        <div *ngIf="!show" class="more-wrapper">
+          <div class="desc">{{applicant['responsibilites']}}</div>
+        </div>
+      </div>
+      <div class="mobile-desc">
+        <div *ngIf="!show" class="more-wrapper">
+          <div class="desc">{{applicant['description']}}</div>
+          <div class="desc">{{applicant['responsibilites']}}</div>
+        </div>
+      </div> -->
+    </div>
+    <div class="right_side_nav">
+      <div (click)="interviewApplicant()" class="btn flex">Interview</div>
+      <div (click)="downloadResume()" class="btn flex">Download Resume</div>
+    </div>
+    </div>
+    

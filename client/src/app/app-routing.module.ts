@@ -13,6 +13,7 @@ import { UserLandingComponent } from './user-landing/user-landing.component';
 import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component'
 import { ProfileComponent } from './profile/profile.component'
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { CandidatesComponent } from './employers-landingpage/candidates/candidates.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'co', component: CompanyHomeComponent },
     { path: 'company', component: EmployersLandingpageComponent, children: [
 		{ path: 'jobs', component: JobsPostedComponent, pathMatch: 'full' },
+		{ path: 'candidates', component: CandidatesComponent },
 		{ path: 'jobs/:id', component: ApplicantsComponent },
 		{ path: '', redirectTo: 'jobs', pathMatch: 'full' },
 	]},
