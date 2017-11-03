@@ -35,9 +35,12 @@ export class StepTwoComponent {
 	  }
 	
 	handleClick() {
+		console.log(this.userForm.value)
 		const obj = Object.assign({}, {
 			shift: this.shifts.filter(x => this[x]),
-			availability: this.availability.filter(x => this[x])
+			availability: this.availability.filter(x => this[x]),
+			city: this.userForm.value["city"],
+			language: this.userForm.value["language"]
 		})
 		console.log(obj);
 		this._user.sendProfileInfo(obj);

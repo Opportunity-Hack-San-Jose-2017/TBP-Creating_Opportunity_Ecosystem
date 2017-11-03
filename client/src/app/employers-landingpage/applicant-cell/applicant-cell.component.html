@@ -3,14 +3,14 @@
 	<h2 [routerLink]="['profile', user['email']]"class="title">{{user['firstName']}} {{user['lastName']}}</h2>
 	<div class="details">
 		<div class="flex">
-			<div>{{user['location']}}</div>
+			<div>{{user['city']}}</div>
 			<span>&nbsp;|&nbsp;</span>
 			<div>{{user['shift']}}</div>
 			<span>&nbsp;|&nbsp;</span>
 			<div>{{user['availability']}}</div>
 		</div>
 		<div>Experience: {{user['experience']}} year(s)</div>
-		<div>Accessible by public transportation: {{isAccessible}}</div>
+		<!-- <div>Accessible by public transportation: {{isAccessible}}</div> -->
 	</div>
 	<!-- <div class="desk-desc">
 		<div class="desc">{{user['description']}}</div>
@@ -45,6 +45,6 @@
 <div class="right_side_nav">
 	<div (click)="interviewApplicant()" class="btn flex">Interview</div>
 	<div (click)="reject()" class="btn flex red">Reject</div>
-	<div (click)="downloadResume()" class="btn flex">Download Resume</div>
+	<div *ngIf="user['resumeURL']" (click)="downloadResume()" class="btn flex">Download Resume</div>
 </div>
 </div>

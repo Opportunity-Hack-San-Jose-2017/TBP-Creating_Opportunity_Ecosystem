@@ -28,6 +28,7 @@ export class StepThreeComponent {
 	
 	handleClick() {
 		const user: any = JSON.parse(localStorage.getItem('user'));
+		console.log(user)
 		const obj = {
 			skillsSet: [this.userForm.value.skillsSet], 
 			experience: this.userForm.value.experience,
@@ -39,7 +40,7 @@ export class StepThreeComponent {
 			education: user.education,
 			password: user.password,
 			verified: user.verified,
-			hashValue: user.hashValue
+			hashValue: user.hashValue,
 		}
 		this._user.sendProfileInfo(obj);
 	}

@@ -120,6 +120,7 @@ export class UserService {
 		const obj = stor !== '' ? JSON.parse(stor) : {};
 		const updatedObj = Object.assign(obj, data);
 		localStorage.setItem('profile', JSON.stringify(updatedObj));
+		console.log(updatedObj)
 		if (num === 4) {
 			localStorage.removeItem('setupStep');
 			localStorage.removeItem('profile');			
