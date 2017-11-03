@@ -1,12 +1,16 @@
+import { Observable, Subject } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { url as BASE_URL } from '../config/url';
 
 
 @Injectable()
 export class JobsService {
+
 	jobs: Array<any>;
+	applicants = new Subject();
+
 	constructor(
 		private http: HttpClient,
 		private _router: Router
@@ -43,9 +47,28 @@ export class JobsService {
 		return this.http.post(url, data, {withCredentials: true})
 	}
 
-	getAllApplicantsForJob(opening_id: Number){
-		const url = `${BASE_URL}/company/opening?opening_id=${opening_id}`;
-		return this.http.get(url, {withCredentials: true})
+	getApplicants(id: string) {
+		this.http.get(`${BASE_URL}/company/opening`, {
+			params: new HttpParams().set('opening_id', id),
+			withCredentials: true
+		})
+		.subscribe(
+			(v: any) => {
+				if (v.statusCode == '200') {
+					this.applicants.next(v.applications);
+					this._router.navigate(['jobs', id, 'applicants']);
+				} else {
+					console.log(v)
+				}
+			},
+			(err: any) => {
+				console.log(err);
+			}
+		)
+	}
+
+	pullApplicants(): Observable<any> {
+		return this.applicants;
 	}
 
 }

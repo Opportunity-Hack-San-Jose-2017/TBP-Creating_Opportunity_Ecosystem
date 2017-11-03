@@ -33,7 +33,6 @@ import { JobsComponent } from './user-landing/jobs/jobs.component';
 import { ApplicationsComponent } from './user-landing/applications/applications.component';
 import { ApplicationCellComponent } from './user-landing/applications/application-cell/application-cell.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
 import { EmployerJobCellComponent } from './employers-landingpage/employer-job-cell/employer-job-cell.component';
@@ -41,7 +40,7 @@ import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
 import { ApplicantCellComponent } from './employers-landingpage/applicant-cell/applicant-cell.component';
 import { StoreModule } from '@ngrx/store';
-import { ApplicantsComponent } from './employers-landingpage/src/app/employers-landingpage/applicants/applicants.component';
+import { ApplicantsComponent } from './employers-landingpage/applicants/applicants.component';
 
 
 @NgModule({
@@ -69,7 +68,6 @@ import { ApplicantsComponent } from './employers-landingpage/src/app/employers-l
     ApplicationsComponent,
     ApplicationCellComponent,
     SideNavComponent,
-    SavedJobsComponent,
     JobsPostedComponent,
     EmployerJobCellComponent,
     ApplicantCellComponent,

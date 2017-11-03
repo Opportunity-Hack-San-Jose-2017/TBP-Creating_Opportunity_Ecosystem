@@ -1,3 +1,5 @@
+import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-posted.component';
+import { ApplicantsComponent } from './employers-landingpage/applicants/applicants.component';
 import { ApplicationsComponent } from './user-landing/applications/applications.component';
 import { JobsComponent } from './user-landing/jobs/jobs.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -14,22 +16,32 @@ import { ProfileComponent } from './profile/profile.component'
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'setup', component: ProfileSetupComponent },
-    { path: 'company', component: CompanyHomeComponent },
-    { path: 'company/home', component: EmployersLandingpageComponent},
+    { path: 'co', component: CompanyHomeComponent },
+    { path: 'company', component: EmployersLandingpageComponent, children: [
+		{ path: 'jobs', component: JobsPostedComponent, pathMatch: 'full' },
+		{ path: 'jobs/:id', component: ApplicantsComponent },
+		{ path: '', redirectTo: 'jobs', pathMatch: 'full' },
+	]},
     { path: 'company/opening/create', component: JobListingComponent},
 	{ path: 'profile/edit', component: EditProfileComponent },
     { path: 'applicant', component: UserLandingComponent, children: [
 		{ path: '', component: JobsComponent, pathMatch: 'full' },
 		{ path: 'jobs/applied', component: ApplicationsComponent }
 	] },
-	{ path: 'applicant/profile/:id', component: ProfileComponent},
+	{ path: 'applicant/profile', component: ProfileComponent },
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
 	// { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(appRoutes)
+		RouterModule.forRoot(
+			appRoutes,
+			{
+				enableTracing: true, // <-- debugging purposes only
+				// preloadingStrategy: SelectivePreloadingStrategy,
+			}
+		)
 	],
 	exports: [
 		RouterModule

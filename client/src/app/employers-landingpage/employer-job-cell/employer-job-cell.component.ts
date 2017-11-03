@@ -19,13 +19,15 @@ export class EmployerJobCellComponent implements OnInit {
 	ngOnInit() {
 		this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
 		this.time = this.job.experience === 1 ? 'year' : 'years'
+		console.log(this.job)
+		
 	}
 
 	applicants(){
-		this._jobs.getAllApplicantsForJob(this.job["opening_id"])
-		.subscribe(data => {
-			console.log(data)
-		})
+		this._jobs.getApplicants(this.job["opening_id"])
+		// .subscribe(data => {
+		// 	console.log(data)
+		// })
 
 	}
 

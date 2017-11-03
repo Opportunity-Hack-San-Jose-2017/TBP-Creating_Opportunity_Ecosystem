@@ -59,6 +59,6 @@ export class UserLandingComponent {
 	}
 
 	getAppliedJobs(){
-		this.jobs.getAppliedJobs()
+		// this.jobs.getAppliedJobs()
 	}
 }
