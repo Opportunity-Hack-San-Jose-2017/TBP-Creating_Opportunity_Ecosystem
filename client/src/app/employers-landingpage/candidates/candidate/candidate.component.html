@@ -1,13 +1,13 @@
 <div class="main flex">
     <div class="inner_text">
-      <h2 [routerLink]="['profile', user['email']]"class="title">{{user['firstName']}} {{user['lastName']}}</h2>
+      <h2 [routerLink]="['profile', candidate['email']]"class="title">{{candidate['firstName']}} {{candidate['lastName']}}</h2>
       <div class="details">
         <div class="flex">
-          <div>{{user['location']}}</div>
+          <div>{{candidate['location']}}</div>
           <span>&nbsp;|&nbsp;</span>
-          <div>{{user['shift']}}</div>
+          <div>{{candidate['shift']}}</div>
           <span>&nbsp;|&nbsp;</span>
-          <div>{{user['availability']}}</div>
+          <div>{{candidate['availability']}}</div>
         </div>
         <div>Experience: {{user['experience']}} year(s)</div>
         <div>Accessible by public transportation: {{isAccessible}}</div>

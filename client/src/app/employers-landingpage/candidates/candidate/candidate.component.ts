@@ -10,7 +10,7 @@ import { UploadService } from '../../../common/services/upload.service';
 })
 export class CandidateComponent implements OnInit {
 
-	@Input() applicant: any;
+	@Input() candidate: any;
   user: any
   isAccessible: Boolean;
   constructor(
@@ -21,15 +21,15 @@ export class CandidateComponent implements OnInit {
 		}
 
 		ngOnInit() {
-			console.log(this.applicant)		
-      this.user = this.applicant["applicant"];	
+			console.log(this.candidate)		
+      // this.user = this.candidate["applicant"];	
     }
 
   interviewApplicant(){
-  	this._company.acceptApplicant({applicationId: this.applicant["application_id"]})
+  	// this._company.acceptApplicant({applicationId: this.candidate["application_id"]})
   }
 
   downloadResume(){
-    this.upload.getFile(this.applicant["resumeURL"])
+    this.upload.getFile(this.candidate["resumeURL"])
   }
 }

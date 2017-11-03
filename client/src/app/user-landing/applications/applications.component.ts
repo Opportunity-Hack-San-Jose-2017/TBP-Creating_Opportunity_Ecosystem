@@ -15,6 +15,7 @@ export class ApplicationsComponent {
 		private _user: UserService,
 		private fb: FormBuilder,
 	  ) {
+		  this.createForm();
 		_user.getApplications()
 			.subscribe((v: any) => this.apps = v.openings);
 	}

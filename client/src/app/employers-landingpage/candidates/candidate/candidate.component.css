@@ -15,6 +15,9 @@
 	height: 109px;
 }
 
+.title { cursor: pointer; }
+.title:hover { opacity: .8; }
+
 .right_side_nav * {
 	text-align: center;
 	margin: 5px 0px;
