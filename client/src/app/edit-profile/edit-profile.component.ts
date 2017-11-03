@@ -1,3 +1,4 @@
+import { RequestOptions, ResponseContentType } from '@angular/http';
 import { UploadService } from '../common/services/upload.service';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -5,6 +6,8 @@ import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../common/config/url';
+import { saveAs as importedSaveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -124,6 +127,7 @@ export class EditProfileComponent implements OnInit {
 	handleFiles(e: Event) {
 		const x = e.target['files'];
 		const file = x.item(0);
+		console.log(file);
 		this._upload.sendFile(file)
 			.do(data =>{
 				this._http.post(`${BASE_URL}/applicant/update`, {resumeURL: file["name"]}, {withCredentials: true})
@@ -138,7 +142,7 @@ export class EditProfileComponent implements OnInit {
 					this.success = true;
 					this._upload.getFile('test.txt')
 						.subscribe(v => {
-							console.log(v);
+							importedSaveAs(v, 'test.txt')
 						})
 					console.log('File is completely uploaded!');
 				}
