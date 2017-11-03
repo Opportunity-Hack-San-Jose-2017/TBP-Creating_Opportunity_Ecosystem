@@ -34,13 +34,12 @@ export class CompanyService {
 	}
 
 	login(data: Object){
-		console.log(data)
 		this.http.post(`${BASE_URL}/company/signin`, data, {withCredentials: true })
 			.subscribe(
 				(data: any) => {
 					if (data.statusCode == "200"){
 						localStorage.setItem("company", JSON.stringify(data.company))
-						this._router.navigate(['company/home'])
+						this._router.navigate(['company'])
 					} else {
 						console.log(data)
 					}
@@ -50,7 +49,7 @@ export class CompanyService {
 	logout(){
 		this.http.post(`${BASE_URL}/company/logout`, {}, {withCredentials: true})
 			.subscribe(data => {
-				this._router.navigate(['company'])
+				this._router.navigate(['co'])
 			})
 	}
 
