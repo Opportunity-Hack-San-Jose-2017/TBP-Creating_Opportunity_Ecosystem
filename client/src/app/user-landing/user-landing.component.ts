@@ -57,8 +57,4 @@ export class UserLandingComponent {
 	nav() {
 		this.navState = !this.navState;
 	}
-
-	getAppliedJobs(){
-		this.jobs.getAppliedJobs()
-	}
 }
