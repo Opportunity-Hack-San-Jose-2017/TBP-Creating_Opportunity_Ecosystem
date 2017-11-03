@@ -3,7 +3,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
+import { url as BASE_URL } from '../common/config/url';
 
 @Component({
   selector: 'app-edit-profile',
@@ -37,7 +38,8 @@ export class EditProfileComponent implements OnInit {
 		private _user: UserService,
 		private fb: FormBuilder,
 		private _router: Router,
-		private _upload: UploadService
+		private _upload: UploadService,
+		private _http: HttpClient
 	) {
 		this.user = JSON.parse(localStorage.getItem("user"));
 		this.checkCircles();
@@ -125,6 +127,12 @@ export class EditProfileComponent implements OnInit {
 		const x = e.target['files'];
 		const file = x.item(0);
 		this._upload.sendFile(file)
+			.do(data =>{
+				this._http.post(`${BASE_URL}/applicant/update`, {resumeURL: file["name"]}, {withCredentials: true})
+				.subscribe(data => {
+					console.log("This is from update", data)
+				})
+			})
 			.subscribe(event => {
 				if (event.type === HttpEventType.UploadProgress) {
 					this.progress.percentage = Math.round(100 * event.loaded / event.total);
