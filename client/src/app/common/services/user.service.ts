@@ -104,6 +104,11 @@ export class UserService {
 		return this.http.get(url, {withCredentials: true})
 	}
 
+	getCandidates() {
+		const url = `${BASE_URL}/applicant/getAll`;
+		return this.http.get(url, {withCredentials: true})
+	}
+
 	/* applicant setup process is 3 consecutive forms. method will combine the values of the 3 forms into 
 	 a single object using localStorage. method also keeps track of current form - will be either 1, 2, or 3
 	*/

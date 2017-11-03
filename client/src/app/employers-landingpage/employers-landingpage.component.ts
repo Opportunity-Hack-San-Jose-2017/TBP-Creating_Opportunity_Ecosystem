@@ -71,7 +71,4 @@ export class EmployersLandingpageComponent {
 		this._company.logout();
 	}
 
-	getThisPerson(){
-		this._user.getProfile("lormanlau@gmail.com")
-	}
 }
