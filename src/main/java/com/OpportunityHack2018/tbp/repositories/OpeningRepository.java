@@ -46,6 +46,9 @@ public interface OpeningRepository extends JpaRepository<Opening,Integer> {
     @Query(value = "select * from opening o where o.shift like ?1%",nativeQuery = true)
     Set<Opening> findByShift(String shift);
 
+    @Query(value = "select * from opening o where o.availability like ?1%",nativeQuery = true)
+    Set<Opening> findByAvailability(String availability);
+
     @Query(value = "select o.* from opening o inner join application a where o.opening_id=a.opening_id and a.email=?1",nativeQuery = true)
     List<Opening> findAppliedOpenings(String email);
 }

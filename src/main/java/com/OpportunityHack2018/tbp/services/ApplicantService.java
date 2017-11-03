@@ -159,7 +159,7 @@ public class ApplicantService {
     }
 
 
-    public List<Applicant> searchApplicants(String min_ratings, Integer min_experience, Set<String> skills, Set<String> positions, String availability, String education, String city, String country) {
+    public List<Applicant> searchApplicants(String min_ratings, Integer min_experience, Set<String> skills, Set<String> positions, String availability, String education, String city, String country, String language) {
         List<Applicant> candidates=applicantRepository.searchCandidates(""+min_experience,min_ratings);
         List<Applicant> qualified=new ArrayList<>();
         System.out.println("Found search results :"+candidates.size());
@@ -186,6 +186,10 @@ public class ApplicantService {
 
             if(country!=null && country.length()>0){
                 if(!country.trim().equalsIgnoreCase(applicant.getCountry())) continue;
+            }
+
+            if(language!=null && language.length()>0){
+                if(!language.trim().equalsIgnoreCase(applicant.getLanguage())) continue;
             }
 
             System.out.println("Country passed ");

@@ -89,6 +89,8 @@ public class CompanyController {
             opening.setShift(openingObj.getShift());
             opening.setPublicTransport(openingObj.getPublicTransport());
             opening.setStatus(Opening.Status.OPEN);
+            opening.setAvailability(openingObj.getAvailability());
+
             companyService.postOpening(opening);
             responseMap.addAttribute("statusCode", "200");
         }
@@ -597,19 +599,20 @@ public class CompanyController {
     }
 
     @GetMapping("/searchApplicants")
-    public ModelMap searchApplicants(@RequestParam(value = "min_ratings") String min_ratings,
-                                     @RequestParam(value = "skillSets") Set<String> skills,
-                                     @RequestParam(value="positions")Set<String> positions,
-                                     @RequestParam(value = "min_experience")Integer min_experience ,
-                                     @RequestParam(value = "availability") String availability,
-                                     @RequestParam(value = "education") String education,
-                                     @RequestParam(value = "city") String city,
-                                     @RequestParam(value = "country") String country
+    public ModelMap searchApplicants(@RequestParam(value = "min_ratings",required = false) String min_ratings,
+                                     @RequestParam(value = "skillSets",required = false) Set<String> skills,
+                                     @RequestParam(value="positions",required = false)Set<String> positions,
+                                     @RequestParam(value = "min_experience",required = false)Integer min_experience ,
+                                     @RequestParam(value = "availability",required = false) String availability,
+                                     @RequestParam(value = "education", required = false) String education,
+                                     @RequestParam(value = "city", required = false) String city,
+                                     @RequestParam(value = "country", required = false) String country,
+                                     @RequestParam(value = "language", required = false) String language
   ,HttpSession session){
         ModelMap responseMap=new ModelMap();
         List<Applicant> applicantList=null;
         try {
-            applicantList = applicantService.searchApplicants(min_ratings, min_experience, skills, positions, availability, education, city, country);
+            applicantList = applicantService.searchApplicants(min_ratings, min_experience, skills, positions, availability, education, city, country,language);
         }
         catch (Exception ex){
             System.out.println(ex);
