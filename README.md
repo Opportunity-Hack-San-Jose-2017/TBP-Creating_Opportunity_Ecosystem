@@ -5,4 +5,4 @@
 <h1> The Solution </h1>
 <h2> The Architecture </h2>
 
-<h1> Description </h1>
+<h2> Description </h2>
