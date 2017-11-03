@@ -15,9 +15,6 @@
 		</ul>
 	</div>
 	<div class="right_side_nav">
-		<div (click)="message()" class="btn flex">Message</div>
-		<div (click)="message()" class="btn flex">Cancel</div>
-		<p *ngIf="show" class="toggle" (click)="toggle()">More</p>
-		<p *ngIf="!show" class="toggle" (click)="toggle()">Less</p>
+		Status: {{app['status']}}
 	</div>
 </div>

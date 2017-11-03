@@ -38,6 +38,7 @@ export class EmployerJobCellComponent implements OnInit {
 		this._jobs.deleteOpening(this.job["opening_id"])
 		.subscribe(data => {
 			console.log(data)
+			location.reload()
 		})
 	}
 }

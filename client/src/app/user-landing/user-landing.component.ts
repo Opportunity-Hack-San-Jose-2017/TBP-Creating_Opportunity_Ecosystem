@@ -61,4 +61,7 @@ export class UserLandingComponent {
 	getAppliedJobs(){
 		// this.jobs.getAppliedJobs()
 	}
+	goHome(){
+		this._router.navigate(['/applicant'])
+	}
 }
