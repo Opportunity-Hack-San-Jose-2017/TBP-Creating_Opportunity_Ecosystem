@@ -599,10 +599,10 @@ public class CompanyController {
     }
 
     @GetMapping("/searchApplicants")
-    public ModelMap searchApplicants(@RequestParam(value = "min_ratings",required = false) String min_ratings,
+    public ModelMap searchApplicants(@RequestParam(value = "min_ratings",required = true) String min_ratings,
                                      @RequestParam(value = "skillSets",required = false) Set<String> skills,
                                      @RequestParam(value="positions",required = false)Set<String> positions,
-                                     @RequestParam(value = "min_experience",required = false)Integer min_experience ,
+                                     @RequestParam(value = "min_experience",required = true)Integer min_experience ,
                                      @RequestParam(value = "availability",required = false) String availability,
                                      @RequestParam(value = "education", required = false) String education,
                                      @RequestParam(value = "city", required = false) String city,
