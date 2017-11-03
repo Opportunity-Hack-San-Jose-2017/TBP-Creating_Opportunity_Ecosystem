@@ -1,33 +1,32 @@
 <div class="main flex">
 <div class="inner_text">
-	<h2 class="title">{{job['title']}}</h2>
-	<div class="company">{{job['company']}}</div>
+	<h2 class="title">{{user['firstName']}} {{user['lastName']}}</h2>
 	<div class="details">
 		<div class="flex">
-			<div>{{job['location']}}</div>
+			<div>{{user['location']}}</div>
 			<span>&nbsp;|&nbsp;</span>
-			<div>{{job['shift']}}</div>
+			<div>{{user['shift']}}</div>
 			<span>&nbsp;|&nbsp;</span>
-			<div>{{job['type']}}</div>
+			<div>{{user['availability']}}</div>
 		</div>
-		<div>Required experience: {{job['experience']}} {{time}}</div>
+		<div>Minimum experience: {{user['experience']}}</div>
 		<div>Accessible by public transportation: {{isAccessible}}</div>
 	</div>
-	<div class="desk-desc">
-		<div class="desc">{{job['description']}}</div>
+	<!-- <div class="desk-desc">
+		<div class="desc">{{user['description']}}</div>
 		<div *ngIf="!show" class="more-wrapper">
-			<div class="desc">{{job['responsibilites']}}</div>
+			<div class="desc">{{['responsibilites']}}</div>
 		</div>
 	</div>
 	<div class="mobile-desc">
 		<div *ngIf="!show" class="more-wrapper">
-			<div class="desc">{{job['description']}}</div>
-			<div class="desc">{{job['responsibilites']}}</div>
+			<div class="desc">{{applicant['description']}}</div>
+			<div class="desc">{{applicant['responsibilites']}}</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 <div class="right_side_nav">
-	<div (click)="applicants()" class="btn flex">Applicants</div>
-	<div (click)="delete()" class="btn flex red">Delete</div>
+	<div (click)="interview()" class="btn flex">Interview</div>
+	<div (click)="reject()" class="btn flex red">Reject</div>
 </div>
 </div>

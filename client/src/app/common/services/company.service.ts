@@ -28,7 +28,7 @@ export class CompanyService {
 						localStorage.setItem("company", JSON.stringify(res.company))
 						this.login({email: data["email"], password: data["password"]})
 					} else {
-						console.log(data)
+						console.log(res)
 					}
 				})
 	}
@@ -55,6 +55,10 @@ export class CompanyService {
 	}
 
 	acceptApplicant(data) {
-		return this.http.post(`${BASE_URL}/company/interview`, data, {withCredentials: true})
+		return this.http.post(`${BASE_URL}/company/acceptApplicant`, data, {withCredentials: true})
+	}
+
+	rejectApplicant(data){
+		this.http.post(`${BASE_URL}/company/rejectApplicant`, data, {withCredentials: true})
 	}
 }

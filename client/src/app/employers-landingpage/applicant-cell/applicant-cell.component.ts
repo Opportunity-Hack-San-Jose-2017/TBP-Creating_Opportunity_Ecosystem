@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CompanyService } from './../../common/services/company.service';
 import { Router } from '@angular/router';
+import { JobsService } from './../../common/services/jobs.service';
 
 @Component({
   selector: 'app-applicant-cell',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 export class ApplicantCellComponent implements OnInit {
 
 	applicant: any;
+  user = this.applicant["applicant"];
+  isAccessible: Boolean;
   constructor(
   	private _company: CompanyService,
   	private router: Router
@@ -19,7 +22,7 @@ export class ApplicantCellComponent implements OnInit {
   }
 
   interviewApplicant(){
-  	this._company.acceptApplicant({applicantion_id: this.applicant["applicant_id"]})
+  	this._company.acceptApplicant({application_id: this.applicant["application_id"]})
   	.subscribe(data => {
   		if (data["statusCode"] == "200"){
   			this.router.navigate(['/company/home'])
@@ -27,5 +30,9 @@ export class ApplicantCellComponent implements OnInit {
   			alert(data["message"])
   		}
   	})
+  }
+
+  reject(){
+    this._company.rejectApplicant({applicationId: this.applicant["application_id"] })
   }
 }
