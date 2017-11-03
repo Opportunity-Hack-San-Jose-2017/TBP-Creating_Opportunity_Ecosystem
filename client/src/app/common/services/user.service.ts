@@ -68,7 +68,6 @@ export class UserService {
 				(data: any) => {
 					if (data.statusCode == '200') {
 						const obj = {email: registration_cred.email, password: registration_cred.password};
-						console.log(this);
 						this.login(obj, true);
 					} else {
 						console.log("error", data);

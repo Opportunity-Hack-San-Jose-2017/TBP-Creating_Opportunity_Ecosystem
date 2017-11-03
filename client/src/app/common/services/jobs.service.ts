@@ -22,7 +22,7 @@ export class JobsService {
 			.subscribe(
 				(data: any) => {
 					console.log(data);
-					this._router.navigate(['company/home']);
+					this._router.navigate(['company']);
 				},
 				(err: HttpErrorResponse) => {
 					console.log(err);
