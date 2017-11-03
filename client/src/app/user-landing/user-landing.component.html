@@ -5,7 +5,7 @@
 </nav>
 <section id="ap-home" class="main flex">
 	<div [@slideAnimation] *ngIf="navState" class="nav-wrap">
-		<app-side-nav></app-side-nav>
+		<app-side-nav (close)="nav()"></app-side-nav>
 		<div class="close flex" (click)="nav()"><i class="fa fa-times" aria-hidden="true"></i></div>
 	</div>
 	<section class="content flex">
@@ -16,7 +16,7 @@
 				<button class="btn" (click)="edit()" mat-button>Edit Profile</button>
 			</div>
 			<div class="pb-div flex gray center-text">
-				<button class="btn" mat-button routerLink="jobs/applied">Applied Jobs</button>
+				<button class="btn" mat-button routerLink="jobs/applied">Applied</button>
 			</div>			
 		</div>
 		<div class="main-container">
