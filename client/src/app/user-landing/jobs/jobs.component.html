@@ -18,8 +18,6 @@
 		<app-filter (loc)="handleLoc($event)" (val)="handleVal($event)"></app-filter>
 	</div>
 	<div id="job_feed">
-		{{jobs}}
 		<app-job-cell *ngFor="let job of jobs" [job]="job"></app-job-cell>
-		}
 	</div>
 </div>

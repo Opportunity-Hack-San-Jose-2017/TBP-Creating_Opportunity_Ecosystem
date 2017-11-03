@@ -11,7 +11,8 @@ import { filterSlide } from '../../common/animations/filterSlide';
 })
 export class JobsPostedComponent {
 
-
+	toggleJobs: Boolean = true;
+	applicants: Array<any>;
 	jobs: Array<any>;
 	searchForm: FormGroup;
 	user: any;

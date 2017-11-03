@@ -12,7 +12,7 @@ export class ApplicationsComponent {
 	
 	constructor(private _user: UserService) {
 		_user.getApplications()
-			.subscribe((v: any) => this.apps = v);
+			.subscribe((v: any) => this.apps = v.openings);
 	}
 
 

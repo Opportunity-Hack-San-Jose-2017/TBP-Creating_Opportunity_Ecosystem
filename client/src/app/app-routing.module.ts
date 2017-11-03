@@ -9,7 +9,6 @@ import { ProfileSetupComponent } from './profile-setup/profile-setup.component';
 import { HomeComponent } from './home/home.component';
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { EmployersLandingpageComponent } from './employers-landingpage/employers-landingpage.component'
-import { SavedJobsComponent } from './user-landing/saved-jobs/saved-jobs.component';
 import { ProfileComponent } from './profile/profile.component'
 
 const appRoutes: Routes = [
@@ -21,8 +20,7 @@ const appRoutes: Routes = [
 	{ path: 'profile/edit', component: EditProfileComponent },
     { path: 'applicant', component: UserLandingComponent, children: [
 		{ path: '', component: JobsComponent, pathMatch: 'full' },
-		{ path: 'jobs/applied', component: ApplicationsComponent },
-		{ path: 'jobs/saved', component: SavedJobsComponent },
+		{ path: 'jobs/applied', component: ApplicationsComponent }
 	] },
 	{ path: 'applicant/profile/:id', component: ProfileComponent},
 	{ path: '**',   redirectTo: '', pathMatch: 'full' },
