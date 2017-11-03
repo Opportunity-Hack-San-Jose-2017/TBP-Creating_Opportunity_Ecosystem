@@ -44,7 +44,8 @@ export class ApplicantCellComponent {
   }
 
   downloadResume(){
-		this.upload.getFile(this.applicant["resumeURL"])
+    console.log(this.applicant["applicant"]["resumeURL"])
+		this.upload.getFile(this.applicant["applicant"]["resumeURL"])
 			.subscribe(v => importedSaveAs(v, this.applicant["resumeURL"]))
   }
 }
