@@ -11,6 +11,6 @@ We've built a website to automate this candidate/employer matching process in or
 
 <h2> Description </h2>
 Our solution is built for two users in mind: the candidate and the company. On the candidate side, the user is able to post profiles and resumes as well as view and apply to job positions. On the company side, the user is able to post job positions and browse possible candidates. The design of the website incorporates the same style and theme as the home website of TBP, and was crafted very closely with the NPO and needs of its users in mind. 
-<br>
+
 <b>Invision Design </b>
 https://projects.invisionapp.com/share/4VE6UPZJ3#/screens/260941027
