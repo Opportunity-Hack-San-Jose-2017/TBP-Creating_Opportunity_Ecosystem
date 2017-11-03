@@ -5,17 +5,17 @@
         <input matInput #searchEl type="search" placeholder="Search" formControlName="search" name="search">
       </mat-form-field>
       <div class="icons flex">
-        <div (click)="handleSearch()" class="flex caret-wrapper mag">
+        <div class="flex caret-wrapper mag">
           <i class="fa fa-search" aria-hidden="true"></i>
         </div>
-        <div (click)="searchClick()" class="flex caret-wrapper caret">
+        <div class="flex caret-wrapper caret">
           <i class="fa fa-caret-down" id="caret" aria-hidden="true"></i>
         </div>
       </div>
     </div>
   </form>
-  <div class="filter-menu" [@filterSlide] *ngIf="search">
-    <app-filter (loc)="handleLoc($event)" (val)="handleVal($event)"></app-filter>
+  <div class="filter-menu" *ngIf="search">
+    <app-filter></app-filter>
   </div>
   <div id="job_feed">
     <app-applicant-cell *ngFor="let applicant of applicants" [applicant]="applicant"></app-applicant-cell>
