@@ -136,7 +136,7 @@ export class UserService {
 	}
 
 	getApplications(): Observable<any> {
-		return this.http.get(`${BASE_URL}/`, {withCredentials: true})
+		return this.http.get(`${BASE_URL}/applicant/appliedJobs`, {withCredentials: true})
 	}
 
 	uploadResume(file: Object) {

@@ -30,7 +30,6 @@ export class JobsComponent implements AfterViewInit {
 		this._search.getAllJobs()
 		.subscribe((v: any) => {
 			this.jobs = v.openings
-			console.log(this.jobs)
 		});
 
 		Observable.fromEvent(document, 'keyup')
@@ -39,7 +38,6 @@ export class JobsComponent implements AfterViewInit {
 				if (document.getElementById('mat-input-0') === document.activeElement) {
 					if (this.searchForm.value.search !== "") {
 						_search.filterJobs(this.searchForm.value)
-							.do(v => console.log(v))
 							.subscribe((v: any) => this.jobs = v.openings);
 					} else {
 						_search.getAllJobs()
@@ -90,8 +88,7 @@ export class JobsComponent implements AfterViewInit {
 	getAppliedJobs(){
 		this._user.getApplications()
 		.subscribe(data => {
-			console.log(data)
+			this.jobs = data["openings"]
 		})
 	}
-
 }
