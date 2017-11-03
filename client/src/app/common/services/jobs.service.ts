@@ -37,4 +37,15 @@ export class JobsService {
 		return this.http.post(url, data, {withCredentials: true});
 	}
 
+	deleteOpening(opening_id: Number){
+		const data = {openingId: opening_id}
+		const url = `${BASE_URL}/company/cancelOpening`;
+		return this.http.post(url, data, {withCredentials: true})
+	}
+
+	getAllApplicantsForJob(opening_id: Number){
+		const url = `${BASE_URL}/company/opening?opening_id=${opening_id}`;
+		return this.http.get(url, {withCredentials: true})
+	}
+
 }

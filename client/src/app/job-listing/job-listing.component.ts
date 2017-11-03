@@ -24,7 +24,7 @@ export class JobListingComponent {
 	}
 
   constructor(
-    private router: Router,
+    private _router: Router,
     private _company: CompanyService,
     private _jobs: JobsService,
     private fb: FormBuilder
@@ -76,5 +76,9 @@ export class JobListingComponent {
 		var obj = this.jobForm.value
 		obj["publicTransport"] = this.ptYes
 		this._jobs.postOpening(obj)
+	}
+
+	backButton(){
+		this._router.navigate(['/company/home'])
 	}
 }

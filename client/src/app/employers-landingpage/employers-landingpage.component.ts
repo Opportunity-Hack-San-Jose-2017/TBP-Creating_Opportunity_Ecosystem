@@ -1,18 +1,39 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
 import { CompanyService } from './../common/services/company.service';
+import { UserService } from './../common/services/user.service';
+import { Component, trigger, state, style, transition, animate } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-employers-landingpage',
   templateUrl: './employers-landingpage.component.html',
-  styleUrls: ['./employers-landingpage.component.css']
+  styleUrls: ['./employers-landingpage.component.css'],
+  animations: [
+	  trigger('slideAnimation',
+	  [
+			transition(':enter', [
+				style({ transform: 'translateX(-250px)' }),
+				animate('200ms', style({ transform: 'translateX(0)' }))
+			]),
+			transition(':leave', [
+				style({ transform: 'translateX(0)' }),
+				animate('125ms', style({ transform: 'translateX(-250px)' }))
+			])
+		]
+	)
+]
 })
+
 export class EmployersLandingpageComponent {
-	toggleDropDown = false;
+
+	toggleDropDown: boolean = false;
+	navState: boolean = false;
 	company: any;
+
 	constructor(
 		private _router: Router,
-		private _company: CompanyService
+		private _company: CompanyService,
+		private _user: UserService
 	) {
 		this.company = JSON.parse(localStorage.getItem("company")) || {};
 		this.getAllOpenings()
@@ -32,8 +53,16 @@ export class EmployersLandingpageComponent {
 		this._router.navigate(['company/opening/create']);
 	}
 
+	nav() {
+		this.navState = !this.navState;
+	}
+
 	logout() {
 		localStorage.clear();
 		this._company.logout();
+	}
+
+	getThisPerson(){
+		this._user.getProfile("lormanlau@gmail.com")
 	}
 }

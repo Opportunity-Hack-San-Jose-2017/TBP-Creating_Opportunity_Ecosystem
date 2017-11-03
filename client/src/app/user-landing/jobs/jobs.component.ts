@@ -4,6 +4,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { Observable } from 'rxjs/Observable';
 import { filterSlide } from '../../common/animations/filterSlide';
 import { job } from '../../common/seed_data/jobs'; 
+import { UserService } from '../../common/services/user.service';
 
 @Component({
   selector: 'app-jobs',
@@ -22,13 +23,13 @@ export class JobsComponent implements AfterViewInit {
 
 	constructor(
 		private _search: SearchService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private _user: UserService
 	) {
 		this.createForm();
 		this._search.getAllJobs()
 		.subscribe((v: any) => {
 			this.jobs = v.openings
-			console.log(this.jobs)
 		});
 
 		Observable.fromEvent(document, 'keyup')
@@ -37,7 +38,6 @@ export class JobsComponent implements AfterViewInit {
 				if (document.getElementById('mat-input-0') === document.activeElement) {
 					if (this.searchForm.value.search !== "") {
 						_search.filterJobs(this.searchForm.value)
-							.do(v => console.log(v))
 							.subscribe((v: any) => this.jobs = v.openings);
 					} else {
 						_search.getAllJobs()
@@ -86,7 +86,9 @@ export class JobsComponent implements AfterViewInit {
 	}
 
 	getAppliedJobs(){
-		
+		this._user.getApplications()
+		.subscribe(data => {
+			this.jobs = data["openings"]
+		})
 	}
-
 }

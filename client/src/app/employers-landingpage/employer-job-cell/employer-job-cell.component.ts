@@ -9,7 +9,6 @@ import { JobsService } from '../../common/services/jobs.service';
 })
 export class EmployerJobCellComponent implements OnInit {
 
-	show = true;
 	time: String = "";
 	@Input() job: any;
 	isAccessible: String = '';
@@ -21,20 +20,18 @@ export class EmployerJobCellComponent implements OnInit {
 		this.time = this.job.experience === 1 ? 'year' : 'years'
 	}
 
-	toggle(){
-		this.show = !this.show
+	applicants(){
+		this._jobs.getAllApplicantsForJob(this.job["opening_id"])
+		.subscribe(data => {
+			console.log(data)
+		})
 	}
 
-	apply() {
-		this._jobs.applyToOpening(this.job.opening_id)
-			.subscribe(
-				(v: any) => {
-					const curApps = JSON.parse(localStorage.getItem('apps')) || {};
-					const newApps = Object.assign(curApps, this.job);
-				}, (err: HttpErrorResponse) => {
-					console.log(err);
-				})
+	delete(){
+		this._jobs.deleteOpening(this.job["opening_id"])
+		.subscribe(data => {
+			console.log(data)
+		})
 	}
-
 }
 

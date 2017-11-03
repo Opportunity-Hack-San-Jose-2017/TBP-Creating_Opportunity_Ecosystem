@@ -6,10 +6,12 @@ import {
 	state,
 	style,
 	transition,
-	trigger
+	trigger,
+	ContentChild
 } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs/Observable';
+import { JobsComponent } from './jobs/jobs.component';
 
 @Component({
 	selector: 'app-user-landing',
@@ -28,16 +30,18 @@ import { Observable } from 'rxjs/Observable';
 				])
 			]
 		)
-	]
+	],
+	providers: [JobsComponent]
 })
 export class UserLandingComponent {
+	@ContentChild(JobsComponent) jobs: JobsComponent;
 
 	user: any;
 	navState: Boolean = false;
 
 	constructor(
 		private _router: Router,
-		private _user: UserService
+		private _user: UserService,
 	) {
 		this.user = JSON.parse(localStorage.getItem('user'));
 	}
@@ -54,4 +58,7 @@ export class UserLandingComponent {
 		this.navState = !this.navState;
 	}
 
+	getAppliedJobs(){
+		this.jobs.getAppliedJobs()
+	}
 }
