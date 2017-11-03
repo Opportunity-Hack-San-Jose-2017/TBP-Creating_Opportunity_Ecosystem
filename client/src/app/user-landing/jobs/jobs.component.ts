@@ -92,10 +92,17 @@ export class JobsComponent implements AfterViewInit {
 		this._user.getApplications()
 		.subscribe(data => {
 			console.log(data)
-			this.applicants = data["openings"][0]["applications"]
+			var save = this.jobs
+			this.jobs.length = 0
+			console.log(this.jobs)
+			for (var i = 0; i < data["openings"][0]["applications"].length; i++){
+				this.jobs.push(data["openings"][0]["applications"][i])
+			}
+			console.log(this.jobs)
+			console.log(save)
+			// this.applicants = data["openings"][0]["applications"]
 		})
 		this.displayJobs = !this.displayJobs;
 		console.log(this.displayJobs)
-		this.cd.detectChanges()
 	}
 }

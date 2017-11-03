@@ -18,10 +18,12 @@ export class UserService {
 	) { }
 
 	login(login_cred: object, setupProfile: boolean){
+		console.log(login_cred)
 		const url = `${BASE_URL}/applicant/signin`;
 		this.http.post(url, login_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
+					console.log(data)
 					if (data.statusCode == '200') {
 						this.setStorage(data.applicant);
 						setupProfile ? this.router.navigate(['setup']) :
@@ -64,11 +66,11 @@ export class UserService {
 		this.http.post(url, registration_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					if (data.statusCode == '200') {
-						const obj = {email: registration_cred.email, password: data.password};
+					if (data["statusCode"] == '200') {
+						const obj = {email: registration_cred["email"], password: registration_cred["password"]};
 						this.login(obj, true);
 					} else {
-						console.log(data);
+						console.log("error", data);
 					}
 				},
 				(err: HttpErrorResponse) => {
