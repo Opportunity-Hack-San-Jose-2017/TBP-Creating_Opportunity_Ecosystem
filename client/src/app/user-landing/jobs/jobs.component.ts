@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SearchService } from '../../common/services/search.service';
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { filterSlide } from '../../common/animations/filterSlide';
 import { job } from '../../common/seed_data/jobs'; 
@@ -14,17 +14,20 @@ import { UserService } from '../../common/services/user.service';
 })
 export class JobsComponent implements AfterViewInit {
 
+	displayJobs: Boolean = true;
 	jobs: Array<any>;
 	searchForm: FormGroup;
 	user: any;
 	location: String;
 	@ViewChild('searchEl', { read: ElementRef }) searchEl: ElementRef;
 	search: Boolean = false;
+	applicants: Array<any>;
 
 	constructor(
 		private _search: SearchService,
 		private fb: FormBuilder,
-		private _user: UserService
+		private _user: UserService,
+		private cd: ChangeDetectorRef
 	) {
 		this.createForm();
 		this._search.getAllJobs()
@@ -88,7 +91,11 @@ export class JobsComponent implements AfterViewInit {
 	getAppliedJobs(){
 		this._user.getApplications()
 		.subscribe(data => {
-			this.jobs = data["openings"]
+			console.log(data)
+			this.applicants = data["openings"][0]["applications"]
 		})
+		this.displayJobs = !this.displayJobs;
+		console.log(this.displayJobs)
+		this.cd.detectChanges()
 	}
 }

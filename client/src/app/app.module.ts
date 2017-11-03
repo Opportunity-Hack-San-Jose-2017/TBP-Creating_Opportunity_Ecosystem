@@ -39,6 +39,7 @@ import { JobsPostedComponent } from './employers-landingpage/jobs-posted/jobs-po
 import { EmployerJobCellComponent } from './employers-landingpage/employer-job-cell/employer-job-cell.component';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
+import { ApplicantCellComponent } from './employers-landingpage/applicant-cell/applicant-cell.component';
 
 
 
@@ -70,6 +71,7 @@ import { Interceptor } from './common/interceptors/interceptor';
     SavedJobsComponent,
     JobsPostedComponent,
     EmployerJobCellComponent,
+    ApplicantCellComponent,
 
   ],
   imports: [

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './job-cell.component.html',
   styleUrls: ['./job-cell.component.css']
 })
-export class JobCellComponent implements OnInit {
+export class JobCellComponent implements OnInit  {
 
 	show = true;
 	time: String = "";
