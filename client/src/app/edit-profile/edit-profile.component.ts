@@ -46,8 +46,6 @@ export class EditProfileComponent implements OnInit {
 		this.createForm();
 		_upload.getSuccessMsg().subscribe((v: any) => this.success = v)
 		_upload.getFailedMsg().subscribe((v: any) => this.failed = v)
-		// this._upload.getFile()
-		// 	.subscribe(v => console.log(v));
 	}
 
 	ngOnInit() {	
@@ -122,7 +120,7 @@ export class EditProfileComponent implements OnInit {
   	backButton(){
   		this._router.navigate(["applicant"]);
 	}
-	  
+
 	handleFiles(e: Event) {
 		const x = e.target['files'];
 		const file = x.item(0);
@@ -137,6 +135,11 @@ export class EditProfileComponent implements OnInit {
 				if (event.type === HttpEventType.UploadProgress) {
 					this.progress.percentage = Math.round(100 * event.loaded / event.total);
 				} else if (event instanceof HttpResponse) {
+					this.success = true;
+					this._upload.getFile('test.txt')
+						.subscribe(v => {
+							console.log(v);
+						})
 					console.log('File is completely uploaded!');
 				}
 			})

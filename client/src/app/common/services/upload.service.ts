@@ -21,27 +21,14 @@ export class UploadService {
 		const req = new HttpRequest('POST', `${BASE_URL}/api/aws/s3/upload`, formdata, {
 			withCredentials: true
 		});
-		return this._http.request(req)
-			// .subscribe(
-			// 	(v: any) => {
-			// 		console.log(v);
-			// 		if (v.type === HttpEventType.UploadProgress) {
-			// 			console.log(v.total, v.loaded);
-			// 		}
-			// 		this.successMessage.next(true);
-			// 	},
-			// 	(err: HttpErrorResponse) => {
-			// 		console.log(err);
-			// 		this.failedMessage.next(true);
-			// 	}
-			// )
+		return this._http.request(req);
 	}
 
-	getFile(): Observable<any> {
+	getFile(id: string): Observable<any> {
 		const user = JSON.parse(localStorage.getItem('user'))
 		return this._http.get(`${BASE_URL}/api/aws/s3/download`, {
-			params: new HttpParams().set('key', 'img.png'),
-		withCredentials:true});
+			params: new HttpParams().set('key', id),
+			withCredentials: true, responseType: 'text' });
 	}
 
 	getSuccessMsg(): Observable<any> {
