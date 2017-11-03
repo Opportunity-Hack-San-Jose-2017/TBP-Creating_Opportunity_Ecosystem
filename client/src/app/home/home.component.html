@@ -4,11 +4,19 @@
         <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
     </div>
     <div class="login-reg-wrapper flex column">
+        <h2>Applicant Login</h2>
+        <br>
         <div class="links flex">
             <div (click)="handleClick('login')" class="link" [ngClass]="login ? 'active' : null" id="login">Login</div>
             <div (click)="handleClick('register')" class="link" [ngClass]="!login ? 'active' : null" id="register">Register</div>
         </div>
         <app-login *ngIf="login"></app-login>
         <app-register *ngIf="!login"></app-register>
+        <div>
+            <br>
+            Are you a company? <a href="/co">Click here</a>
+        </div>
     </div>
+
+    
 </div>
