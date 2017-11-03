@@ -18,6 +18,6 @@
     <app-filter (loc)="handleLoc($event)" (val)="handleVal($event)"></app-filter>
   </div>
   <div id="job_feed">
-    <app-applicant-cell *ngFor="let applicant of applicants | async" [applicant]="applicant"></app-applicant-cell>
+    <app-applicant-cell *ngFor="let applicant of applicants" [applicant]="applicant"></app-applicant-cell>
   </div>
 </div>

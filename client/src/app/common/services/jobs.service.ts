@@ -48,23 +48,23 @@ export class JobsService {
 	}
 
 	getApplicants(id: string) {
-		this.http.get(`${BASE_URL}/company/opening`, {
+		return this.http.get(`${BASE_URL}/company/opening`, {
 			params: new HttpParams().set('opening_id', id),
 			withCredentials: true
 		})
-		.subscribe(
-			(v: any) => {
-				if (v.statusCode == '200') {
-					this.applicants.next(v.applications);
-					this._router.navigate(['jobs', id, 'applicants']);
-				} else {
-					console.log(v)
-				}
-			},
-			(err: any) => {
-				console.log(err);
-			}
-		)
+		// .subscribe(
+		// 	(v: any) => {
+		// 		if (v.statusCode == '200') {
+		// 			console.log(v.applications)
+		// 			this.applicants.next(v.applications);
+		// 		} else {
+		// 			console.log(v)
+		// 		}
+		// 	},
+		// 	(err: any) => {
+		// 		console.log(err);
+		// 	}
+		// )
 	}
 
 	pullApplicants(): Observable<any> {

@@ -41,7 +41,6 @@ import { Interceptor } from './common/interceptors/interceptor';
 import { ApplicantCellComponent } from './employers-landingpage/applicant-cell/applicant-cell.component';
 import { ApplicantsComponent } from './employers-landingpage/applicants/applicants.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

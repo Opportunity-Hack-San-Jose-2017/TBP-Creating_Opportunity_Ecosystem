@@ -25,6 +25,7 @@ export class EmployerJobCellComponent implements OnInit {
 
 	applicants(){
 		this._jobs.getApplicants(this.job["opening_id"])
+		console.log('cell')
 		// .subscribe(data => {
 		// 	console.log(data)
 		// })

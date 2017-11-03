@@ -14,7 +14,12 @@ export class ApplicantCellComponent {
   constructor(
   	private _company: CompanyService,
   	private router: Router
-		) { }
+		) {
+		}
+
+		ngOnInit() {
+			console.log(this.applicant)			
+		}
 
 
   interviewApplicant(){
