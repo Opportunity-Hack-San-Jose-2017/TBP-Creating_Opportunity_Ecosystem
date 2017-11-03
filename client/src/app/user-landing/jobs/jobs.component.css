@@ -113,11 +113,11 @@ form {
 		width: 100vw;
 	}
 
-	.search-bar { top: 70px; }
+	.search-bar { top: 80px; }
 
 	.filter-menu {
 		position: fixed;
-		top: 140px;
+		top: 150px;
 		width: 100%;
 		z-index: 10;
     }

@@ -117,7 +117,7 @@ form {
 
 	.filter-menu {
 		position: fixed;
-		top: 140px;
+		top: 150px;
 		width: 100%;
 		z-index: 10;
     }

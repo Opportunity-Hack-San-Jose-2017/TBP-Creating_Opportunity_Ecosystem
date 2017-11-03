@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { Headers, RequestOptions, RequestOptionsArgs, RequestMethod, ResponseContentType } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
@@ -12,12 +13,11 @@ export class UploadService {
 	successMessage = new BehaviorSubject(false);
 	failedMessage = new BehaviorSubject(false);
 
-	constructor(private _http: HttpClient) { }
+	constructor(private _http: HttpClient, private _user: UserService) { }
 
 	sendFile(file: any) {
 		let formdata: FormData = new FormData();
 		formdata.append('file', file);
-		console.log(file);
 		const req = new HttpRequest('POST', `${BASE_URL}/api/aws/s3/upload`, formdata, {
 			withCredentials: true
 		});
