@@ -19,7 +19,7 @@ public interface OpeningRepository extends JpaRepository<Opening,Integer> {
     @Query(value = "delete from opening where email = ?1%", nativeQuery = true)
     void flushOpeningsForCompany(String email);
 
-    @Query(value = "select * from opening where opening_id=?1% and company_email=?2%", nativeQuery = true)
+    @Query(value = "select * from opening where opening_id=?1 and company_email=?2", nativeQuery = true)
     Opening findByIdAndCompany(int opening_id, String email);
 
 //    @Query(value ="Select o.* " +
