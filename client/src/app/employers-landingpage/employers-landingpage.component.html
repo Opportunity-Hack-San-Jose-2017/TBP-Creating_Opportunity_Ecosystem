@@ -9,6 +9,14 @@
 		<div class="close flex" (click)="nav()"><i class="fa fa-times" aria-hidden="true"></i></div>
 	</div>
 	<section class="content flex">
+		<div class="succcess msg flex" *ngIf="interviewMsg">
+			<div>Interview request successful!</div>
+			<div class="close flex" (click)="closeMsg()"><i class="fa fa-times" aria-hidden="true"></i></div>
+		</div>
+		<div class="failed msg flex" *ngIf="rejectMsg">
+			<div>Candidate rejected.</div>
+			<div class="close flex" (click)="closeMsg()"><i class="fa fa-times" aria-hidden="true"></i></div>
+		</div>
 		<div class="profile_bar">
 			<div class="pb-div flex column">
 				<div class="name gray">{{company['name']}}</div>

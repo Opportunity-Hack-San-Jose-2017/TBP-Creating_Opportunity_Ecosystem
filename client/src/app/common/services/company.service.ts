@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { url as BASE_URL } from '../config/url';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class CompanyService {
 
+	successMessage = new BehaviorSubject(false);
+	failedMsg = new BehaviorSubject(false);
+	
 	constructor(
 		private http: HttpClient,
 		private _router: Router
@@ -54,13 +58,29 @@ export class CompanyService {
 	}
 
 	acceptApplicant(data) {
-		return this.http.post(`${BASE_URL}/company/acceptApplicant`, data, {withCredentials: true})
+		this.http.post(`${BASE_URL}/company/acceptApplicant`, data, {withCredentials: true})
+			.subscribe((v: any) => {
+				this.successMessage.next(true);
+			})
+	}
+
+	getSuccessMsg() {
+		return this.successMessage;
+	}
+
+	getFailedMsg() {
+		return this.failedMsg;
+	}
+
+	closeMsg() {
+		this.successMessage.next(false);
+		this.failedMsg.next(false);
 	}
 
 	rejectApplicant(data){
 		this.http.post(`${BASE_URL}/company/rejectApplicant`, data, {withCredentials: true})
-		.subscribe(data => {
-			console.log(data)
+		.subscribe((v: any) => {
+			this.failedMsg.next(true);
 		})
 	}
 }

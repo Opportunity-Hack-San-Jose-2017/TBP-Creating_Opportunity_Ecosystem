@@ -28,13 +28,13 @@ export class ApplicantCellComponent {
 
   interviewApplicant(){
   	this._company.acceptApplicant({applicationId: this.applicant["application_id"]})
-  	.subscribe(data => {
-  		if (data["statusCode"] == "200"){
-  			this.router.navigate(['company/jobs'])
-  		} else  {
-  			alert(data["message"])
-  		}
-  	})
+  	// .subscribe(data => {
+  	// 	if (data["statusCode"] == "200"){
+  	// 		this.router.navigate(['company/jobs'])
+  	// 	} else  {
+  	// 		alert(data["message"])
+  	// 	}
+  	// })
   }
 
   reject(){
