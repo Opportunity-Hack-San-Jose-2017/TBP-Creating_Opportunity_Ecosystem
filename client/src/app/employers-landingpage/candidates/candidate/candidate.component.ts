@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CompanyService } from '../../../common/services/company.service';
 import { Router } from '@angular/router';
 import { UploadService } from '../../../common/services/upload.service';
+import { saveAs as importedSaveAs } from 'file-saver';
 
 @Component({
   selector: 'app-candidate',
@@ -29,7 +30,8 @@ export class CandidateComponent implements OnInit {
   	// this._company.acceptApplicant({applicationId: this.candidate["application_id"]})
   }
 
-  downloadResume(){
+  downloadResume() {
     this.upload.getFile(this.candidate["resumeURL"])
+      .subscribe(v => importedSaveAs(v, this.candidate["resumeURL"]))
   }
 }

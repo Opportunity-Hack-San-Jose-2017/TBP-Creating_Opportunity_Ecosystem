@@ -24,13 +24,6 @@ export class UploadService {
 		return this._http.request(req);
 	}
 
-	// getFile(id: string): Observable<any> {
-	// 	const user = JSON.parse(localStorage.getItem('user'))
-	// 	return this._http.get(`${BASE_URL}/api/aws/s3/download`, {
-	// 		params: new HttpParams().set('key', id),
-	// 		withCredentials: true, responseType: 'text' });
-	// }
-
 	getFile(id: any) {
 		let headers = new HttpHeaders()
 		headers.append('responseType', 'ResponseContentType.Blob')

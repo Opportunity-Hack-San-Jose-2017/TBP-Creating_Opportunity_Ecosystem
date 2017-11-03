@@ -141,10 +141,6 @@ export class EditProfileComponent implements OnInit {
 					this.progress.percentage = Math.round(100 * event.loaded / event.total);
 				} else if (event instanceof HttpResponse) {
 					this.success = true;
-					this._upload.getFile('test.txt')
-						.subscribe(v => {
-							importedSaveAs(v, 'test.txt')
-						})
 					console.log('File is completely uploaded!');
 				}
 			})

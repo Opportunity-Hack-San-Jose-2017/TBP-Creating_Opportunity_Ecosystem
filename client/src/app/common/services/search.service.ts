@@ -18,7 +18,7 @@ export class SearchService {
 	}
 	  
 	getCandidates(val: any) {
-		return this._http.get(`${BASE_URL}/applicant/allJobs`, {
+		return this._http.get(`${BASE_URL}/company/searchApplicants`, {
 			params: new HttpParams().set('min_ratings', '0').set('min_experience', '0'),
 			withCredentials:true
 		})
