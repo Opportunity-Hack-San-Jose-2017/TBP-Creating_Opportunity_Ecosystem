@@ -59,5 +59,8 @@ export class CompanyService {
 
 	rejectApplicant(data){
 		this.http.post(`${BASE_URL}/company/rejectApplicant`, data, {withCredentials: true})
+		.subscribe(data => {
+			console.log(data)
+		})
 	}
 }

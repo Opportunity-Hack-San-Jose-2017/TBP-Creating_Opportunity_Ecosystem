@@ -4,6 +4,8 @@
         <img class="logo" src="../../assets/images/TBP-Logo.png" alt="Logo">
     </div>
     <div [ngStyle]="{'height' : login ? '40vh' : '55%'}" class="login-reg-wrapper flex column">
+        <h2>Company login</h2>
+        <br>
         <div class="links flex">
             <div (click)="handleClick('login')" class="link" [ngClass]="login ? 'active' : null" id="login">Login</div>
             <div (click)="handleClick('register')" class="link" [ngClass]="!login ? 'active' : null" id="register">Register</div>

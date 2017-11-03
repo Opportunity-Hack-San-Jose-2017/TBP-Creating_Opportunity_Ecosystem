@@ -31,3 +31,7 @@ form {
 .submit-login:active {
     transform: translateY(1px);
 }
+
+a { 
+    color: #1592aa;
+}
