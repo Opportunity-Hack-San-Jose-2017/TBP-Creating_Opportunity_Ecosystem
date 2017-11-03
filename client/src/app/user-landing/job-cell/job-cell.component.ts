@@ -14,6 +14,7 @@ export class JobCellComponent implements OnInit  {
 	time: String = "";
 	@Input() job: any;
 	isAccessible: String = '';
+	datePosted;
 
 	constructor(
 		private _jobs: JobsService,
@@ -23,6 +24,8 @@ export class JobCellComponent implements OnInit  {
 	ngOnInit() {
 		this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
 		this.time = this.job.experience === 1 ? 'year' : 'years'
+		this.datePosted = new Date(this.job['date'])
+		console.log(this.job)
 	}
 
 	toggle(){

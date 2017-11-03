@@ -41,6 +41,7 @@ export class StepThreeComponent {
 			password: user.password,
 			verified: user.verified,
 			hashValue: user.hashValue,
+			
 		}
 		this._user.sendProfileInfo(obj);
 	}

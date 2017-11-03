@@ -13,12 +13,14 @@ export class EmployerJobCellComponent implements OnInit {
 	@Input() job: any;
 	isAccessible: String = '';
 	@Output() val = new EventEmitter();
+	datePosted;
 
   	constructor(private _jobs: JobsService) { }
 
 	ngOnInit() {
 		this.isAccessible = this.job['publicTransport'] ? 'Yes' : 'No';
 		this.time = this.job.experience === 1 ? 'year' : 'years'
+		this.datePosted = new Date(this.job['date'])
 		console.log(this.job)
 		
 	}

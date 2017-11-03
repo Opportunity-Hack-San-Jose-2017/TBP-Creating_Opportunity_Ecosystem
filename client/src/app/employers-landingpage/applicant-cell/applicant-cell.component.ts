@@ -13,7 +13,7 @@ export class ApplicantCellComponent {
 
 	@Input() applicant: any;
   user: any
-  isAccessible: Boolean;
+  isAccessible: String = "";
   constructor(
   	private _company: CompanyService,
   	private router: Router,
@@ -23,7 +23,8 @@ export class ApplicantCellComponent {
 
 		ngOnInit() {
 			console.log(this.applicant)		
-      this.user = this.applicant["applicant"];	
+      this.user = this.applicant["applicant"];
+      this.isAccessible = this.user['publicTransport'] ? 'Yes' : 'No';
     }
 
   interviewApplicant(){
@@ -42,6 +43,6 @@ export class ApplicantCellComponent {
   }
 
   downloadResume(){
-    // this.upload.getFile(this.applicant["resumeURL"])
+    this.upload.getFile(this.applicant["resumeURL"])
   }
 }
