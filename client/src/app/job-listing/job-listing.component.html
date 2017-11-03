@@ -67,10 +67,10 @@
 					<div class="form-group-header">Is your office accessible by public transportation?</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
-							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="ptYes ? 'active' : ''" id="pt-yes">Yes</div>
+							<div (click)="addAccess()" class="mat-fab flex" [ngClass]="isAccessible ? 'active' : ''" id="pt-yes">Yes</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="circleClick()" class="mat-fab flex" [ngClass]="!ptYes ? 'active' : ''" id="pt-no">No</div>
+							<div (click)="removeAccess()" class="mat-fab flex" [ngClass]="isNotAccessible ? 'active' : ''" id="pt-no">No</div>
 						</div>
 					</div>
 				</div>
