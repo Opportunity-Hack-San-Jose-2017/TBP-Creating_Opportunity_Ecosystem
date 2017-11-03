@@ -101,12 +101,12 @@ export class UserService {
 
 	getProfile(email: String) {
 		const url = `${BASE_URL}/applicant/profile?email=${email}`;
-		this.http.get(url, {withCredentials: true})
-			.subscribe(
-				// (data: any) => this.profile = data,
-				(data: any) => console.log(data),
-				(err: HttpErrorResponse) => console.log(err)
-			)
+		return this.http.get(url, {withCredentials: true})
+	}
+
+	getCandidates() {
+		const url = `${BASE_URL}/applicant/getAll`;
+		return this.http.get(url, {withCredentials: true})
 	}
 
 	/* applicant setup process is 3 consecutive forms. method will combine the values of the 3 forms into 

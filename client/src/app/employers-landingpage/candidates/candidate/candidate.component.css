@@ -1,0 +1,69 @@
+.main {
+	background-color: white;
+	color: black;
+	padding: 10px;
+	justify-content: space-between;
+	transition: all .2s ease;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.main:hover {
+	background: rgb(235, 232, 232);
+}
+
+.main img {
+	height: 109px;
+}
+
+.right_side_nav * {
+	text-align: center;
+	margin: 5px 0px;
+}
+
+.biz-logo, .inner-text { margin-right: 10px; }
+
+.inner_text { flex: 1; }
+
+.details {
+	font-size: .8rem;
+}
+
+.btn {
+    height: 30px;
+	cursor: pointer;
+	font-size: .8rem;
+    width: 100px;
+    background: #1592aa;
+    align-items: center;
+    color: white;
+    justify-content: center;
+	transition: all .2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.toggle {
+	text-decoration: none;
+	color: #0098af;
+}
+
+@media screen and (max-width: 700px) {
+
+	.desc {
+		display: none;
+	}
+	
+	.main {
+		margin: 0;
+	}
+
+	.main img {
+		height: 50px;
+	}
+}

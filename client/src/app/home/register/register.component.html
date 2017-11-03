@@ -29,13 +29,13 @@
 	</mat-form-field>
 	<span class="pw-grp" formGroupName="passwords">
 		<mat-form-field>
-			<input matInput placeholder="Password" formControlName="password">
+			<input matInput placeholder="Password" type="password" formControlName="password">
 			<mat-error *ngIf="userForm.get('passwords.password').touched && userForm.get('passwords.password').hasError('required')">
 				Password is <strong>required</strong>
 			</mat-error>
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput placeholder="Confirm Password" formControlName="confirmPassword">
+			<input matInput placeholder="Confirm Password" type="password" formControlName="confirmPassword">
 			<mat-error *ngIf="userForm.get('passwords.confirmPassword').touched && userForm.get('passwords.confirmPassword').hasError('required')">
 				Password Confirmation is <strong>required</strong>
 			</mat-error>

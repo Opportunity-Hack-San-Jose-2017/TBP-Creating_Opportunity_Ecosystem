@@ -1,6 +1,6 @@
 <div class="main flex">
 <div class="inner_text">
-	<h2 class="title">{{user['firstName']}} {{user['lastName']}}</h2>
+	<h2 [routerLink]="['profile', user['email']]"class="title">{{user['firstName']}} {{user['lastName']}}</h2>
 	<div class="details">
 		<div class="flex">
 			<div>{{user['location']}}</div>

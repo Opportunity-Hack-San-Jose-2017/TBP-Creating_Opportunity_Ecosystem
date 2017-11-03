@@ -29,6 +29,8 @@ export class EmployersLandingpageComponent {
 	toggleDropDown: boolean = false;
 	navState: boolean = false;
 	company: any;
+	interviewMsg: boolean = false;
+	rejectMsg: boolean = false;
 
 	constructor(
 		private _router: Router,
@@ -38,12 +40,19 @@ export class EmployersLandingpageComponent {
 		this.company = JSON.parse(localStorage.getItem("company")) || {};
 		this.getAllOpenings()
 		console.log(this.company)
+		_company.getSuccessMsg().subscribe((v: any) => this.interviewMsg = v)
+		_company.getFailedMsg().subscribe((v: any) => this.rejectMsg = v)
 	}
 
 	getAllOpenings(){
 		this._company.getAllOpenings()
 		.subscribe((data: any) => console.log(data))
 	}
+
+	closeMsg() {
+		this._company.closeMsg();
+	}
+  	
 
 	dropdowntoggle() {
 		this.toggleDropDown = !this.toggleDropDown;
@@ -62,7 +71,4 @@ export class EmployersLandingpageComponent {
 		this._company.logout();
 	}
 
-	getThisPerson(){
-		this._user.getProfile("lormanlau@gmail.com")
-	}
 }

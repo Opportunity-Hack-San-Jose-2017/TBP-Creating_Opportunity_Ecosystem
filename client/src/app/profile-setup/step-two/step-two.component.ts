@@ -30,7 +30,7 @@ export class StepTwoComponent {
 	createForm() {
 		this.userForm = this.fb.group({
 			city: [''],
-			languages: ['']
+			language: ['']
 		});
 	  }
 	
