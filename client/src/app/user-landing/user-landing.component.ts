@@ -55,6 +55,9 @@ export class UserLandingComponent {
 	}
 
 	getAppliedJobs(){
-		
+		this._user.getApplications()
+		.subscribe(data => {
+			console.log(data)
+		})
 	}
 }
