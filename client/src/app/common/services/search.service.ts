@@ -17,8 +17,11 @@ export class SearchService {
 		return this._http.get(`${BASE_URL}/applicant/allJobs`, {withCredentials:true})
 	}
 	  
-	getCandidates() {
-		return this._http.get(`${BASE_URL}/applicant/allJobs`, {withCredentials:true})
+	getCandidates(val: any) {
+		return this._http.get(`${BASE_URL}/applicant/allJobs`, {
+			params: new HttpParams().set('min_ratings', '0').set('min_experience', '0'),
+			withCredentials:true
+		})
   	}
 
   	getJobBySkill(skill: string) {

@@ -24,7 +24,7 @@ export class CandidatesComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.createForm();
-    _search.getCandidates()
+    _search.getCandidates('')
       .do(v => console.log(v))
       .subscribe((v: any) => this.candidates = v)
 
@@ -33,10 +33,10 @@ export class CandidatesComponent {
 			.subscribe(() => {
 				if (document.getElementById('mat-input-0') === document.activeElement) {
 					if (this.searchForm.value.search !== "") {
-						_search.filterJobs(this.searchForm.value)
+						_search.getCandidates(this.searchForm.value)
 							.subscribe((v: any) => this.candidates = v.openings); /* CHANGE THIS !!!!!!!!!!!!!!! for the whole component*/
 					} else {
-						_search.getAllJobs()
+						_search.getCandidates('')
 							.subscribe((v: any) => this.candidates = v.openings);
 					}
 				}
