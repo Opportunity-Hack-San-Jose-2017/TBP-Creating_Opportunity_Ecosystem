@@ -1,4 +1,4 @@
-import { Headers, RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
+import { Headers, RequestOptions, RequestOptionsArgs, RequestMethod, ResponseContentType } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
@@ -24,11 +24,19 @@ export class UploadService {
 		return this._http.request(req);
 	}
 
-	getFile(id: string): Observable<any> {
-		const user = JSON.parse(localStorage.getItem('user'))
-		return this._http.get(`${BASE_URL}/api/aws/s3/download`, {
-			params: new HttpParams().set('key', id),
-			withCredentials: true, responseType: 'text' });
+	// getFile(id: string): Observable<any> {
+	// 	const user = JSON.parse(localStorage.getItem('user'))
+	// 	return this._http.get(`${BASE_URL}/api/aws/s3/download`, {
+	// 		params: new HttpParams().set('key', id),
+	// 		withCredentials: true, responseType: 'text' });
+	// }
+
+	getFile(id: any) {
+		let headers = new HttpHeaders()
+		headers.append('responseType', 'ResponseContentType.Blob')
+		return this._http.get(`${BASE_URL}/api/aws/s3/download?key=${id}`, {
+			withCredentials: true, responseType: 'blob'
+		})
 	}
 
 	getSuccessMsg(): Observable<any> {
