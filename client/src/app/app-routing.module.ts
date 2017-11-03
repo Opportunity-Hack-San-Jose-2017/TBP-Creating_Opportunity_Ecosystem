@@ -26,7 +26,7 @@ const appRoutes: Routes = [
 		{ path: '', redirectTo: 'jobs', pathMatch: 'full' },
 	]},
     { path: 'company/opening/create', component: JobListingComponent},
-	{ path: 'profile/edit', component: EditProfileComponent, pathMatch: 'full' },
+	{ path: 'applicant/profile/edit', component: EditProfileComponent, pathMatch: 'full' },
 	{ path: 'profile/:id', component: ProfilePageComponent },
     { path: 'applicant', component: UserLandingComponent, children: [
 		{ path: '', component: JobsComponent, pathMatch: 'full' },
