@@ -18,7 +18,7 @@ export class StepTwoComponent {
 	pt: Boolean;
 	temp: Boolean;
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
-	types: any = ['ft', 'pt', 'temp'];
+	availability: any = ['ft', 'pt', 'temp'];
 
 	constructor(
 		private _user: UserService,
@@ -37,7 +37,7 @@ export class StepTwoComponent {
 	handleClick() {
 		const obj = Object.assign({}, {
 			shift: this.shifts.filter(x => this[x]),
-			availability: this.types.filter(x => this[x])
+			availability: this.availability.filter(x => this[x])
 		})
 		console.log(obj);
 		this._user.sendProfileInfo(obj);

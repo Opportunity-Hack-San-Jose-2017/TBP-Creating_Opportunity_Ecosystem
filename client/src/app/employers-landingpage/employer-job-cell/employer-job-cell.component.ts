@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JobsService } from '../../common/services/jobs.service';
 
@@ -12,6 +12,7 @@ export class EmployerJobCellComponent implements OnInit {
 	time: String = "";
 	@Input() job: any;
 	isAccessible: String = '';
+	@Output() val = new EventEmitter();
 
   	constructor(private _jobs: JobsService) { }
 
@@ -25,6 +26,7 @@ export class EmployerJobCellComponent implements OnInit {
 		.subscribe(data => {
 			console.log(data)
 		})
+
 	}
 
 	delete(){

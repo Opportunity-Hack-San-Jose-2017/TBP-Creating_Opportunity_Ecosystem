@@ -53,4 +53,8 @@ export class CompanyService {
 				this._router.navigate(['company'])
 			})
 	}
+
+	acceptApplicant(data) {
+		return this.http.post(`${BASE_URL}/company/interview`, data, {withCredentials: true})
+	}
 }

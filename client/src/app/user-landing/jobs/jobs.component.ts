@@ -84,12 +84,4 @@ export class JobsComponent implements AfterViewInit {
 		});
 	}
 
-	getAppliedJobs(){
-		this._user.getApplications()
-		.subscribe((data: any) => {
-			this.jobs = data.openings;
-			console.log(this.jobs);
-		})
-		console.log(this.displayJobs)
-	}
 }
