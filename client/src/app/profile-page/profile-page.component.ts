@@ -26,24 +26,21 @@ export class ProfilePageComponent implements OnInit {
 		private _router: Router,
 		private activatedRoute: ActivatedRoute
 	) {
-		this.activatedRoute.params.subscribe((params: Params) => {
-			const userID = params.id;
-			_user.getProfile(userID)
-			  .do(v => console.log(v))
-			  .subscribe((v: any) => this.applicant = v);
-		  });
+
 		  // test data
-		// this.applicant = {
-		// 	firstName: 'Sheldon',
-		// 	lastName: 'Bazzell',
-		// 	introduction: 'This is my intro This is my intro This is my intro This is my introThis is my introThis is my intro This is my introThis is my introThis is my introThis is my intro',
-		// 	experience: 2,
-		// 	email: 'sheldon@gamil.com',
-		// 	phoneNumber: '12345678',
-		// 	shift: ['morning', 'night'],
-		// 	availability: ['pt', 'ft'],
-		// 	skillsSet: ['I am a good writer, reader, listener','I am a good writer, reader, listener', 'I am a good writer, reader, listener']
-		// }
+		this.applicant = {
+			firstName: 'Sheldon',
+			lastName: 'Bazzell',
+			introduction: 'This is my intro This is my intro This is my intro This is my introThis is my introThis is my intro This is my introThis is my introThis is my introThis is my intro',
+			experience: 2,
+			language: 'Spanish',
+			location: 'Sunnyvale',
+			email: 'sheldon@gamil.com',
+			phoneNumber: '12345678',
+			shift: ['morning', 'night'],
+			availability: ['pt', 'ft'],
+			skillsSet: ['I am a good writer, reader, listener','I am a good writer, reader, listener', 'I am a good writer, reader, listener']
+		}
 		this.checkCircles();
 	}
 

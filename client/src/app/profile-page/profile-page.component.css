@@ -173,7 +173,7 @@ form {
 }
 
 .form-group {
-    width: 90%;
+    width: 100%;
     margin: 0 auto 9px;
     position: relative;
 }
@@ -207,6 +207,12 @@ form {
     resize: none;
 }
 
+.form-top-right {
+    flex: 1;
+}
+
+.content { margin-right: 10px; }
+
 .bottom {
     width: 100%;
     justify-content: space-between;
@@ -215,7 +221,8 @@ form {
 .group-header { font-weight: bold; margin-bottom: 10px; }
 .name-wrapper { margin-bottom: 10px; }
 .space { margin-bottom: 7px; }
-.name { font-weight: bold; font-size: 18px; }
+.name { font-weight: bold; font-size: 28px; margin-right: 5px; }
+table { width: 100%; }
 .skills { height: 60px; }
 
 .btn:hover { transform: translateY(-1px); }

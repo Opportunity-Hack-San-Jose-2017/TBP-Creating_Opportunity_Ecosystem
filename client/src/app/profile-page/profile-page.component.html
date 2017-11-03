@@ -13,21 +13,38 @@
 					<div class="round side btn flex">
 						<button (click)="download($event)" mat-button class="btn side">Download Resume</button>
 					</div>
-			  </div>
-			  <div class="form-top-right">
-					<div class="name-phone-wrapper flex column">
+				</div>
+				<div class="form-top-right">
 						<div class="name-wrapper name flex">
-							<div class="name content">{{applicant['firstName']}}</div>
-							<div class="name content">{{applicant['lastName']}}</div>
+								<div class="name content">{{applicant['firstName']}}</div>
+								<div class="name content">{{applicant['lastName']}}</div>
+							</div>
+						<table>
+							<tr>
+								<td>Phone: {{applicant['phoneNumber']}}</td>
+								<td>Email: {{applicant['email']}}</td>
+							</tr>
+							<tr>
+								<td>Language: {{applicant['language']}}</td>
+								<td>Location: {{applicant['location']}}</td>
+							</tr>
+						</table>
+				</div>
+			  <!-- <div class="form-top-right">
+					<div class="name-phone-wrapper flex column">
+
+						<div class="name-wrapper flex">
+							<div class="content">Phone: {{applicant['phoneNumber']}}</div>
+							<span>&nbsp;|&nbsp;</span>
+							<div class="content">Email: {{applicant['email']}}</div>
 						</div>
 						<div class="name-wrapper flex">
-							<div class="content">{{applicant['phoneNumber']}}</div>
-						</div>
-						<div class="name-wrapper flex">
-							<div class="content">{{applicant['email']}}</div>
+							<div class="content">Language: {{applicant['language']}}</div>
+							<span>&nbsp;|&nbsp;</span>
+							<div class="content">Location: {{applicant['location']}}</div>
 						</div>
 					</div>
-			  </div>
+			  </div> -->
 			</div>
 			<div class="av-wrapper">
 			  <div class="form-group flex column">

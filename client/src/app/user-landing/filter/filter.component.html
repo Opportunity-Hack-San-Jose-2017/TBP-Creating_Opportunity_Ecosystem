@@ -42,10 +42,10 @@
 			<div class="form-group-header flex">Background Check?</div>
 			<div class="flex check-container">
 				<div class="check-wrapper flex">
-					<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="bg === true ? 'active' : ''" id="bg">Yes</div>
+					<div (click)="addBg()" class="mat-fab flex" [ngClass]="bg === true ? 'active' : ''" id="bg">Yes</div>
 				</div>
 				<div class="check-wrapper flex">
-					<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="notBg === true ? 'active' : ''" id="no_bg">No</div>
+					<div (click)="removeBg()" class="mat-fab flex" [ngClass]="notBg === true ? 'active' : ''" id="no_bg">No</div>
 				</div>
 			</div>
 		</div>

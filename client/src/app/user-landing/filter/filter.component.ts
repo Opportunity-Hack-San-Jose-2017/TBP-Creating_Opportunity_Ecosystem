@@ -30,4 +30,14 @@ export class FilterComponent {
 		}
 	}
 
+	addBg() {
+		this.bg = true;
+		this.notBg = false;
+	}
+
+	removeBg() {
+		this.notBg = true;
+		this.bg = false;
+	}
+
 }
