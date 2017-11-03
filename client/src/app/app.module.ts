@@ -39,7 +39,6 @@ import { EmployerJobCellComponent } from './employers-landingpage/employer-job-c
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/interceptors/interceptor';
 import { ApplicantCellComponent } from './employers-landingpage/applicant-cell/applicant-cell.component';
-import { StoreModule } from '@ngrx/store';
 import { ApplicantsComponent } from './employers-landingpage/applicants/applicants.component';
 
 

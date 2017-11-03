@@ -61,7 +61,7 @@ export class JobListingComponent {
 			minSalary: [''],
 			maxSalary: [''],
 			publicTransport: [false, Validators.required ],
-			location: ['', Validators.required ],
+			location: ['', Validators.required ]
 		});
 	}
 

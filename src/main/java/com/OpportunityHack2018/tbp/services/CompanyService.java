@@ -90,6 +90,7 @@ public class CompanyService {
                 opening.setResponsibilities(openingReqObj.getResponsibilities());
             }
 
+
 //            if(openingReqObj.getStatus()!=null){
 //                if(openingReqObj.getStatus()== Opening.Status.CANCELLED){
 //                    if(!openingService.cancelOpening(opening)){

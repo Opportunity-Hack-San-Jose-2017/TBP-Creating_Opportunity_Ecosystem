@@ -42,7 +42,6 @@ public class Applicant {
     @Column
     private String position;
 
-
     @Column
     private String introduction;
 
@@ -63,6 +62,9 @@ public class Applicant {
 
     @Column
     private String country;
+
+    @Column
+    private String language;
 
     @OneToMany(mappedBy = "applicant")
     @JsonBackReference
@@ -265,5 +267,13 @@ public class Applicant {
 
     public void setResumeURL(String resumeURL) {
         this.resumeURL = resumeURL;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

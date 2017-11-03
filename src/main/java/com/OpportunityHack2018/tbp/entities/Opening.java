@@ -34,6 +34,9 @@ public class Opening {
     private String shift;
 
     @Column
+    private String availability;
+
+    @Column
     private boolean publicTransport;
 
     @Column
@@ -185,5 +188,11 @@ public class Opening {
         this.skillsSet = skillsSet;
     }
 
+    public String getAvailability() {
+        return availability;
+    }
 
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
 }
