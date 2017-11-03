@@ -15,7 +15,7 @@ import { UserService } from '../../common/services/user.service';
 export class JobsComponent implements AfterViewInit {
 
 	displayJobs: Boolean = true;
-	jobs: Array<any>;
+	jobs: any;
 	searchForm: FormGroup;
 	user: any;
 	location: String;
@@ -30,10 +30,6 @@ export class JobsComponent implements AfterViewInit {
 		private cd: ChangeDetectorRef
 	) {
 		this.createForm();
-		this._search.getAllJobs()
-		.subscribe((v: any) => {
-			this.jobs = v.openings
-		});
 
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)
@@ -88,21 +84,4 @@ export class JobsComponent implements AfterViewInit {
 		});
 	}
 
-	getAppliedJobs(){
-		this._user.getApplications()
-		.subscribe(data => {
-			console.log(data)
-			var save = this.jobs
-			this.jobs.length = 0
-			console.log(this.jobs)
-			for (var i = 0; i < data["openings"][0]["applications"].length; i++){
-				this.jobs.push(data["openings"][0]["applications"][i])
-			}
-			console.log(this.jobs)
-			console.log(save)
-			// this.applicants = data["openings"][0]["applications"]
-		})
-		this.displayJobs = !this.displayJobs;
-		console.log(this.displayJobs)
-	}
 }

@@ -32,16 +32,16 @@
 					<div class="form-group-header">Shift</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
+							<div (click)="shiftClick('morning')" class="mat-fab flex" [ngClass]="morning ? 'active' : ''" id="morning">Morning</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="noon ? 'active' : ''" id="noon">Noon</div>
+							<div (click)="shiftClick('noon')" class="mat-fab flex" [ngClass]="noon ? 'active' : ''" id="noon">Noon</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="night ? 'active' : ''" id="night">Night</div>
+							<div (click)="shiftClick('night')" class="mat-fab flex" [ngClass]="night ? 'active' : ''" id="night">Night</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
+							<div (click)="shiftClick('graveyard')" class="mat-fab flex" [ngClass]="graveyard ? 'active' : ''" id="graveyard">Graveyard</div>
 						</div>
 					</div>
 				</div>
@@ -50,14 +50,14 @@
 				<div class="form-group flex column">
 					<div class="form-group-header">Type</div>
 					<div class="flex check-container">
-						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
+						<div class="no-point check-wrapper flex">
+							<div (click)="typeClick('ft')" class="mat-fab flex" [ngClass]="ft ? 'active' : ''" id="ft">FT</div>
 						</div>
-						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
+						<div class="no-point check-wrapper flex">
+							<div (click)="typeClick('pt')" class="mat-fab flex" [ngClass]="pt ? 'active' : ''" id="pt">PT</div>
 						</div>
-						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
+						<div class="no-point check-wrapper flex">
+							<div (click)="typeClick('temp')" class="mat-fab flex" [ngClass]="temp ? 'active' : ''" id="temp">Temp</div>
 						</div>
 					</div>
 				</div>

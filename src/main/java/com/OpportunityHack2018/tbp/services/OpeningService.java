@@ -88,6 +88,10 @@ public class OpeningService {
             for(Opening opening:current){
                 openingSet.add(opening);
             }
+            current=openingRepository.findByAvailability(word);
+            for(Opening opening:current){
+                openingSet.add(opening);
+            }
 
         }
 

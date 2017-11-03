@@ -37,6 +37,8 @@ export class JobListingComponent {
 	ptYes: Boolean = false;
 	first: Boolean = false;
 	second: Boolean = false;
+	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
+	types: any = ['pt', 'ft', 'temp'];
 	third: Boolean = false;
 	flexible: Boolean = false;
 	@ViewChild('accept', {read: ElementRef}) accept: ElementRef;
@@ -45,15 +47,19 @@ export class JobListingComponent {
 		this.ptYes = !this.ptYes;
 	}
 
+	otherClick(e: any) {
+		this[e.target['id']] = !this[e.target['id']];
+	}
+
 	createForm() {
 		this.jobForm = this.fb.group({
 			title: ['', Validators.required],		
 			description: ['', Validators.required ],		
 			responsibilities: ['', Validators.required ],		
-			experience: [0, Validators.required ],		
+			experience: ['', Validators.required ],		
 			shift: ['', Validators.required ],		
-			minSalary: [0],
-			maxSalary: [0],
+			minSalary: [''],
+			maxSalary: [''],
 			publicTransport: [false, Validators.required ],
 			location: ['', Validators.required ]
 		});
@@ -67,18 +73,25 @@ export class JobListingComponent {
 		this._company.logout();
 	}
 
-	shiftClick(e: Event) {
-		this[e.target['id']] = !this[e.target['id']];
+	shiftClick(id: string) {
+		this.shifts.forEach(s => this[s] = s === id ? !this[id] : false)
+	}
+
+	typeClick(id: any) {
+		this.types.forEach(s => this[s] = s === id ? !this[id] : false)
 	}
 
 	submitOpening() {
-		console.log(this.jobForm.value);
-		var obj = this.jobForm.value
-		obj["publicTransport"] = this.ptYes
-		this._jobs.postOpening(obj)
+		var obj = this.jobForm.value;
+		obj["publicTransport"] = this.ptYes;
+		const newObj = Object.assign(obj, {
+			shift: this.shifts.filter(x => this[x])[0],
+			availability: this.types.filter(x => this[x])[0]
+		})
+		this._jobs.postOpening(obj);
 	}
 
 	backButton(){
-		this._router.navigate(['/company/home'])
+		this._router.navigate(['company/home'])
 	}
 }
