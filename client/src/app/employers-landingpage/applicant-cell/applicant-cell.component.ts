@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CompanyService } from './../../common/services/company.service';
 import { Router } from '@angular/router';
 import { JobsService } from './../../common/services/jobs.service';
+import { UploadService } from './../../common/services/upload.service';
 
 @Component({
   selector: 'app-applicant-cell',
@@ -15,7 +16,8 @@ export class ApplicantCellComponent {
   isAccessible: Boolean;
   constructor(
   	private _company: CompanyService,
-  	private router: Router
+  	private router: Router,
+    private upload: UploadService
 		) {
 		}
 
@@ -38,5 +40,9 @@ export class ApplicantCellComponent {
 
   reject(){
     this._company.rejectApplicant({applicationId: this.applicant["application_id"] })
+  }
+
+  downloadResume(){
+    // this.upload.getFile(this.applicant["resumeURL"])
   }
 }

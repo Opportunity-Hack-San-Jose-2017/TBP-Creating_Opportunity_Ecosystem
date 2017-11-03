@@ -9,7 +9,7 @@
 			<span>&nbsp;|&nbsp;</span>
 			<div>{{user['availability']}}</div>
 		</div>
-		<div>Minimum experience: {{user['experience']}}</div>
+		<div>Experience: {{user['experience']}} year(s)</div>
 		<div>Accessible by public transportation: {{isAccessible}}</div>
 	</div>
 	<!-- <div class="desk-desc">
@@ -45,5 +45,6 @@
 <div class="right_side_nav">
 	<div (click)="interviewApplicant()" class="btn flex">Interview</div>
 	<div (click)="reject()" class="btn flex red">Reject</div>
+	<div (click)="downloadResume()" class="btn flex">Download Resume</div>
 </div>
 </div>
