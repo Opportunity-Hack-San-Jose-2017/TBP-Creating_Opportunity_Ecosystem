@@ -3,6 +3,7 @@ package com.OpportunityHack2018.tbp.controllers;
 
 import com.OpportunityHack2018.tbp.entities.Applicant;
 import com.OpportunityHack2018.tbp.entities.Application;
+import com.OpportunityHack2018.tbp.entities.Company;
 import com.OpportunityHack2018.tbp.entities.Opening;
 import com.OpportunityHack2018.tbp.services.ApplicantService;
 import com.OpportunityHack2018.tbp.services.ApplicationService;
@@ -260,6 +261,7 @@ public class ApplicantController {
             Page<Opening> openings = applicantService.getOpenings(pageable);
             if(openings!=null){
                 List<Opening> openingsList=new ArrayList<>();
+                List<Company> companyList=new ArrayList<>();
                 List<String> imageURLs=new ArrayList<>();
                 for(Opening o : openings){
                     boolean ignore=false;
@@ -269,13 +271,14 @@ public class ApplicantController {
                             break;
                         }
                     }
-                    if(!ignore && o.getStatus()== Opening.Status.OPEN)
+                    if(!ignore && o.getStatus()== Opening.Status.OPEN) {
+                        o.setCompanyName(o.getCompany().getName());
                         openingsList.add(o);
+                    }
 //                    imageURLs.add(o.getCompany().getImageUrl());
                 }
 
                 responseMap.addAttribute("openings",openingsList);
-                responseMap.addAttribute("imageURLs",imageURLs);
                 responseMap.addAttribute("message","Search Results-");
                 responseMap.addAttribute("status","200");
                 return responseMap;
