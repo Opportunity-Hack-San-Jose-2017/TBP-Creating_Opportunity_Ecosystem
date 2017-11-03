@@ -184,6 +184,8 @@ public class ApplicantController {
                 applicant.setImageUrl(reqObj.getImageUrl());
             if(reqObj.getResumeURL()!=null)
                 applicant.setResumeURL(reqObj.getResumeURL());
+            if(reqObj.getLanguage()!=null)
+                applicant.setLanguage(reqObj.getLanguage());
 //            if(reqObj.getResume()!=null)
 //                applicant.setEducation(reqObj.getResume());
             applicantService.save(applicant);
