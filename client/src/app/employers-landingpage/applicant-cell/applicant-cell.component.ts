@@ -11,7 +11,7 @@ import { JobsService } from './../../common/services/jobs.service';
 export class ApplicantCellComponent {
 
 	@Input() applicant: any;
-  user = this.applicant["applicant"];
+  user: any
   isAccessible: Boolean;
   constructor(
   	private _company: CompanyService,
@@ -20,15 +20,16 @@ export class ApplicantCellComponent {
 		}
 
 		ngOnInit() {
-			console.log(this.applicant)			
+			console.log(this.applicant)		
+      this.user = this.applicant["applicant"];	
 		}
 
 
   interviewApplicant(){
-  	this._company.acceptApplicant({application_id: this.applicant["application_id"]})
+  	this._company.acceptApplicant({applicationId: this.applicant["application_id"]})
   	.subscribe(data => {
   		if (data["statusCode"] == "200"){
-  			this.router.navigate(['company/home'])
+  			this.router.navigate(['company/jobs'])
   		} else  {
   			alert(data["message"])
   		}
