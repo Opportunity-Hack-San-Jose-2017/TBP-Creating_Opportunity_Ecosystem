@@ -15,11 +15,8 @@
 				<img src="../../assets/images/profile-icon.png">
 				<button class="btn" (click)="edit()" mat-button>Edit Profile</button>
 			</div>
-			<div class="pb-div flex gray">
-				<button class="btn" mat-button>Saved Jobs</button>
-			</div>
 			<div class="pb-div flex gray center-text">
-				<button class="btn" mat-button (click)="getAppliedJobs()">Applied Jobs</button>
+				<button class="btn" mat-button routerLink="jobs/applied">Applied Jobs</button>
 			</div>			
 		</div>
 		<div class="main-container">

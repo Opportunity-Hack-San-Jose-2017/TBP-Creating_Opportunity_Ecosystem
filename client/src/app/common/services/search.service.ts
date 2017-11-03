@@ -13,8 +13,8 @@ export class SearchService {
 	) {
 	}
 
-  	getAllJobs(){
-  		return this._http.get(`${BASE_URL}/applicant/allJobs`, {withCredentials:true});
+  	getAllJobs() {
+		return this._http.get(`${BASE_URL}/applicant/allJobs`, {withCredentials:true})
   	}
 
   	getJobBySkill(skill: string) {
