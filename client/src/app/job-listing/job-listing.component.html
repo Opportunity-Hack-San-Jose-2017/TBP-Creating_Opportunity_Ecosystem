@@ -67,10 +67,23 @@
 					<div class="form-group-header">Is your office accessible by public transportation?</div>
 					<div class="flex check-container">
 						<div class="check-wrapper flex">
-							<div (click)="addAccess()" class="mat-fab flex" [ngClass]="isAccessible ? 'active' : ''" id="pt-yes">Yes</div>
+							<div (click)="isAccessible()" class="mat-fab flex" [ngClass]="ptYes ? 'active' : ''" id="pt-yes">Yes</div>
 						</div>
 						<div class="check-wrapper flex">
-							<div (click)="removeAccess()" class="mat-fab flex" [ngClass]="isNotAccessible ? 'active' : ''" id="pt-no">No</div>
+							<div (click)="isAccessible()" class="mat-fab flex" [ngClass]="!ptYes ? 'active' : ''" id="pt-no">No</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="p-trans wrapper">
+				<div class="form-group flex column">
+					<div class="form-group-header">Is this role paid hourly or by salary?</div>
+					<div class="flex check-container">
+						<div class="check-wrapper flex">
+							<div (click)="isHourly()" class="mat-fab flex" [ngClass]="hourly ? 'active' : ''" id="hourly">Hourly</div>
+						</div>
+						<div class="check-wrapper flex">
+							<div (click)="isHourly()" class="mat-fab flex" [ngClass]="!hourly ? 'active' : ''" id="salary">Salary</div>
 						</div>
 					</div>
 				</div>
@@ -78,22 +91,10 @@
 			<mat-form-field>
 				<input matInput placeholder="Location" formControlName="location">
 				<mat-error *ngIf="jobForm.get('location').touched && jobForm.get('location').hasError('required')">
-					Location is <strong>required</strong>
+					Location is
+					<strong>required</strong>
 				</mat-error>
 			</mat-form-field>
-			<div class="p-trans wrapper">
-				<div class="form-group flex column">
-					<div class="form-group-header">Is this role paid hourly or by salary?</div>
-					<div class="flex check-container">
-						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="hourly ? 'active' : ''" id="hourly">Hourly</div>
-						</div>
-						<div class="check-wrapper flex">
-							<div (click)="shiftClick($event)" class="mat-fab flex" [ngClass]="!hourly ? 'active' : ''" id="salary">Salary</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<mat-form-field>
 				<input matInput type="number" min="0" placeholder="Min Salary" name="minSalary" formControlName="minSalary">
 			</mat-form-field>
@@ -107,5 +108,3 @@
 		</form>
 	</div>
 </div>
-
-<!-- <button (click)="testProfile()">test button</button> -->

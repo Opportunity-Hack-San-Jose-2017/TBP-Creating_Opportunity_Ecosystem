@@ -11,46 +11,28 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class JobListingComponent {
 
-	job = {
-		title: "Something",
-		description: "",
-		responsibilities: "",
-		experience: "",
-		shift: "",
-		publicTransport: "",
-		location: "",
-		minSalary: "",
-		maxSalary: ""
+	constructor(
+		private _router: Router,
+		private _company: CompanyService,
+		private _jobs: JobsService,
+		private fb: FormBuilder
+	) {
+		this.createForm();
 	}
-	isNotAccessible: boolean = false;
-	isAccessible: boolean = false;	
-
-  constructor(
-    private _router: Router,
-    private _company: CompanyService,
-    private _jobs: JobsService,
-    private fb: FormBuilder
-  ) {
-    this.createForm();
-  }
 
 	jobForm: FormGroup;
-	yes: Boolean = false;
 	ptYes: Boolean = false;
-	first: Boolean = false;
-	second: Boolean = false;
+	hourly: Boolean = false;
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['pt', 'ft', 'temp'];
-	third: Boolean = false;
-	flexible: Boolean = false;
 	@ViewChild('accept', {read: ElementRef}) accept: ElementRef;
 
-	circleClick() {
+	isAccessible() {
 		this.ptYes = !this.ptYes;
 	}
 
-	otherClick(e: any) {
-		this[e.target['id']] = !this[e.target['id']];
+	isHourly() {
+		this.hourly = !this.hourly;
 	}
 
 	createForm() {
@@ -67,20 +49,6 @@ export class JobListingComponent {
 		});
 	}
 
-	addAccess() {
-		this.isAccessible = !this.isAccessible;
-		this.isNotAccessible = false;
-	}
-
-	removeAccess() {
-		this.isNotAccessible = !this.isNotAccessible;
-		this.isAccessible = false;
-	}
-
-  testForm(){
-    this._jobs.postOpening(this.job);
-  }
-
 	logout() {
 		this._company.logout();
 	}
@@ -94,9 +62,9 @@ export class JobListingComponent {
 	}
 
 	submitOpening() {
-		var obj = this.jobForm.value;
-		obj["publicTransport"] = this.ptYes;
-		const newObj = Object.assign(obj, {
+		const obj = Object.assign(this.jobForm.value, {
+			publicTransport: this.ptYes,
+			salary: this.hourly,
 			shift: this.shifts.filter(x => this[x])[0],
 			availability: this.types.filter(x => this[x])[0]
 		})
@@ -104,6 +72,6 @@ export class JobListingComponent {
 	}
 
 	backButton(){
-		this._router.navigate(['company/home'])
+		this._router.navigate(['company'])
 	}
 }

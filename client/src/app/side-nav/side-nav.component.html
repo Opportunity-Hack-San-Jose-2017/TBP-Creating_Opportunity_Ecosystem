@@ -5,6 +5,7 @@
 	<div class="img-div flex">
 		<img src="../../assets/images/profile-icon.png">
 	</div>
-	<div class="pb-div flex gray" routerLink="profile/edit">Edit Profile</div>
-	<div class="pb-div flex gray" routerLink="jobs/applied">Applied Jobs</div>
+	<div class="pb-div flex gray" (click)="close.emit()" routerLink="/applicant">Home</div>
+	<div class="pb-div flex gray" (click)="close.emit()" routerLink="profile/edit">Edit Profile</div>
+	<div class="pb-div flex gray" (click)="close.emit()" routerLink="jobs/applied">Applied Jobs</div>
 </section>

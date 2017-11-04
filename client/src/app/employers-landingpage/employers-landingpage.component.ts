@@ -26,7 +26,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export class EmployersLandingpageComponent {
 
-	toggleDropDown: boolean = false;
 	navState: boolean = false;
 	company: any;
 	interviewMsg: boolean = false;
@@ -37,29 +36,18 @@ export class EmployersLandingpageComponent {
 		private _company: CompanyService,
 		private _user: UserService
 	) {
-		this.company = JSON.parse(localStorage.getItem("company")) || {};
-		this.getAllOpenings()
-		console.log(this.company)
+		this.company = JSON.parse(localStorage.getItem("company"));
 		_company.getSuccessMsg().subscribe((v: any) => this.interviewMsg = v)
 		_company.getFailedMsg().subscribe((v: any) => this.rejectMsg = v)
 	}
 
 	getAllOpenings(){
 		this._company.getAllOpenings()
-		.subscribe((data: any) => console.log(data))
+			.subscribe((data: any) => console.log(data))
 	}
 
 	closeMsg() {
 		this._company.closeMsg();
-	}
-  	
-
-	dropdowntoggle() {
-		this.toggleDropDown = !this.toggleDropDown;
-	}
-
-	newJob() {
-		this._router.navigate(['company/opening/create']);
 	}
 
 	nav() {

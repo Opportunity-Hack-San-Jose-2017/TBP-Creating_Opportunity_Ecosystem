@@ -26,18 +26,15 @@ export class JobsPostedComponent {
 	) {
 		this.createForm();
 		this._search.getAllJobs()
-			.subscribe((v: any) => {
-				this.jobs = v.openings
-				console.log(this.jobs)
-			});
+			.subscribe((v: any) => this.jobs = v.openings);
 
+		/* allow user to search by pressing 'enter' */
 		Observable.fromEvent(document, 'keyup')
 			.filter((v: any) => v.keyCode === 13)
 			.subscribe(() => {
 				if (document.getElementById('mat-input-0') === document.activeElement) {
 					if (this.searchForm.value.search !== "") {
 						_search.filterJobs(this.searchForm.value)
-							.do(v => console.log(v))
 							.subscribe((v: any) => this.jobs = v.openings);
 					} else {
 						_search.getAllJobs()
@@ -68,7 +65,6 @@ export class JobsPostedComponent {
 
 	handleVal(value: String) {
 		this.searchForm.value.search += value;
-		console.log(this.searchForm.value)
 	}
 
 	handleLoc(val: String) {
@@ -80,9 +76,7 @@ export class JobsPostedComponent {
 	}
 
 	createForm() {
-		this.searchForm = this.fb.group({
-			search: ['']
-		});
+		this.searchForm = this.fb.group({search: ['']});
 	}
 
 }

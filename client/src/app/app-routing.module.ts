@@ -19,12 +19,11 @@ const appRoutes: Routes = [
     { path: 'setup', component: ProfileSetupComponent },
     { path: 'co', component: CompanyHomeComponent },
     { path: 'company', component: EmployersLandingpageComponent, children: [
-		{ path: 'jobs', component: JobsPostedComponent, pathMatch: 'full' },
+		{ path: '', component: JobsPostedComponent, pathMatch: 'full' },
 		{ path: 'candidates', component: CandidatesComponent },
 		{ path: 'jobs/:id', component: ApplicantsComponent },
-		{ path: '', redirectTo: 'jobs', pathMatch: 'full' },
 	]},
-    { path: 'company/opening/create', component: JobListingComponent},
+    { path: 'company/opening/new', component: JobListingComponent},
 	{ path: 'profile/edit', component: EditProfileComponent, pathMatch: 'full' },
 	{ path: 'profile/:id', component: ProfilePageComponent },
     { path: 'applicant', component: UserLandingComponent, children: [

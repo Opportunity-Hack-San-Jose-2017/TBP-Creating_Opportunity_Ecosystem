@@ -1,14 +1,6 @@
 import { UserService } from '../common/services/user.service';
 import { Router } from '@angular/router';
-import {
-	animate,
-	Component,
-	state,
-	style,
-	transition,
-	trigger,
-	ContentChild
-} from '@angular/core';
+import { animate, Component, state, style, transition, trigger, ContentChild } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs/Observable';
 import { JobsComponent } from './jobs/jobs.component';
@@ -34,6 +26,7 @@ import { JobsComponent } from './jobs/jobs.component';
 	providers: [JobsComponent]
 })
 export class UserLandingComponent {
+
 	@ContentChild(JobsComponent) jobs: JobsComponent;
 
 	user: any;
@@ -52,12 +45,5 @@ export class UserLandingComponent {
 
 	nav() {
 		this.navState = !this.navState;
-	}
-
-	getAppliedJobs(){
-		// this.jobs.getAppliedJobs()
-	}
-	goHome(){
-		this._router.navigate(['/applicant'])
 	}
 }
