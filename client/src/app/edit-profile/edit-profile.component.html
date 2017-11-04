@@ -20,12 +20,12 @@
               <img class="pro-pic no-point" [src]="img" alt="Profile Photo">
             </div>
             <div class="round side btn flex">
-              <input (change)="handleFiles($event)" id="photo" type="file" hidden />
-              <button (click)="labelClick($event)" mat-button class="btn side">Change Photo</button>
+              <input (change)="handleFiles($event, 'imgUrl')" id="photo" type="file" hidden />
+              <button (click)="labelClick($event, 'imgUrl')" mat-button class="btn side">Change Photo</button>
             </div>
             <div class="round side btn flex">
-              <input (change)="handleFiles($event)" id="resume" type="file" hidden />
-              <button (click)="labelClick($event)" mat-button class="btn side"><label class="res-lbl" id="lbl" #resume for="resume">Upload Resume</label></button>
+              <input (change)="handleFiles($event, 'resumeUrl')" id="resume" type="file" hidden />
+              <button (click)="labelClick($event, 'resumeUrl')" mat-button class="btn side"><label class="res-lbl" id="lbl" #resume for="resume">Upload Resume</label></button>
             </div>
           </div>
           <div class="form-top-right">

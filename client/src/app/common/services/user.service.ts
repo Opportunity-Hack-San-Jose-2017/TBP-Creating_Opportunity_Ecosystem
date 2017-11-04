@@ -43,7 +43,7 @@ export class UserService {
 		this.http.post(url, update_cred, {withCredentials: true})
 			.subscribe(
 				(data: any) => {
-					if (data["statusCode"] == 200){
+					if (data["statusCode"] == 200) {
 						this.setStorage(data.applicant);
 						this.router.navigate(['applicant']);
 					} else {
@@ -57,7 +57,7 @@ export class UserService {
 	}
 
 	setStorage(data: any) {
-		delete data.password;
+		if (data.password) delete data.password;
 		localStorage.setItem('user', JSON.stringify(data));		
 	}
 

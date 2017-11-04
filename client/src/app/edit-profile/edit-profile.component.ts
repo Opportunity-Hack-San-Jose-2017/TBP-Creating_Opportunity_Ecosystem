@@ -4,7 +4,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../common/config/url';
 import { saveAs as importedSaveAs } from 'file-saver';
 
@@ -15,16 +15,17 @@ import { saveAs as importedSaveAs } from 'file-saver';
 })
 export class EditProfileComponent implements OnInit {
 
-	img: String;
+	img: string;
+	imgLoading: boolean;
 	userForm: FormGroup;
 	progress: any; 
-	morning: Boolean = false;
-	noon: Boolean = false;
-	night: Boolean = false;
-	graveyard: Boolean = false;
-	ft: Boolean;
-	pt: Boolean;
-	temp: Boolean;
+	morning: boolean = false;
+	noon: boolean = false;
+	night: boolean = false;
+	graveyard: boolean = false;
+	ft: boolean;
+	pt: boolean;
+	temp: boolean;
 	user: any = {
 		"availability": [""],
 		"shift": [""],
@@ -33,8 +34,8 @@ export class EditProfileComponent implements OnInit {
 
 	shifts: any = ['morning', 'noon', 'night', 'graveyard'];
 	types: any = ['ft', 'pt', 'temp'];
-	success: Boolean = true;
-	failed: Boolean = false;
+	success: boolean = true;
+	failed: boolean = false;
 	@ViewChild('resume', {read:ElementRef}) resume: ElementRef;
 
 	constructor(
@@ -52,8 +53,7 @@ export class EditProfileComponent implements OnInit {
 	}
 
 	ngOnInit() {	
-		if (!this.img) this.img = '../../assets/images/profile-icon.png';
-		console.log(this.user)
+		if (!this.user.imgUrl) this.img = '../../assets/images/profile-icon.png';
 	}
 
 	checkCircles() {
@@ -66,7 +66,6 @@ export class EditProfileComponent implements OnInit {
 	labelClick(e: Event) {
 		if (e.target['id'] !== 'lbl') {
 			this.resume.nativeElement.click();
-			console.log(e)
 		}
 	}
 
@@ -81,15 +80,6 @@ export class EditProfileComponent implements OnInit {
 				skillsSet: [tempSkillsSet],
 				introduction: [this.user.introduction]
 			});
-		} else {
-			this.userForm = this.fb.group({
-				firstName: ["", Validators.required],
-				lastName: ["", Validators.required],
-				experience: [0],
-				phoneNumber: [""],
-				skillsSet: [""],
-				introduction: [""]
-			})
 		}
 	}
 
@@ -111,7 +101,6 @@ export class EditProfileComponent implements OnInit {
 			temp[i] = temp[i].trim();
 		}
 		obj["skillsSet"] = temp;
-		console.log(obj)
 		this._user.updateProfile(obj);
 
 	}
@@ -124,26 +113,44 @@ export class EditProfileComponent implements OnInit {
   		this._router.navigate(["applicant"]);
 	}
 
-	handleFiles(e: Event) {
+	handleFiles(e: Event, str: string) {
 		const x = e.target['files'];
 		const file = x.item(0);
-		console.log(file);
-		this._upload.sendFile(file)
-			.do(data =>{
-				this._http.post(`${BASE_URL}/applicant/update`, {resumeURL: file["name"]}, {withCredentials: true})
-				.subscribe(data => {
-					console.log("This is from update", data)
-				})
-			})
-			.subscribe(event => {
+		this._upload.sendFile(file).subscribe(event => {
 				if (event.type === HttpEventType.UploadProgress) {
 					this.progress.percentage = Math.round(100 * event.loaded / event.total);
-				} else if (event instanceof HttpResponse) {
-					this.success = true;
-					this._user.updateProfile({file:file['name']})
-					console.log('File is completely uploaded!');
+				} else if (event instanceof HttpResponse && event.status === 200) {
+					this.success = str === 'resumeUrl' ? true : false;
+					console.log(str, file)
+					this._user.updateProfile({str:file['name']})
+					str === 'imageUrl' ? this.getImg(file['name']) : null;
+				} else {
+					this.failed = true;
 				}
 			})
+	}
+
+	getImg(url: string) {
+		this.imgLoading = true;
+		this._upload.getFile(url).subscribe((data: any) => {
+			this.imgLoading = false;
+			this.createImageFromBlob(data);
+		}, (error: any) => {
+			this.imgLoading = false;
+			console.log(error);
+		});
+	}
+
+
+	createImageFromBlob(image: Blob) {
+		let reader = new FileReader();
+		reader.addEventListener("load", () => {
+			this.img = reader.result;
+		}, false);
+
+		if (image) {
+			reader.readAsDataURL(image);
+		}
 	}
 
 	logout() {
