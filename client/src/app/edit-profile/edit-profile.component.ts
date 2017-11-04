@@ -8,7 +8,6 @@ import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { url as BASE_URL } from '../common/config/url';
 import { saveAs as importedSaveAs } from 'file-saver';
 
-
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',

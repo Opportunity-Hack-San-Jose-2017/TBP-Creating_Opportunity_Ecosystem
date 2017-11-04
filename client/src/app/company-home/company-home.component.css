@@ -1,36 +1,42 @@
 .home-container {
-    width: 100%;
+    align-items: center;
     justify-content: center;
-}
-
-.bg-wrapper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    height: calc(100vh - 80px);
+	margin-top: 80px;
+    width: 100vw;
     overflow: hidden;
+    background: url('../../assets/images/login-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.bg {
-    object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+
+nav {
+    height: 80px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
 }
 
-.logo-wrap {
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    height: 50px;
-}
+nav img { height: 60px; }
 
 .login-reg-wrapper {
-    width: 45%;
+    width: 55%;
     border-radius: 1px;
     padding: 20px 30px;
+    max-height: calc(100vh - 120px);
     background: rgba(0,0,0,.83);
-    position: relative;
-    margin-top: 100px;
+    position: absolute;
+    top: 100px;
     color: rgba(255,255,255,.7);
     align-items: center;
     max-width: 500px;
@@ -53,7 +59,11 @@
     border-bottom: 3px solid #1592aa;
 }
 
-app-register, app-login { width: 100%; }
+a { 
+    color: #1592aa;
+}
+
+app-company-register, app-company-login { width: 100%; }
 
 @media screen and (max-width: 700px) {
 
@@ -65,4 +75,3 @@ app-register, app-login { width: 100%; }
         width: 80%;
     }
 }
-app-company-register, app-company-login { width: 100%; }

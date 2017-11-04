@@ -1,6 +1,8 @@
+import { UploadService } from '../common/services/upload.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../common/services/user.service';
+import { saveAs as importedSaveAs } from 'file-saver';
 
 @Component({
   selector: 'app-profile-page',
@@ -23,30 +25,15 @@ export class ProfilePageComponent implements OnInit {
 
 	constructor(
 		private _user: UserService,
+		private _upload: UploadService,
 		private _router: Router,
 		private activatedRoute: ActivatedRoute
 	) {
-
-		  // test data
-		this.applicant = {
-			firstName: 'Sheldon',
-			lastName: 'Bazzell',
-			introduction: 'This is my intro This is my intro This is my intro This is my introThis is my introThis is my intro This is my introThis is my introThis is my introThis is my intro',
-			experience: 2,
-			language: 'Spanish',
-			location: 'Sunnyvale',
-			email: 'sheldon@gamil.com',
-			phoneNumber: '12345678',
-			shift: ['morning', 'night'],
-			availability: ['pt', 'ft'],
-			skillsSet: ['I am a good writer, reader, listener','I am a good writer, reader, listener', 'I am a good writer, reader, listener']
-		}
 		this.checkCircles();
 	}
 
 	ngOnInit() {	
 		if (!this.img) this.img = '../../assets/images/profile-icon.png';
-		console.log(this.applicant)
 	}
 
 	checkCircles() {
@@ -62,6 +49,11 @@ export class ProfilePageComponent implements OnInit {
 
 	logout() {
 		this._user.logout();
+	}
+
+	downloadResume() {
+		this._upload.getFile(this.applicant["resumeURL"])
+			.subscribe(v => importedSaveAs(v, this.applicant["resumeURL"]))
 	}
 
 }

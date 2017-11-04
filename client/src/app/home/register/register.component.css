@@ -1,7 +1,7 @@
 form {
     width: 85%;
     align-items: center;
-    margin: 15px auto 0;
+    margin: 25px auto 0;
 }
 
 .mat-form-field {
@@ -39,3 +39,5 @@ label { margin-left: 5px; }
     color: red;
     bottom: 0;
 }
+
+span { pointer-events: none !important; }

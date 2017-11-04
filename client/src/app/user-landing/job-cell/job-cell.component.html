@@ -14,7 +14,7 @@
 		<div>Salary: {{job['minSalary']}} - {{job['maxSalary']}}</div>
 		<div>Required experience: {{job['experience']}} {{time}}</div>
 		<div>Accessible by public transportation: {{isAccessible}}</div>
-		<div>Date Posted: {{datePosted}}</div>
+		<div>Date Posted: {{datePosted | date: 'fullDate'}}</div>
 	</div>
 	<div class="desk-desc">
 		<div class="desc">{{job['description']}}</div>

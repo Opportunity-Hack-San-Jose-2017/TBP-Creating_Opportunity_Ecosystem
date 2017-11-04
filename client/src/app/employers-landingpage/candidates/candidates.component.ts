@@ -4,11 +4,13 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { JobsService } from '../../common/services/jobs.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { filterSlide } from '../../common/animations/filterSlide';
 
 @Component({
   selector: 'app-candidates',
   templateUrl: './candidates.component.html',
-  styleUrls: ['./candidates.component.css']
+	styleUrls: ['./candidates.component.css'],
+	animations: [filterSlide]
 })
 export class CandidatesComponent {
 

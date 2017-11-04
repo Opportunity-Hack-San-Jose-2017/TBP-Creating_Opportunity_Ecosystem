@@ -123,7 +123,8 @@ export class UserService {
 		console.log(updatedObj)
 		if (num === 4) {
 			localStorage.removeItem('setupStep');
-			localStorage.removeItem('profile');			
+			localStorage.removeItem('profile');
+			console.log('4')		
 			this.updateProfile(updatedObj);
 		}
 	}

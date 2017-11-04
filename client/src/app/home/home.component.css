@@ -1,41 +1,41 @@
 .home-container {
-    width: 100%;
+    align-items: center;
     justify-content: center;
-}
-
-.bg-wrapper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    height: calc(100vh - 80px);
+	margin-top: 80px;
+    width: 100vw;
     overflow: hidden;
+    background: url('../../assets/images/login-bg.png');
+    background-repeat: no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.bg {
-    object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+nav {
+    height: 80px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
 }
 
-.logo-wrap {
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    height: 50px;
-}
-
-.logo {
-    height: 10vh;
-}
+nav img { height: 60px; }
 
 .login-reg-wrapper {
-    width: 45%;
+    width: 55%;
     border-radius: 1px;
     padding: 20px 30px;
-    max-height: calc(100vh - 105px);
+    max-height: calc(100vh - 120px);
     background: rgba(0,0,0,.83);
-    position: relative;
-    margin-top: 60px;
+    position: absolute;
+    top: 100px;
     color: rgba(255,255,255,.7);
     align-items: center;
     max-width: 500px;

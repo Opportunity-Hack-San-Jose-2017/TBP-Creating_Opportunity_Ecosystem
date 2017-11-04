@@ -46,10 +46,6 @@ export class UserLandingComponent {
 		this.user = JSON.parse(localStorage.getItem('user'));
 	}
 
-	edit(){
-		this._router.navigate(["profile/edit"])
-	}
-
 	logout() {
 		this._user.logout();
 	}

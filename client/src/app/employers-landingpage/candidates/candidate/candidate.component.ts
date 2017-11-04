@@ -12,28 +12,25 @@ import { saveAs as importedSaveAs } from 'file-saver';
 export class CandidateComponent implements OnInit {
 
 	@Input() candidate: any;
-  user: any
-  isAccessible: String = "";
-  constructor(
-  	private _company: CompanyService,
-  	private router: Router,
-    private upload: UploadService
-		) {
-		}
+	user: any
+	isAccessible: String = "";
+	
+	constructor(
+		private _company: CompanyService,
+		private router: Router,
+		private upload: UploadService
+	) { }
 
-		ngOnInit() {
-			console.log(this.candidate)		
-      // this.user = this.candidate["applicant"];	
-      this.isAccessible = this.candidate['publicTransport'] ? 'Yes' : 'No';
-
+	ngOnInit() {
+		this.isAccessible = this.candidate['publicTransport'] ? 'Yes' : 'No';
     }
 
-  interviewApplicant(){
-  	// this._company.acceptApplicant({applicationId: this.candidate["application_id"]})
-  }
+	interviewApplicant(){
+		this._company.acceptApplicant({applicationId: this.candidate["application_id"]})
+	}
 
-  downloadResume() {
-    this.upload.getFile(this.candidate["resumeURL"])
-      .subscribe(v => importedSaveAs(v, this.candidate["resumeURL"]))
-  }
+	downloadResume() {
+		this.upload.getFile(this.candidate["resumeURL"])
+			.subscribe(v => importedSaveAs(v, this.candidate["resumeURL"]))
+	}
 }

@@ -113,7 +113,7 @@ nav img {
     width: 100%;
     overflow: auto;
     max-height: calc(100vh - 120px);
-    height: 605px;
+    min-height: 605px;
     border-radius: 1px;
     padding: 20px 30px;
     justify-content: center;

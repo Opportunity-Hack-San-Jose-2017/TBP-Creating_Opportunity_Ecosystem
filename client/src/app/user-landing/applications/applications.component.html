@@ -1,16 +1,5 @@
 <div class="jobs-wrapper">
-	<form [formGroup]="searchForm">
-		<div class="search-bar flex">
-			<div class="icons flex">
-				<div class="flex caret-wrapper mag">
-				<i class="fa fa-search" aria-hidden="true"></i>
-				</div>
-				<div class="flex caret-wrapper caret">
-				<i class="fa fa-caret-down" id="caret" aria-hidden="true"></i>
-				</div>
-			</div>
-		</div>
-	</form>
+	<div class="search-bar flex"></div>
 	<div class="filter-menu" *ngIf="search">
 		<app-filter></app-filter>
 	</div>

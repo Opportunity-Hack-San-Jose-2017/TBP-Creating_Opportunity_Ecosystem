@@ -29,7 +29,7 @@ nav {
 }
 
 app-step-one, app-step-two, app-step-three {
-    width: 85%;
+    width: 100%;
     max-width: 500px;
     min-height: 380px;
     height: 100%;
