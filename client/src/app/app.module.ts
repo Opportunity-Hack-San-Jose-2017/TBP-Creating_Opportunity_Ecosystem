@@ -29,7 +29,6 @@ import { EmployersLandingpageComponent } from './employers-landingpage/employers
 import { FilterComponent } from './user-landing/filter/filter.component';
 import { MaterialModule } from './common/material.module';
 import { JobsComponent } from './user-landing/jobs/jobs.component';
-import { ApplicationsComponent } from './user-landing/applications/applications.component';
 import { ApplicationCellComponent } from './user-landing/applications/application-cell/application-cell.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { AuthGuard } from './common/guards/auth.guard';
@@ -42,6 +41,7 @@ import { ApplicantsComponent } from './employers-landingpage/applicants/applican
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CandidatesComponent } from './employers-landingpage/candidates/candidates.component';
 import { CandidateComponent } from './/employers-landingpage/candidates/candidate/candidate.component';
+import { ApplicationsComponent } from './user-landing/applications/applications.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +74,6 @@ import { CandidateComponent } from './/employers-landingpage/candidates/candidat
     ProfilePageComponent,
     CandidatesComponent,
     CandidateComponent,
-
   ],
   imports: [
     BrowserModule,
